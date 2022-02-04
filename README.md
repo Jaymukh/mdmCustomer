@@ -1,1 +1,2 @@
-# mdmvendorbuild
+# mdmCustomer
+Customer application
