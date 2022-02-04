@@ -1,0 +1,208 @@
+{
+	"_version": "1.12.0",
+	"sap.app": {
+		"id": "murphy.mdm.customer.murphymdmcustomer",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.40.12"
+		},
+		"dataSources": {
+			"searchVendorMetatDataSource": {
+				"uri": "model/SearchVendorMetaData.json",
+				"type": "JSON"
+			},
+			"createVndrDataSource": {
+				"uri": "model/localJson.json",
+				"type": "JSON"
+			},
+			"murphyVendor": {
+				"uri": "/murphyCustom",
+				"type": "OData"
+			},
+			"changeRequestMetatDataSource": {
+				"uri": "model/ChangeRequestMetaData.json",
+				"type": "JSON"
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"flexEnabled": false,
+		"rootView": {
+			"viewName": "murphy.mdm.customer.murphymdmcustomer.view.App",
+			"type": "XML",
+			"async": true,
+			"id": "App"
+		},
+		"dependencies": {
+			"minUI5Version": "1.65.6",
+			"libs": {
+				"sap.ui.layout": {},
+				"sap.ui.core": {},
+				"sap.m": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "murphy.mdm.customer.murphymdmcustomer.i18n.i18n"
+				}
+			},
+			"CreateVendorModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "createVndrDataSource",
+				"settings": {
+					"defaultBindingMode": "TwoWay"
+				}
+			},
+			"SearchVendorMetadataModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "searchVendorMetatDataSource",
+				"settings": {
+					"defaultBindingMode": "TwoWay"
+				}
+			},
+			"SearchVendorModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {
+					"defaultBindingMode": "TwoWay"
+				}
+			},
+			"SearchVendorPopupModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {
+					"defaultBindingMode": "TwoWay"
+				}
+			},
+			"ChangeRequestMetadataModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"dataSource": "changeRequestMetatDataSource",
+				"settings": {
+					"defaultBindingMode": "TwoWay"
+				}
+			},
+			"changeRequestGetAllModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {
+					"defaultBindingMode": "TwoWay"
+				}
+			},
+			"changeRequestStatisticsModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {
+					"defaultBindingMode": "TwoWay"
+				}
+			},
+			"CreateERPCustomerAddrTableModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {
+					"defaultBindingMode": "TwoWay",
+					"rows": []
+				}
+			},
+			"userManagementModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {
+					"defaultBindingMode": "TwoWay",
+					"role": [],
+					"accountGroups": [],
+					"data": {}
+				}
+			}
+		},
+		"resources": {
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "murphy.mdm.customer.murphymdmcustomer.view",
+				"controlAggregation": "pages",
+				"controlId": "app",
+				"clearControlAggregation": false
+			},
+			"routes": [
+				{
+					"name": "searchvendor",
+					"pattern": "",
+					"target": [
+						"searchvendor"
+					]
+				},
+				{
+					"name": "createCustomer",
+					"pattern": "CreateCustomer",
+					"target": [
+						"createCustomer"
+					]
+				},
+				{
+					"name": "erpCustomerPrev",
+					"pattern": "erpCustomerPrev",
+					"target": [
+						"ERPCustomerPreview"
+					]
+				}
+			],
+			"targets": {
+				"searchvendor": {
+					"viewType": "XML",
+					"viewName": "searchvendor"
+				},
+				"createVendor": {
+					"viewType": "XML",
+					"viewName": "CreateCustomer"
+				},
+				"CreateERPCustomer": {
+					"viewType": "XML",
+					"viewName": "CreateERPCustomer"
+				},
+				"ERPCustomerPreview": {
+					"viewType": "XML",
+					"viewName": "ERPCustomerPreview"
+				},
+				"ChangeRequest": {
+					"viewType": "XML",
+					"viewName": "ChangeRequest"
+				}
+			}
+		}
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
+	}
+}

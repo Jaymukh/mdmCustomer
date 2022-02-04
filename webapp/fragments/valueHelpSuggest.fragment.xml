@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns="sap.ui.comp.valuehelpdialog" xmlns:m="sap.m" xmlns:fb="sap.ui.comp.filterbar" xmlns:core="sap.ui.core">
+	<ValueHelpDialog title="{oViewModel>/title}" ok=".onValueHelpOkPress" cancel=".onValueHelpCancelPress" afterClose=".onValueHelpAfterClose"
+		supportMultiselect="false">
+		<filterBar>
+			<fb:FilterBar advancedMode="true" search="onFilterBarSearch" filterGroupItems="{oViewModel>/cols}">
+				<fb:filterGroupItems>
+					<fb:FilterGroupItem groupName="__$INTERNAL$" name="{oViewModel>template}" label="{oViewModel>label}" visibleInFilterBar="true">
+						<fb:control>
+							<m:Input name="{oViewModel>template}"/>
+						</fb:control>
+					</fb:FilterGroupItem>
+				</fb:filterGroupItems>
+			</fb:FilterBar>
+		</filterBar>
+	</ValueHelpDialog>
+</core:FragmentDefinition>

@@ -1,0 +1,57 @@
+{
+	"welcomeFile": "/webapp/index.html",
+	"routes": [{
+		"path": "/resources",
+		"target": {
+			"type": "service",
+			"name": "sapui5",
+			"entryPath": "/resources"
+		},
+		"description": "SAPUI5 Resources"
+	}, {
+		"path": "/test-resources",
+		"target": {
+			"type": "service",
+			"name": "sapui5",
+			"entryPath": "/test-resources"
+		},
+		"description": "SAPUI5 Resources"
+	}, {
+		"path": "/webapp/resources",
+		"target": {
+			"type": "service",
+			"name": "sapui5",
+			"entryPath": "/resources"
+		},
+		"description": "SAPUI5 Resources"
+	}, {
+		"path": "/webapp/test-resources",
+		"target": {
+			"type": "service",
+			"name": "sapui5",
+			"entryPath": "/test-resources"
+		},
+		"description": "SAPUI5 Test Resources"
+	}, {
+		"path": "/murphyCustom",
+		"target": {
+			"type": "destination",
+			"name": "MDM_JAVA_DEST"
+		},
+		"description": "Destination"
+	}, {
+		"path": "/MurphyCloudIdPDest",
+		"target": {
+			"type": "destination",
+			"name": "MurphyCloudIdPDest"
+		},
+		"description": "Destination"
+	}, {
+		"path": "/services/userapi",
+		"target": {
+			"type": "service",
+			"name": "userapi"
+		}
+	}],
+	"sendWelcomeFileRedirect": true
+}

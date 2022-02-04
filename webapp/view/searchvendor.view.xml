@@ -1,0 +1,204 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:tnt="sap.tnt" height="100%" xmlns:f="sap.f"
+	xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+	xmlns:smartTable="sap.ui.comp.smarttable" xmlns:sv="sap.ui.comp.smartvariants" xmlns:uxap="sap.uxap"
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:filterbar="sap.ui.comp.filterbar"
+	xmlns:vm="sap.ui.comp.variants" controllerName="murphy.mdm.customer.murphymdmcustomer.controller.searchvendor"
+	xmlns:html="http://www.w3.org/1999/xhtml">
+	<tnt:ToolPage id="toolPage">
+		<tnt:header>
+			<tnt:ToolHeader>
+				<Button id="sideNavigationToggleButton" icon="sap-icon://menu2" type="Transparent" press=".onSideNavButtonPress">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="NeverOverflow"/>
+					</layoutData>
+				</Button>
+				<ToolbarSpacer width="20px"/>
+				<Title id="idTitle" text="Search ERP Customer">
+					<layoutData>
+						<OverflowToolbarLayoutData priority="Low"/>
+					</layoutData>
+				</Title>
+			</tnt:ToolHeader>
+		</tnt:header>
+		<tnt:sideContent>
+			<tnt:SideNavigation id="sideNavigation" selectedKey="srchVnd"  itemSelect=".onSideItemSelect">
+				<tnt:NavigationList>
+					<tnt:NavigationListItem text="Search Customer" icon="sap-icon://detail-view" key="srchVnd"/>
+					<tnt:NavigationListItem text="Create Customer" visible="{= ${userManagementModel>/role}.indexOf('req')!== -1 ? true : false }" icon="sap-icon://create" key="createERPVendorView"/>
+					<tnt:NavigationListItem text="Change" icon="sap-icon://request" key="changeRequestId">
+						<tnt:NavigationListItem text="All Change Request" key="changeRequestId"/>
+						<tnt:NavigationListItem text="Mass Change Request" key="changeRequestId-Mass"/>
+					</tnt:NavigationListItem>
+					<tnt:NavigationListItem text="Text1" icon="sap-icon://copy" key="copy"/>
+				</tnt:NavigationList>
+				<tnt:fixedItem>
+					<tnt:NavigationList>
+						<tnt:NavigationListItem text="Lock Menu" icon="sap-icon://unlocked" key="unlock"/>
+					</tnt:NavigationList>
+				</tnt:fixedItem>
+			</tnt:SideNavigation>
+		</tnt:sideContent>
+		<tnt:mainContents>
+			<NavContainer id="pageContainer" initialPage="srchVnd">
+				<pages>
+					<!--<ScrollContainer id="srchVnd" horizontal="false" vertical="true" height="100%">-->
+					<!--<content>-->
+					<f:DynamicPage id="srchVnd" fitContent="true">
+						<f:title>
+							<f:DynamicPageTitle>
+								<f:heading>
+									<!--	<sv:SmartVariantManagement id="__SVM01" persistencyKey="fiori.test.application2.view.S4.FilterBar" showShare="true"
+										showExecuteOnSelection="true"/> -->
+									<vm:VariantManagement id="searchVendorVM" select="handleSelect" standardItemText="Address Data" defaultVariantKey="addressData">
+										<vm:variantItems>
+											<vm:VariantItem text="Bank Details" key="bankDetails"></vm:VariantItem>
+										</vm:variantItems>
+									</vm:VariantManagement>
+								</f:heading>
+							</f:DynamicPageTitle>
+						</f:title>
+						<f:header>
+							<f:DynamicPageHeader>
+								<f:content>
+									<filterbar:FilterBar id="filterBar" reset="onReset" search="onSearch" useToolbar="false" showGoOnFB="true">
+										<filterbar:filterGroupItems >
+											<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="addressData" name="name1" label="Name 1">
+												<filterbar:control>
+													<Input id="fbName1"></Input>
+												</filterbar:control>
+											</filterbar:FilterGroupItem>
+											<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="addressData" name="name2" label="Name 2">
+												<filterbar:control>
+													<Input id="fbName2"></Input>
+												</filterbar:control>
+											</filterbar:FilterGroupItem>
+											<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="addressData" name="city" label="City">
+												<filterbar:control>
+													<Input id="fbCity"></Input>
+												</filterbar:control>
+											</filterbar:FilterGroupItem>
+											<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="addressData" name="street" label="Street">
+												<filterbar:control>
+													<Input id="fbStreet"></Input>
+												</filterbar:control>
+											</filterbar:FilterGroupItem>
+										</filterbar:filterGroupItems>
+										<filterbar:filterGroupItems>
+											<filterbar:FilterGroupItem visibleInFilterBar="false" groupName="bankDetails" name="businessPartnerID" label="Business Partner ID">
+												<filterbar:control>
+													<Input id="fbBPId"></Input>
+												</filterbar:control>
+											</filterbar:FilterGroupItem>
+											<filterbar:FilterGroupItem visibleInFilterBar="false" groupName="bankDetails" name="bankAccount" label="Bank Account">
+												<filterbar:control>
+													<Input id="fbBankAcc"></Input>
+												</filterbar:control>
+											</filterbar:FilterGroupItem>
+											<filterbar:FilterGroupItem visibleInFilterBar="false" groupName="bankDetails" name="bankKey" label="Bank Key">
+												<filterbar:control>
+													<Input id="fbBankKey"></Input>
+												</filterbar:control>
+											</filterbar:FilterGroupItem>
+											<filterbar:FilterGroupItem visibleInFilterBar="false" groupName="bankDetails" name="street" label="Street">
+												<filterbar:control>
+													<Input id="fbBankStreet"></Input>
+												</filterbar:control>
+											</filterbar:FilterGroupItem>
+										</filterbar:filterGroupItems>
+									</filterbar:FilterBar>
+								</f:content>
+							</f:DynamicPageHeader>
+						</f:header>
+						<f:content>
+							<Table mode="SingleSelectLeft"  items="{SearchVendorModel>/searchAllModelData/vendorDTOs}">
+								<headerToolbar>
+									<Toolbar>
+										<Label id="idTableTitle" text="Business Partner Master List({SearchVendorModel>/searchAllModelData/totalRecords})" design="Bold"></Label>
+										<ToolbarSpacer></ToolbarSpacer>
+										<Button text="Create ERP Customer"
+										visible="{= ${userManagementModel>/role}.indexOf('req')!== -1 ? true : false }" type="Emphasized" press="handleCreateERPCustomer"></Button>
+										<Button text="Copy"  visible="false"></Button>
+										<Label text="Page No."/>
+										<Select id="searchAllVendorPageSelectID" items="{SearchVendorModel>/PageData}" selectedKey="{SearchVendorModel>/selectedPageKey}"
+											change="onSelectSearchAllVendorPage">
+											<core:Item text="{SearchVendorModel>text}" key="{SearchVendorModel>key}"/>
+										</Select>
+										<Button icon="sap-icon://navigation-left-arrow" type="Transparent" enabled="{SearchVendorModel>/leftEnabled}"
+											press="onSelectSearchAllVendorPageLeft"></Button>
+										<Button icon="sap-icon://navigation-right-arrow" type="Transparent" enabled="{SearchVendorModel>/rightEnabled}"
+											press="onSelectSearchAllVendorPageRight"></Button>
+									</Toolbar>
+								</headerToolbar>
+								<columns>
+									<Column>
+										<header>
+											<Label text="Business Partner ID" design="Bold"></Label>
+										</header>
+									</Column>
+									<Column>
+										<header>
+											<Label text="Pending Request" design="Bold"></Label>
+										</header>
+									</Column>
+									<Column>
+										<header>
+											<Label text="Over due Date" design="Bold"></Label>
+										</header>
+									</Column>
+									<Column>
+										<header>
+											<Label text="Description" design="Bold"></Label>
+										</header>
+									</Column>
+									<Column>
+										<header>
+											<Label text="Customer Contact" design="Bold"></Label>
+										</header>
+									</Column>
+										<Column>
+										<header>
+											<Label text="Country" design="Bold"></Label>
+										</header>
+									</Column>
+									<Column visible="{= ${userManagementModel>/role}.indexOf('req')!== -1 ? true : false }" >
+										<header>
+											<Label text=" " design="Bold"></Label>
+										</header>
+									</Column>
+									
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Link text="{SearchVendorModel>customVendorLFA1DTO/lifnr}" press="onClickVendor"></Link>
+											<ObjectStatus state="{path :'SearchVendorModel>pendingRequest', formatter : '.handlePendingRequest'}"
+												text="{SearchVendorModel>pendingRequest}"/>
+											<Text text="{SearchVendorModel>overDueDate}"></Text>
+											<Text
+												text="{ parts:[ {path:'SearchVendorModel>customVendorLFA1DTO/name1'}, {path:'SearchVendorModel>customVendorLFA1DTO/name2'}, {path:'SearchVendorModel>customVendorLFA1DTO/name3'}, {path:'SearchVendorModel>customVendorLFA1DTO/name4'} ], formatter:'.handleDescription' }"></Text>
+											<Text text="{SearchVendorModel>customVendorLFA1DTO/vbund}"></Text>
+											<Text text="{SearchVendorModel>customVendorLFA1DTO/land1}"></Text>
+											<core:Icon src="sap-icon://overflow"  press=".handleOverFlowButton"></core:Icon>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</f:content>
+					</f:DynamicPage>
+					<mvc:XMLView id="createERPVendorView" viewName="murphy.mdm.customer.murphymdmcustomer.view.CreateERPCustomer"/>
+					<mvc:XMLView id="erpVendorPreview" viewName="murphy.mdm.customer.murphymdmcustomer.view.ERPCustomerPreview"/>
+					<mvc:XMLView id="changeRequestId" viewName="murphy.mdm.customer.murphymdmcustomer.view.ChangeRequest"/>
+					<!--<ScrollContainer id="myReq" horizontal="false" vertical="true" height="100%">-->
+					<!--	<Text text="This is the My Request Page"/>-->
+					<!--</ScrollContainer>-->
+					<!--<ScrollContainer id="allReq" horizontal="false" vertical="true" height="100%">-->
+					<!--	<Text text="This is All Request Page"/>-->
+					<!--</ScrollContainer>-->
+					<ScrollContainer id="copy" horizontal="false" vertical="true" height="100%">
+						<Text text="This is copy Page"/>
+					</ScrollContainer>
+				</pages>
+			</NavContainer>
+		</tnt:mainContents>
+	</tnt:ToolPage>
+</mvc:View>

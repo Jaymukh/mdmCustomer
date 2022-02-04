@@ -1,0 +1,400 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:uxap="sap.uxap" xmlns:l="sap.ui.layout" xmlns:f="sap.f"
+	xmlns:form="sap.ui.layout.form" xmlns:commons="sap.suite.ui.commons" xmlns:filterbar="sap.ui.comp.filterbar"
+	controllerName="murphy.mdm.customer.murphymdmcustomer.controller.ChangeRequest" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page id="myReq" showHeader="false" showNavButton="false">
+		<content>
+			<IconTabBar id="changeRequestPage" expanded="true">
+				<items>
+					<IconTabFilter text="All Change Request" key="changeRequestMassIdIcon">
+						<uxap:ObjectPageLayout>
+							<uxap:headerTitle>
+								<uxap:ObjectPageDynamicHeaderTitle>
+									<uxap:snappedHeading>
+										<!--	<Toolbar>
+															<SearchField/>
+															<Button icon="sap-icon://filter" type="Transparent"></Button>
+															<Button icon="sap-icon://arrow-right" text="Side Menu"></Button>
+														</Toolbar>-->
+									</uxap:snappedHeading>
+								</uxap:ObjectPageDynamicHeaderTitle>
+							</uxap:headerTitle>
+							<uxap:headerContent>
+								<!--<m:Title text="This example shows how to change the default behavior in order to be able to navigate to sections instead of subsections, using the Anchor Bar" titleStyle="H6"/>-->
+								<VBox width="100%">
+									<FlexBox renderType="Bare">
+										<TileContent footer="Total Request">
+											<content>
+												<NumericContent value="{changeRequestStatisticsModel>/totalCount}" valueColor="Neutral" press="onPressChngReqTile" icon="sap-icon://request"/>
+											</content>
+										</TileContent>
+										<TileContent footer="Pending">
+											<content>
+												<NumericContent value="{changeRequestStatisticsModel>/pendingCount}" valueColor="Critical" press="onPressChngReqTile"
+													icon="sap-icon://pending"/>
+											</content>
+										</TileContent>
+										<TileContent footer="Rejected">
+											<content>
+												<NumericContent value="{changeRequestStatisticsModel>/rejectedCount}" valueColor="Error" press="onPressChngReqTile"
+													icon="sap-icon://decline"/>
+											</content>
+										</TileContent>
+										<TileContent footer="Approved">
+											<content>
+												<NumericContent value="{changeRequestStatisticsModel>/approvedCount}" valueColor="Good" press="onPressChngReqTile" icon="sap-icon://accept"/>
+											</content>
+										</TileContent>
+									</FlexBox>
+									<Toolbar>
+										<SearchField/>
+										<!--<Button icon="sap-icon://filter"></Button>-->
+										<ToggleButton icon="sap-icon://arrow-left" pressed="false" text="Side Menu" press="handleCRSideMenu"></ToggleButton>
+									</Toolbar>
+									<filterbar:FilterBar id="fbChangeRequestId" showFilterConfiguration="false" showGoOnFB="false">
+										<filterbar:filterGroupItems >
+											<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="changeRequest" name="dateRange" label="Date Range">
+												<filterbar:control>
+													<ComboBox></ComboBox>
+												</filterbar:control>
+											</filterbar:FilterGroupItem>
+											<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="changeRequest" name="createdBy" label="Created by">
+												<filterbar:control>
+													<ComboBox></ComboBox>
+												</filterbar:control>
+											</filterbar:FilterGroupItem>
+											<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="changeRequest" name="vendor" label="Vendor">
+												<filterbar:control>
+													<ComboBox></ComboBox>
+												</filterbar:control>
+											</filterbar:FilterGroupItem>
+											<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="changeRequest" name="city" label="City">
+												<filterbar:control>
+													<ComboBox></ComboBox>
+												</filterbar:control>
+											</filterbar:FilterGroupItem>
+											<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="changeRequest" name="companyCode" label="Company Code">
+												<filterbar:control>
+													<ComboBox></ComboBox>
+												</filterbar:control>
+											</filterbar:FilterGroupItem>
+										</filterbar:filterGroupItems>
+									</filterbar:FilterBar>
+								</VBox>
+							</uxap:headerContent>
+							<uxap:sections>
+								<uxap:ObjectPageSection showTitle="false">
+									<uxap:ObjectPageSubSection showTitle="false">
+										<uxap:blocks>
+											<l:DynamicSideContent id="changeReqSideContentId" class="sapUiDSCExplored sapUiContentPadding" containerQuery="true"
+												sideContentFallDown="BelowM" showSideContent="false" breakpointChanged="handleBreakpointChangeEvent">
+												<VBox>
+													<Table mode="SingleSelectLeft" columns="{ChangeRequestMetadataModel>/columns}" items="{changeRequestGetAllModel>/oChangeReq/parentCrDTOs}">
+														<headerToolbar>
+															<Toolbar>
+																<Label id="idAllChangeRequest" text="All Change Request({changeRequestStatisticsModel>/totalCount})" design="Bold"></Label>
+																<ToolbarSpacer></ToolbarSpacer>
+																<Button icon="sap-icon://sort"></Button>
+																<Button text="My Request"></Button>
+																<Label text="Page No."/>
+																<Select id="changeReqPageSelectID" items="{changeRequestGetAllModel>/PageData}" selectedKey="{changeRequestGetAllModel>/selectedPageKey}"
+																	change="onSelectChnageReqPage">
+																	<core:Item text="{changeRequestGetAllModel>text}" key="{changeRequestGetAllModel>key}"/>
+																</Select>
+																<Button icon="sap-icon://navigation-left-arrow" type="Transparent" enabled="{changeRequestGetAllModel>/leftEnabled}"
+																	press="onSelectChnageReqPageLeft"></Button>
+																<Button icon="sap-icon://navigation-right-arrow" type="Transparent" enabled="{changeRequestGetAllModel>/rightEnabled}"
+																	press="onSelectChnageReqPageRight"></Button>
+															</Toolbar>
+														</headerToolbar>
+														<columns>
+															<Column>
+																<header>
+																	<Label text="{ChangeRequestMetadataModel>header}" design="Bold"></Label>
+																</header>
+															</Column>
+														</columns>
+														<items>
+															<ColumnListItem>
+																<cells>
+																	<!--<Link text="{=${changeRequestGetAllModel>crDTO/change_request_id} === null? ${changeRequestGetAllModel>crDTO/entity_id}:-->
+																	<!--${changeRequestGetAllModel>crDTO/change_request_id}}" -->
+																	<!--press="onChangeReqLinkPress"></Link>-->
+																	<Link
+																		text="{ parts: [ 'changeRequestGetAllModel>crDTO/change_request_id', 'changeRequestGetAllModel>crDTO/entity_id'], formatter: '.formatCR_Entiry_ID' }"
+																		press="onChangeReqLinkPress"></Link>
+																	<Text text="{changeRequestGetAllModel>crDTO/change_request_desc}"></Text>
+																	<ObjectStatus text="{path:'changeRequestGetAllModel>crDTO/is_cr_closed',formatter:'.handleChangeStatus'}"/>
+																	<Text text="{path:'changeRequestGetAllModel>crDTO/change_request_date',formatter:'.handleChangeReqDate'}"></Text>
+																	<Text text="{changeRequestGetAllModel>crDTO/change_request_by}"></Text>
+																	<core:Icon src="sap-icon://overflow" press=".handleOverFlowButton"></core:Icon>
+																</cells>
+															</ColumnListItem>
+														</items>
+													</Table>
+												</VBox>
+												<l:sideContent>
+													<IconTabBar expanded="true">
+														<items>
+															<IconTabFilter text="Workflow" key="workflow">
+																<!--<Label text="Workflow goes here..."/>-->
+																<commons:Timeline enableDoubleSided="true" groupBy="HireDate" growingThreshold="0" filterTitle="Job Title" sortOldestFirst="true"
+																	content="{CreateVendorModel>/workflow}" groupByType="Year" enableScroll="false">
+																	<commons:content>
+																		<commons:TimelineItem dateTime="{CreateVendorModel>HireDate}" title="{CreateVendorModel>JobTitle}" userNameClickable="true"
+																			userNameClicked="onUserNameClick" iconInitials="{CreateVendorModel>IconInitial}" userPicture="{CreateVendorModel>Photo}"
+																			text="{CreateVendorModel>JobResponsibilities}" userName="{CreateVendorModel>Name}" filterValue="{CreateVendorModel>JobTitle}"
+																			icon="{CreateVendorModel>Icon}"></commons:TimelineItem>
+																	</commons:content>
+																</commons:Timeline>
+															</IconTabFilter>
+															<IconTabFilter text="Change Documents" key="changeDoc">
+																<!--<Text text="Documents go here ..."/>-->
+																<HBox>
+																	<SearchField ></SearchField>
+																	<Switch state="true" customTextOn=" " customTextOff=" "></Switch>
+																	<Label text="Show Attribute" class="sapUiSmallMarginTop"></Label>
+																</HBox>
+																<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="6"
+																	adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
+																	singleContainerFullSize="true">
+																	<form:content>
+																		<core:Title text="General Data"/>
+																		<Label text="Business Partner ID"/>
+																		<Text text="3190099"></Text>
+																		<Label text="Description"/>
+																		<Text text="Test123"></Text>
+																		<Label text="Comments"/>
+																		<Text text="3"></Text>
+																		<Label text="Attachement"/>
+																		<Text text="3"></Text>
+																		<core:Title text="Change Type"/>
+																		<Label text="Changed"/>
+																		<Text text="4"/>
+																		<Label text="Delete"/>
+																		<Text text="2"/>
+																		<Label text="New"/>
+																		<Text text="3"/>
+																	</form:content>
+																</form:SimpleForm>
+															</IconTabFilter>
+															<IconTabFilter text="Attachments" key="attachments">
+																<Text text="Attachments go here ..."/>
+															</IconTabFilter>
+															<IconTabFilter text="Comments" key="comments">
+																<!--<Label text="Comments go here..."/>-->
+																<Toolbar>
+																	<SearchField></SearchField>
+																	<Button text="Add Comment" press="onPressAddComment"></Button>
+																</Toolbar>
+																<VBox id="commentVBoxID" visible="false">
+																	<Label text="Write a Comment:"/>
+																	<HBox width="100%">
+																	<!--	<Avatar initials="SD" displaySize="XS" backgroundColor="Green"/>-->
+																		<TextArea width="150%"></TextArea>
+																	</HBox>
+																	<Toolbar>
+																		<ToolbarSpacer/>
+																		<Button text="Add"/>
+																		<Button text="Cancel" press="onPressCancelComment"/>
+																	</Toolbar>
+																</VBox>
+																<commons:Timeline enableDoubleSided="true" groupBy="HireDate" growingThreshold="0" filterTitle="Job Title" sortOldestFirst="true"
+																	content="{CreateVendorModel>/comments}" groupByType="Year" enableScroll="false">
+																	<commons:content>
+																		<commons:TimelineItem dateTime="{CreateVendorModel>HireDate}" title="{CreateVendorModel>JobTitle}" userNameClickable="true"
+																			userNameClicked="onUserNameClick" iconInitials="{CreateVendorModel>IconInitial}" userPicture="{CreateVendorModel>Photo}"
+																			text="{CreateVendorModel>JobResponsibilities}" userName="{CreateVendorModel>Name}" filterValue="{CreateVendorModel>JobTitle}"
+																			icon="{CreateVendorModel>Icon}"></commons:TimelineItem>
+																	</commons:content>
+																</commons:Timeline>
+															</IconTabFilter>
+														</items>
+													</IconTabBar>
+												</l:sideContent>
+											</l:DynamicSideContent>
+										</uxap:blocks>
+									</uxap:ObjectPageSubSection>
+								</uxap:ObjectPageSection>
+							</uxap:sections>
+						</uxap:ObjectPageLayout>
+					</IconTabFilter>
+					<IconTabFilter text="Mass Change Request" key="changeRequestAllIdIcon">
+						<Text text="Mass Change Request go here ..."/>
+						<!--<f:DynamicPage id="dynamicPageId" headerExpanded="true">-->
+						<!--toggleHeaderOnTitleClick="{/titleClickable}"-->
+						<!-- DynamicPage Title -->
+						<!--	<f:title>-->
+						<!--		<f:DynamicPageTitle>-->
+						<!--<f:heading>-->
+						<!--	<Title text="Header Title"/>-->
+						<!--</f:heading>-->
+						<!--<f:breadcrumbs>-->
+						<!--	<Breadcrumbs>-->
+						<!--		<Link text="Home"/>-->
+						<!--		<Link text="Page 1"/>-->
+						<!--		<Link text="Page 2"/>-->
+						<!--		<Link text="Page 3"/>-->
+						<!--		<Link text="Page 4"/>-->
+						<!--		<Link text="Page 5"/>-->
+						<!--	</Breadcrumbs>-->
+						<!--</f:breadcrumbs>-->
+						<!--<f:expandedContent>-->
+						<!--	<Label text="This is a subheading"/>-->
+						<!--</f:expandedContent>-->
+						<!--<f:snappedContent>-->
+						<!--	<Label text="This is a subheading"/>-->
+						<!--</f:snappedContent>-->
+						<!--<f:snappedTitleOnMobile>-->
+						<!--	<Title text="This is a subheading"/>-->
+						<!--</f:snappedTitleOnMobile>-->
+						<!--			<f:content>-->
+						<!--				<FlexBox renderType="Bare">-->
+						<!--					<TileContent footer="Total Request">-->
+						<!--						<content>-->
+						<!--							<NumericContent value="123" valueColor="Neutral" press="onPressChngReqTile" icon="sap-icon://request"/>-->
+						<!--						</content>-->
+						<!--					</TileContent>-->
+						<!--					<TileContent footer="Pending">-->
+						<!--						<content>-->
+						<!--							<NumericContent value="32" valueColor="Critical" press="onPressChngReqTile" icon="sap-icon://pending"/>-->
+						<!--						</content>-->
+						<!--					</TileContent>-->
+						<!--					<TileContent footer="Rejected">-->
+						<!--						<content>-->
+						<!--							<NumericContent value="2" valueColor="Error" press="onPressChngReqTile" icon="sap-icon://decline"/>-->
+						<!--						</content>-->
+						<!--					</TileContent>-->
+						<!--					<TileContent footer="Approved">-->
+						<!--						<content>-->
+						<!--							<NumericContent value="89" valueColor="Good" press="onPressChngReqTile" icon="sap-icon://accept"/>-->
+						<!--						</content>-->
+						<!--					</TileContent>-->
+						<!--				</FlexBox>-->
+						<!--			</f:content>-->
+						<!--<f:actions>-->
+						<!--	<Button text="Edit" type="Emphasized" press="toggleAreaPriority"/>-->
+						<!--	<Button text="Delete" type="Transparent"/>-->
+						<!--	<Button text="Copy" type="Transparent"/>-->
+						<!--	<Button text="Toggle Footer" type="Transparent" press="onToggleFooter"/>-->
+						<!--	<Button icon="sap-icon://action" type="Transparent"/>-->
+						<!--	<Button text="Button with layoutData" type="Transparent" press="onPressOpenPopover">-->
+						<!--		<layoutData>-->
+						<!--			<OverflowToolbarLayoutData priority="AlwaysOverflow" closeOverflowOnInteraction="false"/>-->
+						<!--		</layoutData>-->
+						<!--	</Button>-->
+						<!--</f:actions>-->
+						<!--<f:navigationActions>-->
+						<!--	<Button icon="sap-icon://full-screen" type="Transparent"/>-->
+						<!--	<Button icon="sap-icon://exit-full-screen" type="Transparent"/>-->
+						<!--	<Button icon="sap-icon://decline" type="Transparent"/>-->
+						<!--</f:navigationActions>-->
+						<!--		</f:DynamicPageTitle>-->
+						<!--	</f:title>-->
+						<!-- DynamicPage Header -->
+						<!--	<f:header>-->
+						<!--		<f:DynamicPageHeader>-->
+						<!--			<Toolbar>-->
+						<!--				<SearchField/>-->
+						<!--				<Button icon="sap-icon://filter"></Button>-->
+						<!--				<ToggleButton icon="sap-icon://arrow-left" pressed="false" text="Side Menu" press="handleMassCRSideMenu"></ToggleButton>-->
+						<!--			</Toolbar>-->
+						<!--			<l:HorizontalLayout allowWrapping="true">-->
+						<!--				<l:VerticalLayout class="sapUiMediumMarginEnd">-->
+						<!--					<Label text="Date Range"></Label>-->
+						<!--					<Select width="11rem"></Select>-->
+						<!--				</l:VerticalLayout>-->
+						<!--				<l:VerticalLayout class="sapUiMediumMarginEnd">-->
+						<!--					<Label text="Created By"></Label>-->
+						<!--					<Select width="11rem"></Select>-->
+						<!--				</l:VerticalLayout>-->
+						<!--				<l:VerticalLayout class="sapUiMediumMarginEnd">-->
+						<!--					<Label text="Vendor"></Label>-->
+						<!--					<Select width="11rem"></Select>-->
+						<!--				</l:VerticalLayout>-->
+						<!--				<l:VerticalLayout class="sapUiMediumMarginEnd">-->
+						<!--					<Label text="City"></Label>-->
+						<!--					<Select width="11rem"></Select>-->
+						<!--				</l:VerticalLayout>-->
+						<!--				<l:VerticalLayout class="sapUiMediumMarginEnd">-->
+						<!--					<Label text="Company Code"></Label>-->
+						<!--					<Select width="11rem"></Select>-->
+						<!--				</l:VerticalLayout>-->
+						<!--				<l:VerticalLayout class="sapUiMediumMarginEnd">-->
+						<!--					<Label text=""></Label>-->
+						<!--					<Button text="Go"></Button>-->
+						<!--				</l:VerticalLayout>-->
+						<!--			</l:HorizontalLayout>-->
+						<!--		</f:DynamicPageHeader>-->
+						<!--	</f:header>-->
+						<!--	<f:content>-->
+						<!--		<l:DynamicSideContent id="changeReqSideContentId2" class="sapUiDSCExplored sapUiContentPadding" containerQuery="true"-->
+						<!--			sideContentFallDown="BelowM" showSideContent="false" breakpointChanged="handleBreakpointChangeEvent">-->
+						<!--			<VBox>-->
+						<!--				<Table mode="SingleSelectLeft" columns="{/columns}" items="{/rows}" sticky="HeaderToolbar,ColumnHeaders">-->
+						<!--					<headerToolbar>-->
+						<!--						<Toolbar>-->
+						<!--							<Label id="idAllChangeRequest2" text="All Change Request(123)" design="Bold"></Label>-->
+						<!--							<ToolbarSpacer></ToolbarSpacer>-->
+						<!--							<Button icon="sap-icon://sort"></Button>-->
+						<!--							<Button text="My Request"></Button>-->
+						<!--						</Toolbar>-->
+						<!--					</headerToolbar>-->
+						<!--					<columns>-->
+						<!--						<Column>-->
+						<!--							<header>-->
+						<!--								<Label text="{header}" design="Bold"></Label>-->
+						<!--							</header>-->
+						<!--						</Column>-->
+						<!--					</columns>-->
+						<!--					<items>-->
+						<!--						<ColumnListItem>-->
+						<!--							<cells>-->
+						<!--								<Link text="{changeRequest}" press="onChangeReqLinkPress"></Link>-->
+						<!--								<ObjectStatus state="{path:'changeStatus', formatter : '.handlePendingRequest'}" text="{pendigRequest}"/>-->
+						<!--								<Text text="{lastUpdate}"></Text>-->
+						<!--								<Text text="{changedBy}"></Text>-->
+						<!--								<Text text="{bpID}"></Text>-->
+						<!--								<Text text="{category}"></Text>-->
+						<!--								<core:Icon src="sap-icon://overflow" press=".handleOverFlowButton"></core:Icon>-->
+						<!--							</cells>-->
+						<!--						</ColumnListItem>-->
+						<!--					</items>-->
+						<!--				</Table>-->
+						<!--			</VBox>-->
+						<!--			<l:sideContent>-->
+						<!--				<IconTabBar expanded="true">-->
+						<!--					<items>-->
+						<!--						<IconTabFilter text="Workflow" key="workflow">-->
+						<!--							<Label text="Workflow goes here..."/>-->
+						<!--						</IconTabFilter>-->
+						<!--						<IconTabFilter text="Change Documents" key="changeDoc">-->
+						<!--							<Text text="Documents go here ..."/>-->
+						<!--						</IconTabFilter>-->
+						<!--						<IconTabFilter text="Attachments" key="attachments">-->
+						<!--							<Text text="Attachments go here ..."/>-->
+						<!--						</IconTabFilter>-->
+						<!--						<IconTabFilter text="Comments" key="comments">-->
+						<!--							<Label text="Comments go here..."/>-->
+						<!--						</IconTabFilter>-->
+						<!--					</items>-->
+						<!--				</IconTabBar>-->
+						<!--			</l:sideContent>-->
+						<!--		</l:DynamicSideContent>-->
+						<!--	</f:content>-->
+						<!-- DynamicPage Footer -->
+						<!--<f:footer>-->
+						<!--	<OverflowToolbar>-->
+						<!--		<Button icon="sap-icon://message-popup" text="{/messagesLength}" type="Emphasized" press="onMessageButtonPress"-->
+						<!--			visible="{= !!${/messagesLength}}"/>-->
+						<!--		<ToolbarSpacer/>-->
+						<!--		<Button type="Accept" text="Accept"/>-->
+						<!--		<Button type="Reject" text="Reject"/>-->
+						<!--	</OverflowToolbar>-->
+						<!--</f:footer>-->
+						<!--</f:DynamicPage>-->
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
+		</content>
+	</Page>
+</mvc:View>
