@@ -53,5 +53,39 @@
 				</ColumnListItem>
 			</items>
 		</Table>
+		<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+		adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
+		singleContainerFullSize="false">
+		<form:content>
+			<core:Title text="Bank Details"/>
+			<Label text="Bank Details ID"/>
+			<Input/>
+			<Label text="Bank Account"/>
+			<Input/>
+			<Label text="Account Holder"/>
+			<Input/>
+			<Label text="IBAN"/>
+			<Input/>
+			<Label text="Account Name"/>
+			<Input/>
+			<Label text="Control Key"/>
+			<Input/>
+			<Label text="Reference Details"/>
+			<Input/>
+			<Label text="Collection Authorization"/>
+			<CheckBox/>
+			<core:Title text="Bank Data"/>
+			<Label text="Bank Country"/>
+			<Input/>
+			<Label text="Bank Key"/>
+			<Input/>
+			<Label text="Bank Name"/>
+			<Input/>
+			<Label text="Street"/>
+			<Input/>
+			<Label text="City"/>
+			<Input/>
+		</form:content>
+	</form:SimpleForm>
 	</VBox>
 </core:FragmentDefinition>
