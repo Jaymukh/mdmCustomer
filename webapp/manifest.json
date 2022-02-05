@@ -34,7 +34,7 @@
 	},
 	"sap.ui": {
 		"technology": "UI5",
-		"fullWidth":true,
+		"fullWidth": true,
 		"icons": {
 			"icon": "",
 			"favIcon": "",
@@ -76,7 +76,7 @@
 					"bundleName": "murphy.mdm.customer.murphymdmcustomer.i18n.i18n"
 				}
 			},
-			"CreateCustomerModel": {
+			"Customer": {
 				"type": "sap.ui.model.json.JSONModel",
 				"dataSource": "CreateCustDataSource",
 				"settings": {
@@ -136,14 +136,15 @@
 					"accountGroups": [],
 					"data": {}
 				}
+			},
+			"Dropdowns": {
+				"type": "sap.ui.model.json.JSONModel"
 			}
 		},
 		"resources": {
-			"css": [
-				{
-					"uri": "css/style.css"
-				}
-			]
+			"css": [{
+				"uri": "css/style.css"
+			}]
 		},
 		"routing": {
 			"config": {
@@ -155,29 +156,25 @@
 				"controlId": "app",
 				"clearControlAggregation": false
 			},
-			"routes": [
-				{
-					"name": "SearchCustomer",
-					"pattern": "",
-					"target": [
-						"SearchCustomer"
-					]
-				},
-				{
-					"name": "createCustomer",
-					"pattern": "CreateCustomer",
-					"target": [
-						"createCustomer"
-					]
-				},
-				{
-					"name": "erpCustomerPrev",
-					"pattern": "erpCustomerPrev",
-					"target": [
-						"ERPCustomerPreview"
-					]
-				}
-			],
+			"routes": [{
+				"name": "SearchCustomer",
+				"pattern": "",
+				"target": [
+					"SearchCustomer"
+				]
+			}, {
+				"name": "createCustomer",
+				"pattern": "CreateCustomer",
+				"target": [
+					"createCustomer"
+				]
+			}, {
+				"name": "erpCustomerPrev",
+				"pattern": "erpCustomerPrev",
+				"target": [
+					"ERPCustomerPreview"
+				]
+			}],
 			"targets": {
 				"SearchCustomer": {
 					"viewType": "XML",

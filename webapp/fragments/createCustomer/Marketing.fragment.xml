@@ -5,7 +5,7 @@
 		<form:content>
 			<core:Title text="Classification"/>
 			<Label text="Nielsen Indicator" required="true"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
 				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 				<customData>
 					<core:CustomData key="title" value="Instruction Key"></core:CustomData>
@@ -17,7 +17,7 @@
 				</customData>
 			</Input>
 			<Label text="Customer Classification"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
 				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 				<customData>
 					<core:CustomData key="title" value="Instruction Key"></core:CustomData>

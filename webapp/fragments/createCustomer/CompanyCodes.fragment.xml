@@ -1,6 +1,6 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout">
 	<VBox>
-		<Table items="{CreateCustomerModel>/addCompanyCodeRows}">
+		<Table items="{Customer>/addCompanyCodeRows}">
 			<headerToolbar>
 				<Toolbar>
 					<ToolbarSpacer></ToolbarSpacer>
@@ -27,8 +27,8 @@
 			<items>
 				<ColumnListItem>
 					<cells>
-						<Text text="{CreateCustomerModel>lfb1/bukrs}"></Text>
-						<Text text="{CreateCustomerModel>lfb1/AKONT}"></Text>
+						<Text text="{Customer>lfb1/bukrs}"></Text>
+						<Text text="{Customer>lfb1/AKONT}"></Text>
 						<HBox>
 							<core:Icon src="sap-icon://edit" class="sapUiSmallMarginEnd" press="onCompanYCodeEditPress"/>
 							<core:Icon src="sap-icon://delete" class="sapUiSmallMarginEnd" press="onCompanYCodeDeletePress"/>
@@ -44,7 +44,7 @@
 				<core:Title text="ERP Customer Company Code"/>
 				<Label text="Company Code"/>
 				<Input id="idComCodesCompanyCode" required="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-					value="{CreateCustomerModel>/addCompanyCodeFormData/lfb1/bukrs}">
+					value="{Customer>/addCompanyCodeFormData/lfb1/bukrs}">
 					<customData>
 						<core:CustomData key="title" value="Company Code"></core:CustomData>
 						<core:CustomData key="table" value="T001"></core:CustomData>
@@ -58,7 +58,7 @@
 				</Input>
 				<core:Title text="Accounting Information"/>
 				<Label text="Reconcillation Account" required="true"/>
-				<Select id="idCompCodesReconcillationAccunt" forceSelection="false" selectedKey="{CreateCustomerModel>/addCompanyCodeFormData/lfb1/AKONT}">
+				<Select id="idCompCodesReconcillationAccunt" forceSelection="false" selectedKey="{Customer>/addCompanyCodeFormData/lfb1/AKONT}">
 					<items>
 						<core:Item text="11590120-AR IC JV VENDOR" key="11590120"/>
 						<core:Item text="30000100-AP-TRADE" key="30000100"/>
@@ -76,7 +76,7 @@
 				</Select>
 				<Label text="Head Office"/>
 				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-					value="{CreateCustomerModel>/addCompanyCodeFormData/lfb1/LNRZE}">
+					value="{Customer>/addCompanyCodeFormData/lfb1/LNRZE}">
 					<customData>
 						<core:CustomData key="title" value="Head Office"></core:CustomData>
 						<core:CustomData key="table" value="LFA1"></core:CustomData>
@@ -88,12 +88,12 @@
 					</customData>
 				</Input>
 				<Label text="Authorization Group"/>
-				<Input value="{CreateCustomerModel>/addCompanyCodeFormData/lfb1/BEGRU}" maxLength="4"/>
+				<Input value="{Customer>/addCompanyCodeFormData/lfb1/BEGRU}" maxLength="4"/>
 				<Label text="Value Adjustment"/>
-				<Input value="{CreateCustomerModel>/addCompanyCodeFormData/lfb1/BEGRU}" showValueHelp="true"/>
+				<Input value="{Customer>/addCompanyCodeFormData/lfb1/BEGRU}" showValueHelp="true"/>
 				<Label text="Sort Key"/>
 				<Input id="idComCodesSortKey" showValueHelp="true" required="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-					value="{CreateCustomerModel>/addCompanyCodeFormData/lfb1/ZUAWA}">
+					value="{Customer>/addCompanyCodeFormData/lfb1/ZUAWA}">
 					<customData>
 						<core:CustomData key="title" value="Sort Key"></core:CustomData>
 						<core:CustomData key="table" value="TZUN"></core:CustomData>
@@ -105,7 +105,7 @@
 				</Input>
 				<Label text="Planning Group"/>
 				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-					value="{CreateCustomerModel>/addCompanyCodeFormData/lfb1/FDGRV}">
+					value="{Customer>/addCompanyCodeFormData/lfb1/FDGRV}">
 					<customData>
 						<core:CustomData key="title" value="Planning Group"></core:CustomData>
 						<core:CustomData key="table" value="T035"></core:CustomData>
@@ -116,13 +116,13 @@
 					</customData>
 				</Input>
 				<Label text="Release Group"/>
-				<Select id="compCodesReleaseGroupId" forceSelection="false" selectedKey="{CreateCustomerModel>/addCompanyCodeFormData/lfb1/FRGRP}"></Select>
+				<Select id="compCodesReleaseGroupId" forceSelection="false" selectedKey="{Customer>/addCompanyCodeFormData/lfb1/FRGRP}"></Select>
 				<Label text="Certification Date"/>
-				<DatePicker displayFormat="YYYYMMdd" valueFormat="YYYYMMdd" value="{CreateCustomerModel>/addCompanyCodeFormData/lfb1/CERDT}"/>
+				<DatePicker displayFormat="YYYYMMdd" valueFormat="YYYYMMdd" value="{Customer>/addCompanyCodeFormData/lfb1/CERDT}"/>
 				<core:Title text="Intrest Calculation"/>
 				<Label text="Intrest Indicator"/>
 				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-					value="{CreateCustomerModel>/addCompanyCodeFormData/lfb1/VZSKZ}">
+					value="{Customer>/addCompanyCodeFormData/lfb1/VZSKZ}">
 					<customData>
 						<core:CustomData key="title" value="Intrest Indicator"></core:CustomData>
 						<core:CustomData key="table" value="T056"></core:CustomData>
@@ -133,7 +133,7 @@
 					</customData>
 				</Input>
 				<Label text="Intrest Calculation Frequency"/>
-				<Select forceSelection="false" id="compCodesIntrCalcuFequencyId" selectedKey="{CreateCustomerModel>/addCompanyCodeFormData/lfb1/ZINRT}">
+				<Select forceSelection="false" id="compCodesIntrCalcuFequencyId" selectedKey="{Customer>/addCompanyCodeFormData/lfb1/ZINRT}">
 					<items>
 						<core:Item text="1 Month" key="01"/>
 						<core:Item text="2 Month" key="02"/>
@@ -150,12 +150,12 @@
 					</items>
 				</Select>
 				<Label text="Last Key Date"/>
-				<DatePicker displayFormat="YYYYMMdd" valueFormat="YYYYMMdd" value="{CreateCustomerModel>/addCompanyCodeFormData/lfb1/ZINDT}"/>
+				<DatePicker displayFormat="YYYYMMdd" valueFormat="YYYYMMdd" value="{Customer>/addCompanyCodeFormData/lfb1/ZINDT}"/>
 				<Label text="Last Intrest Run"/>
-				<DatePicker displayFormat="YYYYMMdd" valueFormat="YYYYMMdd" value="{CreateCustomerModel>/addCompanyCodeFormData/lfb1/DATLZ}"/>
+				<DatePicker displayFormat="YYYYMMdd" valueFormat="YYYYMMdd" value="{Customer>/addCompanyCodeFormData/lfb1/DATLZ}"/>
 				<core:Title text="Reference Data"/>
 				<Label text="Previous Account Number"/>
-				<Input value="{CreateCustomerModel>/addCompanyCodeFormData/lfbw/WT_WITHCD}"/>
+				<Input value="{Customer>/addCompanyCodeFormData/lfbw/WT_WITHCD}"/>
 				<Label text="Buying Group"/>
 				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 					<customData>
@@ -168,11 +168,11 @@
 					</customData>
 				</Input>
 				<Label text="Personal No."/>
-				<Input value="{CreateCustomerModel>/addCompanyCodeFormData/lfbw/QSREC}"></Input>
+				<Input value="{Customer>/addCompanyCodeFormData/lfbw/QSREC}"></Input>
 				<core:Title text="Payment Data"/>
 				<Label text="Terms of Payment"/>
 				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-					value="{CreateCustomerModel>/addCompanyCodeFormData/lfbw/witht}">
+					value="{Customer>/addCompanyCodeFormData/lfbw/witht}">
 					<customData>
 						<core:CustomData key="title" value="Withholding Tax Type"></core:CustomData>
 						<core:CustomData key="table" value="T059P"></core:CustomData>
@@ -184,7 +184,7 @@
 				</Input>
 				<Label text="Credit Memo Payment Terms"/>
 				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-					value="{CreateCustomerModel>/addCompanyCodeFormData/lfbw/QSREC}">
+					value="{Customer>/addCompanyCodeFormData/lfbw/QSREC}">
 					<customData>
 						<core:CustomData key="title" value="Recipient Type"></core:CustomData>
 						<core:CustomData key="table" value="T059C"></core:CustomData>
@@ -196,9 +196,9 @@
 					</customData>
 				</Input>
 				<Label text="B/E Charges Payment Term"/>
-				<Input value="{CreateCustomerModel>/addCompanyCodeFormData/lfbw/WT_WTSTCD}" maxLength="16"/>
+				<Input value="{Customer>/addCompanyCodeFormData/lfbw/WT_WTSTCD}" maxLength="16"/>
 				<Label text="Check Cashing Time"/>
-				<Input value="{CreateCustomerModel>/addCompanyCodeFormData/lfbw/WT_EXRT}" maxLength="5"/>
+				<Input value="{Customer>/addCompanyCodeFormData/lfbw/WT_EXRT}" maxLength="5"/>
 				<Label text="Tolerance Group"/>
 				<Input/>
 				<Label text="Known/Negotiated Leave"/>
@@ -210,7 +210,7 @@
 				<core:Title text="Automatic Payment Transactions"/>
 				<Label text="Alternative Payer"/>
 				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-					value="{CreateCustomerModel>/addCompanyCodeFormData/lfbw/WT_WITHCD}">
+					value="{Customer>/addCompanyCodeFormData/lfbw/WT_WITHCD}">
 					<customData>
 						<core:CustomData key="title" value="Withholding Tax Code"></core:CustomData>
 						<core:CustomData key="table" value="T059Z"></core:CustomData>
@@ -223,7 +223,7 @@
 				</Input>
 				<Label text="Payment Methods"/>
 				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-					value="{CreateCustomerModel>/addCompanyCodeFormData/lfbw/WT_WITHCD}">
+					value="{Customer>/addCompanyCodeFormData/lfbw/WT_WITHCD}">
 					<customData>
 						<core:CustomData key="title" value="Withholding Tax Code"></core:CustomData>
 						<core:CustomData key="table" value="T059Z"></core:CustomData>
@@ -235,10 +235,10 @@
 					</customData>
 				</Input>
 				<Label text="Bill of Exchange Limit"/>
-				<Input value="{CreateCustomerModel>/addCompanyCodeFormData/lfbw/WT_EXNR}" maxLength="25"/>
+				<Input value="{Customer>/addCompanyCodeFormData/lfbw/WT_EXNR}" maxLength="25"/>
 				<Label text="Payment Method Supplement"/>
 				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-					value="{CreateCustomerModel>/addCompanyCodeFormData/lfbw/WT_WTEXRS}">
+					value="{Customer>/addCompanyCodeFormData/lfbw/WT_WTEXRS}">
 					<customData>
 						<core:CustomData key="title" value="Exemption Reason"></core:CustomData>
 						<core:CustomData key="table" value="T059V"></core:CustomData>
@@ -250,13 +250,13 @@
 					</customData>
 				</Input>
 				<Label text="Next Payee"/>
-				<Input value="{CreateCustomerModel>/addCompanyCodeFormData/lfbw/WT_EXNR}" maxLength="25"/>
+				<Input value="{Customer>/addCompanyCodeFormData/lfbw/WT_EXNR}" maxLength="25"/>
 				<Label text="Lockbox"/>
-				<Input value="{CreateCustomerModel>/addCompanyCodeFormData/lfbw/WT_EXNR}" maxLength="25"/>
+				<Input value="{Customer>/addCompanyCodeFormData/lfbw/WT_EXNR}" maxLength="25"/>
 				<Label text="Payment Block"/>
-				<Input value="{CreateCustomerModel>/addCompanyCodeFormData/lfbw/WT_EXNR}" maxLength="25"/>
+				<Input value="{Customer>/addCompanyCodeFormData/lfbw/WT_EXNR}" maxLength="25"/>
 				<Label text="House Bank"/>
-				<Input value="{CreateCustomerModel>/addCompanyCodeFormData/lfbw/WT_EXNR}" maxLength="25"/>
+				<Input value="{Customer>/addCompanyCodeFormData/lfbw/WT_EXNR}" maxLength="25"/>
 				<Label text="Grouping Key"/>
 				<ComboBox/>
 				<Label text="Individual Payment"/>
@@ -265,9 +265,9 @@
 				<CheckBox/>
 				<core:Title text="Payment Advice Notes"/>
 				<Label text="Reason Code Conversion"/>
-				<ComboBox value="{CreateCustomerModel>/addCompanyCodeFormData/lfb1/ALTKN}"/>
+				<ComboBox value="{Customer>/addCompanyCodeFormData/lfb1/ALTKN}"/>
 				<Label text="Selection Rule"/>
-				<ComboBox value="{CreateCustomerModel>/addCompanyCodeFormData/lfb1/ALTKN}"/>
+				<ComboBox value="{Customer>/addCompanyCodeFormData/lfb1/ALTKN}"/>
 				<core:Title text="Export Credit Insurance"/>
 				<Label text="Policy Number"/>
 				<Input/>
@@ -284,7 +284,7 @@
 				<core:Title text="Correspondance"/>
 				<Label text="Account Clerk"/>
 				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-					value="{CreateCustomerModel>/addCompanyCodeFormData/lfb1/ZSABE}">
+					value="{Customer>/addCompanyCodeFormData/lfb1/ZSABE}">
 					<customData>
 						<core:CustomData key="title" value="Account Clerk"></core:CustomData>
 						<core:CustomData key="table" value="LFB1"></core:CustomData>
@@ -295,13 +295,13 @@
 					</customData>
 				</Input>
 				<Label text="Account With Customer"/>
-				<Input value="{CreateCustomerModel>/addCompanyCodeFormData/lfb1/EIKTO}" maxLength="12"/>
+				<Input value="{Customer>/addCompanyCodeFormData/lfb1/EIKTO}" maxLength="12"/>
 				<Label text="Clerk at Customer"/>
-				<Input value="{CreateCustomerModel>/addCompanyCodeFormData/lfb1/TLFNS}" maxLength="30"/>
+				<Input value="{Customer>/addCompanyCodeFormData/lfb1/TLFNS}" maxLength="30"/>
 				<Label text="Clerk's Telephone No."/>
-				<Input value="{CreateCustomerModel>/addCompanyCodeFormData/lfb1/TLFNS}" maxLength="30"/>
+				<Input value="{Customer>/addCompanyCodeFormData/lfb1/TLFNS}" maxLength="30"/>
 				<Label text="Clerk's Internet Addredd"/>
-				<Input value="{CreateCustomerModel>/addCompanyCodeFormData/lfb1/INTAD}" maxLength="130"/>
+				<Input value="{Customer>/addCompanyCodeFormData/lfb1/INTAD}" maxLength="130"/>
 				<!--<core:Title/>-->
 				<Label text="Local Processing"/>
 				<CheckBox select="onSelectCheckBox">
@@ -310,11 +310,11 @@
 					</customData>
 				</CheckBox>
 				<Label text="Account Statement"/>
-				<Input value="{CreateCustomerModel>/addCompanyCodeFormData/lfb1/XAUSZ}" maxLength="1"/>	
+				<Input value="{Customer>/addCompanyCodeFormData/lfb1/XAUSZ}" maxLength="1"/>	
 				<Label text="Account Memo"/>
-				<Input value="{CreateCustomerModel>/addCompanyCodeFormData/lfb1/XVERM}"/>
+				<Input value="{Customer>/addCompanyCodeFormData/lfb1/XVERM}"/>
 				<Label text="Clerk's Fax no."/>
-				<Input value="{CreateCustomerModel>/addCompanyCodeFormData/lfb1/TLFXS}" maxLength="13"/>
+				<Input value="{Customer>/addCompanyCodeFormData/lfb1/TLFXS}" maxLength="13"/>
 				<core:Title text="Payment Notice To"/>
 				<Label text="Customer (with CI)"/>
 				<CheckBox/>
@@ -328,14 +328,14 @@
 				<CheckBox/>
 				<core:Title text="Dunning Data"/>
 				<Label text="Grouping Key"/>
-				<Select forceSelection="false" id="compCodesGroupingKeyId" selectedKey="{CreateCustomerModel>/addCompanyCodeFormData/lfb1/ZGRUP}">
+				<Select forceSelection="false" id="compCodesGroupingKeyId" selectedKey="{Customer>/addCompanyCodeFormData/lfb1/ZGRUP}">
 					<items>
 						<core:Item text="Document Types" key="01"/>
 					</items>
 				</Select>
 			</form:content>
 		</form:SimpleForm>
-		<Table items="{CreateCustomerModel>/addCompanyCodeRows}">
+		<Table items="{Customer>/addCompanyCodeRows}">
 			<headerToolbar>
 				<Toolbar>
 					<Title text="Dunning Areas"/>
@@ -363,8 +363,8 @@
 			<items>
 				<ColumnListItem>
 					<cells>
-						<Text text="{CreateCustomerModel>lfb1/bukrs}"></Text>
-						<Text text="{CreateCustomerModel>lfb1/AKONT}"></Text>
+						<Text text="{Customer>lfb1/bukrs}"></Text>
+						<Text text="{Customer>lfb1/AKONT}"></Text>
 						<HBox>
 							<core:Icon src="sap-icon://edit" class="sapUiSmallMarginEnd" press="onCompanYCodeEditPress"/>
 							<core:Icon src="sap-icon://delete" class="sapUiSmallMarginEnd" press="onCompanYCodeDeletePress"/>
@@ -373,7 +373,7 @@
 				</ColumnListItem>
 			</items>
 		</Table>
-		<Table items="{CreateCustomerModel>/addCompanyCodeRows}">
+		<Table items="{Customer>/addCompanyCodeRows}">
 			<headerToolbar>
 				<Toolbar>
 					<Title text="Dunning Areas"/>
@@ -401,8 +401,8 @@
 			<items>
 				<ColumnListItem>
 					<cells>
-						<Text text="{CreateCustomerModel>lfb1/bukrs}"></Text>
-						<Text text="{CreateCustomerModel>lfb1/AKONT}"></Text>
+						<Text text="{Customer>lfb1/bukrs}"></Text>
+						<Text text="{Customer>lfb1/AKONT}"></Text>
 						<HBox>
 							<core:Icon src="sap-icon://edit" class="sapUiSmallMarginEnd" press="onCompanYCodeEditPress"/>
 							<core:Icon src="sap-icon://delete" class="sapUiSmallMarginEnd" press="onCompanYCodeDeletePress"/>

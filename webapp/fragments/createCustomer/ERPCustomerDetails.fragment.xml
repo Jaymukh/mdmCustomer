@@ -5,11 +5,11 @@
 		<form:content>
 			<core:Title text="Administrative Data"/>
 			<Label text="Customer"/>
-			<Input enabled="false" value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/lifnr}" maxLength="10"/>
+			<Input enabled="false" value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/lifnr}" maxLength="10"/>
 			<core:Title/>
 			<Label text="Account Group" required="true"/>
 			<Select forceSelection="false" showSecondaryValues="true" id="accountGrpID" items="{userManagementModel>/accountGroups}"
-				selectedKey="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/KTOKK}">
+				selectedKey="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/KTOKK}">
 				<items>
 					<core:ListItem text="{userManagementModel>text}" additionalText="{userManagementModel>key}" key="{userManagementModel>key}"/>
 				</items>
@@ -17,17 +17,17 @@
 			<core:Title text="General Data"/>
 			<Label text="Title"/>
 			<Select forceSelection="false" id="generalDataTitleId"
-				selectedKey="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/ANRED}"></Select>
+				selectedKey="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/ANRED}"></Select>
 			<Label text="Name1"/>
-			<Input id="idERPVendorName1" required="true" value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/NAME1}"
+			<Input id="idERPVendorName1" required="true" value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/NAME1}"
 				maxLength="35" liveChange="handleName1"/>
 			<Label text="Name2"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/NAME2}" maxLength="35"/>
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/NAME2}" maxLength="35"/>
 			<Label text="Name3"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/Name3}" maxLength="35"/>
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/Name3}" maxLength="35"/>
 			<core:Title/>
 			<Label text="Legal Name (Name4)"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/NAME4}" maxLength="35"/>
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/NAME4}" maxLength="35"/>
 			<Label text="Natural person"/>
 			<CheckBox select="onSelectCheckBox">
 				<customData>
@@ -36,7 +36,7 @@
 			</CheckBox>
 			<Label text="Search Terms"/>
 			<Input id="idERPVendorSearchTerms" required="true" liveChange="handleSearchTerms"
-				value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/SORTL}" maxLength="10"/>
+				value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/SORTL}" maxLength="10"/>
 			<core:Title text="Communication Data"/>
 			<Label text="Telephone"/>
 			<Input value="">
@@ -79,9 +79,9 @@
 			<Input value=""/>
 			<core:Title/>
 			<Label text="PO Box Lobby"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/po_box_lobby}"/>
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/po_box_lobby}"/>
 			<Label text="Type of Delivery Service"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/deli_serv_type}"
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/deli_serv_type}"
 				showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 				<customData>
 					<core:CustomData key="title" value="Type of Delivery Service"></core:CustomData>
@@ -93,44 +93,44 @@
 				</customData>
 			</Input>
 			<Label text="Number of Delivery Service"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/deli_serv_number}"/>
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/deli_serv_number}"/>
 			<Label text="PO Box"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/PFACH}" maxLength="10"/>
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/PFACH}" maxLength="10"/>
 			<Label text="Undeliverable"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/DONT_USE_P}"/>
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/DONT_USE_P}"/>
 			<core:Title text="Address"/>
 			<Label text="Street / House No."/>
 			<Input id="ERPAddrHouseNoId" required="ture" width="100%"
-				value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/street}"/>
+				value="{Customer>/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/street}"/>
 			<Input id="ERPAddrStreetId" required="true" width="100%"
-				value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/house_num1}">
+				value="{Customer>/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/house_num1}">
 				<layoutData>
 					<l:GridData span="XL2 L1 M3 S4"/>
 				</layoutData>
 			</Input>
 			<Label text="District"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/city2}"/>
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/city2}"/>
 			<Label text="Street 2"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/str_suppl1}"/>
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/str_suppl1}"/>
 			<Label text="Street 3"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/str_suppl2}"/>
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/str_suppl2}"/>
 			<Label text="Street 4"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/str_suppl2}"/>
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/str_suppl2}"/>
 			<Label text="Street 5"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/location}"/>
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/location}"/>
 			<Label text="Postal Code / City"/>
 			<Input id="idERPVendorPostalCode" required="true"
-				value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/PSTLZ}" maxLength="10">
+				value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/PSTLZ}" maxLength="10">
 				<layoutData>
 					<l:GridData span="XL2 L1 M3 S4"/>
 				</layoutData>
 			</Input>
-			<Input id="idERPVendorCity" required="true" value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/ORT01}"
+			<Input id="idERPVendorCity" required="true" value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/ORT01}"
 				maxLength="35"/>
 			<Label text="Country"/>
-			<!--<Input required="true" value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/LAND1}" maxLength="3"/>-->
+			<!--<Input required="true" value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/LAND1}" maxLength="3"/>-->
 			<Input id="idERPVendorCountry" required="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-				value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/LAND1}">
+				value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/LAND1}">
 				<customData>
 					<core:CustomData key="title" value="Country"></core:CustomData>
 					<core:CustomData key="table" value="T005"></core:CustomData>
@@ -142,10 +142,10 @@
 			</Input>
 			<core:Title/>
 			<!--<Label text="Region"/>-->
-			<!--<Input required="true" value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/REGIO}" maxLength="3"/>-->
+			<!--<Input required="true" value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/REGIO}" maxLength="3"/>-->
 			<Label text="Region"/>
 			<Input id="idERPVendorRegion" required="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-				value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/REGIO}">
+				value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/REGIO}">
 				<customData>
 					<core:CustomData key="title" value="Region"></core:CustomData>
 					<core:CustomData key="table" value="T005S"></core:CustomData>
@@ -157,7 +157,7 @@
 			</Input>
 			<Label text="Language"/>
 			<Input id="idERPVendorLanguage" required="true"
-				value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/SPRAS}" showValueHelp="true"
+				value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/SPRAS}" showValueHelp="true"
 				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 				<customData>
 					<core:CustomData key="title" value="Language"></core:CustomData>
@@ -169,10 +169,10 @@
 				</customData>
 			</Input>
 			<Label text="Transportation Zone"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/LZONE}" maxLength="10"/>
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/LZONE}" maxLength="10"/>
 			<Label text="PO Box Postal Code/ PO Box"/>
 			<Input required="true" id="idERPPOBOXPOSTALCODE" liveChange="handleERPPOBOXPostalCode"
-				value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/PO_BOX}"/>
+				value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/PO_BOX}"/>
 			<Label text="PO Box Without No."/>
 			<CheckBox select="onSelectCheckBox">
 				<customData>
@@ -180,9 +180,9 @@
 				</customData>
 			</CheckBox>
 			<Label text="Company Postal Code"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/post_code3}"/>
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/post_code3}"/>
 			<Label text="Supplement"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/house_num2}"/>
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/house_num2}"/>
 		</form:content>
 	</form:SimpleForm>
 </core:FragmentDefinition>

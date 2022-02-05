@@ -14,7 +14,7 @@ sap.ui.define([
 
 		_createCREntityID: function (oParam) {
 			//sap.ui.getCore().byId("idCreateVendorSubmitErrors").setVisible(false);
-			this.getOwnerComponent().getModel("CreateVendorModel").setProperty("/changeReq/genData/reason", "50001");
+			this.getOwnerComponent().getModel("Customer").setProperty("/changeReq/genData/reason", "50001");
 			var objParam = {
 				url: "/murphyCustom/mdm/entity-service/entities/entity/create",
 				hasPayload: true,
@@ -657,10 +657,10 @@ sap.ui.define([
 							}
 						}
 					};
-					this.getView().getModel("CreateVendorModel").setProperty("/createCRVendorData/formData/parentDTO/customData",
+					this.getView().getModel("Customer").setProperty("/createCRVendorData/formData/parentDTO/customData",
 						oCustomData);
-					this.getView().getModel("CreateVendorModel").setProperty("/addCompanyCodeRows", []);
-					this.getView().getModel("CreateVendorModel").setProperty("/addCompanyCodeFormData", {
+					this.getView().getModel("Customer").setProperty("/addCompanyCodeRows", []);
+					this.getView().getModel("Customer").setProperty("/addCompanyCodeFormData", {
 						"lfb1": {
 							"entity_id": null,
 							"bukrs": null,
@@ -760,73 +760,73 @@ sap.ui.define([
 					});
 				}
 
-				this.getView().getModel("CreateVendorModel").setProperty("/createCRVendorData/entityId", oData.result.vendorDTOs[0].customVendorBusDTO
+				this.getView().getModel("Customer").setProperty("/createCRVendorData/entityId", oData.result.vendorDTOs[0].customVendorBusDTO
 					.entity_id);
-				this.getView().getModel("CreateVendorModel").setProperty("/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/entity_id",
+				this.getView().getModel("Customer").setProperty("/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/entity_id",
 					oData.result.vendorDTOs[0].customVendorBusDTO.entity_id);
-				this.getView().getModel("CreateVendorModel").setProperty(
+				this.getView().getModel("Customer").setProperty(
 					"/createCRVendorData/formData/parentDTO/customData/vnd_lfbk/vnd_lfbk_1/entity_id",
 					oData.result.vendorDTOs[0].customVendorBusDTO.entity_id);
-				this.getView().getModel("CreateVendorModel").setProperty(
+				this.getView().getModel("Customer").setProperty(
 					"/createCRVendorData/formData/parentDTO/customData/vnd_lfm1/vnd_lfm1_1/entity_id",
 					oData.result.vendorDTOs[0].customVendorBusDTO.entity_id);
-				this.getView().getModel("CreateVendorModel").setProperty(
+				this.getView().getModel("Customer").setProperty(
 					"/createCRVendorData/formData/parentDTO/customData/pra_bp_ad/pra_bp_ad_1/entity_id",
 					oData.result.vendorDTOs[0].customVendorBusDTO.entity_id);
-				this.getView().getModel("CreateVendorModel").setProperty(
+				this.getView().getModel("Customer").setProperty(
 					"/createCRVendorData/formData/parentDTO/customData/pra_bp_vend_esc/pra_bp_vend_esc_1/entity_id",
 					oData.result.vendorDTOs[0].customVendorBusDTO.entity_id);
-				this.getView().getModel("CreateVendorModel").setProperty(
+				this.getView().getModel("Customer").setProperty(
 					"/createCRVendorData/formData/parentDTO/customData/pra_bp_cust_md/pra_bp_cust_md_1/entity_id",
 					oData.result.vendorDTOs[0].customVendorBusDTO.entity_id);
-				this.getView().getModel("CreateVendorModel").setProperty(
+				this.getView().getModel("Customer").setProperty(
 					"/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/entity_id",
 					oData.result.vendorDTOs[0].customVendorBusDTO.entity_id);
-				this.getView().getModel("CreateVendorModel").setProperty(
+				this.getView().getModel("Customer").setProperty(
 					"/createCRVendorData/formData/parentDTO/customData/pra_bp_ad/pra_bp_ad_1/adrnr",
 					(oData.result.vendorDTOs[0].customVendorBusDTO.entity_id) + "_1");
-				this.getView().getModel("CreateVendorModel").setProperty(
+				this.getView().getModel("Customer").setProperty(
 					"/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/addrnumber",
 					oData.result.vendorDTOs[0].customVendorBusDTO.entity_id);
-				this.getView().getModel("CreateVendorModel").setProperty(
+				this.getView().getModel("Customer").setProperty(
 					"/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_2/addrnumber",
 					(oData.result.vendorDTOs[0].customVendorBusDTO.entity_id) + "_1");
-				this.getView().getModel("CreateVendorModel").setProperty(
+				this.getView().getModel("Customer").setProperty(
 					"/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_2/entity_id",
 					oData.result.vendorDTOs[0].customVendorBusDTO.entity_id);
 
-				this.getView().getModel("CreateVendorModel").setProperty(
+				this.getView().getModel("Customer").setProperty(
 					"/createCRVendorData/formData/parentDTO/customData/gen_bnka/gen_bnka_1/entity_id",
 					oData.result.vendorDTOs[0].customVendorBusDTO.entity_id);
-				this.getView().getModel("CreateVendorModel").setProperty(
+				this.getView().getModel("Customer").setProperty(
 					"/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/entity_id",
 					oData.result.vendorDTOs[0].customVendorBusDTO.entity_id);
-				this.getView().getModel("CreateVendorModel").setProperty(
+				this.getView().getModel("Customer").setProperty(
 					"/createCRVendorData/formData/parentDTO/customData/pra_bp_cust_md/pra_bp_cust_md_1/entity_id",
 					oData.result.vendorDTOs[0].customVendorBusDTO.entity_id);
-				this.getView().getModel("CreateVendorModel").setProperty(
+				this.getView().getModel("Customer").setProperty(
 					"/createCRVendorData/formData/parentDTO/customData/pra_bp_ad/pra_bp_ad_1/entity_id",
 					oData.result.vendorDTOs[0].customVendorBusDTO.entity_id);
-				this.getView().getModel("CreateVendorModel").setProperty(
+				this.getView().getModel("Customer").setProperty(
 					"/createCRVendorData/formData/parentDTO/customData/pra_bp_vend_esc/pra_bp_vend_esc_1/entity_id",
 					oData.result.vendorDTOs[0].customVendorBusDTO.entity_id);
-				this.getView().getModel("CreateVendorModel").setProperty(
+				this.getView().getModel("Customer").setProperty(
 					"/createCRVendorData/formData/parentDTO/customData/pra_bp_vend_md/pra_bp_vend_md_1/entity_id",
 					oData.result.vendorDTOs[0].customVendorBusDTO.entity_id);
 
-				this.getView().getModel("CreateVendorModel").setProperty(
+				this.getView().getModel("Customer").setProperty(
 					"/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/date_from",
 					oDate.getFullYear() + "-" + (oDate.getMonth() + 1 < 10 ? ("0" + (oDate.getMonth() + 1)) : oDate.getMonth() + 1) + "-" + oDate
 					.getDate()
 				);
-				this.getView().getModel("CreateVendorModel").setProperty(
+				this.getView().getModel("Customer").setProperty(
 					"/createCRVendorData/crTime",
 					oDate.getHours() + ":" + oDate.getMinutes()
 				);
-				this.getView().getModel("CreateVendorModel").refresh();
+				this.getView().getModel("Customer").refresh();
 			}.bind(this), function (oData) {
-				this.getView().getModel("CreateVendorModel").setProperty("/createCRVendorData/entityId", "");
-				this.getView().getModel("CreateVendorModel").setProperty("/createCRVendorData/formData", {});
+				this.getView().getModel("Customer").setProperty("/createCRVendorData/entityId", "");
+				this.getView().getModel("Customer").setProperty("/createCRVendorData/formData", {});
 				MessageToast.show("Entity ID not created. Please try after some time");
 			}.bind(this));
 		},
