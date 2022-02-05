@@ -36,51 +36,7 @@ sap.ui.define([
 
 		onSubmitClick: function (oEvent) {
 			this.getView().setBusy(true);
-			// var objParamSubmit = {
-			// 	url: "/murphyCustom/mdm/workflow-service/workflows/tasks/task/action",
-			// 	type: 'POST',
-			// 	hasPayload: true,
-			// 	data: {
-			// 		"operationType": "CREATE",
-			// 		"changeRequestDTO": {
-			// 			"entity_id": this.getView().getModel("CreateVendorModel").getProperty("/createCRVendorData/entityId")
-			// 		}
-			// 	}
-			// };
-			// this.serviceCall.handleServiceRequest(objParamSubmit).then(function (oDataResp) {
-			// 	// this.getView().setBusy(false);
-			// 	// MessageToast.show("Submission Successful");
-			// 	this._CreateCRID();
-			// 	this.getView().getModel("CreateVendorModel").setProperty("/missingFields", []);
-			// 	this.getView().getModel("CreateVendorModel").refresh(true);
-			// 	this.getView().byId("idCreateVendorSubmitErrors").setVisible(false);
-			// }.bind(this), function (oError) {
-			// 	this.getView().setBusy(false);
-			// 	//	var sError = "";
-			// 	var aError = [];
-			// 	if (oError.responseJSON.result && oError.responseJSON.result.workboxCreateTaskResponseDTO.response.EXT_MESSAGES.MESSAGES.item &&
-			// 		oError.responseJSON.result.workboxCreateTaskResponseDTO.response.EXT_MESSAGES.MESSAGES.item.length > 0) {
-			// 		oError.responseJSON.result.workboxCreateTaskResponseDTO.response.EXT_MESSAGES.MESSAGES.item.forEach(function (oItem) {
-			// 			//	sError = sError + oItem.MESSAGE + "\n" ;
-			// 			aError.push({
-			// 				ErrorMessage: oItem.MESSAGE
-			// 			});
-			// 		});
-			// 	} else if (!oError.responseJSON.result) {
-			// 		aError.push({
-			// 			ErrorMessage: oError.responseJSON.error
-			// 		});
-			// 	}
-			// 	this.getView().getModel("CreateVendorModel").setProperty("/missingFields", aError);
-			// 	this.getView().getModel("CreateVendorModel").refresh(true);
-			// 	this.getView().byId("idCreateVendorSubmitErrors").setVisible(true);
-			// 	this.handleErrorLogs();
-			// 	//oError.responseJSON.result.workboxCreateTaskResponseDTO.response.EXT_MESSAGES.MESSAGES.item
-			// 	//	MessageToast.show(sError,{ duration: 6000,width: "100%"});
-			// }.bind(this));
-
 			this._createTask();
-
 		},
 
 		_CreateCRID: function () {
@@ -226,8 +182,8 @@ sap.ui.define([
 		onERPSaveClick1: function (oEvent) {
 			var oModel = this.getView().getModel("CreateVendorModel");
 			var oData = oModel.getProperty("/createCRVendorData/formData");
-		
 		},
+		
 		onERPSaveClick: function (oEvent) {
 			this.getView().setBusy(true);
 			var oModel = this.getView().getModel("CreateVendorModel");

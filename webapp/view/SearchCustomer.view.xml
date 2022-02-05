@@ -106,22 +106,22 @@
 							</f:DynamicPageHeader>
 						</f:header>
 						<f:content>
-							<Table mode="SingleSelectLeft" sticky="ColumnHeaders" items="{SearchVendorModel>/searchAllModelData/vendorDTOs}">
+							<Table mode="SingleSelectLeft" sticky="ColumnHeaders" items="{SearchCustomerModel>/searchAllModelData/vendorDTOs}">
 								<headerToolbar>
 									<Toolbar>
-										<Label id="idTableTitle" text="Business Partner Master List({SearchVendorModel>/searchAllModelData/totalRecords})" design="Bold"></Label>
+										<Label id="idTableTitle" text="Business Partner Master List({SearchCustomerModel>/searchAllModelData/totalRecords})" design="Bold"></Label>
 										<ToolbarSpacer></ToolbarSpacer>
 										<Button text="Create ERP Customer" visible="{= ${userManagementModel>/role}.indexOf('req')!== -1 ? true : false }" type="Emphasized"
 											press="handleCreateERPCustomer"></Button>
 										<Button text="Copy" visible="false"></Button>
 										<Label text="Page No."/>
-										<Select id="searchAllVendorPageSelectID" items="{SearchVendorModel>/PageData}" selectedKey="{SearchVendorModel>/selectedPageKey}"
+										<Select id="searchAllVendorPageSelectID" items="{SearchCustomerModel>/PageData}" selectedKey="{SearchCustomerModel>/selectedPageKey}"
 											change="onSelectSearchAllVendorPage">
-											<core:Item text="{SearchVendorModel>text}" key="{SearchVendorModel>key}"/>
+											<core:Item text="{SearchCustomerModel>text}" key="{SearchCustomerModel>key}"/>
 										</Select>
-										<Button icon="sap-icon://navigation-left-arrow" type="Transparent" enabled="{SearchVendorModel>/leftEnabled}"
+										<Button icon="sap-icon://navigation-left-arrow" type="Transparent" enabled="{SearchCustomerModel>/leftEnabled}"
 											press="onSelectSearchAllVendorPageLeft"></Button>
-										<Button icon="sap-icon://navigation-right-arrow" type="Transparent" enabled="{SearchVendorModel>/rightEnabled}"
+										<Button icon="sap-icon://navigation-right-arrow" type="Transparent" enabled="{SearchCustomerModel>/rightEnabled}"
 											press="onSelectSearchAllVendorPageRight"></Button>
 									</Toolbar>
 								</headerToolbar>
@@ -165,14 +165,14 @@
 								<items>
 									<ColumnListItem>
 										<cells>
-											<Link text="{SearchVendorModel>customVendorLFA1DTO/lifnr}" press="onClickVendor"></Link>
-											<ObjectStatus state="{path :'SearchVendorModel>pendingRequest', formatter : '.handlePendingRequest'}"
-												text="{SearchVendorModel>pendingRequest}"/>
-											<Text text="{SearchVendorModel>overDueDate}"></Text>
+											<Link text="{SearchCustomerModel>customVendorLFA1DTO/lifnr}" press="onClickVendor"></Link>
+											<ObjectStatus state="{path :'SearchCustomerModel>pendingRequest', formatter : '.handlePendingRequest'}"
+												text="{SearchCustomerModel>pendingRequest}"/>
+											<Text text="{SearchCustomerModel>overDueDate}"></Text>
 											<Text
-												text="{ parts:[ {path:'SearchVendorModel>customVendorLFA1DTO/name1'}, {path:'SearchVendorModel>customVendorLFA1DTO/name2'}, {path:'SearchVendorModel>customVendorLFA1DTO/name3'}, {path:'SearchVendorModel>customVendorLFA1DTO/name4'} ], formatter:'.handleDescription' }"></Text>
-											<Text text="{SearchVendorModel>customVendorLFA1DTO/vbund}"></Text>
-											<Text text="{SearchVendorModel>customVendorLFA1DTO/land1}"></Text>
+												text="{ parts:[ {path:'SearchCustomerModel>customVendorLFA1DTO/name1'}, {path:'SearchCustomerModel>customVendorLFA1DTO/name2'}, {path:'SearchCustomerModel>customVendorLFA1DTO/name3'}, {path:'SearchCustomerModel>customVendorLFA1DTO/name4'} ], formatter:'.handleDescription' }"></Text>
+											<Text text="{SearchCustomerModel>customVendorLFA1DTO/vbund}"></Text>
+											<Text text="{SearchCustomerModel>customVendorLFA1DTO/land1}"></Text>
 											<core:Icon src="sap-icon://overflow" press=".handleOverFlowButton"></core:Icon>
 										</cells>
 									</ColumnListItem>
