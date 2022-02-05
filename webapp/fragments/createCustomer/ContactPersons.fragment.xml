@@ -1,0 +1,388 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout">
+	<VBox>
+		<Table items="{CreateCustomerModel>/addCompanyCodeRows}">
+			<headerToolbar>
+				<Toolbar>
+					<ToolbarSpacer></ToolbarSpacer>
+					<Button text="Add" press="onAddCompanyCode"></Button>
+				</Toolbar>
+			</headerToolbar>
+			<columns>
+				<Column>
+					<header>
+						<Label text="Partner ID" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Partner Description" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text=""></Label>
+					</header>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Text text="{CreateCustomerModel>lfb1/bukrs}"></Text>
+						<Text text="{CreateCustomerModel>lfb1/AKONT}"></Text>
+						<HBox>
+							<core:Icon src="sap-icon://edit" class="sapUiSmallMarginEnd" press="onCompanYCodeEditPress"/>
+							<core:Icon src="sap-icon://delete" class="sapUiSmallMarginEnd" press="onCompanYCodeDeletePress"/>
+						</HBox>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+			adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
+			singleContainerFullSize="false">
+			<form:content>
+				<core:Title text="Relationship"/>
+				<Label text="Partner ID"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/parnr}"/>
+				<core:Title/>
+				<Label text="Partner Description"/>
+				<Input value=""/>
+				<core:Title text="General Data"/>
+				<Label text="Title"/>
+				<Select forceSelection="false"
+					selectedKey="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/ANRED}">
+					<items>
+						<core:Item text="Title 1" key="1"/>
+						<core:Item text="Title 2" key="2"/>
+						<core:Item text="Title 3" key="3"/>
+					</items>
+				</Select>
+				<Label text="Last Name"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/NAME1}" maxLength="35"/>
+				<Label text="First Name"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/NAMEV}"/>
+				<Label text="Academic Title"/>
+				<Select forceSelection="false"
+					selectedKey="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/TITEL_AP}">
+					<items>
+						<core:Item text="Title 1" key="1"/>
+						<core:Item text="Title 2" key="2"/>
+						<core:Item text="Title 3" key="3"/>
+					</items>
+				</Select>
+				<core:Title/>
+				<Label text="Gender/Sex"/>
+				<Select forceSelection="false"
+					selectedKey="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/PARGE}">
+					<items>
+						<core:Item text="Male" key="1"/>
+						<core:Item text="Female" key="2"/>
+						<core:Item text="Others" key="3"/>
+					</items>
+				</Select>
+				<Label text="Date of Birth"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/GBDAT}"/>
+				<Label text="Marital Status"/>
+				<Select forceSelection="false"
+					selectedKey="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/FAMST}">
+					<items>
+						<core:Item text="Single" key="1"/>
+						<core:Item text="Married" key="2"/>
+						<core:Item text="Widow" key="3"/>
+					</items>
+				</Select>
+				<Label text="Correspondance Language"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/PARLA}" showValueHelp="true"
+					valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+					<customData>
+						<core:CustomData key="title" value="Correspondance Language"></core:CustomData>
+						<core:CustomData key="table" value=""></core:CustomData>
+						<core:CustomData key="Key1" value="Column 1"></core:CustomData>
+						<core:CustomData key="Key2" value="Column 2"></core:CustomData>
+						<core:CustomData key="inputKey" value="PARLA"></core:CustomData>
+						<core:CustomData key="inputText" value=""></core:CustomData>
+					</customData>
+				</Input>
+				<core:Title text="Contact Person Details"/>
+				<Label text="Department"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/ABTNR}"/>
+				<Label text="Function"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/PAFKT}"/>
+				<Label text="Note"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/PARAU}"/>
+				<core:Title/>
+				<Label text="Authority"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/PARVO}"/>
+				<Label text="VIP"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/PAVIP}"/>
+				<core:Title text="Company"/>
+				<Label text="Address"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/PAVIP}"/>
+				<core:Title text="Workplace"/>
+				<Label text="Function"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/PAVIP}"/>
+				<Label text="Department"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/PAVIP}"/>
+				<Label text="Room Number"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/PAVIP}"/>
+				<Label text="Floor"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/PAVIP}"/>
+				<Label text="Building"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/PAVIP}"/>
+				<core:Title text="Communication"/>
+				<Label text="Communication Method"/>
+				<ComboBox/>
+			</form:content>
+		</form:SimpleForm>
+		<Table items="{CreateCustomerModel>/addCompanyCodeRows}">
+			<headerToolbar>
+				<Toolbar>
+					<Title text="Workplace Phone Numbers"/>
+					<ToolbarSpacer></ToolbarSpacer>
+					<Button text="Add" press="onAddCompanyCode"></Button>
+				</Toolbar>
+			</headerToolbar>
+			<columns>
+				<Column>
+					<header>
+						<Label text="Country" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Changes" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Telephone" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Extension" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Standard" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text=""></Label>
+					</header>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Text text="{CreateCustomerModel>lfb1/bukrs}"></Text>
+						<Text text="{CreateCustomerModel>lfb1/AKONT}"></Text>
+						<Text text="{CreateCustomerModel>lfb1/bukrs}"></Text>
+						<Text text="{CreateCustomerModel>lfb1/AKONT}"></Text>
+						<Text text="{CreateCustomerModel>lfb1/bukrs}"></Text>
+						<HBox>
+							<core:Icon src="sap-icon://edit" class="sapUiSmallMarginEnd" press="onCompanYCodeEditPress"/>
+							<core:Icon src="sap-icon://delete" class="sapUiSmallMarginEnd" press="onCompanYCodeDeletePress"/>
+						</HBox>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<Table items="{CreateCustomerModel>/addCompanyCodeRows}">
+			<headerToolbar>
+				<Toolbar>
+					<Title text="Workplace Mobile Phone Numbers"/>
+					<ToolbarSpacer></ToolbarSpacer>
+					<Button text="Add" press="onAddCompanyCode"></Button>
+				</Toolbar>
+			</headerToolbar>
+			<columns>
+				<Column>
+					<header>
+						<Label text="Country" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Changes" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Telephone" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Standard" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text=""></Label>
+					</header>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Text text="{CreateCustomerModel>lfb1/bukrs}"></Text>
+						<Text text="{CreateCustomerModel>lfb1/AKONT}"></Text>
+						<Text text="{CreateCustomerModel>lfb1/bukrs}"></Text>
+						<Text text="{CreateCustomerModel>lfb1/bukrs}"></Text>
+						<HBox>
+							<core:Icon src="sap-icon://edit" class="sapUiSmallMarginEnd" press="onCompanYCodeEditPress"/>
+							<core:Icon src="sap-icon://delete" class="sapUiSmallMarginEnd" press="onCompanYCodeDeletePress"/>
+						</HBox>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<Table items="{CreateCustomerModel>/addCompanyCodeRows}">
+			<headerToolbar>
+				<Toolbar>
+					<Title text="Workplace Fax Numbers"/>
+					<ToolbarSpacer></ToolbarSpacer>
+					<Button text="Add" press="onAddCompanyCode"></Button>
+				</Toolbar>
+			</headerToolbar>
+			<columns>
+				<Column>
+					<header>
+						<Label text="Country" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Changes" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Fax" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Extension" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Standard" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text=""></Label>
+					</header>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Text text="{CreateCustomerModel>lfb1/bukrs}"></Text>
+						<Text text="{CreateCustomerModel>lfb1/AKONT}"></Text>
+						<Text text="{CreateCustomerModel>lfb1/bukrs}"></Text>
+						<Text text="{CreateCustomerModel>lfb1/bukrs}"></Text>
+						<Text text="{CreateCustomerModel>lfb1/bukrs}"></Text>
+						<HBox>
+							<core:Icon src="sap-icon://edit" class="sapUiSmallMarginEnd" press="onCompanYCodeEditPress"/>
+							<core:Icon src="sap-icon://delete" class="sapUiSmallMarginEnd" press="onCompanYCodeDeletePress"/>
+						</HBox>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<Table items="{CreateCustomerModel>/addCompanyCodeRows}">
+			<headerToolbar>
+				<Toolbar>
+					<Title text="Workplace Email Address"/>
+					<ToolbarSpacer></ToolbarSpacer>
+					<Button text="Add" press="onAddCompanyCode"></Button>
+				</Toolbar>
+			</headerToolbar>
+			<columns>
+				<Column>
+					<header>
+						<Label text="Changes" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Email Address" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Standard" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text=""></Label>
+					</header>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Text text="{CreateCustomerModel>lfb1/bukrs}"></Text>
+						<Text text="{CreateCustomerModel>lfb1/AKONT}"></Text>
+						<Text text="{CreateCustomerModel>lfb1/bukrs}"></Text>
+						<HBox>
+							<core:Icon src="sap-icon://edit" class="sapUiSmallMarginEnd" press="onCompanYCodeEditPress"/>
+							<core:Icon src="sap-icon://delete" class="sapUiSmallMarginEnd" press="onCompanYCodeDeletePress"/>
+						</HBox>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<Table items="{CreateCustomerModel>/addCompanyCodeRows}">
+			<headerToolbar>
+				<Toolbar>
+					<Title text="Workplace Websites"/>
+					<ToolbarSpacer></ToolbarSpacer>
+					<Button text="Add" press="onAddCompanyCode"></Button>
+				</Toolbar>
+			</headerToolbar>
+			<columns>
+				<Column>
+					<header>
+						<Label text="Changes" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="URL" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Standard" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text=""></Label>
+					</header>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Text text="{CreateCustomerModel>lfb1/bukrs}"></Text>
+						<Text text="{CreateCustomerModel>lfb1/AKONT}"></Text>
+						<Text text="{CreateCustomerModel>lfb1/bukrs}"></Text>
+						<HBox>
+							<core:Icon src="sap-icon://edit" class="sapUiSmallMarginEnd" press="onCompanYCodeEditPress"/>
+							<core:Icon src="sap-icon://delete" class="sapUiSmallMarginEnd" press="onCompanYCodeDeletePress"/>
+						</HBox>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+	</VBox>
+</core:FragmentDefinition>

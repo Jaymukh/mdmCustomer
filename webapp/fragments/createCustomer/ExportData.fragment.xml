@@ -1,0 +1,22 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout">
+	<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+		adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
+		singleContainerFullSize="false">
+		<form:content>
+			<core:Title text="Classification"/>
+			<Label text="Biochemical Warfare"/>
+			<CheckBox/>
+			<Label text="Nuclear Nonproliferation"/>
+			<CheckBox/>
+			<Label text="National Security"/>
+			<CheckBox/>
+			<Label text="Missile Technology"/>
+			<CheckBox/>
+			<core:Title text="Usage"/>
+			<Label text="Non-Military Use"/>
+			<CheckBox/>
+			<Label text="Military Use"/>
+			<CheckBox/>
+		</form:content>
+	</form:SimpleForm>
+</core:FragmentDefinition>

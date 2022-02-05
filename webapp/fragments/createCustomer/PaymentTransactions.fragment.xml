@@ -1,0 +1,50 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout">
+	<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+		adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
+		singleContainerFullSize="false">
+		<form:content>
+			<core:Title text="Payment Transactions"/>
+			<Label text="DME Indicator" required="true"/>
+			<Select id="payTransDMEIndicatorId" forceSelection="true"
+				selectedKey="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAMS}">
+				<items>
+					<core:Item text="Use house bank default value" key=" "/>
+					<core:Item text="Single data record can be forwarded to the Bundesbank" key="0"/>
+					<core:Item text="Single data record not to be forwarded to the Bundesbank" key="1"/>
+				</items>
+			</Select>
+			<Label text="Instruction Key"/>
+			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
+				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<customData>
+					<core:CustomData key="title" value="Instruction Key"></core:CustomData>
+					<core:CustomData key="table" value="T015W"></core:CustomData>
+					<core:CustomData key="dtzus" value="Name"></core:CustomData>
+					<core:CustomData key="dtaws" value="Key"></core:CustomData>
+					<core:CustomData key="inputKey" value="dtaws"></core:CustomData>
+					<core:CustomData key="inputText" value="dtaws"></core:CustomData>
+				</customData>
+			</Input>
+			<core:Title text="alternative payer"/>
+			<Label text="Alternative Payer in Document"/>
+			<CheckBox select="onSelectCheckBox">
+				<customData>
+					<core:CustomData key="/vnd_lfa1/XZEMP" value="X"></core:CustomData>
+				</customData>
+			</CheckBox>
+			<Label text="Alternative Payer"/>
+			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/LNRZA}" showValueHelp="true"
+				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<customData>
+					<core:CustomData key="title" value="Alternative payee"></core:CustomData>
+					<core:CustomData key="table" value="LFA1"></core:CustomData>
+					<core:CustomData key="customVendorLFA1DTO/lifnr" value="Vendor"></core:CustomData>
+					<core:CustomData key="customVendorLFA1DTO/name1" value="Name"></core:CustomData>
+					<core:CustomData key="customVendorLFA1DTO/land1" value="Country"></core:CustomData>
+					<core:CustomData key="inputKey" value="customVendorLFA1DTO/lifnr"></core:CustomData>
+					<core:CustomData key="inputText" value="customVendorLFA1DTO/name1"></core:CustomData>
+				</customData>
+			</Input>
+		</form:content>
+	</form:SimpleForm>
+</core:FragmentDefinition>

@@ -5,7 +5,7 @@ sap.ui.define([
 
 	return Controller.extend("murphy.mdm.customer.murphymdmcustomer.controller.View1", {
 		onInit: function () {
-
+			this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
 		}
 	});
 });

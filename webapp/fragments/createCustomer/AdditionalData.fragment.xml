@@ -1,0 +1,116 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout">
+	<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+		adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
+		singleContainerFullSize="false">
+		<form:content>
+			<core:Title text="Attributes"/>
+			<Label text="Attribute 1"/>
+			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
+				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<customData>
+					<core:CustomData key="title" value="Instruction Key"></core:CustomData>
+					<core:CustomData key="table" value="T015W"></core:CustomData>
+					<core:CustomData key="dtzus" value="Name"></core:CustomData>
+					<core:CustomData key="dtaws" value="Key"></core:CustomData>
+					<core:CustomData key="inputKey" value="dtaws"></core:CustomData>
+					<core:CustomData key="inputText" value="dtaws"></core:CustomData>
+				</customData>
+			</Input>
+			<Label text="Attribute 2"/>
+			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
+				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<customData>
+					<core:CustomData key="title" value="Instruction Key"></core:CustomData>
+					<core:CustomData key="table" value="T015W"></core:CustomData>
+					<core:CustomData key="dtzus" value="Name"></core:CustomData>
+					<core:CustomData key="dtaws" value="Key"></core:CustomData>
+					<core:CustomData key="inputKey" value="dtaws"></core:CustomData>
+					<core:CustomData key="inputText" value="dtaws"></core:CustomData>
+				</customData>
+			</Input>
+			<Label text="Attribute 3"/>
+			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
+				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<customData>
+					<core:CustomData key="title" value="Instruction Key"></core:CustomData>
+					<core:CustomData key="table" value="T015W"></core:CustomData>
+					<core:CustomData key="dtzus" value="Name"></core:CustomData>
+					<core:CustomData key="dtaws" value="Key"></core:CustomData>
+					<core:CustomData key="inputKey" value="dtaws"></core:CustomData>
+					<core:CustomData key="inputText" value="dtaws"></core:CustomData>
+				</customData>
+			</Input>
+			<Label text="Attribute 4"/>
+			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
+				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<customData>
+					<core:CustomData key="title" value="Instruction Key"></core:CustomData>
+					<core:CustomData key="table" value="T015W"></core:CustomData>
+					<core:CustomData key="dtzus" value="Name"></core:CustomData>
+					<core:CustomData key="dtaws" value="Key"></core:CustomData>
+					<core:CustomData key="inputKey" value="dtaws"></core:CustomData>
+					<core:CustomData key="inputText" value="dtaws"></core:CustomData>
+				</customData>
+			</Input>
+			<Label text="Attribute 5"/>
+			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
+				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<customData>
+					<core:CustomData key="title" value="Instruction Key"></core:CustomData>
+					<core:CustomData key="table" value="T015W"></core:CustomData>
+					<core:CustomData key="dtzus" value="Name"></core:CustomData>
+					<core:CustomData key="dtaws" value="Key"></core:CustomData>
+					<core:CustomData key="inputKey" value="dtaws"></core:CustomData>
+					<core:CustomData key="inputText" value="dtaws"></core:CustomData>
+				</customData>
+			</Input>
+			<Label text="Attribute 6"/>
+			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
+				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<customData>
+					<core:CustomData key="title" value="Instruction Key"></core:CustomData>
+					<core:CustomData key="table" value="T015W"></core:CustomData>
+					<core:CustomData key="dtzus" value="Name"></core:CustomData>
+					<core:CustomData key="dtaws" value="Key"></core:CustomData>
+					<core:CustomData key="inputKey" value="dtaws"></core:CustomData>
+					<core:CustomData key="inputText" value="dtaws"></core:CustomData>
+				</customData>
+			</Input>
+			<Label text="Attribute 7"/>
+			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
+				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<customData>
+					<core:CustomData key="title" value="Instruction Key"></core:CustomData>
+					<core:CustomData key="table" value="T015W"></core:CustomData>
+					<core:CustomData key="dtzus" value="Name"></core:CustomData>
+					<core:CustomData key="dtaws" value="Key"></core:CustomData>
+					<core:CustomData key="inputKey" value="dtaws"></core:CustomData>
+					<core:CustomData key="inputText" value="dtaws"></core:CustomData>
+				</customData>
+			</Input>
+			<Label text="Attribute 8"/>
+			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
+				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<customData>
+					<core:CustomData key="title" value="Instruction Key"></core:CustomData>
+					<core:CustomData key="table" value="T015W"></core:CustomData>
+					<core:CustomData key="dtzus" value="Name"></core:CustomData>
+					<core:CustomData key="dtaws" value="Key"></core:CustomData>
+					<core:CustomData key="inputKey" value="dtaws"></core:CustomData>
+					<core:CustomData key="inputText" value="dtaws"></core:CustomData>
+				</customData>
+			</Input>
+			<core:Title text="Condition groups"/>
+			<Label text="Condition Group 1"/>
+			<ComboBox/>
+			<Label text="Condition Group 2"/>
+			<ComboBox/>
+			<Label text="Condition Group 3"/>
+			<ComboBox/>
+			<Label text="Condition Group 4"/>
+			<ComboBox/>
+			<Label text="Condition Group 5"/>
+			<ComboBox/>
+		</form:content>
+	</form:SimpleForm>
+</core:FragmentDefinition>

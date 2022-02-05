@@ -1,9 +1,8 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:tnt="sap.tnt" height="100%" xmlns:f="sap.f"
 	xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
-	xmlns:smartTable="sap.ui.comp.smarttable" xmlns:sv="sap.ui.comp.smartvariants" xmlns:uxap="sap.uxap"
-	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:filterbar="sap.ui.comp.filterbar"
-	xmlns:vm="sap.ui.comp.variants" controllerName="murphy.mdm.customer.murphymdmcustomer.controller.searchvendor"
-	xmlns:html="http://www.w3.org/1999/xhtml">
+	xmlns:filterbar="sap.ui.comp.filterbar" xmlns:vm="sap.ui.comp.variants"
+	controllerName="murphy.mdm.customer.murphymdmcustomer.controller.SearchCustomer"
+	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:html="http://www.w3.org/1999/xhtml">
 	<tnt:ToolPage id="toolPage">
 		<tnt:header>
 			<tnt:ToolHeader>
@@ -21,10 +20,11 @@
 			</tnt:ToolHeader>
 		</tnt:header>
 		<tnt:sideContent>
-			<tnt:SideNavigation id="sideNavigation" selectedKey="srchVnd"  itemSelect=".onSideItemSelect">
+			<tnt:SideNavigation id="sideNavigation" selectedKey="srchVnd" itemSelect=".onSideItemSelect">
 				<tnt:NavigationList>
 					<tnt:NavigationListItem text="Search Customer" icon="sap-icon://detail-view" key="srchVnd"/>
-					<tnt:NavigationListItem text="Create Customer" visible="{= ${userManagementModel>/role}.indexOf('req')!== -1 ? true : false }" icon="sap-icon://create" key="createERPVendorView"/>
+					<tnt:NavigationListItem text="Create Customer" visible="{= ${userManagementModel>/role}.indexOf('req')!== -1 ? true : false }"
+						icon="sap-icon://create" key="createERPVendorView"/>
 					<tnt:NavigationListItem text="Change" icon="sap-icon://request" key="changeRequestId">
 						<tnt:NavigationListItem text="All Change Request" key="changeRequestId"/>
 						<tnt:NavigationListItem text="Mass Change Request" key="changeRequestId-Mass"/>
@@ -41,14 +41,10 @@
 		<tnt:mainContents>
 			<NavContainer id="pageContainer" initialPage="srchVnd">
 				<pages>
-					<!--<ScrollContainer id="srchVnd" horizontal="false" vertical="true" height="100%">-->
-					<!--<content>-->
 					<f:DynamicPage id="srchVnd" fitContent="true">
 						<f:title>
 							<f:DynamicPageTitle>
 								<f:heading>
-									<!--	<sv:SmartVariantManagement id="__SVM01" persistencyKey="fiori.test.application2.view.S4.FilterBar" showShare="true"
-										showExecuteOnSelection="true"/> -->
 									<vm:VariantManagement id="searchVendorVM" select="handleSelect" standardItemText="Address Data" defaultVariantKey="addressData">
 										<vm:variantItems>
 											<vm:VariantItem text="Bank Details" key="bankDetails"></vm:VariantItem>
@@ -110,14 +106,14 @@
 							</f:DynamicPageHeader>
 						</f:header>
 						<f:content>
-							<Table mode="SingleSelectLeft"  items="{SearchVendorModel>/searchAllModelData/vendorDTOs}">
+							<Table mode="SingleSelectLeft" sticky="ColumnHeaders" items="{SearchVendorModel>/searchAllModelData/vendorDTOs}">
 								<headerToolbar>
 									<Toolbar>
 										<Label id="idTableTitle" text="Business Partner Master List({SearchVendorModel>/searchAllModelData/totalRecords})" design="Bold"></Label>
 										<ToolbarSpacer></ToolbarSpacer>
-										<Button text="Create ERP Customer"
-										visible="{= ${userManagementModel>/role}.indexOf('req')!== -1 ? true : false }" type="Emphasized" press="handleCreateERPCustomer"></Button>
-										<Button text="Copy"  visible="false"></Button>
+										<Button text="Create ERP Customer" visible="{= ${userManagementModel>/role}.indexOf('req')!== -1 ? true : false }" type="Emphasized"
+											press="handleCreateERPCustomer"></Button>
+										<Button text="Copy" visible="false"></Button>
 										<Label text="Page No."/>
 										<Select id="searchAllVendorPageSelectID" items="{SearchVendorModel>/PageData}" selectedKey="{SearchVendorModel>/selectedPageKey}"
 											change="onSelectSearchAllVendorPage">
@@ -155,17 +151,16 @@
 											<Label text="Customer Contact" design="Bold"></Label>
 										</header>
 									</Column>
-										<Column>
+									<Column>
 										<header>
 											<Label text="Country" design="Bold"></Label>
 										</header>
 									</Column>
-									<Column visible="{= ${userManagementModel>/role}.indexOf('req')!== -1 ? true : false }" >
+									<Column visible="{= ${userManagementModel>/role}.indexOf('req')!== -1 ? true : false }">
 										<header>
 											<Label text=" " design="Bold"></Label>
 										</header>
 									</Column>
-									
 								</columns>
 								<items>
 									<ColumnListItem>
@@ -178,7 +173,7 @@
 												text="{ parts:[ {path:'SearchVendorModel>customVendorLFA1DTO/name1'}, {path:'SearchVendorModel>customVendorLFA1DTO/name2'}, {path:'SearchVendorModel>customVendorLFA1DTO/name3'}, {path:'SearchVendorModel>customVendorLFA1DTO/name4'} ], formatter:'.handleDescription' }"></Text>
 											<Text text="{SearchVendorModel>customVendorLFA1DTO/vbund}"></Text>
 											<Text text="{SearchVendorModel>customVendorLFA1DTO/land1}"></Text>
-											<core:Icon src="sap-icon://overflow"  press=".handleOverFlowButton"></core:Icon>
+											<core:Icon src="sap-icon://overflow" press=".handleOverFlowButton"></core:Icon>
 										</cells>
 									</ColumnListItem>
 								</items>

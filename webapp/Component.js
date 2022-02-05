@@ -19,7 +19,7 @@ sap.ui.define([
 		 */
 		init: function () {
 			this.serviceCall = new ServiceCall();
-			
+
 			// call the base component's init function
 			UIComponent.prototype.init.apply(this, arguments);
 			this.getRouter().initialize();
@@ -31,26 +31,26 @@ sap.ui.define([
 				// creating the user request
 				this.getModel("userRoleModel").attachRequestCompleted(function (oDataReq) {
 					var oUserModelResources = this.getModel("userRoleModel").getData().Resources[0];
-					var aAccountGroup =this.getModel("CreateVendorModel").getProperty("/accountGroupsData");
-					var aRoles =[];
-					var aTempAccountGrps=[];
+					var aAccountGroup = this.getModel("CreateCustomerModel").getProperty("/accountGroupsData");
+					var aRoles = [];
+					var aTempAccountGrps = [];
 					var aAccountGrps = [];
 					//oUserModelResources.groups.push({display:'DA_MDM_VEND_REQ_VEND', value:'DA_MDM_VEND_REQ_VEND'});
-				//	oUserModelResources.groups.push({display:'DA_MDM_VEND_REQ_JVPR', value:'DA_MDM_VEND_REQ_JVPR'});
+					//	oUserModelResources.groups.push({display:'DA_MDM_VEND_REQ_JVPR', value:'DA_MDM_VEND_REQ_JVPR'});
 					oUserModelResources.groups.forEach(function (oItem) {
-						if(oItem.value.split("DA_MDM_VEND_")[1]) {
+						if (oItem.value.split("DA_MDM_VEND_")[1]) {
 							var aResultArr = oItem.value.split("DA_MDM_VEND_")[1].split('_');
-							if(aRoles.indexOf(aResultArr[0].toLowerCase()) === -1){
+							if (aRoles.indexOf(aResultArr[0].toLowerCase()) === -1) {
 								aRoles.push(aResultArr[0].toLowerCase());
 							}
-							if(aTempAccountGrps.indexOf(aResultArr[1]) === -1){
+							if (aTempAccountGrps.indexOf(aResultArr[1]) === -1) {
 								aTempAccountGrps.push(aResultArr[1]);
-								var obj = aAccountGroup.find(function(objItem) {
-											  return objItem.key === aResultArr[1];
+								var obj = aAccountGroup.find(function (objItem) {
+									return objItem.key === aResultArr[1];
 								});
 								aAccountGrps.push(obj);
 							}
-							
+
 						}
 					});
 					this.getModel("userManagementModel").setProperty('/role', aRoles);
@@ -78,11 +78,21 @@ sap.ui.define([
 
 					};
 					this.serviceCall.handleServiceRequest(oObjParam).then(function (oDataResp) {
-						this.getModel("userManagementModel").setProperty('/data',oDataResp.result.userDetails[0]);
+						this.getModel("userManagementModel").setProperty('/data', oDataResp.result.userDetails[0]);
 					}.bind(this));
 				}.bind(this));
 			}.bind(this));
+		},
 
+		getContentDensityClass: function () {
+			if (!this._sContentDensityClass) {
+				if (!Device.support.touch) {
+					this._sContentDensityClass = "sapUiSizeCompact";
+				} else {
+					this._sContentDensityClass = "sapUiSizeCozy";
+				}
+			}
+			return this._sContentDensityClass;
 		}
 	});
 });

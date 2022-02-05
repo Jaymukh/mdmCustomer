@@ -1,0 +1,50 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout">
+	<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+		adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
+		singleContainerFullSize="false">
+		<form:content>
+			<core:Title text="Account Control"/>
+			<Label text="Customer"/>
+			<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
+				value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/KUNNR}">
+				<customData>
+					<core:CustomData key="title" value="Customer"></core:CustomData>
+					<core:CustomData key="table" value="KNA1"></core:CustomData>
+					<core:CustomData key="Key1" value="Company code"></core:CustomData>
+					<core:CustomData key="Key2" value="Company Name"></core:CustomData>
+					<core:CustomData key="Key3" value="Country"></core:CustomData>
+					<core:CustomData key="Key4" value="Currency"></core:CustomData>
+					<core:CustomData key="inputKey" value=""></core:CustomData>
+					<core:CustomData key="inputText" value=""></core:CustomData>
+				</customData>
+			</Input>
+			<Label text="Authorization Group"/>
+			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/BEGRU}" maxLength="4"/>
+			<Label text="Group Key"/>
+			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/KONZS}" maxLength="10"/>
+			<Label text="Trading Partner"/>
+			<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
+				value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/VBUND}">
+				<customData>
+					<core:CustomData key="title" value="Trading Partner"></core:CustomData>
+					<core:CustomData key="table" value="T880"></core:CustomData>
+					<core:CustomData key="rcomp" value="Company"></core:CustomData>
+					<core:CustomData key="name1" value="Company Name"></core:CustomData>
+					<core:CustomData key="cntry" value="Country"></core:CustomData>
+					<core:CustomData key="curr" value="Currency"></core:CustomData>
+					<core:CustomData key="inputKey" value="rcomp"></core:CustomData>
+					<core:CustomData key="inputText" value="rcomp"></core:CustomData>
+				</customData>
+			</Input>
+			<core:Title text="Reference Data"/>
+			<Label text="Express Station"/>
+			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/BEGRU}" maxLength="4"/>
+			<Label text="Train Station"/>
+			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/BEGRU}" maxLength="4"/>
+			<Label text="Location Code"/>
+			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/BEGRU}" maxLength="4"/>
+			<Label text="Industry"/>
+			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/BEGRU}" maxLength="4"/>
+		</form:content>
+	</form:SimpleForm>
+</core:FragmentDefinition>

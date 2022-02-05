@@ -1,0 +1,57 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout">
+	<VBox>
+		<Table items="{CreateCustomerModel>/addAddressRows}">
+			<headerToolbar>
+				<Toolbar>
+					<ToolbarSpacer></ToolbarSpacer>
+					<Button text="Add" press="onAddCompanyCode"></Button>
+				</Toolbar>
+			</headerToolbar>
+			<columns>
+				<Column>
+					<header>
+						<Label text="Actions" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="ID" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Bank Country" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Bank Key" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Bank Account" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Account Name" design="Bold"></Label>
+					</header>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Text text="{CreateCustomerModel>lfb1/bukrs}"></Text>
+						<Text text="{CreateCustomerModel>lfb1/AKONT}"></Text>
+						<Text text="{CreateCustomerModel>lfb1/bukrs}"></Text>
+						<Text text="{CreateCustomerModel>lfb1/bukrs}"></Text>
+						<Text text="{CreateCustomerModel>lfb1/AKONT}"></Text>
+						<Text text="{CreateCustomerModel>lfb1/bukrs}"></Text>
+						<Text text="{CreateCustomerModel>lfb1/bukrs}"></Text>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+	</VBox>
+</core:FragmentDefinition>

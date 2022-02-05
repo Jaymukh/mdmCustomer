@@ -14,11 +14,11 @@
 			"version": "1.40.12"
 		},
 		"dataSources": {
-			"searchVendorMetatDataSource": {
-				"uri": "model/SearchVendorMetaData.json",
+			"searchCustomerMetatDataSource": {
+				"uri": "model/SearchCustomerMetaData.json",
 				"type": "JSON"
 			},
-			"createVndrDataSource": {
+			"CreateCustDataSource": {
 				"uri": "model/localJson.json",
 				"type": "JSON"
 			},
@@ -34,6 +34,7 @@
 	},
 	"sap.ui": {
 		"technology": "UI5",
+		"fullWidth":true,
 		"icons": {
 			"icon": "",
 			"favIcon": "",
@@ -75,27 +76,27 @@
 					"bundleName": "murphy.mdm.customer.murphymdmcustomer.i18n.i18n"
 				}
 			},
-			"CreateVendorModel": {
+			"CreateCustomerModel": {
 				"type": "sap.ui.model.json.JSONModel",
-				"dataSource": "createVndrDataSource",
+				"dataSource": "CreateCustDataSource",
 				"settings": {
 					"defaultBindingMode": "TwoWay"
 				}
 			},
-			"SearchVendorMetadataModel": {
+			"SearchCustomerMetadataModel": {
 				"type": "sap.ui.model.json.JSONModel",
-				"dataSource": "searchVendorMetatDataSource",
+				"dataSource": "searchCustomerMetatDataSource",
 				"settings": {
 					"defaultBindingMode": "TwoWay"
 				}
 			},
-			"SearchVendorModel": {
+			"SearchCustomerModel": {
 				"type": "sap.ui.model.json.JSONModel",
 				"settings": {
 					"defaultBindingMode": "TwoWay"
 				}
 			},
-			"SearchVendorPopupModel": {
+			"SearchCustomerPopupModel": {
 				"type": "sap.ui.model.json.JSONModel",
 				"settings": {
 					"defaultBindingMode": "TwoWay"
@@ -156,10 +157,10 @@
 			},
 			"routes": [
 				{
-					"name": "searchvendor",
+					"name": "SearchCustomer",
 					"pattern": "",
 					"target": [
-						"searchvendor"
+						"SearchCustomer"
 					]
 				},
 				{
@@ -178,9 +179,9 @@
 				}
 			],
 			"targets": {
-				"searchvendor": {
+				"SearchCustomer": {
 					"viewType": "XML",
-					"viewName": "searchvendor"
+					"viewName": "SearchCustomer"
 				},
 				"createVendor": {
 					"viewType": "XML",
