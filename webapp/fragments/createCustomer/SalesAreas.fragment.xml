@@ -58,5 +58,317 @@
 				</ColumnListItem>
 			</items>
 		</Table>
+		<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+			adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
+			singleContainerFullSize="false">
+			<form:content>
+				<core:Title text="Customer Sales Area"/>
+				<Label text="Sales Organization"/>
+				<Input required="true" value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/custmr_knvv/VKORG}"/>
+				<Label text="Division"/>
+				<Input required="true" value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/custmr_knvv/SPART}"/>
+				<core:Title/>
+				<Label text="Distribution Channel"/>
+				<Input required="true" value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/custmr_knvv/VTWEG}"/>
+				<core:Title text="Sales Order"/>
+				<Label text="Sales District"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/BZIRK}"/>
+				<Label text="Sales Office "/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/VKBUR}"/>
+				<Label text="Sales Group"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/VKGRP}"/>
+				<Label text="Customer Group"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/KDGRP}"/>
+				<Label text="ABC classification"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/KLABC}"/>
+				<Label text="Currency"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/WAERS}"/>
+				<Label text="Switch off Rounding"/>
+				<CheckBox/>
+				<core:Title/>
+				<Label text="Order Probability %"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/AWAHR}"/>
+				<!--	<Select forceSelection="false"
+					selectedKey="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/PARGE}">
+					<items>
+						<core:Item text="Male" key="1"/>
+						<core:Item text="Female" key="2"/>
+						<core:Item text="Others" key="3"/>
+					</items>
+				</Select>-->
+				<Label text="Authorization Group"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/BEGRU}"/>
+				<Label text="Item Proposal"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/VSORT}"/>
+				<Label text="Account at Customer"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/EIKTO}"/>
+				<Label text="Unit of Measure Group"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/MEGRU}"/>
+				<Label text="Exchange Rate Type"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/KURST}"/>
+				<Label text="PP Customer Procedure"/>
+				<Select forceSelection="false"
+					selectedKey="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/KALKS}">
+					<items>
+						<core:Item text="Text 1" key="1"/>
+						<core:Item text="Text 2" key="2"/>
+						<core:Item text="Text 3" key="3"/>
+					</items>
+				</Select>
+				<!--<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/PARLA}" showValueHelp="true"
+					valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+					<customData>
+						<core:CustomData key="title" value="Correspondance Language"></core:CustomData>
+						<core:CustomData key="table" value=""></core:CustomData>
+						<core:CustomData key="Key1" value="Column 1"></core:CustomData>
+						<core:CustomData key="Key2" value="Column 2"></core:CustomData>
+						<core:CustomData key="inputKey" value="PARLA"></core:CustomData>
+						<core:CustomData key="inputText" value=""></core:CustomData>
+					</customData>
+				</Input>-->
+				<core:Title text="Pricing / Statistics"/>
+				<Label text="Price Group"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/KONDA}"/>
+				<Label text="Price List"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/PLTYP}"/>
+				<core:Title/>
+				<Label text="Customer Pricing Procedure"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/KALKS}"/>
+				<Label text="Customer Statistics Group"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/VERSG}"/>
+				<core:Title text="Agency Business"/>
+				<Label text="Authority"/>
+				<CheckBox></CheckBox>
+				<core:Title/>
+				<Label text="Document Index Active"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/BLIND}"/>
+				<CheckBox></CheckBox>
+				<core:Title text="Shipping"/>
+				<Label text="Delivery Priority"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/LPRIO}"/>
+				<Label text="Shipping Conditions"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/VSBED}"/>
+				<Label text="Delivery Plant"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/VWERK}"/>
+				<core:Title/>
+				<Label text="Order Combination"/>
+				<CheckBox/>
+				<Label text="Relevant for POD"/>
+				<CheckBox/>
+				<Label text="POD Timeframe"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/PODTG}"/>
+				<core:Title text="Partial Deliveries"/>
+				<Label text="Complete Delivery"/>
+				<CheckBox/>
+				<Label text="Partial Delivery per Item"/>
+				<Select forceSelection="false"
+					selectedKey="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/KZTLF}">
+					<items>
+						<core:Item text="Text 1" key="1"/>
+						<core:Item text="Text 2" key="2"/>
+						<core:Item text="Text 3" key="3"/>
+					</items>
+				</Select>
+				<Label text="Maximum Number of Partial Deliveries"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/ANTLF}"/>
+				<core:Title/>
+				<Label text="Unlimited Tolerance"/>
+				<CheckBox/>
+				<Label text="Underdelivery Tolerance"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/UNTTO}"/>
+				<Label text="Overdelivery Tolerance"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/UEBTO}"/>
+				<core:Title text="Billing Document"/>
+				<Label text="Manual Invoice Maintenance"/>
+				<CheckBox/>
+				<Label text="Invoicing Dates"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/PERFK}"/>
+				<Label text="Invoicing List Dates"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/PERFK}"/>
+				<core:Title/>
+				<Label text="Price Determination"/>
+				<CheckBox/>
+				<Label text="Zero(0)"/>
+				<CheckBox/>
+				<core:Title text="Delivery and Payment Terms"/>
+				<Label text="Incoterms"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/INCO1}"/>
+				<Label text="Terms of Payment"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/ZTERM}"/>
+				<core:Title/>
+				<Label text="Payment Guarantee Procedure"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/KABSS}"/>
+				<Label text="KKBER"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/KKBER}"/>
+				<core:Title text="Accounting"/>
+				<Label text="Account Assignment Group"/>
+				<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/KTGRD}"/>
+				<core:Title/>
+				<Label text=""/>
+				<Text text=""/>
+				<core:Title text="Customer Groups"/>
+				<Label text="Customer Group 1"/>
+				<Select forceSelection="false"
+					selectedKey="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/KVGR1}">
+					<items>
+						<core:Item text="Text 1" key="1"/>
+						<core:Item text="Text 2" key="2"/>
+						<core:Item text="Text 3" key="3"/>
+					</items>
+				</Select>
+				<Label text="Customer Group 2"/>
+				<Select forceSelection="false"
+					selectedKey="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/KVGR2}">
+					<items>
+						<core:Item text="Text 1" key="1"/>
+						<core:Item text="Text 2" key="2"/>
+						<core:Item text="Text 3" key="3"/>
+					</items>
+				</Select>
+				<core:Title/>
+				<Label text="Customer Group 3"/>
+				<Select forceSelection="false"
+					selectedKey="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/KVGR3}">
+					<items>
+						<core:Item text="Text 1" key="1"/>
+						<core:Item text="Text 2" key="2"/>
+						<core:Item text="Text 3" key="3"/>
+					</items>
+				</Select>
+				<Label text="Customer Group 4"/>
+				<Select forceSelection="false"
+					selectedKey="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/KVGR4}">
+					<items>
+						<core:Item text="Text 1" key="1"/>
+						<core:Item text="Text 2" key="2"/>
+						<core:Item text="Text 3" key="3"/>
+					</items>
+				</Select>
+			</form:content>
+		</form:SimpleForm>
+		<Table items="{CreateCustomerModel>/addCompanyCodeRows}">
+			<headerToolbar>
+				<Toolbar>
+					<Title text="ERP Customer Sales Area"/>
+					<ToolbarSpacer></ToolbarSpacer>
+					<Button text="Add" press="onAddCompanyCode"></Button>
+				</Toolbar>
+			</headerToolbar>
+			<columns>
+				<Column>
+					<header>
+						<Label text="Actions" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Partner function" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Partner Function Description" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Same Partner" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Partner" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Partner Name" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Partner Desscription" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Default Partner" design="Bold"></Label>
+					</header>
+				</Column>
+			</columns>
+			<Column>
+				<header>
+					<Label text=""></Label>
+				</header>
+			</Column>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Text text="{CreateCustomerModel>lfb1/bukrs}"></Text>
+						<Text text="{CreateCustomerModel>lfb1/AKONT}"></Text>
+						<Text text="{CreateCustomerModel>lfb1/bukrs}"></Text>
+						<HBox>
+							<core:Icon src="sap-icon://edit" class="sapUiSmallMarginEnd" press="onCompanYCodeEditPress"/>
+							<core:Icon src="sap-icon://delete" class="sapUiSmallMarginEnd" press="onCompanYCodeDeletePress"/>
+						</HBox>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<Table items="{CreateCustomerModel>/addCompanyCodeRows}">
+			<headerToolbar>
+				<Toolbar>
+					<Title text="Tax Indicators"/>
+					<ToolbarSpacer></ToolbarSpacer>
+					<Button text="Add" press="onAddCompanyCode"></Button>
+				</Toolbar>
+			</headerToolbar>
+			<columns>
+				<Column>
+					<header>
+						<Label text="Actions" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Country" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Country Description" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Tax Category" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Tax Category Description" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Tax Classification" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Tax Classification Description" design="Bold"></Label>
+					</header>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Text text="{CreateCustomerModel>lfb1/bukrs}"></Text>
+						<Text text="{CreateCustomerModel>lfb1/AKONT}"></Text>
+						<Text text="{CreateCustomerModel>lfb1/bukrs}"></Text>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
 	</VBox>
 </core:FragmentDefinition>

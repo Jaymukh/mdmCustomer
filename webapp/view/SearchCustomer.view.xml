@@ -23,6 +23,7 @@
 			<tnt:SideNavigation id="sideNavigation" selectedKey="srchVnd" itemSelect=".onSideItemSelect">
 				<tnt:NavigationList>
 					<tnt:NavigationListItem text="Search Customer" icon="sap-icon://detail-view" key="srchVnd"/>
+					<!--	<tnt:NavigationListItem text="Create Customer" visible="{= ${userManagementModel>/role}.indexOf('req')!== -1 ? true : false }"-->
 					<tnt:NavigationListItem text="Create Customer" visible="{= ${userManagementModel>/role}.indexOf('req')!== -1 ? true : false }"
 						icon="sap-icon://create" key="createERPVendorView"/>
 					<tnt:NavigationListItem text="Change" icon="sap-icon://request" key="changeRequestId">
