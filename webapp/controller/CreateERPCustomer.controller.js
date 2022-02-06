@@ -48,19 +48,19 @@ sap.ui.define([
 			};
 			this.serviceCall.handleServiceRequest(objParamCreate).then(function (oDataResp) {
 				if (oDataResp.result) {
-					this.getOwnerComponent().getModel("CreateCustomerModel").setProperty("/createCRDD", oDataResp.result.modelMap[0]);
+					this.getOwnerComponent().getModel("Customer").setProperty("/createCRDD", oDataResp.result.modelMap[0]);
 				}
 			}.bind(this));
 		},
 
 		_getDropDownData: function () {
 			var that = this;
-			var aConfigDD = this.getOwnerComponent().getModel("CreateCustomerModel").getProperty("/createCRDDConfig");
+			var aConfigDD = this.getOwnerComponent().getModel("Customer").getProperty("/createCRDDConfig");
 			$.each(aConfigDD, function (index, item) {
 				$.ajax({
 					url: "/murphyCustom/config-service/configurations/configuration",
-					type: 'POST',
-					contentType: 'application/json',
+					type: "POST",
+					contentType: "application/json",
 					data: JSON.stringify({
 						"configType": item.controlTable
 					}),
@@ -80,13 +80,12 @@ sap.ui.define([
 					that.getView().byId(sControlID).bindAggregation("items", "/modelMap", oItemSelectTemplate1);
 				}
 			});
-			// });
 		},
 
 		onSaveClick: function (oEvent) {
 			if (this.onCheckClick()) {
 				this.getView().setBusy(true);
-				var oModel = this.getView().getModel("CreateCustomerModel");
+				var oModel = this.getView().getModel("Customer");
 				var oData = oModel.getProperty("/createCRVendorData/formData");
 
 				var objFormationLfb1 = {};
@@ -100,7 +99,7 @@ sap.ui.define([
 				oData.parentDTO.customData.vnd_lfb1 = objFormationLfb1;
 				oData.parentDTO.customData.vnd_lfbw = objFormationLfbw;
 
-				var sEntityId = this.getView().getModel("CreateCustomerModel").getProperty("/createCRVendorData/entityId");
+				var sEntityId = this.getView().getModel("Customer").getProperty("/createCRVendorData/entityId");
 				if (!oData.parentDTO.customData.vnd_lfa1.lifnr) {
 					var objParamFirstCall = {
 						url: "/murphyCustom/mdm/entity-service/entities/entity/update",
@@ -157,7 +156,7 @@ sap.ui.define([
 								this.serviceCall.handleServiceRequest(objParamCreate).then(function (oDataResp) {
 									this.getView().setBusy(false);
 									if (oDataResp.result) {
-										this.getView().getModel("CreateCustomerModel").setProperty("/createCRDD", oDataResp.result);
+										this.getView().getModel("Customer").setProperty("/createCRDD", oDataResp.result);
 										this.getView().byId("idCreateVendorSubmit").setVisible(true);
 									}
 								}.bind(this), function (oError) {
@@ -189,7 +188,7 @@ sap.ui.define([
 					this.serviceCall.handleServiceRequest(objParamCreate).then(function (oDataResp) {
 						if (oDataResp.result) {
 							this.getView().setBusy(false);
-							this.getView().getModel("CreateCustomerModel").setProperty("/createCRDD", oDataResp.result);
+							this.getView().getModel("Customer").setProperty("/createCRDD", oDataResp.result);
 							this.getView().byId("idCreateVendorSubmit").setVisible(true);
 						}
 					}.bind(this), function (oError) {
@@ -234,16 +233,16 @@ sap.ui.define([
 			this.serviceCall.handleServiceRequest(objParamCreate).then(function (oDataResp) {
 				this.getView().setBusy(false);
 				if (oDataResp.result) {
-					this.getView().getModel("CreateCustomerModel").setProperty("/createCRDD", oDataResp.result);
+					this.getView().getModel("Customer").setProperty("/createCRDD", oDataResp.result);
 					// this.getView().byId("idCreateVendorSubmit").setVisible(true);
 
 					var sID = this.getView().getParent().getPages().find(function (e) {
 						return e.getId().indexOf("erpVendorPreview") !== -1;
 					}).getId();
 					this.getView().getParent().to(sID);
-					this.getView().getModel("CreateCustomerModel").setProperty("/preview", true);
-					this.getView().getModel("CreateCustomerModel").setProperty("/vndDetails", false);
-					this.getView().getModel("CreateCustomerModel").setProperty("/approvalView", false);
+					this.getView().getModel("Customer").setProperty("/preview", true);
+					this.getView().getModel("Customer").setProperty("/vndDetails", false);
+					this.getView().getModel("Customer").setProperty("/approvalView", false);
 				}
 			}.bind(this), function (oError) {
 				this.getView().setBusy(false);
@@ -284,7 +283,7 @@ sap.ui.define([
 			var aCols = oData.cols;
 			this._oBasicSearchField = new SearchField();
 			if (oData.table === "local") {
-				var oModel = this.getOwnerComponent().getModel("CreateCustomerModel");
+				var oModel = this.getOwnerComponent().getModel("Customer");
 				var aData;
 				switch (oData.title) {
 				case "Terms of Payment":
@@ -442,29 +441,29 @@ sap.ui.define([
 				this._oInput.setValue(oVal[this._sKey]);
 			}
 			if (oEvent.getSource().getModel("oViewModel").getProperty("/title") === "Company Code") {
-				this.getView().getModel("CreateCustomerModel").setProperty(
+				this.getView().getModel("Customer").setProperty(
 					"/addCompanyCodeFormData/vnd_lfbw/bukrs", oVal[this._sKey]);
 				var sSelectedKey = oVal[this._sKey];
-				var aPaymentMethodData = this.getOwnerComponent().getModel('CreateCustomerModel').getProperty('/paymentMethodData');
+				var aPaymentMethodData = this.getOwnerComponent().getModel('Customer').getProperty('/paymentMethodData');
 				var obj = aPaymentMethodData.find(oItem => Number(oItem.compCode) === Number(sSelectedKey));
 				if (obj && obj.payMethod) {
-					this.getOwnerComponent().getModel('CreateCustomerModel').setProperty('/paymentMehtodBinding', obj.payMethod);
-					this.getOwnerComponent().getModel('CreateCustomerModel').refresh(true);
+					this.getOwnerComponent().getModel('Customer').setProperty('/paymentMehtodBinding', obj.payMethod);
+					this.getOwnerComponent().getModel('Customer').refresh(true);
 				}
 			} else if (oEvent.getSource().getModel("oViewModel").getProperty("/title") === "Bank Key") {
-				this.getOwnerComponent().getModel('CreateCustomerModel').setProperty(
+				this.getOwnerComponent().getModel('Customer').setProperty(
 					'/createCRVendorData/formData/parentDTO/customData/gen_bnka/gen_bnka_1/banka', oVal.bankName);
-				this.getOwnerComponent().getModel('CreateCustomerModel').setProperty(
+				this.getOwnerComponent().getModel('Customer').setProperty(
 					'/createCRVendorData/formData/parentDTO/customData/gen_bnka/gen_bnka_1/stars', oVal.street);
-				this.getOwnerComponent().getModel('CreateCustomerModel').setProperty(
+				this.getOwnerComponent().getModel('Customer').setProperty(
 					'/createCRVendorData/formData/parentDTO/customData/gen_bnka/gen_bnka_1/ort01', oVal.city);
-				this.getOwnerComponent().getModel('CreateCustomerModel').setProperty(
+				this.getOwnerComponent().getModel('Customer').setProperty(
 					'/createCRVendorData/formData/parentDTO/customData/vnd_lfbk/vnd_lfbk_1/BANKS', oVal.country);
-				this.getOwnerComponent().getModel('CreateCustomerModel').refresh(true);
+				this.getOwnerComponent().getModel('Customer').refresh(true);
 			} else if (oEvent.getSource().getModel("oViewModel").getProperty("/title") === "Language") {
-				this.getOwnerComponent().getModel('CreateCustomerModel').setProperty(
+				this.getOwnerComponent().getModel('Customer').setProperty(
 					'/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/langu', oVal.spras);
-				this.getOwnerComponent().getModel('CreateCustomerModel').refresh(true);
+				this.getOwnerComponent().getModel('Customer').refresh(true);
 			}
 			this._oValueHelpDialog.close();
 		},
@@ -535,15 +534,15 @@ sap.ui.define([
 			var sValue = oEvent.getSource().getCustomData()[0].getValue();
 			if (sValue && sValue !== "addComp") {
 				if (oEvent.getParameter("selected")) {
-					this.getView().getModel("CreateCustomerModel").setProperty("/createCRVendorData/formData/parentDTO/customData" + sKey, "X");
+					this.getView().getModel("Customer").setProperty("/createCRVendorData/formData/parentDTO/customData" + sKey, "X");
 				} else {
-					this.getView().getModel("CreateCustomerModel").setProperty("/createCRVendorData/formData/parentDTO/customData" + sKey, "");
+					this.getView().getModel("Customer").setProperty("/createCRVendorData/formData/parentDTO/customData" + sKey, "");
 				}
 			} else if (sValue && sValue === "addComp") {
 				if (oEvent.getParameter("selected")) {
-					this.getView().getModel("CreateCustomerModel").setProperty(sKey, "X");
+					this.getView().getModel("Customer").setProperty(sKey, "X");
 				} else {
-					this.getView().getModel("CreateCustomerModel").setProperty(sKey, "");
+					this.getView().getModel("Customer").setProperty(sKey, "");
 				}
 			}
 		},
@@ -556,8 +555,8 @@ sap.ui.define([
 				data: {
 					"parentCrDTOs": [{
 						"crCommentDTOs": [{
-							"entity_id": this.getView().getModel("CreateCustomerModel").getProperty("/createCRVendorData/entityId"),
-							"note_desc": this.getView().getModel("CreateCustomerModel").getProperty("/createCRVendorData/newComment"),
+							"entity_id": this.getView().getModel("Customer").getProperty("/createCRVendorData/entityId"),
+							"note_desc": this.getView().getModel("Customer").getProperty("/createCRVendorData/newComment"),
 							"note_by": 1
 						}]
 					}]
@@ -583,8 +582,8 @@ sap.ui.define([
 					data: {
 						"parentCrDTOs": [{
 							"crCommentDTOs": [{
-								"entity_id": this.getView().getModel("CreateCustomerModel").getProperty("/createCRVendorData/entityId"),
-								"note_desc": this.getView().getModel("CreateCustomerModel").getProperty("/createCRVendorData/newComment"),
+								"entity_id": this.getView().getModel("Customer").getProperty("/createCRVendorData/entityId"),
+								"note_desc": this.getView().getModel("Customer").getProperty("/createCRVendorData/newComment"),
 								"note_by": 1
 							}]
 						}]
@@ -613,9 +612,9 @@ sap.ui.define([
 		},
 
 		onCheckClick: function () {
-			var aMandFields = this.getView().getModel("CreateCustomerModel").getProperty("/createMandtFields");
+			var aMandFields = this.getView().getModel("Customer").getProperty("/createMandtFields");
 			var aEmptyFields = [];
-			var oData = this.getView().getModel("CreateCustomerModel");
+			var oData = this.getView().getModel("Customer");
 			var oController = this;
 			if (!oData.getProperty("/addCompanyCodeRows").length) {
 				this.onAddCompanyCode("onCheck");
@@ -646,25 +645,25 @@ sap.ui.define([
 			 	})
 			 }
 
-			this.getView().getModel("CreateCustomerModel").setProperty("/missingFields", aEmptyFields);
+			this.getView().getModel("Customer").setProperty("/missingFields", aEmptyFields);
 			if (aEmptyFields.length) {
 				if (!this.oDefaultDialog) {
 					this.oDefaultDialog = new Dialog({
 						title: "Missing Fields",
 						content: new List({
 							items: {
-								path: "CreateCustomerModel>/missingFields",
+								path: "Customer>/missingFields",
 								template: new StandardListItem({
 									title: {
-										parts: ['CreateCustomerModel>Name', 'CreateCustomerModel>panelMapping', 'CreateCustomerModel>section'],
+										parts: ['Customer>Name', 'Customer>panelMapping', 'Customer>section'],
 										formatter: this.formatCheckErrorMessage
 									}
-									//title: "{= ${CreateCustomerModel>section} ? 'No ${CreateCustomerModel>section} is maintained in ${CreateCustomerModel>section} Section.'  : '${CreateCustomerModel>Name} field is missing in ${CreateCustomerModel>panelMapping} Section.'}"
+									//title: "{= ${Customer>section} ? 'No ${Customer>section} is maintained in ${Customer>section} Section.'  : '${Customer>Name} field is missing in ${Customer>panelMapping} Section.'}"
 
 								})
 							}
 						}),
-						// title: "{CreateCustomerModel>Name}" + " field is missing in " + "{CreateCustomerModel>panelMapping}" + " Section"
+						// title: "{Customer>Name}" + " field is missing in " + "{Customer>panelMapping}" + " Section"
 
 						endButton: new Button({
 							text: "Close",
@@ -695,22 +694,22 @@ sap.ui.define([
 		},
 
 		handleName1: function (oEvent) {
-			this.getView().getModel("CreateCustomerModel").setProperty(
+			this.getView().getModel("Customer").setProperty(
 				"/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/name1", oEvent.getSource().getValue());
 
 		},
 		handleSearchTerms: function (oEvent) {
-			this.getView().getModel("CreateCustomerModel").setProperty(
+			this.getView().getModel("Customer").setProperty(
 				"/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/sort1", oEvent.getSource().getValue());
 		},
 
 		onAddCompanyCode: function (sCheck) {
 			var sPathForCompanyCodeMandatoryField = "/companyCodeMandateFields";
 			if (this._checkValidationforFields(sPathForCompanyCodeMandatoryField)) {
-				var aLFB1WFormData = this.getView().getModel("CreateCustomerModel").getProperty("/addCompanyCodeFormData");
-				var aLFB1WTableData = this.getView().getModel("CreateCustomerModel").getProperty("/addCompanyCodeRows");
+				var aLFB1WFormData = this.getView().getModel("Customer").getProperty("/addCompanyCodeFormData");
+				var aLFB1WTableData = this.getView().getModel("Customer").getProperty("/addCompanyCodeRows");
 				aLFB1WTableData.push(aLFB1WFormData);
-				this.getView().getModel("CreateCustomerModel").setProperty(
+				this.getView().getModel("Customer").setProperty(
 					"/addCompanyCodeFormData", {
 						"lfb1": {
 							"entity_id": null,
@@ -820,17 +819,17 @@ sap.ui.define([
 		},
 
 		onCompanYCodeDeletePress: function (oEvent) {
-			var nIndex = oEvent.getSource().getBindingContext("CreateCustomerModel").getPath().split("/")[2];
-			this.getView().getModel("CreateCustomerModel").getProperty("/addCompanyCodeRows").splice(nIndex, 1)
-			this.getView().getModel("CreateCustomerModel").refresh();
+			var nIndex = oEvent.getSource().getBindingContext("Customer").getPath().split("/")[2];
+			this.getView().getModel("Customer").getProperty("/addCompanyCodeRows").splice(nIndex, 1)
+			this.getView().getModel("Customer").refresh();
 		},
 
 		_checkValidationforFields: function (sPath) {
 			var bCheck = true;
-			var aMandateFieldJson = this.getView().getModel("CreateCustomerModel").getProperty(sPath);
+			var aMandateFieldJson = this.getView().getModel("Customer").getProperty(sPath);
 			var oController = this;
 			var oView = this.getView();
-			var oModel = this.getView().getModel("CreateCustomerModel");
+			var oModel = this.getView().getModel("Customer");
 			aMandateFieldJson.forEach(function (oItem) {
 				var oControl = oView.byId(oItem.id);
 				var sValueState = "None";
@@ -858,7 +857,7 @@ sap.ui.define([
 		},
 		
 		handleERPPOBOXPostalCode : function(oEvent){
-			this.getView().getModel("CreateCustomerModel").setProperty(
+			this.getView().getModel("Customer").setProperty(
 				"/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/po_box", oEvent.getSource().getValue());
 		}
 

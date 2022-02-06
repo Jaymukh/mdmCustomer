@@ -5,7 +5,7 @@
 		<form:content>
 			<core:Title text="Attributes"/>
 			<Label text="Attribute 1"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
 				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 				<customData>
 					<core:CustomData key="title" value="Instruction Key"></core:CustomData>
@@ -17,7 +17,7 @@
 				</customData>
 			</Input>
 			<Label text="Attribute 2"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
 				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 				<customData>
 					<core:CustomData key="title" value="Instruction Key"></core:CustomData>
@@ -29,7 +29,7 @@
 				</customData>
 			</Input>
 			<Label text="Attribute 3"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
 				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 				<customData>
 					<core:CustomData key="title" value="Instruction Key"></core:CustomData>
@@ -41,7 +41,7 @@
 				</customData>
 			</Input>
 			<Label text="Attribute 4"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
 				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 				<customData>
 					<core:CustomData key="title" value="Instruction Key"></core:CustomData>
@@ -53,7 +53,7 @@
 				</customData>
 			</Input>
 			<Label text="Attribute 5"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
 				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 				<customData>
 					<core:CustomData key="title" value="Instruction Key"></core:CustomData>
@@ -65,7 +65,7 @@
 				</customData>
 			</Input>
 			<Label text="Attribute 6"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
 				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 				<customData>
 					<core:CustomData key="title" value="Instruction Key"></core:CustomData>
@@ -77,7 +77,7 @@
 				</customData>
 			</Input>
 			<Label text="Attribute 7"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
 				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 				<customData>
 					<core:CustomData key="title" value="Instruction Key"></core:CustomData>
@@ -89,7 +89,7 @@
 				</customData>
 			</Input>
 			<Label text="Attribute 8"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
 				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 				<customData>
 					<core:CustomData key="title" value="Instruction Key"></core:CustomData>

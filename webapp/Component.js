@@ -25,21 +25,22 @@ sap.ui.define([
 			this.getRouter().initialize();
 			this.setModel(models.createDeviceModel(), "device");
 			this.setModel(models.createUserModel(), "userModel");
+			
 			this.getModel("userModel").attachRequestCompleted(function (oData) {
-				var sMailID = oData.getSource().getProperty("/email");
-				this.setModel(models.createUserInfoModel(sMailID), "userRoleModel");
+				this.setModel(models.createUserInfoModel(oData.getSource().getProperty("/email")), "userRoleModel");
+				
 				// creating the user request
-				this.getModel("userRoleModel").attachRequestCompleted(function (oDataReq) {
-					var oUserModelResources = this.getModel("userRoleModel").getData().Resources[0];
-					var aAccountGroup = this.getModel("CreateCustomerModel").getProperty("/accountGroupsData");
-					var aRoles = [];
-					var aTempAccountGrps = [];
-					var aAccountGrps = [];
-					//oUserModelResources.groups.push({display:'DA_MDM_VEND_REQ_VEND', value:'DA_MDM_VEND_REQ_VEND'});
-					//	oUserModelResources.groups.push({display:'DA_MDM_VEND_REQ_JVPR', value:'DA_MDM_VEND_REQ_JVPR'});
+				this.getModel("userRoleModel").attachRequestCompleted(function (oData) {
+					var oUserModelResources = this.getModel("userRoleModel").getData().Resources[0],
+						aAccountGroup = this.getModel("Customer").getProperty("/accountGroupsData"),
+						oUserManagementModel = this.getModel("userManagementModel"),
+						aRoles = [],
+						aTempAccountGrps = [],
+						aAccountGrps = [];
+					
 					oUserModelResources.groups.forEach(function (oItem) {
 						if (oItem.value.split("DA_MDM_VEND_")[1]) {
-							var aResultArr = oItem.value.split("DA_MDM_VEND_")[1].split('_');
+							var aResultArr = oItem.value.split("DA_MDM_VEND_")[1].split("_");
 							if (aRoles.indexOf(aResultArr[0].toLowerCase()) === -1) {
 								aRoles.push(aResultArr[0].toLowerCase());
 							}
@@ -53,13 +54,13 @@ sap.ui.define([
 
 						}
 					});
-					this.getModel("userManagementModel").setProperty('/role', aRoles);
-					this.getModel("userManagementModel").setProperty('/accountGroups', aAccountGrps);
-					this.getModel("userManagementModel").refresh(true);
+					oUserManagementModel.setProperty("/role", aRoles);
+					oUserManagementModel.setProperty("/accountGroups", aAccountGrps);
+					oUserManagementModel.refresh(true);
 					var oObjParam = {
 						url: "/murphyCustom/mdm/usermgmt-service/users/user/create",
 						hasPayload: true,
-						type: 'POST',
+						type: "POST",
 						data: {
 							"userDetails": [{
 								"email_id": oUserModelResources.emails[0].value,
@@ -75,10 +76,9 @@ sap.ui.define([
 								"_active": true
 							}]
 						}
-
 					};
 					this.serviceCall.handleServiceRequest(oObjParam).then(function (oDataResp) {
-						this.getModel("userManagementModel").setProperty('/data', oDataResp.result.userDetails[0]);
+						this.getModel("userManagementModel").setProperty("/data", oDataResp.result.userDetails[0]);
 					}.bind(this));
 				}.bind(this));
 			}.bind(this));

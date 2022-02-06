@@ -6,37 +6,37 @@
 			<core:Title text="General Data"/>
 			<Label text="Change Request ID"/>
 			<Input
-				value="{ parts: [ 'CreateCustomerModel>/createCRVendorData/crID', 'CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/entity_id'], formatter: '.formatCR_Entiry_ID' }"
+				value="{ parts: [ 'Customer>/createCRVendorData/crID', 'Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/entity_id'], formatter: '.formatCR_Entiry_ID' }"
 				enabled="false"/>
 			<Label text="Description"/>
-			<TextArea value="{CreateCustomerModel>/changeReq/genData/desc}"></TextArea>
+			<TextArea value="{Customer>/changeReq/genData/desc}"></TextArea>
 			<Label text="Priority"/>
-			<Select forceSelection="false" selectedKey="{CreateCustomerModel>/changeReq/genData/priority}"
-				items="{CreateCustomerModel>/createCRDD/CR_PRIORITY}">
+			<Select forceSelection="false" selectedKey="{Customer>/changeReq/genData/priority}"
+				items="{Customer>/createCRDD/CR_PRIORITY}">
 				<items>
-					<core:Item text="{CreateCustomerModel>taxonomy_name}" key="{CreateCustomerModel>taxonomy_code}"/>
+					<core:Item text="{Customer>taxonomy_name}" key="{Customer>taxonomy_code}"/>
 				</items>
 			</Select>
 			<Label text="Due Date"/>
-			<DatePicker displayFormat="YYYYMMdd" valueFormat="YYYYMMdd" value="{CreateCustomerModel>/changeReq/genData/dueDate}"></DatePicker>
+			<DatePicker displayFormat="YYYYMMdd" valueFormat="YYYYMMdd" value="{Customer>/changeReq/genData/dueDate}"></DatePicker>
 			<Label text="Reason"/>
-			<ComboBox editable="false" selectedKey="{CreateCustomerModel>/changeReq/genData/reason}" showSecondaryValues="true"
-				items="{CreateCustomerModel>/createCRDD/CR_CHANGE_REQ_TYPE}">
+			<ComboBox editable="false" selectedKey="{Customer>/changeReq/genData/reason}" showSecondaryValues="true"
+				items="{Customer>/createCRDD/CR_CHANGE_REQ_TYPE}">
 				<items>
-					<core:ListItem text="{CreateCustomerModel>taxonomy_name}" additionalText="{CreateCustomerModel>taxonomy_id}"
-						key="{CreateCustomerModel>taxonomy_id}"/>
+					<core:ListItem text="{Customer>taxonomy_name}" additionalText="{Customer>taxonomy_id}"
+						key="{Customer>taxonomy_id}"/>
 				</items>
 			</ComboBox>
 			<core:Title text="Process Data"/>
 			<Label text="Status"/>
-			<Input value="{CreateCustomerModel>/changeReq/genData/status}" enabled="false"/>
+			<Input value="{Customer>/changeReq/genData/status}" enabled="false"/>
 			<Label text="Current Work Item"/>
-			<Input value="{CreateCustomerModel>/changeReq/genData/currWrkItem}" enabled="false"/>
+			<Input value="{Customer>/changeReq/genData/currWrkItem}" enabled="false"/>
 			<Label text="Created By"/>
-			<Input value="{CreateCustomerModel>/changeReq/genData/createdBy}" enabled="false"/>
+			<Input value="{Customer>/changeReq/genData/createdBy}" enabled="false"/>
 			<Label text="Date/Time of Creation"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/date_from}" enabled="false"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/crTime}" enabled="false">
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/date_from}" enabled="false"/>
+			<Input value="{Customer>/createCRVendorData/crTime}" enabled="false">
 				<layoutData>
 					<l:GridData span="XL2 L1 M3 S4"/>
 				</layoutData>

@@ -5,32 +5,32 @@
 		<form:content>
 			<core:Title text="Tax Information"/>
 			<Label text="Fiscal Address"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}" maxLength="18"/>
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}" maxLength="18"/>
 			<Label text="City code"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}" maxLength="18"/>
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}" maxLength="18"/>
 			<Label text="County code"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}" maxLength="18"/>
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}" maxLength="18"/>
 			<Label text="tax type"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}" maxLength="18"/>
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}" maxLength="18"/>
 			<Label text="SubTrib Group"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}" maxLength="18"/>
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}" maxLength="18"/>
 			<Label text="Type of business"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}" maxLength="18"/>
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}" maxLength="18"/>
 			<Label text="Representative's Name"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}" maxLength="18"/>
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}" maxLength="18"/>
 			<core:Title text=""/>
 			<Label text="Sales Equalization Tax"/>
-			<CheckBox selected="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}"/>
+			<CheckBox selected="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}"/>
 			<Label text="Liable for VAT"/>
-			<CheckBox selected="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}"/>
+			<CheckBox selected="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}"/>
 			<Label text="ICMS-Exempt"/>
-			<CheckBox selected="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}"/>
+			<CheckBox selected="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}"/>
 			<Label text="IPI-Exempt"/>
-			<CheckBox selected="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}"/>
+			<CheckBox selected="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}"/>
 			<Label text="CFOP Category"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}" maxLength="18"/>
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}" maxLength="18"/>
 			<Label text="Type of Industry"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}" maxLength="18"/>
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}" maxLength="18"/>
 		</form:content>
 	</form:SimpleForm>
 </core:FragmentDefinition>

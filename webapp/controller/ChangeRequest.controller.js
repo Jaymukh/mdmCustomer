@@ -54,7 +54,7 @@ sap.ui.define([
 			this.getView().setBusy(true);
 			var sEntityID = oEvent.getSource().getBindingContext("changeRequestGetAllModel").getObject().crDTO.entity_id;
 			var sWorkflowTaskID = oEvent.getSource().getBindingContext("changeRequestGetAllModel").getObject().crDTO.workflow_task_id;
-			this.getView().getModel("CreateVendorModel").setProperty("/createCRVendorData/workflowID", sWorkflowTaskID);
+			this.getView().getModel("Customer").setProperty("/createCRVendorData/workflowID", sWorkflowTaskID);
 			var objParamCreate = {
 				url: "/murphyCustom/mdm/entity-service/entities/entity/get",
 				type: 'POST',
@@ -80,15 +80,15 @@ sap.ui.define([
 					for (var i = 0; i < respPayload.length; i++) {
 						switch (respPayload[i]) {
 						case "business_entity":
-							this.getView().getModel("CreateVendorModel").setProperty("/createCRVendorData/entityId", oDataResp.result.parentDTO.customData
+							this.getView().getModel("Customer").setProperty("/createCRVendorData/entityId", oDataResp.result.parentDTO.customData
 								.business_entity.entity_id);
 							break;
 						case "vnd_lfa1":
-							this.getView().getModel("CreateVendorModel").setProperty("/createCRVendorData/formData/parentDTO/customData/vnd_lfa1",
+							this.getView().getModel("Customer").setProperty("/createCRVendorData/formData/parentDTO/customData/vnd_lfa1",
 								oDataResp.result.parentDTO.customData.vnd_lfa1);
 							break;
 						case "vnd_lfb1":
-							this.getView().getModel("CreateVendorModel").setProperty(
+							this.getView().getModel("Customer").setProperty(
 								"/createCRVendorData/formData/parentDTO/customData/vnd_lfb1",
 								oDataResp.result.parentDTO.customData.vnd_lfb1);
 
@@ -107,17 +107,17 @@ sap.ui.define([
 							}
 							break;
 						case "vnd_lfbk":
-							this.getView().getModel("CreateVendorModel").setProperty(
+							this.getView().getModel("Customer").setProperty(
 								"/createCRVendorData/formData/parentDTO/customData/vnd_lfbk/vnd_lfbk_1",
 								oDataResp.result.parentDTO.customData.vnd_lfbk.vnd_lfbk_1);
 							break;
 						case "vnd_lfm1":
-							this.getView().getModel("CreateVendorModel").setProperty(
+							this.getView().getModel("Customer").setProperty(
 								"/createCRVendorData/formData/parentDTO/customData/vnd_lfm1/vnd_lfm1_1",
 								oDataResp.result.parentDTO.customData.vnd_lfm1.vnd_lfm1_1);
 							break;
 						case "vnd_lfbw":
-							this.getView().getModel("CreateVendorModel").setProperty(
+							this.getView().getModel("Customer").setProperty(
 								"/createCRVendorData/formData/parentDTO/customData/vnd_lfbw/vnd_lfbw_1",
 								oDataResp.result.parentDTO.customData.vnd_lfbw.vnd_lfbw_1);
 
@@ -136,52 +136,52 @@ sap.ui.define([
 							}
 							break;
 						case "vnd_knvk":
-							this.getView().getModel("CreateVendorModel").setProperty(
+							this.getView().getModel("Customer").setProperty(
 								"/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1",
 								oDataResp.result.parentDTO.customData.vnd_knvk.vnd_knvk_1);
 							break;
 						case "gen_adrc":
-							this.getView().getModel("CreateVendorModel").setProperty(
+							this.getView().getModel("Customer").setProperty(
 								"/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1",
 								oDataResp.result.parentDTO.customData.gen_adrc.gen_adrc_1);
 							break;
 						case "gen_bnka":
-							this.getView().getModel("CreateVendorModel").setProperty(
+							this.getView().getModel("Customer").setProperty(
 								"/createCRVendorData/formData/parentDTO/customData/gen_bnka/gen_bnka_1",
 								oDataResp.result.parentDTO.customData.gen_bnka.gen_bnka_1);
 							break;
 						case "pra_bp_ad":
-							this.getView().getModel("CreateVendorModel").setProperty(
+							this.getView().getModel("Customer").setProperty(
 								"/createCRVendorData/formData/parentDTO/customData/pra_bp_ad/pra_bp_ad_1",
 								oDataResp.result.parentDTO.customData.pra_bp_ad.pra_bp_ad_1);
 							break;
 						case "pra_bp_vend_esc":
-							this.getView().getModel("CreateVendorModel").setProperty(
+							this.getView().getModel("Customer").setProperty(
 								"/createCRVendorData/formData/parentDTO/customData/pra_bp_vend_esc/pra_bp_vend_esc_1",
 								oDataResp.result.parentDTO.customData.pra_bp_vend_esc.pra_bp_vend_esc_1);
 							break;
 						case "pra_bp_cust_md":
-							this.getView().getModel("CreateVendorModel").setProperty(
+							this.getView().getModel("Customer").setProperty(
 								"/createCRVendorData/formData/parentDTO/customData/pra_bp_cust_md/pra_bp_cust_md_1",
 								oDataResp.result.parentDTO.customData.pra_bp_cust_md.pra_bp_cust_md_1);
 							break;
 						case "pra_bp_vend_md":
-							this.getView().getModel("CreateVendorModel").setProperty(
+							this.getView().getModel("Customer").setProperty(
 								"/createCRVendorData/formData/parentDTO/customData/pra_bp_vend_md/pra_bp_vend_md_1",
 								oDataResp.result.parentDTO.customData.pra_bp_vend_md.pra_bp_vend_md_1);
 							break;
 						}
 					}
-					this.getView().getModel("CreateVendorModel").setProperty(
+					this.getView().getModel("Customer").setProperty(
 						"/addCompanyCodeRows", addCompanyCodeRows);
 
-					// this.getView().getModel("CreateVendorModel").setProperty(
+					// this.getView().getModel("Customer").setProperty(
 					// 	"/createCRVendorData/formData/parentDTO/customData/pra_bp_ad/pra_bp_ad_1/adrnr",
 					// 	oDataResp.result.parentDTO.customData.entity_id);
-					// this.getView().getModel("CreateVendorModel").setProperty(
+					// this.getView().getModel("Customer").setProperty(
 					// 	"/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/addrnumber",
 					// 	oDataResp.result.parentDTO.customData.entity_id);
-					// this.getView().getModel("CreateVendorModel").setProperty(
+					// this.getView().getModel("Customer").setProperty(
 					// 	"/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/date_from",
 					// 	oDate.getFullYear() + "-" + (oDate.getMonth() + 1 < 10 ? ("0" + (oDate.getMonth() + 1)) : oDate.getMonth() + 1) + "-" + oDate.getDate()
 					// );
@@ -191,9 +191,9 @@ sap.ui.define([
 					}).getId();
 					this.getView().getParent().to(sID);
 					//	this.getView().getParent().to(sID);
-					this.getView().getModel("CreateVendorModel").setProperty("/preview", false);
-					this.getView().getModel("CreateVendorModel").setProperty("/vndDetails", false);
-					this.getView().getModel("CreateVendorModel").setProperty("/approvalView", true);
+					this.getView().getModel("Customer").setProperty("/preview", false);
+					this.getView().getModel("Customer").setProperty("/vndDetails", false);
+					this.getView().getModel("Customer").setProperty("/approvalView", true);
 					this.getView().getParent().getParent().getSideContent().setSelectedItem(this.getView().getParent().getParent().getSideContent()
 						.getItem()
 						.getItems()[1]);

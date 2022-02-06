@@ -1,6 +1,6 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout">
 	<VBox>
-		<Table items="{CreateCustomerModel>/addCompanyCodeRows}">
+		<Table items="{Customer>/addCompanyCodeRows}">
 			<headerToolbar>
 				<Toolbar>
 					<ToolbarSpacer></ToolbarSpacer>
@@ -47,13 +47,13 @@
 			<items>
 				<ColumnListItem>
 					<cells>
-						<Text text="{CreateCustomerModel>lfb1/bukrs}"></Text>
-						<Text text="{CreateCustomerModel>lfb1/AKONT}"></Text>
-						<Text text="{CreateCustomerModel>lfb1/bukrs}"></Text>
-						<Text text="{CreateCustomerModel>lfb1/AKONT}"></Text>
-						<Text text="{CreateCustomerModel>lfb1/bukrs}"></Text>
-						<Text text="{CreateCustomerModel>lfb1/AKONT}"></Text>
-						<Text text="{CreateCustomerModel>lfb1/bukrs}"></Text>
+						<Text text="{Customer>lfb1/bukrs}"></Text>
+						<Text text="{Customer>lfb1/AKONT}"></Text>
+						<Text text="{Customer>lfb1/bukrs}"></Text>
+						<Text text="{Customer>lfb1/AKONT}"></Text>
+						<Text text="{Customer>lfb1/bukrs}"></Text>
+						<Text text="{Customer>lfb1/AKONT}"></Text>
+						<Text text="{Customer>lfb1/bukrs}"></Text>
 					</cells>
 				</ColumnListItem>
 			</items>

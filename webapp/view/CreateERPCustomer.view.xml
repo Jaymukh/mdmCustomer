@@ -4,7 +4,7 @@
 		<content>
 			<Toolbar>
 				<Title
-					text="{ parts: [ 'CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/lifnr'], formatter: '.formatCR_Org_Name' }"
+					text="{ parts: [ 'Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/lifnr'], formatter: '.formatCR_Org_Name' }"
 					level="H2"></Title>
 			</Toolbar>
 			<Page id="sideContentContainer" showHeader="false" showNavButton="false" showFooter="true">
@@ -108,7 +108,7 @@
 										<Label text="Write a Comment:"/>
 										<HBox width="100%">
 											<!--<Avatar initials="SD" displaySize="XS" backgroundColor="Green"/>-->
-											<TextArea id="createERPVendorCommentBoxId" width="164%" value="{CreateCustomerModel>/createCRVendorData/newComment}"></TextArea>
+											<TextArea id="createERPVendorCommentBoxId" width="164%" value="{Customer>/createCRVendorData/newComment}"></TextArea>
 										</HBox>
 										<Toolbar>
 											<ToolbarSpacer/>

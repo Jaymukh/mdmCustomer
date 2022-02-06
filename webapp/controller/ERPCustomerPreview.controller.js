@@ -20,14 +20,14 @@ sap.ui.define([
 		},
 
 		onEditClick: function () {
-			if (this.getView().getModel("CreateVendorModel").getData().vndDetails) {
+			if (this.getView().getModel("Customer").getData().vndDetails) {
 				this._createCREntityID({
 					"vndDetails": true
 				});
-				this.getView().getModel("CreateVendorModel").setProperty("/vndDetails", false);
+				this.getView().getModel("Customer").setProperty("/vndDetails", false);
 			}
-			this.getOwnerComponent().getModel("CreateVendorModel").setProperty('/changeReq/genData/reason', "50002");
-			this.getOwnerComponent().getModel("CreateVendorModel").refresh(true);
+			this.getOwnerComponent().getModel("Customer").setProperty('/changeReq/genData/reason', "50002");
+			this.getOwnerComponent().getModel("Customer").refresh(true);
 			var sID = this.getView().getParent().getPages().find(function (e) {
 				return e.getId().indexOf("createERPVendorView") !== -1;
 			}).getId();
@@ -36,51 +36,7 @@ sap.ui.define([
 
 		onSubmitClick: function (oEvent) {
 			this.getView().setBusy(true);
-			// var objParamSubmit = {
-			// 	url: "/murphyCustom/mdm/workflow-service/workflows/tasks/task/action",
-			// 	type: 'POST',
-			// 	hasPayload: true,
-			// 	data: {
-			// 		"operationType": "CREATE",
-			// 		"changeRequestDTO": {
-			// 			"entity_id": this.getView().getModel("CreateVendorModel").getProperty("/createCRVendorData/entityId")
-			// 		}
-			// 	}
-			// };
-			// this.serviceCall.handleServiceRequest(objParamSubmit).then(function (oDataResp) {
-			// 	// this.getView().setBusy(false);
-			// 	// MessageToast.show("Submission Successful");
-			// 	this._CreateCRID();
-			// 	this.getView().getModel("CreateVendorModel").setProperty("/missingFields", []);
-			// 	this.getView().getModel("CreateVendorModel").refresh(true);
-			// 	this.getView().byId("idCreateVendorSubmitErrors").setVisible(false);
-			// }.bind(this), function (oError) {
-			// 	this.getView().setBusy(false);
-			// 	//	var sError = "";
-			// 	var aError = [];
-			// 	if (oError.responseJSON.result && oError.responseJSON.result.workboxCreateTaskResponseDTO.response.EXT_MESSAGES.MESSAGES.item &&
-			// 		oError.responseJSON.result.workboxCreateTaskResponseDTO.response.EXT_MESSAGES.MESSAGES.item.length > 0) {
-			// 		oError.responseJSON.result.workboxCreateTaskResponseDTO.response.EXT_MESSAGES.MESSAGES.item.forEach(function (oItem) {
-			// 			//	sError = sError + oItem.MESSAGE + "\n" ;
-			// 			aError.push({
-			// 				ErrorMessage: oItem.MESSAGE
-			// 			});
-			// 		});
-			// 	} else if (!oError.responseJSON.result) {
-			// 		aError.push({
-			// 			ErrorMessage: oError.responseJSON.error
-			// 		});
-			// 	}
-			// 	this.getView().getModel("CreateVendorModel").setProperty("/missingFields", aError);
-			// 	this.getView().getModel("CreateVendorModel").refresh(true);
-			// 	this.getView().byId("idCreateVendorSubmitErrors").setVisible(true);
-			// 	this.handleErrorLogs();
-			// 	//oError.responseJSON.result.workboxCreateTaskResponseDTO.response.EXT_MESSAGES.MESSAGES.item
-			// 	//	MessageToast.show(sError,{ duration: 6000,width: "100%"});
-			// }.bind(this));
-
 			this._createTask();
-
 		},
 
 		_CreateCRID: function () {
@@ -91,14 +47,14 @@ sap.ui.define([
 				data: {
 					"parentCrDTOs": [{
 						"crDTO": {
-							"entity_id": this.getView().getModel("CreateVendorModel").getProperty("/createCRVendorData/entityId"),
+							"entity_id": this.getView().getModel("Customer").getProperty("/createCRVendorData/entityId"),
 							"change_request_by": 1,
 							"entity_type_id": 1,
 							"change_request_type_id": 1,
 							"change_request_priority_id": 1,
-							"change_request_due_date": this.getView().getModel("CreateVendorModel").getProperty("/changeReq/genData/dueDate"),
-							"change_request_desc": this.getView().getModel("CreateVendorModel").getProperty("/changeReq/genData/desc"),
-							"change_request_reason_id": this.getView().getModel("CreateVendorModel").getProperty("/changeReq/genData/reason")
+							"change_request_due_date": this.getView().getModel("Customer").getProperty("/changeReq/genData/dueDate"),
+							"change_request_desc": this.getView().getModel("Customer").getProperty("/changeReq/genData/desc"),
+							"change_request_reason_id": this.getView().getModel("Customer").getProperty("/changeReq/genData/reason")
 						}
 					}]
 				}
@@ -123,7 +79,7 @@ sap.ui.define([
 					"parentDTO": {
 						"customData": {
 							"business_entity": {
-								"entity_id": this.getView().getModel("CreateVendorModel").getProperty("/createCRVendorData/entityId"),
+								"entity_id": this.getView().getModel("Customer").getProperty("/createCRVendorData/entityId"),
 								"is_draft": "false"
 							}
 						}
@@ -148,9 +104,9 @@ sap.ui.define([
 				// var titleID = this.getView().getParent().getParent().getHeader().getContent()[2];
 				// titleID.setText(this.oBundle.getText("changeRequestId-title"));
 
-				// this.getView().getModel("CreateVendorModel").setProperty("/preview", false);
-				// this.getView().getModel("CreateVendorModel").setProperty("/vndDetails", false);
-				// this.getView().getModel("CreateVendorModel").setProperty("/approvalView", false);
+				// this.getView().getModel("Customer").setProperty("/preview", false);
+				// this.getView().getModel("Customer").setProperty("/vndDetails", false);
+				// this.getView().getModel("Customer").setProperty("/approvalView", false);
 			}.bind(this), function (oError) {
 				this.getView().setBusy(false);
 				MessageToast.show("Error in Make draft false Call");
@@ -180,9 +136,9 @@ sap.ui.define([
 			var titleID = this.getView().getParent().getParent().getHeader().getContent()[2];
 			titleID.setText(this.oBundle.getText("changeRequestId-title"));
 
-			this.getView().getModel("CreateVendorModel").setProperty("/preview", false);
-			this.getView().getModel("CreateVendorModel").setProperty("/vndDetails", false);
-			this.getView().getModel("CreateVendorModel").setProperty("/approvalView", false);
+			this.getView().getModel("Customer").setProperty("/preview", false);
+			this.getView().getModel("Customer").setProperty("/vndDetails", false);
+			this.getView().getModel("Customer").setProperty("/approvalView", false);
 		},
 
 		onBackToVendorListClick: function () {
@@ -196,14 +152,14 @@ sap.ui.define([
 			var titleID = this.getView().getParent().getParent().getHeader().getContent()[0];
 			titleID.setText(this.oBundle.getText("srchVnd-title"));
 
-			this.getView().getModel("CreateVendorModel").setProperty("/preview", false);
-			this.getView().getModel("CreateVendorModel").setProperty("/vndDetails", false);
-			this.getView().getModel("CreateVendorModel").setProperty("/approvalView", false);
+			this.getView().getModel("Customer").setProperty("/preview", false);
+			this.getView().getModel("Customer").setProperty("/vndDetails", false);
+			this.getView().getModel("Customer").setProperty("/approvalView", false);
 		},
 
 		onSelectCompanyCodeItem: function (oEvent) {
-			var oData = oEvent.getParameter("listItem").getBindingContext("CreateVendorModel").getObject();
-			this.getView().getModel("CreateVendorModel").setProperty("/addCompanyCodeFormData", oData);
+			var oData = oEvent.getParameter("listItem").getBindingContext("Customer").getObject();
+			this.getView().getModel("Customer").setProperty("/addCompanyCodeFormData", oData);
 
 		},
 		onSelectERPCheckBox: function (oEvent) {
@@ -211,26 +167,26 @@ sap.ui.define([
 			var sValue = oEvent.getSource().getCustomData()[0].getValue();
 			if (sValue && sValue !== "addComp") {
 				if (oEvent.getParameter("selected")) {
-					this.getView().getModel("CreateVendorModel").setProperty("/createCRVendorData/formData/parentDTO/customData" + sKey, "X");
+					this.getView().getModel("Customer").setProperty("/createCRVendorData/formData/parentDTO/customData" + sKey, "X");
 				} else {
-					this.getView().getModel("CreateVendorModel").setProperty("/createCRVendorData/formData/parentDTO/customData" + sKey, "");
+					this.getView().getModel("Customer").setProperty("/createCRVendorData/formData/parentDTO/customData" + sKey, "");
 				}
 			} else if (sValue && sValue === "addComp") {
 				if (oEvent.getParameter("selected")) {
-					this.getView().getModel("CreateVendorModel").setProperty(sKey, "X");
+					this.getView().getModel("Customer").setProperty(sKey, "X");
 				} else {
-					this.getView().getModel("CreateVendorModel").setProperty(sKey, "");
+					this.getView().getModel("Customer").setProperty(sKey, "");
 				}
 			}
 		},
 		onERPSaveClick1: function (oEvent) {
-			var oModel = this.getView().getModel("CreateVendorModel");
+			var oModel = this.getView().getModel("Customer");
 			var oData = oModel.getProperty("/createCRVendorData/formData");
-		
 		},
+		
 		onERPSaveClick: function (oEvent) {
 			this.getView().setBusy(true);
-			var oModel = this.getView().getModel("CreateVendorModel");
+			var oModel = this.getView().getModel("Customer");
 			var oData = oModel.getProperty("/createCRVendorData/formData");
 
 			var objFormationLfb1 = {};
@@ -244,7 +200,7 @@ sap.ui.define([
 			oData.parentDTO.customData.vnd_lfb1 = objFormationLfb1;
 			oData.parentDTO.customData.vnd_lfbw = objFormationLfbw;
 
-			var sEntityId = this.getView().getModel("CreateVendorModel").getProperty("/createCRVendorData/entityId");
+			var sEntityId = this.getView().getModel("Customer").getProperty("/createCRVendorData/entityId");
 			if (!oData.parentDTO.customData.vnd_lfa1.lifnr) {
 				var objParamFirstCall = {
 					url: "/murphyCustom/mdm/entity-service/entities/entity/update",
@@ -348,16 +304,16 @@ sap.ui.define([
 			this.serviceCall.handleServiceRequest(objParamCreate).then(function (oDataResp) {
 				this.getView().setBusy(false);
 				if (oDataResp.result) {
-					this.getView().getModel("CreateVendorModel").setProperty("/createCRDD", oDataResp.result);
+					this.getView().getModel("Customer").setProperty("/createCRDD", oDataResp.result);
 					// this.getView().byId("idCreateVendorSubmit").setVisible(true);
 
 					var sID = this.getView().getParent().getPages().find(function (e) {
 						return e.getId().indexOf("erpVendorPreview") !== -1;
 					}).getId();
 					this.getView().getParent().to(sID);
-					this.getView().getModel("CreateVendorModel").setProperty("/preview", true);
-					this.getView().getModel("CreateVendorModel").setProperty("/vndDetails", false);
-					this.getView().getModel("CreateVendorModel").setProperty("/approvalView", false);
+					this.getView().getModel("Customer").setProperty("/preview", true);
+					this.getView().getModel("Customer").setProperty("/vndDetails", false);
+					this.getView().getModel("Customer").setProperty("/approvalView", false);
 				}
 			}.bind(this), function (oError) {
 				this.getView().setBusy(false);
@@ -379,7 +335,7 @@ sap.ui.define([
 							"isMandatory": true,
 							"isEdited": 2,
 							"attrDes": "",
-							"value": this.getView().getModel("CreateVendorModel").getProperty("/changeReq/genData/desc"),
+							"value": this.getView().getModel("Customer").getProperty("/changeReq/genData/desc"),
 							"dataType": null,
 							"valueList": null,
 							"attachmentType": null,
@@ -409,7 +365,7 @@ sap.ui.define([
 							"isMandatory": true,
 							"isEdited": 2,
 							"attrDes": "Country Code",
-							"value": this.getView().getModel("CreateVendorModel").getProperty(
+							"value": this.getView().getModel("Customer").getProperty(
 								"/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/LAND1"),
 							"dataType": "INPUT",
 							"valueList": [],
@@ -440,7 +396,7 @@ sap.ui.define([
 							"isMandatory": true,
 							"isEdited": 2,
 							"attrDes": "Account Group",
-							"value": this.getView().getModel("CreateVendorModel").getProperty(
+							"value": this.getView().getModel("Customer").getProperty(
 								"/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/KTOKK"),
 							"dataType": "INPUT",
 							"valueList": [],
@@ -501,8 +457,8 @@ sap.ui.define([
 							"isMandatory": true,
 							"isEdited": 2,
 							"attrDes": "CountryCodeAccountGroup",
-							"value": this.getView().getModel("CreateVendorModel").getProperty(
-									"/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/LAND1") + "+" + this.getView().getModel("CreateVendorModel")
+							"value": this.getView().getModel("Customer").getProperty(
+									"/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/LAND1") + "+" + this.getView().getModel("Customer")
 								.getProperty("/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/KTOKK"),
 							"dataType": "INPUT",
 							"valueList": [],
@@ -541,14 +497,14 @@ sap.ui.define([
 						"/data/lastname")
 				},
 				"changeRequestDTO": {
-					"entity_id": this.getView().getModel("CreateVendorModel").getProperty("/createCRVendorData/entityId"),
+					"entity_id": this.getView().getModel("Customer").getProperty("/createCRVendorData/entityId"),
 					"change_request_by": this.getView().getModel("userManagementModel").getProperty("/data/user_id"),
 					"entity_type_id": 1,
 					"change_request_type_id": 1,
 					"change_request_priority_id": 1,
-					"change_request_due_date": this.getView().getModel("CreateVendorModel").getProperty("/changeReq/genData/dueDate"),
-					"change_request_desc": this.getView().getModel("CreateVendorModel").getProperty("/changeReq/genData/desc"),
-					"change_request_reason_id": this.getView().getModel("CreateVendorModel").getProperty("/changeReq/genData/reason")
+					"change_request_due_date": this.getView().getModel("Customer").getProperty("/changeReq/genData/dueDate"),
+					"change_request_desc": this.getView().getModel("Customer").getProperty("/changeReq/genData/desc"),
+					"change_request_reason_id": this.getView().getModel("Customer").getProperty("/changeReq/genData/reason")
 				}
 			};
 			var objParamCreate = {
@@ -633,7 +589,7 @@ sap.ui.define([
 			if (sAction === "Approve") {
 				sUrl = "approve";
 				oData.changeRequestDTO = {
-					"entity_id": this.getView().getModel("CreateVendorModel").getProperty(
+					"entity_id": this.getView().getModel("Customer").getProperty(
 						"/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/entity_id")
 				};
 			} else {
@@ -658,12 +614,12 @@ sap.ui.define([
 		},
 
 		onApproveClick: function () {
-			var sWorkFlowID = this.getView().getModel("CreateVendorModel").getProperty("/createCRVendorData/workflowID");
+			var sWorkFlowID = this.getView().getModel("Customer").getProperty("/createCRVendorData/workflowID");
 			this._claimTask(sWorkFlowID, "Approve");
 		},
 
 		onRejectClick: function () {
-			var sWorkFlowID = this.getView().getModel("CreateVendorModel").getProperty("/createCRVendorData/workflowID");
+			var sWorkFlowID = this.getView().getModel("Customer").getProperty("/createCRVendorData/workflowID");
 			this._claimTask(sWorkFlowID, "Reject");
 		}
 

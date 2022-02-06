@@ -6,7 +6,7 @@
 			<core:Title text="Payment Transactions"/>
 			<Label text="DME Indicator" required="true"/>
 			<Select id="payTransDMEIndicatorId" forceSelection="true"
-				selectedKey="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAMS}">
+				selectedKey="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAMS}">
 				<items>
 					<core:Item text="Use house bank default value" key=" "/>
 					<core:Item text="Single data record can be forwarded to the Bundesbank" key="0"/>
@@ -14,7 +14,7 @@
 				</items>
 			</Select>
 			<Label text="Instruction Key"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
 				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 				<customData>
 					<core:CustomData key="title" value="Instruction Key"></core:CustomData>
@@ -33,7 +33,7 @@
 				</customData>
 			</CheckBox>
 			<Label text="Alternative Payer"/>
-			<Input value="{CreateCustomerModel>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/LNRZA}" showValueHelp="true"
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/LNRZA}" showValueHelp="true"
 				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 				<customData>
 					<core:CustomData key="title" value="Alternative payee"></core:CustomData>
