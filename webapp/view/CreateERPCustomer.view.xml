@@ -1,134 +1,129 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout"
 	controllerName="murphy.mdm.customer.murphymdmcustomer.controller.CreateERPCustomer" xmlns:html="http://www.w3.org/1999/xhtml">
-	<Page id="crtVnd" showHeader="false" showNavButton="false">
+	<Page id="sideContentContainer" showHeader="false" showNavButton="false" showFooter="true">
 		<content>
 			<Toolbar>
-				<Title
-					text="{ parts: [ 'Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/lifnr'], formatter: '.formatCR_Org_Name' }"
+				<Title text="{ parts: [ 'Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/lifnr'], formatter: '.formatCR_Org_Name' }"
 					level="H2"></Title>
 			</Toolbar>
-			<Page id="sideContentContainer" showHeader="false" showNavButton="false" showFooter="true">
-				<content>
-					<l:DynamicSideContent id="DynamicSideContent" class="sapUiDSCExplored" containerQuery="true" sideContentFallDown="BelowM"
-						breakpointChanged="handleBreakpointChangeEvent">
-						<VBox>
-							<Panel expandable="true" expanded="true" headerText="Change Requests">
-								<content>
-									<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.ChangeRequests" type="XML"/>
-								</content>
-							</Panel>
-							<Panel expandable="true" expanded="true" headerText="ERP Customer Details*">
-								<content>
-									<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.ERPCustomerDetails" type="XML"/>
-								</content>
-							</Panel>
-							<Panel expandable="true" expanded="false" headerText="Address">
-								<content>
-									<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.Address" type="XML"/>
-								</content>
-							</Panel>
-							<Panel expandable="true" expanded="false" headerText="Control Data">
-								<content>
-									<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.ControlData" type="XML"/>
-								</content>
-							</Panel>
-							<Panel expandable="true" expanded="false" headerText="Tax Numbers">
-								<content>
-									<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.TaxNumbers" type="XML"/>
-								</content>
-							</Panel>
-							<Panel expandable="true" expanded="false" headerText="Tax Information">
-								<content>
-									<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.TaxInformation" type="XML"/>
-								</content>
-							</Panel>
-							<Panel expandable="true" expanded="false" headerText="Bank Accounts">
-								<content>
-									<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.BankAccounts" type="XML"/>
-								</content>
-							</Panel>
-							<Panel expandable="true" expanded="false" headerText="Payment Transactions*">
-								<content>
-									<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.PaymentTransactions" type="XML"/>
-								</content>
-							</Panel>
-							<Panel expandable="true" expanded="false" headerText="Marketing">
-								<content>
-									<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.Marketing" type="XML"/>
-								</content>
-							</Panel>
-							<Panel expandable="true" expanded="false" headerText="Export Data">
-								<content>
-									<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.ExportData" type="XML"/>
-								</content>
-							</Panel>
-							<Panel expandable="true" expanded="false" headerText="Additional Data">
-								<content>
-									<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.AdditionalData" type="XML"/>
-								</content>
-							</Panel>
-							<Panel expandable="true" expanded="false" headerText="Tax Indicators">
-								<content>
-									<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.TaxIndicators" type="XML"/>
-								</content>
-							</Panel>
-							<Panel expandable="true" expanded="false" headerText="Sales Areas">
-								<content>
-									<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.SalesAreas" type="XML"/>
-								</content>
-							</Panel>
-							<Panel expandable="true" expanded="false" headerText="Company Codes">
-								<content>
-									<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.CompanyCodes" type="XML"/>
-								</content>
-							</Panel>
-							<Panel expandable="true" expanded="false" headerText="Contact Persons">
-								<content>
-									<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.ContactPersons" type="XML"/>
-								</content>
-							</Panel>
-						</VBox>
-						<l:sideContent>
-							<IconTabBar expanded="true">
-								<items>
-									<IconTabFilter text="Attachments" key="attachments">
-										<!--<Text text="Attachments go here ..."/>-->
-										<UploadCollection id="UploadCollection" maximumFilenameLength="55" maximumFileSize="10" multiple="true" sameFilenameAllowed="true"
-											instantUpload="false" noDataDescription="Drop files or use the &quot;Add&quot; button to keep files ready for upload" change="onChange"
-											fileDeleted="onFileDeleted" filenameLengthExceed="onFilenameLengthExceed" fileSizeExceed="onFileSizeExceed" typeMissmatch="onTypeMissmatch"
-											uploadComplete="onUploadComplete" beforeUploadStarts="onBeforeUploadStarts"/>
-										<Toolbar>
-											<!--<Button text="Add"/>-->
-											<ToolbarSpacer/>
-											<Button text="Upload" press="onCreateERPCustomerUpload"/>
-										</Toolbar>
-									</IconTabFilter>
-									<IconTabFilter text="Comments" key="comments">
-										<!--<VBox>-->
-										<Label text="Write a Comment:"/>
-										<HBox width="100%">
-											<!--<Avatar initials="SD" displaySize="XS" backgroundColor="Green"/>-->
-											<TextArea id="createERPVendorCommentBoxId" width="164%" value="{Customer>/createCRVendorData/newComment}"></TextArea>
-										</HBox>
-										<Toolbar>
-											<ToolbarSpacer/>
-											<Button text="Add" press="onAddComment"/>
-										</Toolbar>
-										<!--</VBox>-->
-										<List id="createERPVendorAddedCommentListId" headerText="Added Comments" items="{createERPAddCommentedModel>/parentCrDTOs/0/crCommentDTOs}">
-											<FeedListItem sender="{createERPAddCommentedModel>note_by}" icon="{AuthorPicUrl}" senderPress="onPress" iconPress="onPress"
-												iconDensityAware="false" info="{Type}" timestamp="{createERPAddCommentedModel>note_date}" text="{createERPAddCommentedModel>note_desc}"
-												convertLinksToAnchorTags="All" actions="{path: 'Actions', templateShareable: false}">
-												<FeedListItemAction text="{createERPAddCommentedModel>note_desc}" icon="{Icon}" key="{Key}" press="onActionPressed"/>
-											</FeedListItem>
-										</List>
-									</IconTabFilter>
-								</items>
-							</IconTabBar>
-						</l:sideContent>
-					</l:DynamicSideContent>
-				</content>
-			</Page>
+			<l:DynamicSideContent id="DynamicSideContent" class="sapUiDSCExplored createPageHeight" containerQuery="true" sideContentFallDown="BelowM"
+				breakpointChanged="handleBreakpointChangeEvent">
+				<VBox>
+					<Panel expandable="true" expanded="true" headerText="Change Requests">
+						<content>
+							<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.ChangeRequests" type="XML"/>
+						</content>
+					</Panel>
+					<Panel expandable="true" expanded="true" headerText="ERP Customer Details*">
+						<content>
+							<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.ERPCustomerDetails" type="XML"/>
+						</content>
+					</Panel>
+					<Panel expandable="true" expanded="false" headerText="Address">
+						<content>
+							<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.Address" type="XML"/>
+						</content>
+					</Panel>
+					<Panel expandable="true" expanded="false" headerText="Control Data">
+						<content>
+							<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.ControlData" type="XML"/>
+						</content>
+					</Panel>
+					<Panel expandable="true" expanded="false" headerText="Tax Numbers">
+						<content>
+							<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.TaxNumbers" type="XML"/>
+						</content>
+					</Panel>
+					<Panel expandable="true" expanded="false" headerText="Tax Information">
+						<content>
+							<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.TaxInformation" type="XML"/>
+						</content>
+					</Panel>
+					<Panel expandable="true" expanded="false" headerText="Bank Accounts">
+						<content>
+							<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.BankAccounts" type="XML"/>
+						</content>
+					</Panel>
+					<Panel expandable="true" expanded="false" headerText="Payment Transactions*">
+						<content>
+							<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.PaymentTransactions" type="XML"/>
+						</content>
+					</Panel>
+					<Panel expandable="true" expanded="false" headerText="Marketing">
+						<content>
+							<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.Marketing" type="XML"/>
+						</content>
+					</Panel>
+					<Panel expandable="true" expanded="false" headerText="Export Data">
+						<content>
+							<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.ExportData" type="XML"/>
+						</content>
+					</Panel>
+					<Panel expandable="true" expanded="false" headerText="Additional Data">
+						<content>
+							<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.AdditionalData" type="XML"/>
+						</content>
+					</Panel>
+					<Panel expandable="true" expanded="false" headerText="Tax Indicators">
+						<content>
+							<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.TaxIndicators" type="XML"/>
+						</content>
+					</Panel>
+					<Panel expandable="true" expanded="false" headerText="Sales Areas">
+						<content>
+							<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.SalesAreas" type="XML"/>
+						</content>
+					</Panel>
+					<Panel expandable="true" expanded="false" headerText="Company Codes">
+						<content>
+							<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.CompanyCodes" type="XML"/>
+						</content>
+					</Panel>
+					<Panel expandable="true" expanded="false" headerText="Contact Persons">
+						<content>
+							<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.ContactPersons" type="XML"/>
+						</content>
+					</Panel>
+				</VBox>
+				<l:sideContent>
+					<IconTabBar expanded="true">
+						<items>
+							<IconTabFilter text="Attachments" key="attachments">
+								<!--<Text text="Attachments go here ..."/>-->
+								<UploadCollection id="UploadCollection" maximumFilenameLength="55" maximumFileSize="10" multiple="true" sameFilenameAllowed="true"
+									instantUpload="false" noDataDescription="Drop files or use the &quot;Add&quot; button to keep files ready for upload" change="onChange"
+									fileDeleted="onFileDeleted" filenameLengthExceed="onFilenameLengthExceed" fileSizeExceed="onFileSizeExceed" typeMissmatch="onTypeMissmatch"
+									uploadComplete="onUploadComplete" beforeUploadStarts="onBeforeUploadStarts"/>
+								<Toolbar>
+									<!--<Button text="Add"/>-->
+									<ToolbarSpacer/>
+									<Button text="Upload" press="onCreateERPCustomerUpload"/>
+								</Toolbar>
+							</IconTabFilter>
+							<IconTabFilter text="Comments" key="comments">
+								<!--<VBox>-->
+								<Label text="Write a Comment:"/>
+								<HBox width="100%">
+									<!--<Avatar initials="SD" displaySize="XS" backgroundColor="Green"/>-->
+									<TextArea id="createERPVendorCommentBoxId" width="164%" value="{Customer>/createCRVendorData/newComment}"></TextArea>
+								</HBox>
+								<Toolbar>
+									<ToolbarSpacer/>
+									<Button text="Add" press="onAddComment"/>
+								</Toolbar>
+								<!--</VBox>-->
+								<List id="createERPVendorAddedCommentListId" headerText="Added Comments" items="{createERPAddCommentedModel>/parentCrDTOs/0/crCommentDTOs}">
+									<FeedListItem sender="{createERPAddCommentedModel>note_by}" icon="{AuthorPicUrl}" senderPress="onPress" iconPress="onPress"
+										iconDensityAware="false" info="{Type}" timestamp="{createERPAddCommentedModel>note_date}" text="{createERPAddCommentedModel>note_desc}"
+										convertLinksToAnchorTags="All" actions="{path: 'Actions', templateShareable: false}">
+										<FeedListItemAction text="{createERPAddCommentedModel>note_desc}" icon="{Icon}" key="{Key}" press="onActionPressed"/>
+									</FeedListItem>
+								</List>
+							</IconTabFilter>
+						</items>
+					</IconTabBar>
+				</l:sideContent>
+			</l:DynamicSideContent>
 		</content>
 		<footer>
 			<Toolbar>

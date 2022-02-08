@@ -1,0 +1,1209 @@
+{
+	"0110": [{
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "P",
+		"text": "Bank transfer (Payroll)"
+	}, {
+		"key": "T",
+		"text": "Bank transfer (ACH CTX)"
+	}],
+	"0101": [{
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "E",
+		"text": "EDI"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "I",
+		"text": "EFT - Scotia bank"
+	}, {
+		"key": "T",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}, {
+		"key": "Y",
+		"text": "Domestic wire-Other than CA/US"
+	}, {
+		"key": "Z",
+		"text": "Foreign Wire-Other than CA/US"
+	}],
+	"0168": [{
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "P",
+		"text": "Bank transfer (Payroll)"
+	}, {
+		"key": "T",
+		"text": "Bank transfer (ACH CTX)"
+	}],
+	"0171": [{
+		"key": "7",
+		"text": "BAML-Foreign Wire"
+	}, {
+		"key": "8",
+		"text": "BAML-Domestic wire"
+	}, {
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "P",
+		"text": "Bank transfer (Payroll)"
+	}, {
+		"key": "T",
+		"text": "Bank transfer (ACH CTX)"
+	}],
+	"0190": [{
+		"key": "1",
+		"text": "Check"
+	}, {
+		"key": "6",
+		"text": "BAML-ACH"
+	}, {
+		"key": "7",
+		"text": "BAML-Foreign Wire"
+	}, {
+		"key": "8",
+		"text": "BAML-Domestic wire"
+	}, {
+		"key": "9",
+		"text": "BAML-Check"
+	}, {
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "K",
+		"text": "Book Transfer"
+	}, {
+		"key": "P",
+		"text": "Bank transfer (Payroll)"
+	}, {
+		"key": "Q",
+		"text": "Wells Fargo PCard"
+	}, {
+		"key": "R",
+		"text": "Bank transfer (RETIREES)"
+	}, {
+		"key": "T",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}, {
+		"key": "X",
+		"text": "BAML-Retirees"
+	}],
+	"0195": [{
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "P",
+		"text": "Bank transfer (Payroll)"
+	}, {
+		"key": "T",
+		"text": "Bank transfer (ACH CTX)"
+	}],
+	"0198": [{
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "P",
+		"text": "Bank transfer (Payroll)"
+	}, {
+		"key": "T",
+		"text": "Bank transfer (ACH CTX)"
+	}],
+	"0199": [{
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "P",
+		"text": "Bank transfer (Payroll)"
+	}, {
+		"key": "T",
+		"text": "Bank transfer (ACH CTX)"
+	}],
+	"0200": [{
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "P",
+		"text": "Bank transfer (Payroll)"
+	}, {
+		"key": "T",
+		"text": "Bank transfer (ACH CTX)"
+	}],
+	"0201": [{
+		"key": "7",
+		"text": "BAML-Wire Payment"
+	}],
+	"0202": [{
+		"key": "5",
+		"text": "BAML-MX Book Transfer"
+	}, {
+		"key": "6",
+		"text": "BAML-ACH/TEF"
+	}, {
+		"key": "7",
+		"text": "BAML-SPID/USD wires"
+	}, {
+		"key": "8",
+		"text": "BAML-SPEI/Domestic wire (MXN)"
+	}, {
+		"key": "C",
+		"text": "Cheque"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "W",
+		"text": "Domestic wires"
+	}, {
+		"key": "Y",
+		"text": "BAML-FEDWIRE/USD wires"
+	}],
+	"0203": [{
+		"key": "7",
+		"text": "BAML-Wire Payment"
+	}, {
+		"key": "D",
+		"text": "Buitl.bet.via bankoverboeking"
+	}, {
+		"key": "B",
+		"text": "Bankbetaling"
+	}, {
+		"key": "I",
+		"text": "Bankincasso"
+	}, {
+		"key": "J",
+		"text": "Postgiroincasso"
+	}, {
+		"key": "P",
+		"text": "Postgiro-betaling"
+	}],
+	"0204": [{
+		"key": "6",
+		"text": "BAML-ACH/TEF"
+	}, {
+		"key": "7",
+		"text": "BAML-SPID/USD wires"
+	}, {
+		"key": "8",
+		"text": "BAML-SPEI/Domestic wire (MXN)"
+	}, {
+		"key": "C",
+		"text": "Cheque"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}, {
+		"key": "Y",
+		"text": "BAML-FEDWIRE/USD wires"
+	}],
+	"0302": [{
+		"key": "C",
+		"text": "Cheque"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "K",
+		"text": "Book Transfer"
+	}, {
+		"key": "P",
+		"text": "Bank transfer (Payroll)"
+	}, {
+		"key": "Q",
+		"text": "Wells Fargo PCard"
+	}, {
+		"key": "T",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}],
+	"0309": [{
+		"key": "C",
+		"text": "Cheque"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "P",
+		"text": "Bank transfer (Payroll)"
+	}, {
+		"key": "T",
+		"text": "Bank transfer (ACH CTX)"
+	}],
+	"0311": [{
+		"key": "C",
+		"text": "Cheque"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "K",
+		"text": "Book Transfer"
+	}, {
+		"key": "P",
+		"text": "Bank transfer (Payroll)"
+	}, {
+		"key": "Q",
+		"text": "Wells Fargo PCard"
+	}, {
+		"key": "T",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}],
+	"0312": [{
+		"key": "C",
+		"text": "Cheque"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "K",
+		"text": "Book Transfer"
+	}, {
+		"key": "P",
+		"text": "Bank transfer (Payroll)"
+	}, {
+		"key": "Q",
+		"text": "Wells Fargo PCard"
+	}, {
+		"key": "T",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}],
+	"0328": [{
+		"key": "6",
+		"text": "BAML-ACH"
+	}, {
+		"key": "7",
+		"text": "BAML-Foreign Wire"
+	}, {
+		"key": "8",
+		"text": "BAML-Domestic wire"
+	}, {
+		"key": "9",
+		"text": "BAML-Check"
+	}, {
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "P",
+		"text": "Bank transfer (Payroll)"
+	}, {
+		"key": "R",
+		"text": "Bank transfer (RETIREES)"
+	}, {
+		"key": "T",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}],
+	"0329": [{
+		"key": "6",
+		"text": "BAML-ACH"
+	}, {
+		"key": "7",
+		"text": "BAML-Foreign Wire"
+	}, {
+		"key": "8",
+		"text": "BAML-Domestic wire"
+	}, {
+		"key": "9",
+		"text": "BAML-Check"
+	}, {
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "P",
+		"text": "Bank transfer (Payroll)"
+	}, {
+		"key": "R",
+		"text": "Bank transfer (RETIREES)"
+	}, {
+		"key": "T",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}],
+	"0330": [{
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "P",
+		"text": "Bank transfer (Payroll)"
+	}, {
+		"key": "T",
+		"text": "Bank transfer (ACH CTX)"
+	}],
+	"0331": [{
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "P",
+		"text": "Bank transfer (Payroll)"
+	}, {
+		"key": "T",
+		"text": "Bank transfer (ACH CTX)"
+	}],
+	"0334": [{
+		"key": "1",
+		"text": "BOA-Bank Draft (MYR)"
+	}, {
+		"key": "2",
+		"text": "BOA-Bank Draft (USD)"
+	}, {
+		"key": "3",
+		"text": "BOA-ACH"
+	}, {
+		"key": "4",
+		"text": "BOA-Foreign Wire"
+	}, {
+		"key": "5",
+		"text": "BOA-Domestic wire"
+	}, {
+		"key": "7",
+		"text": "BAML-Foreign Wire"
+	}, {
+		"key": "8",
+		"text": "BAML-Domestic wire"
+	}, {
+		"key": "B",
+		"text": "Bank Draft"
+	}, {
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "ACH"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "K",
+		"text": "Book Transfer"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}],
+	"0335": [{
+		"key": "1",
+		"text": "BOA-Bank Draft (MYR)"
+	}, {
+		"key": "2",
+		"text": "BOA-Bank Draft (USD)"
+	}, {
+		"key": "3",
+		"text": "BOA-ACH"
+	}, {
+		"key": "4",
+		"text": "BOA-Foreign Wire"
+	}, {
+		"key": "5",
+		"text": "BOA-Domestic wire"
+	}, {
+		"key": "7",
+		"text": "BAML-Foreign Wire"
+	}, {
+		"key": "8",
+		"text": "BAML-Domestic wire"
+	}, {
+		"key": "B",
+		"text": "Bank Draft"
+	}, {
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "ACH"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "K",
+		"text": "Book Transfer"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}, {
+		"key": "Y",
+		"text": "Foreign Wire - Manual Upload"
+	}, {
+		"key": "Z",
+		"text": "ACH - Manual Upload"
+	}],
+	"0337": [{
+		"key": "Z",
+		"text": "ACH - Manual Upload"
+	}, {
+		"key": "3",
+		"text": "BAML- DARF payments"
+	}, {
+		"key": "5",
+		"text": "BAML- Boleto payments"
+	}, {
+		"key": "8",
+		"text": "BAML-TED payments"
+	}, {
+		"key": "C",
+		"text": "Cheque"
+	}, {
+		"key": "D",
+		"text": "Boleto/Duplicata"
+	}, {
+		"key": "P",
+		"text": ""
+	}, {
+		"key": "T",
+		"text": ""
+	}],
+	"0338": [{
+		"key": "1",
+		"text": "BOA-Bank Draft (MYR)"
+	}, {
+		"key": "2",
+		"text": "BOA-Bank Draft (USD)"
+	}, {
+		"key": "3",
+		"text": "BOA-ACH"
+	}, {
+		"key": "4",
+		"text": "BOA-Foreign Wire"
+	}, {
+		"key": "5",
+		"text": "BOA-Domestic wire"
+	}],
+	"0343": [{
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "P",
+		"text": "Bank transfer (Payroll)"
+	}, {
+		"key": "T",
+		"text": "Bank transfer (ACH CTX)"
+	}],
+	"0344": [{
+		"key": "F",
+		"text": "Foreign Wire"
+	}],
+	"0348": [{
+		"key": "7",
+		"text": "BAML-Foreign Wire"
+	}, {
+		"key": "8",
+		"text": "BAML-Domestic wire"
+	}],
+	"0349": [{
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}],
+	"0350": [{
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "K",
+		"text": ""
+	}, {
+		"key": "P",
+		"text": ""
+	}, {
+		"key": "Q",
+		"text": ""
+	}, {
+		"key": "T",
+		"text": ""
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}],
+	"0356": [{
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "P",
+		"text": "Bank transfer (Payroll)"
+	}, {
+		"key": "T",
+		"text": "Bank transfer (ACH CTX)"
+	}],
+	"0357": [{
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "P",
+		"text": "Bank transfer (Payroll)"
+	}, {
+		"key": "T",
+		"text": "Bank transfer (ACH CTX)"
+	}],
+	"0358": [{
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "P",
+		"text": "Bank transfer (Payroll)"
+	}, {
+		"key": "T",
+		"text": "Bank transfer (ACH CTX)"
+	}],
+	"0362": [{
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "P",
+		"text": "Bank transfer (Payroll)"
+	}, {
+		"key": "T",
+		"text": "Bank transfer (ACH CTX)"
+	}],
+	"0364": [{
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}],
+	"0365": [{
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "P",
+		"text": "Bank transfer (Payroll)"
+	}, {
+		"key": "T",
+		"text": "Bank transfer (ACH CTX)"
+	}],
+	"0367": [{
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "P",
+		"text": "Bank transfer (Payroll)"
+	}, {
+		"key": "T",
+		"text": "Bank transfer (ACH CTX)"
+	}],
+	"0368": [{
+		"key": "A",
+		"text": "ACB Payments"
+	}, {
+		"key": "C",
+		"text": "Prenumbered Cheques"
+	}, {
+		"key": "D",
+		"text": "ACB Collection"
+	}, {
+		"key": "E",
+		"text": "EFT Payment"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}],
+	"0378": [{
+		"key": "8",
+		"text": "BAML-Wire Payment"
+	}, {
+		"key": "C",
+		"text": "Cheque papel"
+	}, {
+		"key": "D",
+		"text": "Débito Directo"
+	}, {
+		"key": "P",
+		"text": "Cheque prenumerado"
+	}, {
+		"key": "T",
+		"text": "Transferencia"
+	}],
+	"0382": [{
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}],
+	"0383": [{
+		"key": "C",
+		"text": "Cheque"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CCD)"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}],
+	"0387": [{
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}],
+	"0388": [{
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "P",
+		"text": "Bank transfer (Payroll)"
+	}, {
+		"key": "T",
+		"text": "Bank transfer (ACH CTX)"
+	}],
+	"0389": [{
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "P",
+		"text": "Bank transfer (Payroll)"
+	}, {
+		"key": "T",
+		"text": "Bank transfer (ACH CTX)"
+	}],
+	"0390": [{
+		"key": "6",
+		"text": "BAML-ACH"
+	}, {
+		"key": "7",
+		"text": "BAML-Foreign Wire"
+	}, {
+		"key": "8",
+		"text": "BAML-Domestic wire"
+	}, {
+		"key": "9",
+		"text": "BAML-Check"
+	}, {
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "P",
+		"text": "Bank transfer (Payroll)"
+	}, {
+		"key": "T",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}],
+	"0391": [{
+		"key": "6",
+		"text": "BAML-ACH"
+	}, {
+		"key": "7",
+		"text": "BAML-Foreign Wire"
+	}, {
+		"key": "8",
+		"text": "BAML-Domestic wire"
+	}, {
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "P",
+		"text": "Bank transfer (Payroll)"
+	}, {
+		"key": "T",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}],
+	"0399": [{
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "K",
+		"text": "Book Transfer"
+	}, {
+		"key": "P",
+		"text": "Bank transfer (Payroll)"
+	}, {
+		"key": "Q",
+		"text": "Wells Fargo PCard"
+	}, {
+		"key": "T",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}],
+	"0401": [{
+		"key": "1",
+		"text": "JPMC - ACH"
+	}, {
+		"key": "2",
+		"text": "JPMC - BPay"
+	}, {
+		"key": "3",
+		"text": "JPMC - Foreign Wires"
+	}, {
+		"key": "4",
+		"text": "JPMC - Domestic Wires"
+	}, {
+		"key": "B",
+		"text": "BPAY"
+	}, {
+		"key": "C",
+		"text": "Cheque"
+	}, {
+		"key": "D",
+		"text": "ABA (ACH)"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}],
+	"0402": [{
+		"key": "3",
+		"text": "JPMC - Foreign Wires"
+	}, {
+		"key": "B",
+		"text": "BPAY"
+	}, {
+		"key": "C",
+		"text": "Cheque"
+	}, {
+		"key": "D",
+		"text": "ABA (ACH)"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}],
+	"0403": [{
+		"key": "B",
+		"text": "BPAY"
+	}, {
+		"key": "C",
+		"text": "Cheque"
+	}, {
+		"key": "D",
+		"text": "ABA (ACH)"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}],
+	"0416": [{
+		"key": "B",
+		"text": "BPAY"
+	}, {
+		"key": "C",
+		"text": "Cheque"
+	}, {
+		"key": "D",
+		"text": "ABA (ACH)"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}],
+	"0417": [{
+		"key": "B",
+		"text": "BPAY"
+	}, {
+		"key": "C",
+		"text": "Cheque"
+	}, {
+		"key": "D",
+		"text": "ABA (ACH)"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}],
+	"0418": [{
+		"key": "B",
+		"text": "BPAY"
+	}, {
+		"key": "C",
+		"text": "Cheque"
+	}, {
+		"key": "D",
+		"text": "ABA (ACH)"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}],
+	"0419": [{
+		"key": "B",
+		"text": "BPAY"
+	}, {
+		"key": "C",
+		"text": "Cheque"
+	}, {
+		"key": "D",
+		"text": "ABA (ACH)"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}],
+	"0421": [{
+		"key": "3",
+		"text": "JPMC - Foreign Wires"
+	}, {
+		"key": "B",
+		"text": "BPAY"
+	}, {
+		"key": "C",
+		"text": "Cheque"
+	}, {
+		"key": "D",
+		"text": "ABA (ACH)"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}],
+	"0422": [{
+		"key": "3",
+		"text": "JPMC - Foreign Wires"
+	}, {
+		"key": "B",
+		"text": "BPAY"
+	}, {
+		"key": "C",
+		"text": "Cheque"
+	}, {
+		"key": "D",
+		"text": "ABA (ACH)"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}],
+	"0423": [{
+		"key": "3",
+		"text": "JPMC - Foreign Wires"
+	}, {
+		"key": "B",
+		"text": "BPAY"
+	}, {
+		"key": "C",
+		"text": "Cheque"
+	}, {
+		"key": "D",
+		"text": "ABA (ACH)"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}],
+	"0424": [{
+		"key": "3",
+		"text": "JPMC - Foreign Wires"
+	}, {
+		"key": "B",
+		"text": "BPAY"
+	}, {
+		"key": "C",
+		"text": "Cheque"
+	}, {
+		"key": "D",
+		"text": "ABA (ACH)"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}],
+	"0447": [{
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "ACH"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "K",
+		"text": "Book Transfer"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}, {
+		"key": "Y",
+		"text": "Foreign Wire - Manual Upload"
+	}, {
+		"key": "Z",
+		"text": "ACH - Manual Upload"
+	}],
+	"0480": [{
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "ACH"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "K",
+		"text": "Book Transfer"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}, {
+		"key": "Y",
+		"text": "Foreign Wire - Manual Upload"
+	}, {
+		"key": "Z",
+		"text": "ACH - Manual Upload"
+	}],
+	"0485": [{
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "ACH"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "K",
+		"text": "Book Transfer"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}, {
+		"key": "Y",
+		"text": "Foreign Wire - Manual Upload"
+	}, {
+		"key": "Z",
+		"text": "ACH - Manual Upload"
+	}],
+	"0486": [{
+		"key": "D",
+		"text": "ACH"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "K",
+		"text": "Book Transfer"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}, {
+		"key": "Y",
+		"text": "Foreign Wire - Manual Upload"
+	}, {
+		"key": "Z",
+		"text": "Domestic wire"
+	}],
+	"0487": [{
+		"key": "D",
+		"text": "ACH"
+	}, {
+		"key": "F",
+		"text": "Foreign Wire"
+	}, {
+		"key": "K",
+		"text": "Book Transfer"
+	}, {
+		"key": "W",
+		"text": "Domestic wire"
+	}, {
+		"key": "Y",
+		"text": "Foreign Wire - Manual Upload"
+	}, {
+		"key": "Z",
+		"text": "ACH - Manual Upload"
+	}],
+	"0501": [{
+		"key": "C",
+		"text": "Check"
+	}, {
+		"key": "D",
+		"text": "Bank transfer (ACH CTX)"
+	}, {
+		"key": "P",
+		"text": "Bank transfer (Payroll)"
+	}, {
+		"key": "T",
+		"text": "Bank transfer (ACH CTX)"
+	}]
+}

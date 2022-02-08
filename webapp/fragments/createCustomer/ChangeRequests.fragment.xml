@@ -6,10 +6,10 @@
 			<core:Title text="General Data"/>
 			<Label text="Change Request ID"/>
 			<Input
-				value="{ parts: [ 'Customer>/createCRVendorData/crID', 'Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/entity_id'], formatter: '.formatCR_Entiry_ID' }"
+				value="{ parts: [ 'Customer>/createCRCustomerData/crID', 'Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/entity_id'], formatter: '.formatCR_Entiry_ID' }"
 				enabled="false"/>
-			<Label text="Description"/>
-			<TextArea value="{Customer>/changeReq/genData/desc}"></TextArea>
+			<Label text="Description" required="true"/>
+			<TextArea value="{Customer>/changeReq/genData/desc}"/>
 			<Label text="Priority"/>
 			<Select forceSelection="false" selectedKey="{Customer>/changeReq/genData/priority}"
 				items="{Customer>/createCRDD/CR_PRIORITY}">
@@ -18,7 +18,7 @@
 				</items>
 			</Select>
 			<Label text="Due Date"/>
-			<DatePicker displayFormat="YYYYMMdd" valueFormat="YYYYMMdd" value="{Customer>/changeReq/genData/dueDate}"></DatePicker>
+			<DatePicker displayFormat="dd-MM-YYYY" valueFormat="YYYYMMdd" value="{Customer>/changeReq/genData/dueDate}"></DatePicker>
 			<Label text="Reason"/>
 			<ComboBox editable="false" selectedKey="{Customer>/changeReq/genData/reason}" showSecondaryValues="true"
 				items="{Customer>/createCRDD/CR_CHANGE_REQ_TYPE}">
@@ -35,8 +35,8 @@
 			<Label text="Created By"/>
 			<Input value="{Customer>/changeReq/genData/createdBy}" enabled="false"/>
 			<Label text="Date/Time of Creation"/>
-			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/date_from}" enabled="false"/>
-			<Input value="{Customer>/createCRVendorData/crTime}" enabled="false">
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/date_from}" enabled="false"/>
+			<Input value="{Customer>/createCRCustomerData/crTime}" enabled="false">
 				<layoutData>
 					<l:GridData span="XL2 L1 M3 S4"/>
 				</layoutData>

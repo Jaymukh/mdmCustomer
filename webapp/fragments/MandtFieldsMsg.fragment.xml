@@ -1,0 +1,12 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog title="Missing Fields">
+		<content>
+			<Tree items="{path: 'MissingFields>/'}">
+				<StandardTreeItem title="{Fields}"/>
+			</Tree>
+		</content>
+		<endButton>
+			<Button text="Close" press="onCloseMissingFields"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

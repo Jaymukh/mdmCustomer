@@ -1,0 +1,271 @@
+[{
+	"bankKey": "",
+	"bankName": "",
+	"country": "",
+	"street": "",
+	"city": ""
+}, {
+	"bankKey": "021080038",
+	"bankName": "NORTH AMERICAN DEVELOPMENT BANK",
+	"country": "US",
+	"street": "SOUTH ST. MARY'S 203",
+	"city": "SAN ANTONIO"
+}, {
+	"bankKey": "061112597",
+	"bankName": "PROSPERITY BANK",
+	"country": "US",
+	"street": "1301 N MECHANIC",
+	"city": "EL CAMPO"
+}, {
+	"bankKey": "111000614",
+	"bankName": "JP Morgan Chase Bank NA",
+	"country": "US",
+	"street": "3388 Highway 6 South",
+	"city": "Sugar Land"
+}, {
+	"bankKey": "111000753",
+	"bankName": "COMERICA BANK",
+	"country": "US",
+	"street": "1 SHELL PLAZA",
+	"city": "HOUSTON"
+}, {
+	"bankKey": "111014325",
+	"bankName": "Bank of Texas",
+	"country": "US",
+	"street": "555 GRAND PKWY",
+	"city": ""
+}, {
+	"bankKey": "111017694",
+	"bankName": "Branch Banking and Trust Company",
+	"country": "US",
+	"street": "2306 S PIONEER TR",
+	"city": "BRYAN"
+}, {
+	"bankKey": "111017791",
+	"bankName": "SIGNATURE BANK",
+	"country": "US",
+	"street": "6757 ARAPAHO ROAD",
+	"city": "DALLAS"
+}, {
+	"bankKey": "111024865",
+	"bankName": "VERITEX COMMUNITY BANK",
+	"country": "US",
+	"street": "622",
+	"city": "CLARA BARTON"
+}, {
+	"bankKey": "111025453",
+	"bankName": "FIRST ASSOCIATIONS BANK",
+	"country": "US",
+	"street": "12001 NORTH CENTRAL EXPRESSWAY",
+	"city": "DALLAS"
+}, {
+	"bankKey": "111900659",
+	"bankName": "Wells Fargo Bank, National Association",
+	"country": "US",
+	"street": "9805 KATY FREEWAY STE G200",
+	"city": "HOUSTON"
+}, {
+	"bankKey": "111903245",
+	"bankName": "FIRST NATIONAL BANK OF CENTRAL TEXAS",
+	"country": "US",
+	"street": "001 1835 N. VALLEY MILLS DRIVE",
+	"city": "WACO"
+}, {
+	"bankKey": "111906271",
+	"bankName": "First National Bank Texas",
+	"country": "US",
+	"street": "1603 SPENCER HWY",
+	"city": "SOUTH HOUSTON"
+}, {
+	"bankKey": "111915327",
+	"bankName": "GUARANTY BOND BANK NA",
+	"country": "US",
+	"street": "2317 SOUTH",
+	"city": "JEFFERSON AVENUE"
+}, {
+	"bankKey": "111924392",
+	"bankName": "FIRST NATIONAL BANK",
+	"country": "US",
+	"street": "4500 PRESTON ROAD",
+	"city": "FRISCO"
+}, {
+	"bankKey": "112000066",
+	"bankName": "WELLS FARGO BANK, N.A.",
+	"country": "US",
+	"street": "221 NORTH KANSAS STREET",
+	"city": "EL PASO"
+}, {
+	"bankKey": "112321318",
+	"bankName": "The Pecos County State Bank",
+	"country": "US",
+	"street": "500 N MAIN ST",
+	"city": "FORT STOCKTON"
+}, {
+	"bankKey": "113000023",
+	"bankName": "Bank of America, National Association",
+	"country": "US",
+	"street": "7011 EDENBROOK CT",
+	"city": "SUGAR LAND"
+}, {
+	"bankKey": "113010547",
+	"bankName": "BBVA COMPAS RICHMOND AND WESLAYAN BRANCH",
+	"country": "US",
+	"street": "7000 COUNTY RD 36550",
+	"city": "ARTHUR"
+}, {
+	"bankKey": "113011258",
+	"bankName": "ZB, N.A. dba Amegy Bank",
+	"country": "US",
+	"street": "13430 Northwest Freeway",
+	"city": "Ste. 101, Houston, TX 77040"
+}, {
+	"bankKey": "113017016",
+	"bankName": "BNP PARIBAS HOUSTON",
+	"country": "US",
+	"street": "1200 SMITH ST.",
+	"city": "HOUSTON"
+}, {
+	"bankKey": "113017553",
+	"bankName": "TORONTO DOMINION BANK, THE",
+	"country": "US",
+	"street": "1221 MCKINNEY",
+	"city": "HOUSTON"
+}, {
+	"bankKey": "113017647",
+	"bankName": "RIYAD BANK, HOUSTON AGENCY",
+	"country": "US",
+	"street": "440 LOUISIANA STREET",
+	"city": "HOUSTON"
+}, {
+	"bankKey": "113017870",
+	"bankName": "WELLS FARGO BANK, N.A.",
+	"country": "US",
+	"street": "1445 ROSS AVENUE",
+	"city": "DALLAS"
+}, {
+	"bankKey": "113024672",
+	"bankName": "BBVA BANCOMER, S.A. HOUSTON",
+	"country": "US",
+	"street": "5075 WESTHEIMER",
+	"city": "HOUSTON"
+}, {
+	"bankKey": "113025765",
+	"bankName": "THE BANK OF NOVA SCOTIA",
+	"country": "US",
+	"street": "711 LOUISIANA STREET",
+	"city": "HOUSTON"
+}, {
+	"bankKey": "113026201",
+	"bankName": "Gulf Capital Bank",
+	"country": "US",
+	"street": "1 Riverway, Ste. 150",
+	"city": "Houston"
+}, {
+	"bankKey": "114000093",
+	"bankName": "Frost Bank",
+	"country": "US",
+	"street": "19222 CLASSEN CREST ST",
+	"city": "SAN ANTONIO"
+}, {
+	"bankKey": "114000763",
+	"bankName": "JEFFERSON STATE BANK",
+	"country": "US",
+	"street": "1777 N.E. LOOP 410",
+	"city": "SAN ANTONIO"
+}, {
+	"bankKey": "114026103",
+	"bankName": "The Bank of Austin",
+	"country": "US",
+	"street": "8611 N Mopac Expressway",
+	"city": "Austin"
+}, {
+	"bankKey": "114909165",
+	"bankName": "Community National Bank",
+	"country": "US",
+	"street": "1502 AVE M",
+	"city": "HONDO"
+}, {
+	"bankKey": "114910523",
+	"bankName": "The Falls City National Bank",
+	"country": "US",
+	"street": "100 S FRONT ST",
+	"city": "FALLS CITY"
+}, {
+	"bankKey": "114911234",
+	"bankName": "The Karnes County National Bank",
+	"country": "US",
+	"street": "301 E CALVERT ST",
+	"city": "KARNES CITY"
+}, {
+	"bankKey": "114911519",
+	"bankName": "Lytle State Bank of Lytle, Texas",
+	"country": "US",
+	"street": "14631 S FM 2790 WEST",
+	"city": "LYTLE"
+}, {
+	"bankKey": "114916705",
+	"bankName": "First State Bank",
+	"country": "US",
+	"street": "422 DIBRELL AVE",
+	"city": "THREE RIVERS"
+}, {
+	"bankKey": "114917908",
+	"bankName": "SouthTrust Bank, National Association",
+	"country": "US",
+	"street": "601 GUADALUPE ST",
+	"city": "GEORGE WEST"
+}, {
+	"bankKey": "114921981",
+	"bankName": "Jourdanton State Bank",
+	"country": "US",
+	"street": "1301 OAK ST",
+	"city": "JOURDANTON"
+}, {
+	"bankKey": "116312873",
+	"bankName": "Community National Bank",
+	"country": "US",
+	"street": "401 W TEXAS",
+	"city": "MIDLAND"
+}, {
+	"bankKey": "121000248",
+	"bankName": "WELLS FARGO NA",
+	"country": "US",
+	"street": "10900 RESEARCH BLVD., AUSTIN,",
+	"city": ""
+}, {
+	"bankKey": "261184367",
+	"bankName": "CATALYST CORPORATE FEDERAL CREDIT UNION",
+	"country": "US",
+	"street": "6801 PARKWOOD BLVD",
+	"city": "PLANO"
+}, {
+	"bankKey": "311093120",
+	"bankName": "BANK OF AMERICA",
+	"country": "US",
+	"street": "",
+	"city": ""
+}, {
+	"bankKey": "314088284",
+	"bankName": "San Antonio FCU",
+	"country": "US",
+	"street": "8403 WURZBACH RD",
+	"city": "SAN ANTONIO"
+}, {
+	"bankKey": "314088637",
+	"bankName": "Security Service FCU",
+	"country": "US",
+	"street": "6502 EVERHART",
+	"city": "CORPUS CHRISTI"
+}, {
+	"bankKey": "314089681",
+	"bankName": "Randolph-Brooks FCU",
+	"country": "US",
+	"street": "1603 MULE DEER RUN",
+	"city": "LEANDER"
+}, {
+	"bankKey": "314985455",
+	"bankName": "Kingsville Area Educators FCU",
+	"country": "US",
+	"street": "1209 W KING AVE",
+	"city": "KINGSVILLE"
+}]

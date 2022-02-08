@@ -51,7 +51,6 @@ sap.ui.define([
 								});
 								aAccountGrps.push(obj);
 							}
-
 						}
 					});
 					oUserManagementModel.setProperty("/role", aRoles);

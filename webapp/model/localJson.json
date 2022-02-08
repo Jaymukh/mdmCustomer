@@ -42,593 +42,519 @@
 			"exempEndDate": null
 		}
 	},
-	"workflow": [{
-		"Name": "Laurent Dubois",
-		"IconInitial": "LD",
-		"JobTitle": "Background Step",
-		"Photo": "/images/Laurent_Dubois.png",
-		"Icon": "sap-icon://activity-individual",
-		"JobResponsibilities": "Set Status 04 for Change request 418432 \n Completed",
-		"HireDate": "Date(1371020400000)"
-	}, {
-		"Name": "Sabine Mayer",
-		"IconInitial": "SM",
-		"JobTitle": "Background Step",
-		"Photo": "/images/Sabine_Mayer.png",
-		"Icon": "sap-icon://settings",
-		"JobResponsibilities": "Set Status 04 for Change request 418432 \n Completed",
-		"HireDate": "Date(1376290800000)"
-	}, {
-		"Name": "Alain Chevalier",
-		"IconInitial": "AC",
-		"JobTitle": "added a work item",
-		"Photo": "/images/Alain_Chevalier.png",
-		"Icon": "sap-icon://manager-insight",
-		"JobResponsibilities": "Process change request 31493 (Create New Vendor - 'Geomark Research LTD') \n Pending",
-		"HireDate": "Date(1332403200000)"
-	}, {
-		"Name": "Monique Legrand",
-		"IconInitial": "ML",
-		"JobTitle": "added a work item",
-		"Photo": "/images/Monique_Legrand.png",
-		"Icon": "sap-icon://account",
-		"JobResponsibilities": "Process change request 31493 (Create New Vendor - 'Geomark Research LTD') \n Pending",
-		"HireDate": "Date(1422777600000)"
-	}],
-	"comments": [{
-		"Name": "Laurent Dubois",
-		"IconInitial": "LD",
-		"JobTitle": "added a Comment",
-		"Photo": "/images/Laurent_Dubois.png",
-		"Icon": "sap-icon://activity-individual",
-		"JobResponsibilities": "Please Update Vendor 3008765 in the system. This vendor has the same Tax ID as the vendor you have attached",
-		"HireDate": "Date(1371020400000)"
-	}, {
-		"Name": "Sabine Mayer",
-		"IconInitial": "SM",
-		"JobTitle": "added a Comment",
-		"Photo": "/images/Sabine_Mayer.png",
-		"Icon": "sap-icon://settings",
-		"JobResponsibilities": "Set Status 04 for Change request 418432",
-		"HireDate": "Date(1376290800000)"
-	}, {
-		"Name": "Alain Chevalier",
-		"IconInitial": "AC",
-		"JobTitle": "added a Comment",
-		"Photo": "/images/Alain_Chevalier.png",
-		"Icon": "sap-icon://manager-insight",
-		"JobResponsibilities": "Process change request 31493 (Create New Vendor - 'Geomark Research LTD')",
-		"HireDate": "Date(1332403200000)"
-	}, {
-		"Name": "Monique Legrand",
-		"IconInitial": "ML",
-		"JobTitle": "added a Comment",
-		"Photo": "/images/Monique_Legrand.png",
-		"Icon": "sap-icon://account",
-		"JobResponsibilities": "Process change request 31493 (Create New Vendor - 'Geomark Research LTD')",
-		"HireDate": "Date(1422777600000)"
-	}],
 	"createCRDD": {},
-	"createCRVendorData": {
+	"createCRCustomerData": {
 		"entityId": null,
 		"crID": null,
 		"crTime": null,
 		"formData": {
-			"entityType": "VENDOR",
+			"entityType": "CUSTOMER",
 			"parentDTO": {
 				"customData": {
-					"custmr_kna1": {
-						"KUNNR": "",
-						"KTOKD": "",
-						"ANRED": null,
-						"NAME1": null,
-						"NAME2": null,
-						"NAME3": null,
-						"NAME4": null,
-						"STKZN": null,
-						"SORTL": null,
-						"TELF1": null,
-						"TELF2": null,
-						"TELFX": null,
-						"PFACH": null,
-						"PSTLZ": null,
-						"ORT01": null,
-						"LAND1": null,
-						"REGION": null,
-						"REGIO": null,
-						"SPRAS": null,
-						"LZONE": null,
-						"PO_BOX": null,
-						"BEGRU": null,
-						"KONZS": null,
-						"VBUND": null,
-						"BAHNE": null,
-						"BAHNS": null,
-						"BRSCH": null,
-						"FISKN": null,
-						"CITYC": null,
-						"FITYP": null,
-						"XSUBT": null,
-						"J_1KFTBUS": null,
-						"J_1KFREPRE": null,
-						"STKZA": null,
-						"STKZU": null,
-						"XICMS": null,
-						"XXIPI": null,
-						"CFOPC": null,
-						"J_1KFTIND": null,
-						"DTAMS": null,
-						"DTAWS": null,
-						"XZEMP": null,
-						"KNRZA": null,
-						"NIELS": null,
-						"KUKLA": null,
-						"BRAN1": null,
-						"BRAN2": null,
-						"BRAN3": null,
-						"BRAN4": null,
-						"BRAN5": null,
-						"UMSAT": null,
-						"UMJAH": null,
-						"JMZAH": null,
-						"JMJAH": null,
-						"PERIV": null,
-						"CCC01": null,
-						"CCC02": null,
-						"CCC03": null,
-						"CCC04": null,
-						"CIVVE": null,
-						"MILVE": null,
-						"KATR1": null,
-						"KATR2": null,
-						"KATR3": null,
-						"KATR4": null,
-						"KATR5": null,
-						"KATR6": null,
-						"KATR7": null,
-						"KATR8": null,
-						"KATR9": null,
-						"KATR10": null,
-						"KDKG1": null,
-						"KDKG2": null,
-						"KDKG3": null,
-						"KDKG4": null,
-						"KDKG5": null
+					"cust_kna1": {
+						"entity_id": null,
+						"kunnr": null,
+						"land1": null,
+						"name1": null,
+						"name2": null,
+						"ort01": null,
+						"pstlz": null,
+						"regio": null,
+						"sortl": null,
+						"stras": null,
+						"telf1": null,
+						"telfx": null,
+						"xcpdk": null,
+						"adrnr": null,
+						"mcod1": null,
+						"mcod2": null,
+						"mcod3": null,
+						"anred": null,
+						"aufsd": null,
+						"bahne": null,
+						"bahns": null,
+						"bbbnr": null,
+						"bbsnr": null,
+						"begru": null,
+						"brsch": null,
+						"bubkz": null,
+						"datlt": null,
+						"erdat": null,
+						"ernam": null,
+						"exabl": null,
+						"faksd": null,
+						"fiskn": null,
+						"knazk": null,
+						"knrza": null,
+						"konzs": null,
+						"ktokd": null,
+						"kukla": null,
+						"lifnr": null,
+						"lifsd": null,
+						"locco": null,
+						"loevm": null,
+						"name3": null,
+						"name4": null,
+						"niels": null,
+						"ort02": null,
+						"pfach": null,
+						"pstl2": null,
+						"counc": null,
+						"cityc": null,
+						"rpmkr": null,
+						"sperr": null,
+						"spras": null,
+						"stcd1": null,
+						"stcd2": null,
+						"stkza": null,
+						"stkzu": null,
+						"telbx": null,
+						"telf2": null,
+						"teltx": null,
+						"telx1": null,
+						"lzone": null,
+						"xzemp": null,
+						"vbund": null,
+						"stceg": null,
+						"dear1": null,
+						"dear2": null,
+						"dear3": null,
+						"dear4": null,
+						"dear5": null,
+						"gform": null,
+						"bran1": null,
+						"bran2": null,
+						"bran3": null,
+						"bran4": null,
+						"bran5": null,
+						"ekont": null,
+						"umsat": null,
+						"umjah": null,
+						"uwaer": null,
+						"jmzah": null,
+						"jmjah": null,
+						"katr1": null,
+						"katr2": null,
+						"katr3": null,
+						"katr4": null,
+						"katr5": null,
+						"katr6": null,
+						"katr7": null,
+						"katr8": null,
+						"katr9": null,
+						"katr10": null,
+						"stkzn": null,
+						"umsa1": null,
+						"txjcd": null,
+						"periv": null,
+						"abrvw": null,
+						"inspbydebi": null,
+						"inspatdebi": null,
+						"ktocd": null,
+						"pfort": null,
+						"werks": null,
+						"dtams": null,
+						"dtaws": null,
+						"duefl": null,
+						"hzuor": null,
+						"sperz": null,
+						"etikg": null,
+						"civve": null,
+						"milve": null,
+						"kdkg1": null,
+						"kdkg2": null,
+						"kdkg3": null,
+						"kdkg4": null,
+						"kdkg5": null,
+						"xknza": null,
+						"fityp": null,
+						"stcdt": null,
+						"stcd3": null,
+						"stcd4": null,
+						"stcd5": null,
+						"xicms": null,
+						"xxipi": null,
+						"xsubt": null,
+						"cfopc": null,
+						"txlw1": null,
+						"txlw2": null,
+						"ccc01": null,
+						"ccc02": null,
+						"ccc03": null,
+						"ccc04": null,
+						"cassd": null,
+						"knurl": null,
+						"j_1kfrepre": null,
+						"j_1kftbus": null,
+						"j_1kftind": null,
+						"confs": null,
+						"updat": null,
+						"uptim": null,
+						"nodel": null,
+						"dear6": null,
+						"cvp_xblck": null,
+						"suframa": null,
+						"rg": null,
+						"exp": null,
+						"uf": null,
+						"rgdate": null,
+						"ric": null,
+						"rne": null,
+						"rnedate": null,
+						"cnae": null,
+						"legalnat": null,
+						"crtn": null,
+						"icmstaxpay": null,
+						"indtyp": null,
+						"tdt": null,
+						"comsize": null,
+						"decregpc": null,
+						"__vso__r_palhgt": null,
+						"__vso__r_pal_ul": null,
+						"__vso__r_pk_mat": null,
+						"__vso__r_matpal": null,
+						"__vso__r_i_no_lyr": null,
+						"__vso__r_one_mat": null,
+						"__vso__r_one_sort": null,
+						"__vso__r_uld_side": null,
+						"__vso__r_load_pref": null,
+						"__vso__r_dpoint": null,
+						"alc": null,
+						"pmt_office": null,
+						"psofg": null,
+						"psois": null,
+						"pson1": null,
+						"pson2": null,
+						"pson3": null,
+						"psovn": null,
+						"psotl": null,
+						"psohs": null,
+						"psost": null,
+						"psoo1": null,
+						"psoo2": null,
+						"psoo3": null,
+						"psoo4": null,
+						"psoo5": null,
+						"oidrc": null,
+						"oid_poreqd": null,
+						"oipbl": null,
+						"res_cntry": null,
+						"ccode": null,
+						"fee_schedule": null,
+						"duns": null,
+						"duns4": null
 					},
-					"custmr_adrc": {
-						"PO_BOX_LOBBY": null,
-						"DELI_SERV_TYPE": null,
-						"DELI_SERV_NUMBER": null,
-						"DONT_USE_P": null,
-						"HOUSE_NUM1": null,
-						"STREET": null,
-						"CITY2": null,
-						"STR_SUPPL1": null,
-						"STR_SUPPL2": null,
-						"STR_SUPPL3": null,
-						"LOCATION": null,
-						"PO_BOX_NUM": null,
-						"POST_CODE3": null,
-						"HOUSE_NUM2": null
-					},
-					"custmr_knbk": {
-						"BVTYP": null,
-						"BKONT": null,
-						"KOINH": null,
-						"TIBAN": null,
-						"BANKN": null,
-						"BKREF": null,
-						"XEZER": null
-					},
-					"custmr_bnka": {
-						"BANKS": null,
-						"BANKL": null,
-						"BANKA": null,
-						"STRAS": null,
-						"ORT01": null
-					},
-					"custmr_knvv": {
-						"VKORG": null,
-						"SPART": null,
-						"VTWEG": null,
-						"BZIRK": null,
-						"VKBUR": null,
-						"VKGRP": null,
-						"KDGRP": null,
-						"KLABC": null,
-						"WAERS": null,
-						"RDOFF": null,
-						"AWAHR": null,
-						"BEGRU": null,
-						"VSORT": null,
-						"EIKTO": null,
-						"MEGRU": null,
-						"KURST": null,
-						"KALKS": null,
-						"KONDA": null,
-						"PLTYP": null,
-						"VERSG": null,
-						"BLIND": null,
-						"LPRIO": null,
-						"VSBED": null,
-						"VWERK": null,
-						"KZAZU": null,
-						"PODKZ": null,
-						"PODTG": null,
-						"AUTLF": null,
-						"KZTLF": null,
-						"ANTLF": null,
-						"UEBTK": null,
-						"UNTTO": null,
-						"UEBTO": null,
-						"MRNKZ": null,
-						"PERFK": null,
-						"PRFRE": null,
-						"BOKRE": null,
-						"INCO1": null,
-						"ZTERM": null,
-						"KABSS": null,
-						"KKBER": null,
-						"KTGRD": null,
-						"KVGR1": null,
-						"KVGR2": null,
-						"KVGR3": null,
-						"KVGR4": null
-					},
-					"custmr_knb1": {
-						"BUKRS": null,
-						"AKONT": null,
-						"KNRZE": null,
-						"BEGRU": null,
-						"WBRSL": null,
-						"ZUAWA": null,
-						"FDGRV": null,
-						"FRGRP": null,
-						"VZSKZ": null,
-						"ZINRT": null,
-						"ZINDT": null,
-						"DATLZ": null,
-						"ALTKN": null,
-						"EKVBD": null,
-						"PERNR": null,
-						"ZTERM": null,
-						"WAKON": null,
-						"KULTG": null,
-						"GUZTE": null,
-						"TOGRU": null,
-						"URLID": null,
-						"CESSION_KZ": null,
-						"XZVER": null,
-						"KNRZB": null,
-						"ZWELS": null,
-						"WEBTR": null,
-						"UZAWE": null,
-						"REMIT": null,
-						"LOCKB": null,
-						"ZAHLS": null,
-						"HBKID": null,
-						"ZGRUP": null,
-						"XPORE": null,
-						"XEDIP": null,
-						"VRSDG": null,
-						"SREGL": null,
-						"VRSNR": null,
-						"VLIBB": null,
-						"VRSZL": null,
-						"VRBKZ": null,
-						"VERDT": null,
-						"VRSPR": null,
-						"BUSAB": null,
-						"EIKTO": null,
-						"KVERM": null,
-						"TLFNS": null,
-						"XAUSZ": null,
-						"PERKZ": null,
-						"XDEZV": null,
-						"INTAD": null,
-						"TLFXS": null,
-						"ZAMIM": null,
-						"ZAMIV": null,
-						"ZAMIR": null,
-						"ZAMIO": null,
-						"ZAMIB": null
-					},
-					"custmr_knvk": {
-						"PARNR": null,
-						"ANRED": null,
-						"NAME1": null,
-						"NAMEV": null,
-						"TITEL_AP": null,
-						"PARGE": null,
-						"GBDAT": null,
-						"FAMST": null,
-						"PARLA": null,
-						"ABTNR": null,
-						"PAFKT": null,
-						"PARAU": null,
-						"PARVO": null,
-						"PAVIP": null
-					},
-					"custmr_adcp": {
-						"ADDRNUMBER": null,
-						"FUNCTION": null,
-						"DEPARTMENT": null,
-						"BUILDING": null,
-						"ROOMNUMBER": null,
-						"DEFLT_COMM": null
-					},
-					"custmr_adr12": {
-						"URI_ADDR": null,
-						"FLGDEFAULT": null
-					},
-					"custmr_adr2": {
-						"TEL_NUMBER": null,
-						"TEL_EXTENS": null,
-						"COUNTRY": null,
-						"FLGDEFAULT": null,
-						"TELF2": null
-					},
-					"custmr_adr3": {
-						"COUNTRY": null,
-						"FAX_NUMBER": null,
-						"FAX_EXTENS": null,
-						"FLGDEFAULT": null
-					},
-					"custmr_adr6": {
-						"SMTP_ADDR": null,
-						"FLGDEFAULT": null
-					},
-
-					
-					"gen_adrc": {
-						"gen_adrc_1": {
+					"cust_knb1": {
+						"cust_knb1_1": {
 							"entity_id": null,
-							"addrnumber": null,
-							"date_from": "",
-							"nation": "",
-							"date_to": null,
-							"title": null,
-							"name1": null,
-							"name2": null,
-							"name3": null,
-							"name4": null,
-							"name_text": null,
-							"name_co": null,
-							"city1": null,
-							"city2": null,
-							"city_code": null,
-							"cityp_code": null,
-							"home_city": null,
-							"cityh_code": null,
-							"chckstatus": null,
-							"regiogroup": null,
-							"post_code1": null,
-							"post_code2": null,
-							"post_code3": null,
-							"pcode1_ext": null,
-							"pcode2_ext": null,
-							"pcode3_ext": null,
-							"po_box": null,
-							"dont_use_p": null,
-							"po_box_num": null,
-							"po_box_loc": null,
-							"city_code2": null,
-							"po_box_reg": null,
-							"po_box_cty": null,
-							"postalarea": null,
-							"transpzone": null,
-							"street": null,
-							"dont_use_s": null,
-							"streetcode": null,
-							"streetabbr": null,
-							"house_num1": null,
-							"house_num2": null,
-							"house_num3": null,
-							"str_suppl1": null,
-							"str_suppl2": null,
-							"str_suppl3": null,
-							"location": null,
-							"building": null,
-							"floor": null,
-							"roomnumber": null,
-							"country": "",
-							"langu": "E",
-							"region": null,
-							"addr_group": null,
-							"flaggroups": null,
-							"pers_addr": null,
-							"sort1": null,
-							"sort2": null,
-							"sort_phn": null,
-							"deflt_comm": null,
-							"tel_number": null,
-							"tel_extens": null,
-							"fax_number": null,
-							"fax_extens": null,
-							"flagcomm2": null,
-							"flagcomm3": null,
-							"flagcomm4": null,
-							"flagcomm5": null,
-							"flagcomm6": null,
-							"flagcomm7": null,
-							"flagcomm8": null,
-							"flagcomm9": null,
-							"flagcomm10": null,
-							"flagcomm11": null,
-							"flagcomm12": null,
-							"flagcomm13": null,
-							"addrorigin": null,
-							"mc_name1": null,
-							"mc_city1": null,
-							"mc_street": null,
-							"extension1": null,
-							"extension2": null,
-							"time_zone": null,
-							"taxjurcode": null,
-							"address_id": null,
-							"langu_crea": null,
-							"adrc_uuid": null,
-							"uuid_belated": null,
-							"id_category": null,
-							"adrc_err_status": null,
-							"po_box_lobby": null,
-							"deli_serv_type": null,
-							"deli_serv_number": null,
-							"county_code": null,
-							"county": null,
-							"township_code": null,
-							"township": null,
-							"mc_county": null,
-							"mc_township": null,
-							"xpcpt": null
-						},
-						"gen_adrc_2": {
-							"entity_id": null,
-							"addrnumber": null,
-							"date_from": "",
-							"nation": "",
-							"date_to": null,
-							"title": null,
-							"name1": null,
-							"name2": null,
-							"name3": null,
-							"name4": null,
-							"name_text": null,
-							"name_co": null,
-							"city1": null,
-							"city2": null,
-							"city_code": null,
-							"cityp_code": null,
-							"home_city": null,
-							"cityh_code": null,
-							"chckstatus": null,
-							"regiogroup": null,
-							"post_code1": null,
-							"post_code2": null,
-							"post_code3": null,
-							"pcode1_ext": null,
-							"pcode2_ext": null,
-							"pcode3_ext": null,
-							"po_box": null,
-							"dont_use_p": null,
-							"po_box_num": null,
-							"po_box_loc": null,
-							"city_code2": null,
-							"po_box_reg": null,
-							"po_box_cty": null,
-							"postalarea": null,
-							"transpzone": null,
-							"street": null,
-							"dont_use_s": null,
-							"streetcode": null,
-							"streetabbr": null,
-							"house_num1": null,
-							"house_num2": null,
-							"house_num3": null,
-							"str_suppl1": null,
-							"str_suppl2": null,
-							"str_suppl3": null,
-							"location": null,
-							"building": null,
-							"floor": null,
-							"roomnumber": null,
-							"country": "",
-							"langu": null,
-							"region": null,
-							"addr_group": null,
-							"flaggroups": null,
-							"pers_addr": null,
-							"sort1": null,
-							"sort2": null,
-							"sort_phn": null,
-							"deflt_comm": null,
-							"tel_number": null,
-							"tel_extens": null,
-							"fax_number": null,
-							"fax_extens": null,
-							"flagcomm2": null,
-							"flagcomm3": null,
-							"flagcomm4": null,
-							"flagcomm5": null,
-							"flagcomm6": null,
-							"flagcomm7": null,
-							"flagcomm8": null,
-							"flagcomm9": null,
-							"flagcomm10": null,
-							"flagcomm11": null,
-							"flagcomm12": null,
-							"flagcomm13": null,
-							"addrorigin": null,
-							"mc_name1": null,
-							"mc_city1": null,
-							"mc_street": null,
-							"extension1": null,
-							"extension2": null,
-							"time_zone": null,
-							"taxjurcode": null,
-							"address_id": null,
-							"langu_crea": null,
-							"adrc_uuid": null,
-							"uuid_belated": null,
-							"id_category": null,
-							"adrc_err_status": null,
-							"po_box_lobby": null,
-							"deli_serv_type": null,
-							"deli_serv_number": null,
-							"county_code": null,
-							"county": null,
-							"township_code": null,
-							"township": null,
-							"mc_county": null,
-							"mc_township": null,
-							"xpcpt": null
-						}
-					},
-					"gen_bnka": {
-						"gen_bnka_1": {
-							"entity_id": null,
-							"banks": "",
-							"bankl": "",
+							"kunnr": null,
+							"bukrs": null,
+							"pernr": null,
 							"erdat": null,
 							"ernam": null,
-							"banka": null,
-							"provz": null,
-							"stras": null,
-							"ort01": null,
-							"swift": null,
-							"bgrup": null,
-							"xpgro": null,
+							"sperr": null,
 							"loevm": null,
-							"bnklz": null,
-							"pskto": null,
-							"adrnr": null,
-							"brnch": null,
-							"chkme": null,
-							"vers": null,
-							"iban_rule": null,
-							"sdd_b2b": null,
-							"sdd_cor1": null,
-							"sdd_rtrans": null,
-							"bicky": null,
-							"rccode": null,
-							"znocheck": null,
-							"zacc_len": null,
-							"zres1": null,
-							"zres2": null,
-							"zres3": null,
-							"zres4": null,
-							"zres5": null,
-							"zres6": null,
-							"zres7": null,
-							"zres8": null,
-							"zres9": null,
-							"zres10": null
+							"zuawa": null,
+							"busab": null,
+							"akont": null,
+							"begru": null,
+							"knrze": null,
+							"knrzb": null,
+							"zamim": null,
+							"zamiv": null,
+							"zamir": null,
+							"zamib": null,
+							"zamio": null,
+							"zwels": null,
+							"xverr": null,
+							"zahls": null,
+							"zterm": null,
+							"wakon": null,
+							"vzskz": null,
+							"zindt": null,
+							"zinrt": null,
+							"eikto": null,
+							"zsabe": null,
+							"kverm": null,
+							"fdgrv": null,
+							"vrbkz": null,
+							"vlibb": null,
+							"vrszl": null,
+							"vrspr": null,
+							"vrsnr": null,
+							"verdt": null,
+							"perkz": null,
+							"xdezv": null,
+							"xausz": null,
+							"webtr": null,
+							"remit": null,
+							"datlz": null,
+							"xzver": null,
+							"togru": null,
+							"kultg": null,
+							"hbkid": null,
+							"xpore": null,
+							"blnkz": null,
+							"altkn": null,
+							"zgrup": null,
+							"urlid": null,
+							"mgrup": null,
+							"lockb": null,
+							"uzawe": null,
+							"ekvbd": null,
+							"sregl": null,
+							"xedip": null,
+							"frgrp": null,
+							"vrsdg": null,
+							"tlfxs": null,
+							"intad": null,
+							"xknzb": null,
+							"guzte": null,
+							"gricd": null,
+							"gridt": null,
+							"wbrsl": null,
+							"confs": null,
+							"updat": null,
+							"uptim": null,
+							"nodel": null,
+							"tlfns": null,
+							"cession_kz": null,
+							"avsnd": null,
+							"ad_hash": null,
+							"qland": null,
+							"cvp_xblck_b": null,
+							"ciiucode": null,
+							"gmvkzd": null,
+							"intercocd": null
 						}
 					},
-					"vnd_knvk": {
-						"vnd_knvk_1": {
+					"cust_knbk": {
+						"cust_knbk_1": {
 							"entity_id": null,
-							"parnr": "",
+							"kunnr": null,
+							"banks": null,
+							"bankl": null,
+							"bankn": null,
+							"bkont": null,
+							"bvtyp": null,
+							"xezer": null,
+							"bkref": null,
+							"koinh": null,
+							"ebpp_accname": null,
+							"ebpp_bvstatus": null,
+							"kovon": null,
+							"kobis": null
+						}
+					},
+					"cust_knbw": {
+						"cust_knbw_1": {
+							"entity_id": null,
+							"kunnr": null,
+							"bukrs": null,
+							"witht": null,
+							"wt_withcd": null,
+							"wt_agent": null,
+							"wt_agtdf": null,
+							"wt_agtdt": null,
+							"wt_wtstcd": null,
+							"wt_exnr": null,
+							"wt_exrt": null,
+							"wt_exdf": null,
+							"wt_exdt": null,
+							"wt_wtexrs": null
+						}
+					},
+					"cust_knb5": {
+						"cust_knb5_1": {
+							"entity_id": null,
+							"kunnr": null,
+							"bukrs": null,
+							"madat": null,
+							"mahns": null,
+							"gmvdt": null
+						}
+					},
+					"cust_knvp": {
+						"cust_knvp_1": {
+							"entity_id": null,
+							"kunnr": null,
+							"vkorg": null,
+							"vtweg": null,
+							"spart": null,
+							"parvw": null,
+							"parza": null,
+							"kunn2": null,
+							"lifnr": null,
+							"pernr": null,
+							"parnr": null,
+							"defpa": null
+						}
+					},
+					"cust_knvv": {
+						"cust_knvv_1": {
+							"entity_id": null,
+							"kunnr": null,
+							"vkorg": null,
+							"vtweg": null,
+							"spart": null,
+							"ernam": null,
+							"erdat": null,
+							"begru": null,
+							"loevm": null,
+							"versg": null,
+							"aufsd": null,
+							"kalks": null,
+							"kdgrp": null,
+							"bzirk": null,
+							"konda": null,
+							"pltyp": null,
+							"awahr": null,
+							"inco1": null,
+							"inco2": null,
+							"lifsd": null,
+							"autlf": null,
+							"antlf": null,
+							"kztlf": null,
+							"kzazu": null,
+							"chspl": null,
+							"lprio": null,
+							"eikto": null,
+							"vsbed": null,
+							"faksd": null,
+							"mrnkz": null,
+							"perfk": null,
+							"perrl": null,
+							"kvakz": null,
+							"kvawt": null,
+							"waers": null,
+							"klabc": null,
+							"ktgrd": null,
+							"zterm": null,
+							"vwerk": null,
+							"vkgrp": null,
+							"vkbur": null,
+							"vsort": null,
+							"kvgr1": null,
+							"kvgr2": null,
+							"kvgr3": null,
+							"kvgr4": null,
+							"kvgr5": null,
+							"bokre": null,
+							"boidt": null,
+							"kurst": null,
+							"prfre": null,
+							"prat1": null,
+							"prat2": null,
+							"prat3": null,
+							"prat4": null,
+							"prat5": null,
+							"prat6": null,
+							"prat7": null,
+							"prat8": null,
+							"prat9": null,
+							"prata": null,
+							"kabss": null,
+							"kkber": null,
+							"cassd": null,
+							"rdoff": null,
+							"agrel": null,
+							"megru": null,
+							"uebto": null,
+							"untto": null,
+							"uebtk": null,
+							"pvksm": null,
+							"podkz": null,
+							"podtg": null,
+							"blind": null,
+							"carrier_notif": null,
+							"cvp_xblck_v": null,
+							"__bev1__emlgpfand": null,
+							"__bev1__emlgforts": null,
+							"oic_mot": null,
+							"oilastor": null,
+							"oic_hobind": null,
+							"oiabtnr": null,
+							"oipafkt": null,
+							"oigroupnam": null,
+							"oihantyp": null,
+							"oiinex": null,
+							"oipflic": null,
+							"oihcgroup": null,
+							"incov": null,
+							"inco2_l": null,
+							"inco3_l": null,
+							"fsh_kvgr6": null,
+							"fsh_kvgr7": null,
+							"fsh_kvgr8": null,
+							"fsh_kvgr9": null,
+							"fsh_kvgr10": null,
+							"fsh_grreg": null,
+							"fsh_resgy": null,
+							"fsh_sc_cid": null,
+							"fsh_vas_detc": null,
+							"fsh_vas_cg": null,
+							"fsh_grsgy": null,
+							"fsh_ss": null,
+							"fsh_msocdc": null,
+							"fsh_msopid": null
+						}
+					},
+					"cust_knvi": {
+						"cust_knvi_1": {
+							"entity_id": null,
+							"kunnr": null,
+							"aland": null,
+							"tatyp": null,
+							"taxkd": null
+						}
+					},
+					"gen_adcp": {
+						"gen_adcp_1": {
+							"addrnumber": null,
+							"persnumber": null,
+							"date_from": null,
+							"nation": null,
+							"date_to": null,
+							"comp_pers": null,
+							"so_key": null,
+							"department": null,
+							"function": null,
+							"building": null,
+							"floor": null,
+							"roomnumber": null,
+							"id_code": null,
+							"ih_mail": null,
+							"sort1": null,
+							"sort2": null,
+							"sort_phn": null,
+							"alt_compny": null,
+							"deflt_comm": null,
+							"tel_number": null,
+							"tel_extens": null,
+							"fax_number": null,
+							"fax_extens": null,
+							"flagcomm2": null,
+							"flagcomm3": null,
+							"flagcomm4": null,
+							"flagcomm5": null,
+							"flagcomm6": null,
+							"flagcomm7": null,
+							"flagcomm8": null,
+							"flagcomm9": null,
+							"flagcomm10": null,
+							"flagcomm11": null,
+							"flagcomm12": null,
+							"flagcomm13": null,
+							"adcp_uuid": null,
+							"uuid_belated": null,
+							"id_category": null,
+							"adcp_err_status": null,
+							"xpcpt": null
+						}
+					},
+					"gen_knvk": {
+						"gen_knvk_1": {
+							"parnr": null,
 							"kunnr": null,
 							"namev": null,
 							"name1": null,
@@ -704,168 +630,277 @@
 							"cvp_xblck_k": null
 						}
 					},
+					"gen_adrc": {
+						"gen_adrc_1": {
+							"entity_id": null,
+							"addrnumber": null,
+							"date_from": null,
+							"nation": null,
+							"date_to": null,
+							"title": null,
+							"name1": null,
+							"name2": null,
+							"name3": null,
+							"name4": null,
+							"name_text": null,
+							"name_co": null,
+							"city1": null,
+							"city2": null,
+							"city_code": null,
+							"cityp_code": null,
+							"home_city": null,
+							"cityh_code": null,
+							"chckstatus": null,
+							"regiogroup": null,
+							"post_code1": null,
+							"post_code2": null,
+							"post_code3": null,
+							"pcode1_ext": null,
+							"pcode2_ext": null,
+							"pcode3_ext": null,
+							"po_box": null,
+							"dont_use_p": null,
+							"po_box_num": null,
+							"po_box_loc": null,
+							"city_code2": null,
+							"po_box_reg": null,
+							"po_box_cty": null,
+							"postalarea": null,
+							"transpzone": null,
+							"street": null,
+							"dont_use_s": null,
+							"streetcode": null,
+							"streetabbr": null,
+							"house_num1": null,
+							"house_num2": null,
+							"house_num3": null,
+							"str_suppl1": null,
+							"str_suppl2": null,
+							"str_suppl3": null,
+							"location": null,
+							"building": null,
+							"floor": null,
+							"roomnumber": null,
+							"country": null,
+							"langu": null,
+							"region": null,
+							"addr_group": null,
+							"flaggroups": null,
+							"pers_addr": null,
+							"sort1": null,
+							"sort2": null,
+							"sort_phn": null,
+							"deflt_comm": null,
+							"tel_number": null,
+							"tel_extens": null,
+							"fax_number": null,
+							"fax_extens": null,
+							"flagcomm2": null,
+							"flagcomm3": null,
+							"flagcomm4": null,
+							"flagcomm5": null,
+							"flagcomm6": null,
+							"flagcomm7": null,
+							"flagcomm8": null,
+							"flagcomm9": null,
+							"flagcomm10": null,
+							"flagcomm11": null,
+							"flagcomm12": null,
+							"flagcomm13": null,
+							"addrorigin": null,
+							"mc_name1": null,
+							"mc_city1": null,
+							"mc_street": null,
+							"extension1": null,
+							"extension2": null,
+							"time_zone": null,
+							"taxjurcode": null,
+							"address_id": null,
+							"langu_crea": null,
+							"adrc_uuid": null,
+							"uuid_belated": null,
+							"id_category": null,
+							"adrc_err_status": null,
+							"po_box_lobby": null,
+							"deli_serv_type": null,
+							"deli_serv_number": null,
+							"county_code": null,
+							"county": null,
+							"township_code": null,
+							"township": null,
+							"mc_county": null,
+							"mc_township": null,
+							"xpcpt": null
+						},
+						"gen_adrc_2": {
+							"entity_id": null,
+							"addrnumber": null,
+							"date_from": null,
+							"nation": null,
+							"date_to": null,
+							"title": null,
+							"name1": null,
+							"name2": null,
+							"name3": null,
+							"name4": null,
+							"name_text": null,
+							"name_co": null,
+							"city1": null,
+							"city2": null,
+							"city_code": null,
+							"cityp_code": null,
+							"home_city": null,
+							"cityh_code": null,
+							"chckstatus": null,
+							"regiogroup": null,
+							"post_code1": null,
+							"post_code2": null,
+							"post_code3": null,
+							"pcode1_ext": null,
+							"pcode2_ext": null,
+							"pcode3_ext": null,
+							"po_box": null,
+							"dont_use_p": null,
+							"po_box_num": null,
+							"po_box_loc": null,
+							"city_code2": null,
+							"po_box_reg": null,
+							"po_box_cty": null,
+							"postalarea": null,
+							"transpzone": null,
+							"street": null,
+							"dont_use_s": null,
+							"streetcode": null,
+							"streetabbr": null,
+							"house_num1": null,
+							"house_num2": null,
+							"house_num3": null,
+							"str_suppl1": null,
+							"str_suppl2": null,
+							"str_suppl3": null,
+							"location": null,
+							"building": null,
+							"floor": null,
+							"roomnumber": null,
+							"country": null,
+							"langu": null,
+							"region": null,
+							"addr_group": null,
+							"flaggroups": null,
+							"pers_addr": null,
+							"sort1": null,
+							"sort2": null,
+							"sort_phn": null,
+							"deflt_comm": null,
+							"tel_number": null,
+							"tel_extens": null,
+							"fax_number": null,
+							"fax_extens": null,
+							"flagcomm2": null,
+							"flagcomm3": null,
+							"flagcomm4": null,
+							"flagcomm5": null,
+							"flagcomm6": null,
+							"flagcomm7": null,
+							"flagcomm8": null,
+							"flagcomm9": null,
+							"flagcomm10": null,
+							"flagcomm11": null,
+							"flagcomm12": null,
+							"flagcomm13": null,
+							"addrorigin": null,
+							"mc_name1": null,
+							"mc_city1": null,
+							"mc_street": null,
+							"extension1": null,
+							"extension2": null,
+							"time_zone": null,
+							"taxjurcode": null,
+							"address_id": null,
+							"langu_crea": null,
+							"adrc_uuid": null,
+							"uuid_belated": null,
+							"id_category": null,
+							"adrc_err_status": null,
+							"po_box_lobby": null,
+							"deli_serv_type": null,
+							"deli_serv_number": null,
+							"county_code": null,
+							"county": null,
+							"township_code": null,
+							"township": null,
+							"mc_county": null,
+							"mc_township": null,
+							"xpcpt": null
+						}
+					},
+					"gen_bnka": {
+						"gen_bnka_1": {
+							"entity_id": null,
+							"banks": null,
+							"bankl": null,
+							"erdat": null,
+							"ernam": null,
+							"banka": null,
+							"provz": null,
+							"stras": null,
+							"ort01": null,
+							"swift": null,
+							"bgrup": null,
+							"xpgro": null,
+							"loevm": null,
+							"bnklz": null,
+							"pskto": null,
+							"adrnr": null,
+							"brnch": null,
+							"chkme": null,
+							"vers": null,
+							"iban_rule": null,
+							"sdd_b2b": null,
+							"sdd_cor1": null,
+							"sdd_rtrans": null,
+							"bicky": null,
+							"rccode": null,
+							"znocheck": null,
+							"zacc_len": null,
+							"zres1": null,
+							"zres2": null,
+							"zres3": null,
+							"zres4": null,
+							"zres5": null,
+							"zres6": null,
+							"zres7": null,
+							"zres8": null,
+							"zres9": null,
+							"zres10": null
+						}
+					},
 					"pra_bp_ad": {
 						"pra_bp_ad_1": {
 							"entity_id": null,
 							"addr_type": null,
-							"adrnr": "",
+							"adrnr": null,
 							"custid": null,
 							"vendid": null,
 							"oiu_cruser": null,
 							"oiu_timestamp": null
 						}
 					},
-					"pra_bp_vend_esc": {
-						"pra_bp_vend_esc_1": {
-							"entity_id": null,
-							"name_id": null,
-							"owner_nm_last": null,
-							"owner_nm_first": null,
-							"owner_nm_middle": null,
-							"owner_nm_prefix": null,
-							"owner_nm_suffix": null,
-							"owner_nm_title": null,
-							"owner_address1": null,
-							"owner_address2": null,
-							"owner_address3": null,
-							"owner_country": null,
-							"owner_taxid": null,
-							"owner_taxid_ext": null,
-							"onwer_dob": null,
-							"oiu_timestamp": null,
-							"change_user": null,
-							"change_timestamp": null,
-							"vendid": null
-						}
-					},
 					"pra_bp_cust_md": {
 						"pra_bp_cust_md_1": {
 							"entity_id": null,
-							"custid": "",
+							"custid": null,
 							"intercocd": null,
 							"oiu_timestamp": null,
 							"oiu_cruser": null,
 							"change_user": null,
 							"change_timestamp": null
 						}
-					},
-					"pra_bp_vend_md": {
-						"pra_bp_vend_md_1": {
-							"entity_id": null,
-							"vendid": null,
-							"intercocd": null,
-							"enty_cd": "",
-							"direct_pay_fl": null,
-							"do_not_rpt_onrr": null,
-							"owner_min_pay": "",
-							"pay_frequency": "",
-							"do_not_recoup": null,
-							"b_notice": null,
-							"payment_type": "",
-							"no_check_stmt": null,
-							"levy": null,
-							"kglnd": "",
-							"cdex_company": null,
-							"tribe_no": null,
-							"backup_withhold": null,
-							"kgreg": "",
-							"tax_id_type": null,
-							"oiu_cruser": null,
-							"oiu_timestamp": null,
-							"change_user": null,
-							"change_timestamp": null,
-							"tin_match_date": null,
-							"tin_resp_date": null,
-							"tin_w8": null,
-							"tin_w9": null,
-							"tin_others": null,
-							"bn1_date": null,
-							"bn1_resp_date": null,
-							"bn1_w8": null,
-							"bn1_w9": null,
-							"bn1_others": null,
-							"bn2_date": null,
-							"irs_resp_date": null,
-							"flag_1099": null,
-							"flag_nra": null,
-							"rep_entity_type": null,
-							"tin_comment_no": null,
-							"b1n_comment_no": null,
-							"b2n_comment_no": null,
-							"recoup_pc": null,
-							"recip_code_1042s": null
-						}
 					}
 				}
 			}
-
 		}
 	},
-	"createCRDDConfig": [
-
-		{
-			"controlID": "generalDataTitleId",
-			"controlTable": "TSAD3",
-			"controlField": "title",
-			"controlFieldName": "title_MEDI"
-		}, {
-			"controlID": "taxTypeId",
-			"controlTable": "J_1AFITPV",
-			"controlField": "j_1afitp",
-			"controlFieldName": "text60"
-		}, {
-			"controlID": "taxInfoSocialInsuCodeId",
-			"controlTable": "J_1AACT",
-			"controlField": "actss",
-			"controlFieldName": "actss"
-		}, {
-			"controlID": "compCodesMinorIndicatorId",
-			"controlTable": "T059M",
-			"controlField": "mindk",
-			"controlFieldName": "mindk"
-		}, {
-			"controlID": "compCodesReleaseGroupId",
-			"controlTable": "VBWF08",
-			"controlField": "frgrp",
-			"controlFieldName": "frgrt"
-		}, {
-			"controlID": "compCodesGroupKeyId",
-			"controlTable": "TZGR",
-			"controlField": "zgrup",
-			"controlFieldName": "name1"
-		}, {
-			"controlID": "compCodesPayMethodSuppliementId",
-			"controlTable": "T042F",
-			"controlField": "uzawe",
-			"controlFieldName": "txt30"
-		}, {
-			"controlID": "compCodesPaymentBlockId",
-			"controlTable": "T008",
-			"controlField": "zahls",
-			"controlFieldName": "textl"
-		}, {
-			"controlID": "purOrgPurOrgId",
-			"controlTable": "T024E",
-			"controlField": "ekorg",
-			"controlFieldName": "ekotx"
-		}, {
-			"controlID": "purOrgProactContrlProfileId",
-			"controlTable": "TWVMO",
-			"controlField": "paprf",
-			"controlFieldName": "prtxt"
-		}, {
-			"controlID": "praDataAddrTabAddressTypeId",
-			"controlTable": "OIUCM_ADDR_TYPE",
-			"controlField": "addr_TYPE",
-			"controlFieldName": "description"
-		}, {
-			"controlID": "praDataAddrTabTitleId",
-			"controlTable": "TSAD3",
-			"controlField": "title",
-			"controlFieldName": "title_MEDI"
-		}
-
-	],
 	"createMandtFields": [{
 			"id": "idERPPOBOXPOSTALCODE",
 			"Name": "PO Box Postal Code/ PO Box",
@@ -1142,1827 +1177,7 @@
 			"dateCreation": ""
 		}
 	},
-	"paymentMethodData": [{
-			"compCode": "0110",
-			"payMethod": [{
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "P",
-				"text": "Bank transfer (Payroll)"
-			}, {
-				"key": "T",
-				"text": "Bank transfer (ACH CTX)"
-			}]
-		}, {
-			"compCode": "0101",
-			"payMethod": [{
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "E",
-				"text": "EDI"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "I",
-				"text": "EFT - Scotia bank"
-			}, {
-				"key": "T",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}, {
-				"key": "Y",
-				"text": "Domestic wire-Other than CA/US"
-			}, {
-				"key": "Z",
-				"text": "Foreign Wire-Other than CA/US"
-			}]
-		}, {
-			"compCode": "0168",
-			"payMethod": [{
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "P",
-				"text": "Bank transfer (Payroll)"
-			}, {
-				"key": "T",
-				"text": "Bank transfer (ACH CTX)"
-			}]
-		}, {
-			"compCode": "0171",
-			"payMethod": [{
-				"key": "7",
-				"text": "BAML-Foreign Wire"
-			}, {
-				"key": "8",
-				"text": "BAML-Domestic wire"
-			}, {
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "P",
-				"text": "Bank transfer (Payroll)"
-			}, {
-				"key": "T",
-				"text": "Bank transfer (ACH CTX)"
-			}]
-		}, {
-			"compCode": "0190",
-			"payMethod": [{
-				"key": "1",
-				"text": "Check"
-			}, {
-				"key": "6",
-				"text": "BAML-ACH"
-			}, {
-				"key": "7",
-				"text": "BAML-Foreign Wire"
-			}, {
-				"key": "8",
-				"text": "BAML-Domestic wire"
-			}, {
-				"key": "9",
-				"text": "BAML-Check"
-			}, {
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "K",
-				"text": "Book Transfer"
-			}, {
-				"key": "P",
-				"text": "Bank transfer (Payroll)"
-			}, {
-				"key": "Q",
-				"text": "Wells Fargo PCard"
-			}, {
-				"key": "R",
-				"text": "Bank transfer (RETIREES)"
-			}, {
-				"key": "T",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}, {
-				"key": "X",
-				"text": "BAML-Retirees"
-			}]
-		}, {
-			"compCode": "0195",
-			"payMethod": [{
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "P",
-				"text": "Bank transfer (Payroll)"
-			}, {
-				"key": "T",
-				"text": "Bank transfer (ACH CTX)"
-			}]
-		}, {
-			"compCode": "0198",
-			"payMethod": [{
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "P",
-				"text": "Bank transfer (Payroll)"
-			}, {
-				"key": "T",
-				"text": "Bank transfer (ACH CTX)"
-			}]
-		}, {
-			"compCode": "0199",
-			"payMethod": [{
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "P",
-				"text": "Bank transfer (Payroll)"
-			}, {
-				"key": "T",
-				"text": "Bank transfer (ACH CTX)"
-			}]
-		}, {
-			"compCode": "0200",
-			"payMethod": [{
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "P",
-				"text": "Bank transfer (Payroll)"
-			}, {
-				"key": "T",
-				"text": "Bank transfer (ACH CTX)"
-			}]
-		}, {
-			"compCode": "0201",
-			"payMethod": [{
-				"key": "7",
-				"text": "BAML-Wire Payment"
-			}]
-		}, {
-			"compCode": "0202",
-			"payMethod": [{
-				"key": "5",
-				"text": "BAML-MX Book Transfer"
-			}, {
-				"key": "6",
-				"text": "BAML-ACH/TEF"
-			}, {
-				"key": "7",
-				"text": "BAML-SPID/USD wires"
-			}, {
-				"key": "8",
-				"text": "BAML-SPEI/Domestic wire (MXN)"
-			}, {
-				"key": "C",
-				"text": "Cheque"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "W",
-				"text": "Domestic wires"
-			}, {
-				"key": "Y",
-				"text": "BAML-FEDWIRE/USD wires"
-			}]
-		}, {
-			"compCode": "0203",
-			"payMethod": [{
-				"key": "7",
-				"text": "BAML-Wire Payment"
-			}, {
-				"key": "D",
-				"text": "Buitl.bet.via bankoverboeking"
-			}, {
-				"key": "B",
-				"text": "Bankbetaling"
-			}, {
-				"key": "I",
-				"text": "Bankincasso"
-			}, {
-				"key": "J",
-				"text": "Postgiroincasso"
-			}, {
-				"key": "P",
-				"text": "Postgiro-betaling"
-			}]
-		}, {
-			"compCode": "0204",
-			"payMethod": [{
-				"key": "6",
-				"text": "BAML-ACH/TEF"
-			}, {
-				"key": "7",
-				"text": "BAML-SPID/USD wires"
-			}, {
-				"key": "8",
-				"text": "BAML-SPEI/Domestic wire (MXN)"
-			}, {
-				"key": "C",
-				"text": "Cheque"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}, {
-				"key": "Y",
-				"text": "BAML-FEDWIRE/USD wires"
-			}]
-		}, {
-			"compCode": "0302",
-			"payMethod": [{
-				"key": "C",
-				"text": "Cheque"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "K",
-				"text": "Book Transfer"
-			}, {
-				"key": "P",
-				"text": "Bank transfer (Payroll)"
-			}, {
-				"key": "Q",
-				"text": "Wells Fargo PCard"
-			}, {
-				"key": "T",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}]
-		}, {
-			"compCode": "0302",
-			"payMethod": [{
-				"key": "C",
-				"text": "Cheque"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "K",
-				"text": "Book Transfer"
-			}, {
-				"key": "P",
-				"text": "Bank transfer (Payroll)"
-			}, {
-				"key": "Q",
-				"text": "Wells Fargo PCard"
-			}, {
-				"key": "T",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}]
-		}, {
-			"compCode": "0309",
-			"payMethod": [{
-				"key": "C",
-				"text": "Cheque"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "P",
-				"text": "Bank transfer (Payroll)"
-			}, {
-				"key": "T",
-				"text": "Bank transfer (ACH CTX)"
-			}]
-		}, {
-			"compCode": "0311",
-			"payMethod": [{
-				"key": "C",
-				"text": "Cheque"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "K",
-				"text": "Book Transfer"
-			}, {
-				"key": "P",
-				"text": "Bank transfer (Payroll)"
-			}, {
-				"key": "Q",
-				"text": "Wells Fargo PCard"
-			}, {
-				"key": "T",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}]
-		}, {
-			"compCode": "0312",
-			"payMethod": [{
-				"key": "C",
-				"text": "Cheque"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "K",
-				"text": "Book Transfer"
-			}, {
-				"key": "P",
-				"text": "Bank transfer (Payroll)"
-			}, {
-				"key": "Q",
-				"text": "Wells Fargo PCard"
-			}, {
-				"key": "T",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}]
-		}, {
-			"compCode": "0328",
-			"payMethod": [{
-				"key": "6",
-				"text": "BAML-ACH"
-			}, {
-				"key": "7",
-				"text": "BAML-Foreign Wire"
-			}, {
-				"key": "8",
-				"text": "BAML-Domestic wire"
-			}, {
-				"key": "9",
-				"text": "BAML-Check"
-			}, {
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "P",
-				"text": "Bank transfer (Payroll)"
-			}, {
-				"key": "R",
-				"text": "Bank transfer (RETIREES)"
-			}, {
-				"key": "T",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}]
-		}, {
-			"compCode": "0329",
-			"payMethod": [{
-				"key": "6",
-				"text": "BAML-ACH"
-			}, {
-				"key": "7",
-				"text": "BAML-Foreign Wire"
-			}, {
-				"key": "8",
-				"text": "BAML-Domestic wire"
-			}, {
-				"key": "9",
-				"text": "BAML-Check"
-			}, {
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "P",
-				"text": "Bank transfer (Payroll)"
-			}, {
-				"key": "R",
-				"text": "Bank transfer (RETIREES)"
-			}, {
-				"key": "T",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}]
-		}, {
-			"compCode": "0330",
-			"payMethod": [{
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "P",
-				"text": "Bank transfer (Payroll)"
-			}, {
-				"key": "T",
-				"text": "Bank transfer (ACH CTX)"
-			}]
-		}, {
-			"compCode": "0331",
-			"payMethod": [{
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "P",
-				"text": "Bank transfer (Payroll)"
-			}, {
-				"key": "T",
-				"text": "Bank transfer (ACH CTX)"
-			}]
-		}, {
-			"compCode": "0334",
-			"payMethod": [{
-				"key": "1",
-				"text": "BOA-Bank Draft (MYR)"
-			}, {
-				"key": "2",
-				"text": "BOA-Bank Draft (USD)"
-			}, {
-				"key": "3",
-				"text": "BOA-ACH"
-			}, {
-				"key": "4",
-				"text": "BOA-Foreign Wire"
-			}, {
-				"key": "5",
-				"text": "BOA-Domestic wire"
-			}, {
-				"key": "7",
-				"text": "BAML-Foreign Wire"
-			}, {
-				"key": "8",
-				"text": "BAML-Domestic wire"
-			}, {
-				"key": "B",
-				"text": "Bank Draft"
-			}, {
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "ACH"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "K",
-				"text": "Book Transfer"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}]
-		}, {
-			"compCode": "0335",
-			"payMethod": [{
-				"key": "1",
-				"text": "BOA-Bank Draft (MYR)"
-			}, {
-				"key": "2",
-				"text": "BOA-Bank Draft (USD)"
-			}, {
-				"key": "3",
-				"text": "BOA-ACH"
-			}, {
-				"key": "4",
-				"text": "BOA-Foreign Wire"
-			}, {
-				"key": "5",
-				"text": "BOA-Domestic wire"
-			}, {
-				"key": "7",
-				"text": "BAML-Foreign Wire"
-			}, {
-				"key": "8",
-				"text": "BAML-Domestic wire"
-			}, {
-				"key": "B",
-				"text": "Bank Draft"
-			}, {
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "ACH"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "K",
-				"text": "Book Transfer"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}, {
-				"key": "Y",
-				"text": "Foreign Wire - Manual Upload"
-			}, {
-				"key": "Z",
-				"text": "ACH - Manual Upload"
-			}]
-		}, {
-			"compCode": "0337",
-			"payMethod": [{
-				"key": "Z",
-				"text": "ACH - Manual Upload"
-			}, {
-				"key": "3",
-				"text": "BAML- DARF payments"
-			}, {
-				"key": "5",
-				"text": "BAML- Boleto payments"
-			}, {
-				"key": "8",
-				"text": "BAML-TED payments"
-			}, {
-				"key": "C",
-				"text": "Cheque"
-			}, {
-				"key": "D",
-				"text": "Boleto/Duplicata"
-			}, {
-				"key": "P",
-				"text": ""
-			}, {
-				"key": "T",
-				"text": ""
-			}]
-		}, {
-			"compCode": "0338",
-			"payMethod": [{
-				"key": "1",
-				"text": "BOA-Bank Draft (MYR)"
-			}, {
-				"key": "2",
-				"text": "BOA-Bank Draft (USD)"
-			}, {
-				"key": "3",
-				"text": "BOA-ACH"
-			}, {
-				"key": "4",
-				"text": "BOA-Foreign Wire"
-			}, {
-				"key": "5",
-				"text": "BOA-Domestic wire"
-			}]
-		}, {
-			"compCode": "0343",
-			"payMethod": [{
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "P",
-				"text": "Bank transfer (Payroll)"
-			}, {
-				"key": "T",
-				"text": "Bank transfer (ACH CTX)"
-			}]
-		}, {
-			"compCode": "0344",
-			"payMethod": [{
-				"key": "F",
-				"text": "Foreign Wire"
-			}]
-		}, {
-			"compCode": "0348",
-			"payMethod": [{
-				"key": "7",
-				"text": "BAML-Foreign Wire"
-			}, {
-				"key": "8",
-				"text": "BAML-Domestic wire"
-			}]
-		}, {
-			"compCode": "0349",
-			"payMethod": [{
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}]
-		}, {
-			"compCode": "0350",
-			"payMethod": [{
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "K",
-				"text": ""
-			}, {
-				"key": "P",
-				"text": ""
-			}, {
-				"key": "Q",
-				"text": ""
-			}, {
-				"key": "T",
-				"text": ""
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}]
-		}, {
-			"compCode": "0356",
-			"payMethod": [{
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "P",
-				"text": "Bank transfer (Payroll)"
-			}, {
-				"key": "T",
-				"text": "Bank transfer (ACH CTX)"
-			}]
-		}, {
-			"compCode": "0357",
-			"payMethod": [{
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "P",
-				"text": "Bank transfer (Payroll)"
-			}, {
-				"key": "T",
-				"text": "Bank transfer (ACH CTX)"
-			}]
-		}, {
-			"compCode": "0358",
-			"payMethod": [{
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "P",
-				"text": "Bank transfer (Payroll)"
-			}, {
-				"key": "T",
-				"text": "Bank transfer (ACH CTX)"
-			}]
-		}, {
-			"compCode": "0362",
-			"payMethod": [{
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "P",
-				"text": "Bank transfer (Payroll)"
-			}, {
-				"key": "T",
-				"text": "Bank transfer (ACH CTX)"
-			}]
-		}, {
-			"compCode": "0364",
-			"payMethod": [{
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}]
-		}, {
-			"compCode": "0365",
-			"payMethod": [{
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "P",
-				"text": "Bank transfer (Payroll)"
-			}, {
-				"key": "T",
-				"text": "Bank transfer (ACH CTX)"
-			}]
-		}, {
-			"compCode": "0367",
-			"payMethod": [{
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "P",
-				"text": "Bank transfer (Payroll)"
-			}, {
-				"key": "T",
-				"text": "Bank transfer (ACH CTX)"
-			}]
-		}, {
-			"compCode": "0368",
-			"payMethod": [{
-				"key": "A",
-				"text": "ACB Payments"
-			}, {
-				"key": "C",
-				"text": "Prenumbered Cheques"
-			}, {
-				"key": "D",
-				"text": "ACB Collection"
-			}, {
-				"key": "E",
-				"text": "EFT Payment"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}]
-		}, {
-			"compCode": "0378",
-			"payMethod": [{
-				"key": "8",
-				"text": "BAML-Wire Payment"
-			}, {
-				"key": "C",
-				"text": "Cheque papel"
-			}, {
-				"key": "D",
-				"text": "Débito Directo"
-			}, {
-				"key": "P",
-				"text": "Cheque prenumerado"
-			}, {
-				"key": "T",
-				"text": "Transferencia"
-			}]
-		}, {
-			"compCode": "0382",
-			"payMethod": [{
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}]
-		}, {
-			"compCode": "0383",
-			"payMethod": [{
-				"key": "C",
-				"text": "Cheque"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CCD)"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}]
-		}, {
-			"compCode": "0387",
-			"payMethod": [{
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}]
-		}, {
-			"compCode": "0388",
-			"payMethod": [{
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "P",
-				"text": "Bank transfer (Payroll)"
-			}, {
-				"key": "T",
-				"text": "Bank transfer (ACH CTX)"
-			}]
-		}, {
-			"compCode": "0389",
-			"payMethod": [{
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "P",
-				"text": "Bank transfer (Payroll)"
-			}, {
-				"key": "T",
-				"text": "Bank transfer (ACH CTX)"
-			}]
-		}, {
-			"compCode": "0390",
-			"payMethod": [{
-				"key": "6",
-				"text": "BAML-ACH"
-			}, {
-				"key": "7",
-				"text": "BAML-Foreign Wire"
-			}, {
-				"key": "8",
-				"text": "BAML-Domestic wire"
-			}, {
-				"key": "9",
-				"text": "BAML-Check"
-			}, {
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "P",
-				"text": "Bank transfer (Payroll)"
-			}, {
-				"key": "T",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}]
-		}, {
-			"compCode": "0391",
-			"payMethod": [{
-				"key": "6",
-				"text": "BAML-ACH"
-			}, {
-				"key": "7",
-				"text": "BAML-Foreign Wire"
-			}, {
-				"key": "8",
-				"text": "BAML-Domestic wire"
-			}, {
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "P",
-				"text": "Bank transfer (Payroll)"
-			}, {
-				"key": "T",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}]
-		}, {
-			"compCode": "0399",
-			"payMethod": [{
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "K",
-				"text": "Book Transfer"
-			}, {
-				"key": "P",
-				"text": "Bank transfer (Payroll)"
-			}, {
-				"key": "Q",
-				"text": "Wells Fargo PCard"
-			}, {
-				"key": "T",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}]
-		}, {
-			"compCode": "0401",
-			"payMethod": [{
-				"key": "1",
-				"text": "JPMC - ACH"
-			}, {
-				"key": "2",
-				"text": "JPMC - BPay"
-			}, {
-				"key": "3",
-				"text": "JPMC - Foreign Wires"
-			}, {
-				"key": "4",
-				"text": "JPMC - Domestic Wires"
-			}, {
-				"key": "B",
-				"text": "BPAY"
-			}, {
-				"key": "C",
-				"text": "Cheque"
-			}, {
-				"key": "D",
-				"text": "ABA (ACH)"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}]
-		}, {
-			"compCode": "0402",
-			"payMethod": [{
-				"key": "3",
-				"text": "JPMC - Foreign Wires"
-			}, {
-				"key": "B",
-				"text": "BPAY"
-			}, {
-				"key": "C",
-				"text": "Cheque"
-			}, {
-				"key": "D",
-				"text": "ABA (ACH)"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}]
-		}, {
-			"compCode": "0403",
-			"payMethod": [{
-				"key": "B",
-				"text": "BPAY"
-			}, {
-				"key": "C",
-				"text": "Cheque"
-			}, {
-				"key": "D",
-				"text": "ABA (ACH)"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}]
-		}, {
-			"compCode": "0416",
-			"payMethod": [{
-				"key": "B",
-				"text": "BPAY"
-			}, {
-				"key": "C",
-				"text": "Cheque"
-			}, {
-				"key": "D",
-				"text": "ABA (ACH)"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}]
-		}, {
-			"compCode": "0417",
-			"payMethod": [{
-				"key": "B",
-				"text": "BPAY"
-			}, {
-				"key": "C",
-				"text": "Cheque"
-			}, {
-				"key": "D",
-				"text": "ABA (ACH)"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}]
-		}, {
-			"compCode": "0418",
-			"payMethod": [{
-				"key": "B",
-				"text": "BPAY"
-			}, {
-				"key": "C",
-				"text": "Cheque"
-			}, {
-				"key": "D",
-				"text": "ABA (ACH)"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}]
-		}, {
-			"compCode": "0419",
-			"payMethod": [{
-				"key": "B",
-				"text": "BPAY"
-			}, {
-				"key": "C",
-				"text": "Cheque"
-			}, {
-				"key": "D",
-				"text": "ABA (ACH)"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}]
-		}, {
-			"compCode": "0421",
-			"payMethod": [{
-				"key": "3",
-				"text": "JPMC - Foreign Wires"
-			}, {
-				"key": "B",
-				"text": "BPAY"
-			}, {
-				"key": "C",
-				"text": "Cheque"
-			}, {
-				"key": "D",
-				"text": "ABA (ACH)"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}]
-		}, {
-			"compCode": "0422",
-			"payMethod": [{
-				"key": "3",
-				"text": "JPMC - Foreign Wires"
-			}, {
-				"key": "B",
-				"text": "BPAY"
-			}, {
-				"key": "C",
-				"text": "Cheque"
-			}, {
-				"key": "D",
-				"text": "ABA (ACH)"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}]
-		}, {
-			"compCode": "0423",
-			"payMethod": [{
-				"key": "3",
-				"text": "JPMC - Foreign Wires"
-			}, {
-				"key": "B",
-				"text": "BPAY"
-			}, {
-				"key": "C",
-				"text": "Cheque"
-			}, {
-				"key": "D",
-				"text": "ABA (ACH)"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}]
-		}, {
-			"compCode": "0424",
-			"payMethod": [{
-				"key": "3",
-				"text": "JPMC - Foreign Wires"
-			}, {
-				"key": "B",
-				"text": "BPAY"
-			}, {
-				"key": "C",
-				"text": "Cheque"
-			}, {
-				"key": "D",
-				"text": "ABA (ACH)"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}]
-		}, {
-			"compCode": "0447",
-			"payMethod": [{
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "ACH"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "K",
-				"text": "Book Transfer"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}, {
-				"key": "Y",
-				"text": "Foreign Wire - Manual Upload"
-			}, {
-				"key": "Z",
-				"text": "ACH - Manual Upload"
-			}]
-		}, {
-			"compCode": "0480",
-			"payMethod": [{
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "ACH"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "K",
-				"text": "Book Transfer"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}, {
-				"key": "Y",
-				"text": "Foreign Wire - Manual Upload"
-			}, {
-				"key": "Z",
-				"text": "ACH - Manual Upload"
-			}]
-		}, {
-			"compCode": "0485",
-			"payMethod": [{
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "ACH"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "K",
-				"text": "Book Transfer"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}, {
-				"key": "Y",
-				"text": "Foreign Wire - Manual Upload"
-			}, {
-				"key": "Z",
-				"text": "ACH - Manual Upload"
-			}]
-		}, {
-			"compCode": "0486",
-			"payMethod": [{
-				"key": "D",
-				"text": "ACH"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "K",
-				"text": "Book Transfer"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}, {
-				"key": "Y",
-				"text": "Foreign Wire - Manual Upload"
-			}, {
-				"key": "Z",
-				"text": "Domestic wire"
-			}]
-		}, {
-			"compCode": "0487",
-			"payMethod": [{
-				"key": "D",
-				"text": "ACH"
-			}, {
-				"key": "F",
-				"text": "Foreign Wire"
-			}, {
-				"key": "K",
-				"text": "Book Transfer"
-			}, {
-				"key": "W",
-				"text": "Domestic wire"
-			}, {
-				"key": "Y",
-				"text": "Foreign Wire - Manual Upload"
-			}, {
-				"key": "Z",
-				"text": "ACH - Manual Upload"
-			}]
-		}, {
-			"compCode": "0501",
-			"payMethod": [{
-				"key": "C",
-				"text": "Check"
-			}, {
-				"key": "D",
-				"text": "Bank transfer (ACH CTX)"
-			}, {
-				"key": "P",
-				"text": "Bank transfer (Payroll)"
-			}, {
-				"key": "T",
-				"text": "Bank transfer (ACH CTX)"
-			}]
-		}
-
-	],
 	"paymentMehtodBinding": [],
-	"paymentTermsData": [{
-		"key": "0001",
-		"text": "Payable immediately Due net"
-	}, {
-		"key": "0002",
-		"text": "within 14 days 2 % cash discount within 30 days Due net"
-	}, {
-		"key": "0003",
-		"text": "within 14 days 3 % cash discount within 20 days 2 % cash discount within 30 days Due net"
-	}, {
-		"key": "0004",
-		"text": "Payable immediately Due net Baseline date on End of the month"
-	}, {
-		"key": "0005",
-		"text": "Payable immediately Due net Baseline date on 10 of next month"
-	}, {
-		"key": "0006",
-		"text": "Before End of the month 4 % cash discount Before 15 of the next month ;; 2 % cash discount Before 15 in 2 months Due net"
-	}, {
-		"key": "0007",
-		"text": "For incoming invoices until 15 of the month Before 15 of the next month ;; 2 % cash discount Before End of the next month ;; Due net For incoming invoices until End  of the month Before End of the next month ;; 2 % cash discount Before 15 in 2 months Due net"
-	}, {
-		"key": "0008",
-		"text": "For incoming invoices until 15 of the month within 14 days 2 % cash discount within 30 days 1.5 % cash discount within 45 days Due net Baseline date on 30 of the month For incoming invoices until End  of the month within 14 days 2 % cash discount within 30 days 1.5 % cash discount within 45 days Due net Baseline date on 15 of next month"
-	}, {
-		"key": "0009",
-		"text": "Payable in 3 partial amounts 1 installment: 30.000 % with payment term 0001 2 installment: 40.000 % with payment term 0001 3 installment: 30.000 % with payment term 0001"
-	}, {
-		"key": "0010",
-		"text": "within 10 days 2 % cash discount within 30 days Due net"
-	}, {
-		"key": "0011",
-		"text": "within 10 days 3 % cash discount within 30 days Due net"
-	}, {
-		"key": "0012",
-		"text": "within 12 days Due net"
-	}, {
-		"key": "0014",
-		"text": "within 14 days Due net"
-	}, {
-		"key": "0015",
-		"text": "within 15 days Due net"
-	}, {
-		"key": "0017",
-		"text": "within 5 days Due net"
-	}, {
-		"key": "0018",
-		"text": "within 7 days Due net"
-	}, {
-		"key": "0019",
-		"text": "within 10 days Due net"
-	}, {
-		"key": "0020",
-		"text": "within 20 days Due net"
-	}, {
-		"key": "0021",
-		"text": "within 21 days Due net"
-	}, {
-		"key": "0025",
-		"text": "within 25 days Due net"
-	}, {
-		"key": "0030",
-		"text": "within 30 days Due net"
-	}, {
-		"key": "0031",
-		"text": "Before 30 of the month Due net"
-	}, {
-		"key": "0032",
-		"text": "Before 28 of the next month ;; Due net"
-	}, {
-		"key": "0045",
-		"text": "within 45 days Due net"
-	}, {
-		"key": "C001",
-		"text": "Payable immediately Due net"
-	}, {
-		"key": "C004",
-		"text": "Payable immediately Due net Baseline date on End of the month"
-	}, {
-		"key": "C014",
-		"text": "within 14 days Due net"
-	}, {
-		"key": "C017",
-		"text": "within 5 days Due net"
-	}, {
-		"key": "C020",
-		"text": "within 20 days Due net"
-	}, {
-		"key": "C025",
-		"text": "within 25 days Due net"
-	}, {
-		"key": "C030",
-		"text": "within 30 days Due net"
-	}, {
-		"key": "C045",
-		"text": "within 45 days Due net"
-	}, {
-		"key": "D010",
-		"text": "2 percent within 10 days"
-	}, {
-		"key": "D011",
-		"text": "2 percent within 10 days"
-	}, {
-		"key": "D012",
-		"text": "1 percent within 12 days"
-	}, {
-		"key": "D015",
-		"text": "1 percent within 15 days"
-	}, {
-		"key": "D115",
-		"text": "1.5 percent within 20 days"
-	}, {
-		"key": "D130",
-		"text": "1 percent within 30 days"
-	}, {
-		"key": "D212",
-		"text": "2 percent within 12 days"
-	}, {
-		"key": "D215",
-		"text": "2 percent within 15 days"
-	}, {
-		"key": "N003",
-		"text": "within 3 days Due net"
-	}, {
-		"key": "N004",
-		"text": "within 4 days Due net"
-	}, {
-		"key": "N005",
-		"text": "within 5 days Due net"
-	}, {
-		"key": "N006",
-		"text": "within 6 days Due net"
-	}, {
-		"key": "N007",
-		"text": "within 7 days Due net"
-	}, {
-		"key": "N008",
-		"text": "within 8 days Due net"
-	}, {
-		"key": "N009",
-		"text": "within 9 days Due net"
-	}, {
-		"key": "N010",
-		"text": "within 10 days Due net"
-	}, {
-		"key": "N011",
-		"text": "within 11 days Due net"
-	}, {
-		"key": "N015",
-		"text": "within 15 days Due net"
-	}, {
-		"key": "N020",
-		"text": "Net 20 days"
-	}, {
-		"key": "N025",
-		"text": "Net 25 days"
-	}, {
-		"key": "N027",
-		"text": "Net 27 days"
-	}, {
-		"key": "N030",
-		"text": "Net 30 days"
-	}, {
-		"key": "N060",
-		"text": "within 60 days Due net"
-	}, {
-		"key": "N110",
-		"text": "within 10 days 1 % cash discount within 30 days Due net"
-	}, {
-		"key": "N115",
-		"text": "within 15 days 1 % cash discount within 30 days Due net"
-	}, {
-		"key": "N210",
-		"text": "within 10 days 2 % cash discount within 30 days Due net"
-	}, {
-		"key": "N211",
-		"text": "90% paid at invoicing and 10% heldback"
-	}, {
-		"key": "N212",
-		"text": "90% paid at invoicing and 10% heldback"
-	}, {
-		"key": "N213",
-		"text": "within 45 days Due net"
-	}],
-	"BankKeyData": [{
-		"bankKey": "",
-		"bankName": "",
-		"country": "",
-		"street": "",
-		"city": ""
-	}, {
-		"bankKey": "021080038",
-		"bankName": "NORTH AMERICAN DEVELOPMENT BANK",
-		"country": "US",
-		"street": "SOUTH ST. MARY'S 203",
-		"city": "SAN ANTONIO"
-	}, {
-		"bankKey": "061112597",
-		"bankName": "PROSPERITY BANK",
-		"country": "US",
-		"street": "1301 N MECHANIC",
-		"city": "EL CAMPO"
-	}, {
-		"bankKey": "111000614",
-		"bankName": "JP Morgan Chase Bank NA",
-		"country": "US",
-		"street": "3388 Highway 6 South",
-		"city": "Sugar Land"
-	}, {
-		"bankKey": "111000753",
-		"bankName": "COMERICA BANK",
-		"country": "US",
-		"street": "1 SHELL PLAZA",
-		"city": "HOUSTON"
-	}, {
-		"bankKey": "111014325",
-		"bankName": "Bank of Texas",
-		"country": "US",
-		"street": "555 GRAND PKWY",
-		"city": ""
-	}, {
-		"bankKey": "111017694",
-		"bankName": "Branch Banking and Trust Company",
-		"country": "US",
-		"street": "2306 S PIONEER TR",
-		"city": "BRYAN"
-	}, {
-		"bankKey": "111017791",
-		"bankName": "SIGNATURE BANK",
-		"country": "US",
-		"street": "6757 ARAPAHO ROAD",
-		"city": "DALLAS"
-	}, {
-		"bankKey": "111024865",
-		"bankName": "VERITEX COMMUNITY BANK",
-		"country": "US",
-		"street": "622",
-		"city": "CLARA BARTON"
-	}, {
-		"bankKey": "111025453",
-		"bankName": "FIRST ASSOCIATIONS BANK",
-		"country": "US",
-		"street": "12001 NORTH CENTRAL EXPRESSWAY",
-		"city": "DALLAS"
-	}, {
-		"bankKey": "111900659",
-		"bankName": "Wells Fargo Bank, National Association",
-		"country": "US",
-		"street": "9805 KATY FREEWAY STE G200",
-		"city": "HOUSTON"
-	}, {
-		"bankKey": "111903245",
-		"bankName": "FIRST NATIONAL BANK OF CENTRAL TEXAS",
-		"country": "US",
-		"street": "001 1835 N. VALLEY MILLS DRIVE",
-		"city": "WACO"
-	}, {
-		"bankKey": "111906271",
-		"bankName": "First National Bank Texas",
-		"country": "US",
-		"street": "1603 SPENCER HWY",
-		"city": "SOUTH HOUSTON"
-	}, {
-		"bankKey": "111915327",
-		"bankName": "GUARANTY BOND BANK NA",
-		"country": "US",
-		"street": "2317 SOUTH",
-		"city": "JEFFERSON AVENUE"
-	}, {
-		"bankKey": "111924392",
-		"bankName": "FIRST NATIONAL BANK",
-		"country": "US",
-		"street": "4500 PRESTON ROAD",
-		"city": "FRISCO"
-	}, {
-		"bankKey": "112000066",
-		"bankName": "WELLS FARGO BANK, N.A.",
-		"country": "US",
-		"street": "221 NORTH KANSAS STREET",
-		"city": "EL PASO"
-	}, {
-		"bankKey": "112321318",
-		"bankName": "The Pecos County State Bank",
-		"country": "US",
-		"street": "500 N MAIN ST",
-		"city": "FORT STOCKTON"
-	}, {
-		"bankKey": "113000023",
-		"bankName": "Bank of America, National Association",
-		"country": "US",
-		"street": "7011 EDENBROOK CT",
-		"city": "SUGAR LAND"
-	}, {
-		"bankKey": "113010547",
-		"bankName": "BBVA COMPAS RICHMOND AND WESLAYAN BRANCH",
-		"country": "US",
-		"street": "7000 COUNTY RD 36550",
-		"city": "ARTHUR"
-	}, {
-		"bankKey": "113011258",
-		"bankName": "ZB, N.A. dba Amegy Bank",
-		"country": "US",
-		"street": "13430 Northwest Freeway",
-		"city": "Ste. 101, Houston, TX 77040"
-	}, {
-		"bankKey": "113017016",
-		"bankName": "BNP PARIBAS HOUSTON",
-		"country": "US",
-		"street": "1200 SMITH ST.",
-		"city": "HOUSTON"
-	}, {
-		"bankKey": "113017553",
-		"bankName": "TORONTO DOMINION BANK, THE",
-		"country": "US",
-		"street": "1221 MCKINNEY",
-		"city": "HOUSTON"
-	}, {
-		"bankKey": "113017647",
-		"bankName": "RIYAD BANK, HOUSTON AGENCY",
-		"country": "US",
-		"street": "440 LOUISIANA STREET",
-		"city": "HOUSTON"
-	}, {
-		"bankKey": "113017870",
-		"bankName": "WELLS FARGO BANK, N.A.",
-		"country": "US",
-		"street": "1445 ROSS AVENUE",
-		"city": "DALLAS"
-	}, {
-		"bankKey": "113024672",
-		"bankName": "BBVA BANCOMER, S.A. HOUSTON",
-		"country": "US",
-		"street": "5075 WESTHEIMER",
-		"city": "HOUSTON"
-	}, {
-		"bankKey": "113025765",
-		"bankName": "THE BANK OF NOVA SCOTIA",
-		"country": "US",
-		"street": "711 LOUISIANA STREET",
-		"city": "HOUSTON"
-	}, {
-		"bankKey": "113026201",
-		"bankName": "Gulf Capital Bank",
-		"country": "US",
-		"street": "1 Riverway, Ste. 150",
-		"city": "Houston"
-	}, {
-		"bankKey": "114000093",
-		"bankName": "Frost Bank",
-		"country": "US",
-		"street": "19222 CLASSEN CREST ST",
-		"city": "SAN ANTONIO"
-	}, {
-		"bankKey": "114000763",
-		"bankName": "JEFFERSON STATE BANK",
-		"country": "US",
-		"street": "1777 N.E. LOOP 410",
-		"city": "SAN ANTONIO"
-	}, {
-		"bankKey": "114026103",
-		"bankName": "The Bank of Austin",
-		"country": "US",
-		"street": "8611 N Mopac Expressway",
-		"city": "Austin"
-	}, {
-		"bankKey": "114909165",
-		"bankName": "Community National Bank",
-		"country": "US",
-		"street": "1502 AVE M",
-		"city": "HONDO"
-	}, {
-		"bankKey": "114910523",
-		"bankName": "The Falls City National Bank",
-		"country": "US",
-		"street": "100 S FRONT ST",
-		"city": "FALLS CITY"
-	}, {
-		"bankKey": "114911234",
-		"bankName": "The Karnes County National Bank",
-		"country": "US",
-		"street": "301 E CALVERT ST",
-		"city": "KARNES CITY"
-	}, {
-		"bankKey": "114911519",
-		"bankName": "Lytle State Bank of Lytle, Texas",
-		"country": "US",
-		"street": "14631 S FM 2790 WEST",
-		"city": "LYTLE"
-	}, {
-		"bankKey": "114916705",
-		"bankName": "First State Bank",
-		"country": "US",
-		"street": "422 DIBRELL AVE",
-		"city": "THREE RIVERS"
-	}, {
-		"bankKey": "114917908",
-		"bankName": "SouthTrust Bank, National Association",
-		"country": "US",
-		"street": "601 GUADALUPE ST",
-		"city": "GEORGE WEST"
-	}, {
-		"bankKey": "114921981",
-		"bankName": "Jourdanton State Bank",
-		"country": "US",
-		"street": "1301 OAK ST",
-		"city": "JOURDANTON"
-	}, {
-		"bankKey": "116312873",
-		"bankName": "Community National Bank",
-		"country": "US",
-		"street": "401 W TEXAS",
-		"city": "MIDLAND"
-	}, {
-		"bankKey": "121000248",
-		"bankName": "WELLS FARGO NA",
-		"country": "US",
-		"street": "10900 RESEARCH BLVD., AUSTIN,",
-		"city": ""
-	}, {
-		"bankKey": "261184367",
-		"bankName": "CATALYST CORPORATE FEDERAL CREDIT UNION",
-		"country": "US",
-		"street": "6801 PARKWOOD BLVD",
-		"city": "PLANO"
-	}, {
-		"bankKey": "311093120",
-		"bankName": "BANK OF AMERICA",
-		"country": "US",
-		"street": "",
-		"city": ""
-	}, {
-		"bankKey": "314088284",
-		"bankName": "San Antonio FCU",
-		"country": "US",
-		"street": "8403 WURZBACH RD",
-		"city": "SAN ANTONIO"
-	}, {
-		"bankKey": "314088637",
-		"bankName": "Security Service FCU",
-		"country": "US",
-		"street": "6502 EVERHART",
-		"city": "CORPUS CHRISTI"
-	}, {
-		"bankKey": "314089681",
-		"bankName": "Randolph-Brooks FCU",
-		"country": "US",
-		"street": "1603 MULE DEER RUN",
-		"city": "LEANDER"
-	}, {
-		"bankKey": "314985455",
-		"bankName": "Kingsville Area Educators FCU",
-		"country": "US",
-		"street": "1209 W KING AVE",
-		"city": "KINGSVILLE"
-	}],
 	"addCompanyCodeFormData": {
 		"lfb1": {
 			"entity_id": null,
@@ -3061,57 +1276,6 @@
 
 		}
 	},
-	"addCompanyCodeRows": [],
-	"companyCodeMandateFields": [{
-		"id": "idCompCodesReconcillationAccunt",
-		"Name": "Reconcilliation Account",
-		"Key": "AKONT",
-		"fieldMapping": "/addCompanyCodeFormData/lfb1/AKONT",
-		"panelMapping": "Company Codes",
-		"isPRAData": false
-	}, {
-		"id": "idComCodesCompanyCode",
-		"Name": "Company Code",
-		"Key": "bukrs",
-		"fieldMapping": "/addCompanyCodeFormData/lfb1/bukrs",
-		"panelMapping": "Company Codes",
-		"isPRAData": false
-	}, {
-		"id": "idComCodesSortKey",
-		"Name": "Sort Key",
-		"Key": "ZUAWA",
-		"fieldMapping": "/addCompanyCodeFormData/lfb1/ZUAWA",
-		"panelMapping": "Company Codes",
-		"isPRAData": false
-	}, {
-		"id": "idCompCodePaymentMethod",
-		"Name": "Payment method",
-		"Key": "ZWELS",
-		"fieldMapping": "/addCompanyCodeFormData/lfb1/ZWELS",
-		"panelMapping": "Company Codes",
-		"isPRAData": false
-	}, {
-		"id": "idCompCodesTermsOfPayment",
-		"Name": "Terms of Payment",
-		"Key": "ZTERM",
-		"fieldMapping": "/addCompanyCodeFormData/lfb1/ZTERM",
-		"panelMapping": "Company Codes",
-		"isPRAData": false
-	}, {
-		"id": "idCompCodeCheckDoubleInvoice",
-		"Name": "Check Double Invoice",
-		"Key": "REPRF",
-		"fieldMapping": "/addCompanyCodeFormData/lfb1/REPRF",
-		"panelMapping": "Company Codes",
-		"isPRAData": false
-	}, {
-		"id": "compCodesPaymentBlockId",
-		"Name": "Payment Block",
-		"Key": "ZAHLS",
-		"fieldMapping": "/addCompanyCodeFormData/lfb1/ZAHLS",
-		"panelMapping": "Company Codes",
-		"isPRAData": false
-	}],
 	"accountGroupsData": [{
 		"text": "Employee/HR Related",
 		"additionalText": "EMPL",

@@ -14,17 +14,9 @@
 			"version": "1.40.12"
 		},
 		"dataSources": {
-			"searchCustomerMetatDataSource": {
-				"uri": "model/SearchCustomerMetaData.json",
-				"type": "JSON"
-			},
 			"CreateCustDataSource": {
 				"uri": "model/localJson.json",
 				"type": "JSON"
-			},
-			"murphyVendor": {
-				"uri": "/murphyCustom",
-				"type": "OData"
 			},
 			"changeRequestMetatDataSource": {
 				"uri": "model/ChangeRequestMetaData.json",
@@ -83,13 +75,7 @@
 					"defaultBindingMode": "TwoWay"
 				}
 			},
-			"SearchCustomerMetadataModel": {
-				"type": "sap.ui.model.json.JSONModel",
-				"dataSource": "searchCustomerMetatDataSource",
-				"settings": {
-					"defaultBindingMode": "TwoWay"
-				}
-			},
+			
 			"SearchCustomerModel": {
 				"type": "sap.ui.model.json.JSONModel",
 				"settings": {
@@ -142,9 +128,11 @@
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		},
 		"routing": {
 			"config": {
@@ -156,25 +144,29 @@
 				"controlId": "app",
 				"clearControlAggregation": false
 			},
-			"routes": [{
-				"name": "SearchCustomer",
-				"pattern": "",
-				"target": [
-					"SearchCustomer"
-				]
-			}, {
-				"name": "createCustomer",
-				"pattern": "CreateCustomer",
-				"target": [
-					"createCustomer"
-				]
-			}, {
-				"name": "erpCustomerPrev",
-				"pattern": "erpCustomerPrev",
-				"target": [
-					"ERPCustomerPreview"
-				]
-			}],
+			"routes": [
+				{
+					"name": "SearchCustomer",
+					"pattern": "",
+					"target": [
+						"SearchCustomer"
+					]
+				},
+				{
+					"name": "createCustomer",
+					"pattern": "CreateCustomer",
+					"target": [
+						"createCustomer"
+					]
+				},
+				{
+					"name": "erpCustomerPrev",
+					"pattern": "CustomerPreview",
+					"target": [
+						"ERPCustomerPreview"
+					]
+				}
+			],
 			"targets": {
 				"SearchCustomer": {
 					"viewType": "XML",

@@ -15,7 +15,7 @@ sap.ui.define([
 	"sap/m/MessageToast",
 	"sap/m/List",
 	"sap/m/Button",
-	"sap/m/ButtonType",
+	"sap/m/ButtonType"
 ], function (BaseController, JSONModel, TypeString, ColumnListItem, Label, SearchField, Token, Filter, FilterOperator, Fragment,
 	ServiceCall,
 	StandardListItem, Dialog, MessageToast, List, Button, ButtonType) {
@@ -642,7 +642,7 @@ sap.ui.define([
 			if (!oData.getProperty("/addCompanyCodeRows").length) {
 				aEmptyFields.push({
 		 		section: "Company Code"
-			 	})
+			 	});
 			 }
 
 			this.getView().getModel("Customer").setProperty("/missingFields", aEmptyFields);
