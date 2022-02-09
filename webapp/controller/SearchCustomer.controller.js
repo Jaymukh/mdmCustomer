@@ -134,8 +134,8 @@ sap.ui.define([
 			var titleID = this.getView().byId("idTitle");
 			titleID.setText(this.oBundle.getText(sKey + "-title"));
 			this.byId("pageContainer").to(this.getView().createId(sKey));
-			if (sKey === "createERPVendorView") {
-				this._createCREntityID();
+			if (sKey === "CreateCustomer") {
+				this._createCREntityCustomer();
 			}
 			if (sKey === "changeRequestId" || sKey === "changeRequestId-Mass") {
 				this.nPageNo = 1;

@@ -16,8 +16,19 @@ sap.ui.define([
 			return this.getOwnerComponent().getModel(sModelName);
 		},
 
-		_createCREntityID: function (oParam) {
-			this.getOwnerComponent().getModel("Customer").setProperty("/changeReq/genData/reason", "50001");
+		_createCREntityCustomer: function () {
+			var oCustomerModel = this.getModel("Customer"),
+				oAppModel = this.getModel("App"),
+				oChangeRequest = Object.assign(oAppModel.getProperty("/changeReq"), {}),
+				oCustomerData = Object.assign(oAppModel.getProperty("/createCRCustomerData"), {}),
+				oDate = new Date();
+
+			oChangeRequest.genData.change_request_id = "50001";
+			oChangeRequest.genData.reason = "30001";
+			oChangeRequest.genData.timeCreation = oDate.getHours() + ":" + oDate.getMinutes();
+			oChangeRequest.genData.dateCreation = oDate.getFullYear() + "-" + (oDate.getMonth() + 1 < 10 ? ("0" + (oDate.getMonth() + 1)) :
+				oDate.getMonth() + 1) + "-" + oDate.getDate();
+
 			var objParam = {
 				url: "/murphyCustom/mdm/entity-service/entities/entity/create",
 				hasPayload: true,
@@ -38,26 +49,37 @@ sap.ui.define([
 			};
 
 			this.serviceCall.handleServiceRequest(objParam).then(
-				//Success Handler for entity creation
+				//Success handler
 				function (oData) {
-					var oDate = new Date();
-					this.getView().getModel("Customer").setProperty(
-						"/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/date_from",
-						oDate.getFullYear() + "-" + (oDate.getMonth() + 1 < 10 ? ("0" + (oDate.getMonth() + 1)) : oDate.getMonth() + 1) + "-" + oDate
-						.getDate()
-					);
-					this.getView().getModel("Customer").setProperty(
-						"/createCRVendorData/crTime",
-						oDate.getHours() + ":" + oDate.getMinutes()
-					);
-					this.getView().getModel("Customer").refresh();
+					var sEntityId = oData.result.vendorDTOs[0].customVendorBusDTO.entity_id,
+						aTables = ["cust_knb1", "cust_knbk", "cust_knbw", "cust_knb5", "cust_knvp", "cust_knvv",
+							"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "pra_bp_ad", "pra_bp_cust_md"
+						];
+
+					oCustomerData.entityId = sEntityId;
+					oCustomerData.formData.parentDTO.customData.cust_kna1.entity_id = sEntityId;
+					oCustomerData.tableRows = {};
+					aTables.forEach(function (sTable) {
+						oCustomerData.tableRows[sTable] = [];
+						oCustomerData[sTable] = Object.assign(oAppModel.getProperty("/" + sTable), {});
+						if (oCustomerData[sTable].hasOwnProperty("entity_id")) {
+							oCustomerData[sTable].entity_id = sEntityId;
+						}
+					}, this);
+					oCustomerModel.setData({
+						changeReq: oChangeRequest,
+						createCRCustomerData: oCustomerData
+					});
+
 				}.bind(this),
-				//Error handler for entity creation
 				function (oError) {
-					this.getView().getModel("Customer").setProperty("/createCRVendorData/entityId", "");
-					this.getView().getModel("Customer").setProperty("/createCRVendorData/formData", {});
+					oCustomerModel.setData({
+						changeReq: {},
+						createCRCustomerData: {}
+					});
 					MessageToast.show("Entity ID not created. Please try after some time");
-				}.bind(this));
+				}.bind(this)
+			);
 		},
 
 		handleChangeRequestStatistics: function () {
@@ -192,12 +214,12 @@ sap.ui.define([
 
 		getDropDownData: function () {
 			var aDropDowns = ["TAXONOMY", //Multiple values 
-							  "T077D", //Account Group
-							  "TSAD3", //Title,
-							  "T005K", //Tel Country Codes
-							  "T005", //Country
-							  "T002" //Language
-							  ];
+				"T077D", //Account Group
+				"TSAD3", //Title,
+				"T005K", //Tel Country Codes
+				"T005", //Country
+				"T002" //Language
+			];
 			aDropDowns.forEach(function (sValue) {
 				this.getDropdownTableData(sValue);
 			}, this);
@@ -211,8 +233,8 @@ sap.ui.define([
 				data: JSON.stringify({
 					"configType": sValue
 				}),
-				success: function(oData){
-					this.getModel("Dropdowns").setProperty("/"+sValue, sValue === "TAXONOMY" ? oData.result.modelMap[0] : oData.result.modelMap);
+				success: function (oData) {
+					this.getModel("Dropdowns").setProperty("/" + sValue, sValue === "TAXONOMY" ? oData.result.modelMap[0] : oData.result.modelMap);
 				}.bind(this)
 			});
 		}

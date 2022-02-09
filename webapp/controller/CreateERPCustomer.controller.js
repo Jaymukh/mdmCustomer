@@ -149,21 +149,7 @@ sap.ui.define([
 								oData.parentDTO.customData.vnd_lfbw[sKeylfbw[i]]["lifnr"] = sLIFNR;
 							}
 					this._handleSaveWithLifnr(oData);
-					/*var objParamCreate = {
-						url: "/murphyCustom/mdm/entity-service/entities/entity/update",
-						hasPayload: true,
-						data: oData,
-						type: 'POST'
-					};
-					this.serviceCall.handleServiceRequest(objParamCreate).then(function (oDataResp) {
-						if (oDataResp.result) {
-							this.getView().setBusy(false);
-							this.getView().getModel("Customer").setProperty("/createCRDD", oDataResp.result);
-							this.getView().byId("idCreateVendorSubmit").setVisible(true);
-						}
-					}.bind(this), function (oError) {
-						this.getView().setBusy(false);
-					}.bind(this));*/
+					
 				}
 
 			}

@@ -8,10 +8,10 @@
 			<Input
 				value="{ parts: [ 'Customer>/createCRCustomerData/crID', 'Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/entity_id'], formatter: '.formatCR_Entiry_ID' }"
 				editable="false"/>
-			<Label text="Description" required="true"/>
-			<TextArea value="{Customer>/changeReq/genData/desc}"/>
+			<Label text="Description"/>
+			<TextArea required="true" value="{Customer>/changeReq/genData/desc}"/>
 			<Label text="Priority"/>
-			<ComboBox selectedKey="{Customer>/changeReq/genData/priority}" items="{Dropdowns>/TAXONOMY/CR_PRIORITY}">
+			<ComboBox required="true" selectedKey="{Customer>/changeReq/genData/priority}" items="{Dropdowns>/TAXONOMY/CR_PRIORITY}">
 				<items>
 					<core:Item text="{Dropdowns>taxonomy_name}" key="{Dropdowns>taxonomy_code}"/>
 				</items>
@@ -33,8 +33,8 @@
 			<Label text="Created By"/>
 			<Input value="{Customer>/changeReq/genData/createdBy}" enabled="false"/>
 			<Label text="Date/Time of Creation"/>
-			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/date_from}" enabled="false"/>
-			<Input value="{Customer>/createCRCustomerData/crTime}" enabled="false">
+			<Input value="{Customer>/changeReq/genData/dateCreation}" enabled="false"/>
+			<Input value="{Customer>/changeReq/genData/timeCreation}" enabled="false">
 				<layoutData>
 					<l:GridData span="XL4 L4 M4 S4"/>
 				</layoutData>
