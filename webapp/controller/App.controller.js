@@ -1,11 +1,12 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller"
-], function (Controller) {
+	"murphy/mdm/customer/murphymdmcustomer/controller/BaseController"
+], function (BaseController) {
 	"use strict";
 
-	return Controller.extend("murphy.mdm.customer.murphymdmcustomer.controller.View1", {
+	return BaseController.extend("murphy.mdm.customer.murphymdmcustomer.controller.View1", {
 		onInit: function () {
 			this.getView().addStyleClass(this.getOwnerComponent().getContentDensityClass());
+			this.getDropDownData();
 		}
 	});
 });

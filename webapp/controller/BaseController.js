@@ -188,6 +188,33 @@ sap.ui.define([
 				sText = "Organization: (no description available)";
 			}
 			return sText;
+		},
+
+		getDropDownData: function () {
+			var aDropDowns = ["TAXONOMY", //Multiple values 
+							  "T077D", //Account Group
+							  "TSAD3", //Title,
+							  "T005K", //Tel Country Codes
+							  "T005", //Country
+							  "T002" //Language
+							  ];
+			aDropDowns.forEach(function (sValue) {
+				this.getDropdownTableData(sValue);
+			}, this);
+		},
+
+		getDropdownTableData: function (sValue) {
+			$.ajax({
+				url: "/murphyCustom/config-service/configurations/configuration",
+				type: "POST",
+				contentType: "application/json",
+				data: JSON.stringify({
+					"configType": sValue
+				}),
+				success: function(oData){
+					this.getModel("Dropdowns").setProperty("/"+sValue, sValue === "TAXONOMY" ? oData.result.modelMap[0] : oData.result.modelMap);
+				}.bind(this)
+			});
 		}
 
 	});

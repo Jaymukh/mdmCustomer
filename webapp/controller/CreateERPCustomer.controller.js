@@ -31,8 +31,7 @@ sap.ui.define([
 		 * @memberOf murphy.mdm.customer.murphymdmcustomer.view.CreateERPCustomer
 		 */
 		onInit: function () {
-			this._getTaxonomyData();
-			this._getDropDownData();
+			//this._getTaxonomyData();
 			this.oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
 		},
 
@@ -51,35 +50,6 @@ sap.ui.define([
 					this.getOwnerComponent().getModel("Customer").setProperty("/createCRDD", oDataResp.result.modelMap[0]);
 				}
 			}.bind(this));
-		},
-
-		_getDropDownData: function () {
-			var that = this;
-			var aConfigDD = this.getOwnerComponent().getModel("Customer").getProperty("/createCRDDConfig");
-			$.each(aConfigDD, function (index, item) {
-				$.ajax({
-					url: "/murphyCustom/config-service/configurations/configuration",
-					type: "POST",
-					contentType: "application/json",
-					data: JSON.stringify({
-						"configType": item.controlTable
-					}),
-					async: false,
-					success: searchCallback
-				});
-
-				function searchCallback(data) {
-					var oJsonModel = new JSONModel(data.result);
-					// console.log(data.result);
-					var sControlID = item.controlID;
-					that.getView().byId(sControlID).setModel(oJsonModel);
-					var oItemSelectTemplate1 = new sap.ui.core.Item({
-						key: "{" + item.controlField + "}",
-						text: "{" + item.controlFieldName + "}"
-					});
-					that.getView().byId(sControlID).bindAggregation("items", "/modelMap", oItemSelectTemplate1);
-				}
-			});
 		},
 
 		onSaveClick: function (oEvent) {
@@ -251,9 +221,9 @@ sap.ui.define([
 		},
 
 		onValueHelpRequested: function (oEvent) {
+			this.getView().setBusy(true);
 			this._oInput = oEvent.getSource();
 			var aCustomData = this._oInput.getCustomData();
-			//	this.oTableDataModel       ValueHelpDatamodel
 			var oData = {
 				cols: []
 			};
@@ -335,58 +305,6 @@ sap.ui.define([
 						oDataResp.result.modelMap.unshift(obj);
 						this.oTableDataModel.setProperty("/item", oDataResp.result.modelMap);
 						this.oTableDataModel.refresh();
-					} else if (oData.table === 'SKA1') {
-						var oLocalData = [{
-							Key: "30000100",
-							Name: "USOC	AP - TRADE"
-						}, {
-							Key: "30000110",
-							Name: "USOC	AP - JOINT VENTURE"
-						}, {
-							Key: "30000111",
-							Name: "USOC	CASH CALL DUE(NP)"
-						}, {
-							Key: "30000112",
-							Name: "USOC	CASH CALL OFFSET(NP)"
-						}, {
-							Key: "30000113",
-							Name: "USOC	Working Capital Cutback"
-						}, {
-							Key: "30000114",
-							Name: "USOC	Vendor 1099 Reconciliation Account"
-						}, {
-							Key: "30000115",
-							Name: "USOC	1099 Offset Account)"
-						}, {
-							Key: "30000120",
-							Name: "USOC	AP - EMPLOYEES"
-						}, {
-							Key: "30000125",
-							Name: "USOC	Employee Miscellaneous"
-						}, {
-							Key: "30000130",
-							Name: "USOC	AP - LAND"
-						}, {
-							Key: "30000140",
-							Name: "USOC	AP - GR/IR"
-						}, {
-							Key: "30000145",
-							Name: "	USOC	AP - GR - NON PO"
-						}, {
-							Key: "30000149",
-							Name: "USOC	AP - GR/IR Consignment"
-						}, {
-							Key: "30000150",
-							Name: "USOC	Redetermination Liability"
-						}, {
-							Key: "30000160",
-							Name: "USOC	AP - marketing"
-						}];
-						this.oTableDataModel.setProperty("/item", oLocalData);
-						this.oTableDataModel.refresh();
-					} else if (oData.table === 'LFA1') {
-						this.oTableDataModel.setProperty("/item", oDataResp.result.vendorDTOs);
-						this.oTableDataModel.refresh();
 					}
 
 				}.bind(this));
@@ -428,6 +346,7 @@ sap.ui.define([
 					this._oValueHelpDialog.update();
 				}.bind(this));
 				this._oValueHelpDialog.open();
+				this.getView().setBusy(false);
 			}.bind(this));
 
 		},

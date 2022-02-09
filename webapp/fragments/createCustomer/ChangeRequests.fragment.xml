@@ -7,24 +7,22 @@
 			<Label text="Change Request ID"/>
 			<Input
 				value="{ parts: [ 'Customer>/createCRCustomerData/crID', 'Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/entity_id'], formatter: '.formatCR_Entiry_ID' }"
-				enabled="false"/>
+				editable="false"/>
 			<Label text="Description" required="true"/>
 			<TextArea value="{Customer>/changeReq/genData/desc}"/>
 			<Label text="Priority"/>
-			<Select forceSelection="false" selectedKey="{Customer>/changeReq/genData/priority}"
-				items="{Customer>/createCRDD/CR_PRIORITY}">
+			<ComboBox selectedKey="{Customer>/changeReq/genData/priority}" items="{Dropdowns>/TAXONOMY/CR_PRIORITY}">
 				<items>
-					<core:Item text="{Customer>taxonomy_name}" key="{Customer>taxonomy_code}"/>
+					<core:Item text="{Dropdowns>taxonomy_name}" key="{Dropdowns>taxonomy_code}"/>
 				</items>
-			</Select>
+			</ComboBox>
 			<Label text="Due Date"/>
 			<DatePicker displayFormat="dd-MM-YYYY" valueFormat="YYYYMMdd" value="{Customer>/changeReq/genData/dueDate}"></DatePicker>
 			<Label text="Reason"/>
 			<ComboBox editable="false" selectedKey="{Customer>/changeReq/genData/reason}" showSecondaryValues="true"
-				items="{Customer>/createCRDD/CR_CHANGE_REQ_TYPE}">
+				items="{Dropdowns>/TAXONOMY/CR_CHANGE_REQ_TYPE}">
 				<items>
-					<core:ListItem text="{Customer>taxonomy_name}" additionalText="{Customer>taxonomy_id}"
-						key="{Customer>taxonomy_id}"/>
+					<core:ListItem text="{Dropdowns>taxonomy_name}" additionalText="{Dropdowns>taxonomy_id}" key="{Dropdowns>taxonomy_id}"/>
 				</items>
 			</ComboBox>
 			<core:Title text="Process Data"/>
@@ -38,7 +36,7 @@
 			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/date_from}" enabled="false"/>
 			<Input value="{Customer>/createCRCustomerData/crTime}" enabled="false">
 				<layoutData>
-					<l:GridData span="XL2 L1 M3 S4"/>
+					<l:GridData span="XL4 L4 M4 S4"/>
 				</layoutData>
 			</Input>
 		</form:content>

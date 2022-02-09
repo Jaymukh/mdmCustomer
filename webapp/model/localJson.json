@@ -2,6 +2,47 @@
 	"preview": false,
 	"vndDetails": false,
 	"approvalView": false,
+	"accountGroupsData": [{
+		"text": "Employee/HR Related",
+		"additionalText": "EMPL",
+		"key": "EMPL"
+	}, {
+		"text": "Intercompany Vendors",
+		"additionalText": "INCO",
+		"key": "INCO"
+	}, {
+		"text": "Invoicing Party",
+		"additionalText": "INVP",
+		"key": "INVP"
+	}, {
+		"text": "JV / PRA Vendors",
+		"additionalText": "JVPR",
+		"key": "JVPR"
+	}, {
+		"text": "JV International",
+		"additionalText": "JVIN",
+		"key": "JVIN"
+	}, {
+		"text": "Manufacturer (ext.no.assgnmnt)",
+		"additionalText": "MNFR",
+		"key": "MNFR"
+	}, {
+		"text": "Oil and Gas Purchasers",
+		"additionalText": "OGPR",
+		"key": "OGPR"
+	}, {
+		"text": "Ordering address",
+		"additionalText": "OAO1",
+		"key": "OAO1"
+	}, {
+		"text": "Vendor / Supplier",
+		"additionalText": "VEND",
+		"key": "VEND"
+	}, {
+		"text": "General Vendors (no PO)",
+		"additionalText": "GENV",
+		"key": "GENV"
+	}],
 	"companyCode": {
 		"companyCode": null,
 		"accountingInfo": {
@@ -1275,47 +1316,5 @@
 			"bukrs": ""
 
 		}
-	},
-	"accountGroupsData": [{
-		"text": "Employee/HR Related",
-		"additionalText": "EMPL",
-		"key": "EMPL"
-	}, {
-		"text": "Intercompany Vendors",
-		"additionalText": "INCO",
-		"key": "INCO"
-	}, {
-		"text": "Invoicing Party",
-		"additionalText": "INVP",
-		"key": "INVP"
-	}, {
-		"text": "JV / PRA Vendors",
-		"additionalText": "JVPR",
-		"key": "JVPR"
-	}, {
-		"text": "JV International",
-		"additionalText": "JVIN",
-		"key": "JVIN"
-	}, {
-		"text": "Manufacturer (ext.no.assgnmnt)",
-		"additionalText": "MNFR",
-		"key": "MNFR"
-	}, {
-		"text": "Oil and Gas Purchasers",
-		"additionalText": "OGPR",
-		"key": "OGPR"
-	}, {
-		"text": "Ordering address",
-		"additionalText": "OAO1",
-		"key": "OAO1"
-	}, {
-		"text": "Vendor / Supplier",
-		"additionalText": "VEND",
-		"key": "VEND"
-	}, {
-		"text": "General Vendors (no PO)",
-		"additionalText": "GENV",
-		"key": "GENV"
-	}]
-
+	}
 }
