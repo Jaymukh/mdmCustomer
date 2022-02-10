@@ -134,7 +134,7 @@ sap.ui.define([
 			var titleID = this.getView().byId("idTitle");
 			titleID.setText(this.oBundle.getText(sKey + "-title"));
 			this.byId("pageContainer").to(this.getView().createId(sKey));
-			if (sKey === "CreateCustomer") {
+			if (sKey === "CreateERPCustomer") {
 				this._createCREntityCustomer();
 			}
 			if (sKey === "changeRequestId" || sKey === "changeRequestId-Mass") {

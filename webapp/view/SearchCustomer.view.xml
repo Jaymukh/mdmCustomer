@@ -25,7 +25,7 @@
 					<tnt:NavigationListItem text="Search Customer" icon="sap-icon://detail-view" key="SearchCustomer"/>
 					<!--	<tnt:NavigationListItem text="Create Customer" visible="{= ${userManagementModel>/role}.indexOf('req')!== -1 ? true : false }"-->
 					<tnt:NavigationListItem text="Create Customer" visible="{= ${userManagementModel>/role}.indexOf('req')!== -1 ? true : false }"
-						icon="sap-icon://create" key="CreateCustomer"/>
+						icon="sap-icon://create" key="CreateERPCustomer"/>
 					<tnt:NavigationListItem text="Change" icon="sap-icon://request" key="changeRequestId">
 						<tnt:NavigationListItem text="All Change Request" key="changeRequestId"/>
 						<tnt:NavigationListItem text="Mass Change Request" key="changeRequestId-Mass"/>
@@ -181,15 +181,9 @@
 							</Table>
 						</f:content>
 					</f:DynamicPage>
-					<mvc:XMLView id="createERPVendorView" viewName="murphy.mdm.customer.murphymdmcustomer.view.CreateERPCustomer"/>
-					<mvc:XMLView id="erpVendorPreview" viewName="murphy.mdm.customer.murphymdmcustomer.view.ERPCustomerPreview"/>
-					<mvc:XMLView id="changeRequestId" viewName="murphy.mdm.customer.murphymdmcustomer.view.ChangeRequest"/>
-					<!--<ScrollContainer id="myReq" horizontal="false" vertical="true" height="100%">-->
-					<!--	<Text text="This is the My Request Page"/>-->
-					<!--</ScrollContainer>-->
-					<!--<ScrollContainer id="allReq" horizontal="false" vertical="true" height="100%">-->
-					<!--	<Text text="This is All Request Page"/>-->
-					<!--</ScrollContainer>-->
+					<mvc:XMLView id="CreateERPCustomer" viewName="murphy.mdm.customer.murphymdmcustomer.view.CreateERPCustomer"/>
+					<mvc:XMLView id="ERPCustomerPreView" viewName="murphy.mdm.customer.murphymdmcustomer.view.ERPCustomerPreview"/>
+					<mvc:XMLView id="ChangeRequest" viewName="murphy.mdm.customer.murphymdmcustomer.view.ChangeRequest"/>
 					<ScrollContainer id="copy" horizontal="false" vertical="true" height="100%">
 						<Text text="This is copy Page"/>
 					</ScrollContainer>

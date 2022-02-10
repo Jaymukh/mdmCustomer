@@ -136,10 +136,10 @@
 				"type": "sap.ui.model.json.JSONModel"
 			},
 			"AttachmentsModel": {
-				"type": "sap.ui.json.JSONModel"
+				"type": "sap.ui.model.json.JSONModel"
 			},
 			"AuditLogModel": {
-				"type": "sap.ui.json.JSONModel"
+				"type": "sap.ui.model.json.JSONModel"
 			}
 		},
 		"resources": {

@@ -6,7 +6,7 @@
 			<core:Title text="Account Control"/>
 			<Label text="Customer"/>
 			<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-				value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/KUNNR}">
+				value="{Customer>/createCRVendorData/formData/parentDTO/customData/cust_kna1/kunnr}">
 				<customData>
 					<core:CustomData key="title" value="Customer"></core:CustomData>
 					<core:CustomData key="table" value="KNA1"></core:CustomData>
@@ -19,12 +19,12 @@
 				</customData>
 			</Input>
 			<Label text="Authorization Group"/>
-			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/BEGRU}" maxLength="4"/>
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/cust_kna1/begru}" maxLength="4"/>
 			<Label text="Group Key"/>
-			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/KONZS}" maxLength="10"/>
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/cust_kna1/konzs}" maxLength="10"/>
 			<Label text="Trading Partner"/>
 			<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-				value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/VBUND}">
+				value="{Customer>/createCRVendorData/formData/parentDTO/customData/cust_kna1/vbund}">
 				<customData>
 					<core:CustomData key="title" value="Trading Partner"></core:CustomData>
 					<core:CustomData key="table" value="T880"></core:CustomData>
@@ -38,13 +38,25 @@
 			</Input>
 			<core:Title text="Reference Data"/>
 			<Label text="Express Station"/>
-			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/BEGRU}" maxLength="4"/>
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/cust_kna1/bahne}" maxLength="4"/>
 			<Label text="Train Station"/>
-			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/BEGRU}" maxLength="4"/>
+			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/cust_kna1/bahns}" maxLength="4"/>
 			<Label text="Location Code"/>
-			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/BEGRU}" maxLength="4"/>
+			<Input value="" maxLength="4"/>
 			<Label text="Industry"/>
-			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/BEGRU}" maxLength="4"/>
+			<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
+				value="{Customer>/createCRVendorData/formData/parentDTO/customData/cust_kna1/brsch}" maxLength="4">
+				<customData>
+					<core:CustomData key="title" value="Industry"></core:CustomData>
+					<core:CustomData key="table" value="T016"></core:CustomData>
+					<core:CustomData key="rcomp" value="Company"></core:CustomData>
+					<core:CustomData key="name1" value="Company Name"></core:CustomData>
+					<core:CustomData key="cntry" value="Country"></core:CustomData>
+					<core:CustomData key="curr" value="Currency"></core:CustomData>
+					<core:CustomData key="inputKey" value="brsch"></core:CustomData>
+					<core:CustomData key="inputText" value="brsch"></core:CustomData>
+				</customData>
+			</Input>
 		</form:content>
 	</form:SimpleForm>
 </core:FragmentDefinition>

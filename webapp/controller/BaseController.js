@@ -21,13 +21,14 @@ sap.ui.define([
 				oAppModel = this.getModel("App"),
 				oChangeRequest = Object.assign(oAppModel.getProperty("/changeReq"), {}),
 				oCustomerData = Object.assign(oAppModel.getProperty("/createCRCustomerData"), {}),
-				oDate = new Date();
+				oDate = new Date(),
+				sMonth = oDate.getMonth() + 1,
+				sMinutes = oDate.getMinutes();
 
 			oChangeRequest.genData.change_request_id = "50001";
 			oChangeRequest.genData.reason = "30001";
-			oChangeRequest.genData.timeCreation = oDate.getHours() + ":" + oDate.getMinutes();
-			oChangeRequest.genData.dateCreation = oDate.getFullYear() + "-" + (oDate.getMonth() + 1 < 10 ? ("0" + (oDate.getMonth() + 1)) :
-				oDate.getMonth() + 1) + "-" + oDate.getDate();
+			oChangeRequest.genData.timeCreation = oDate.getHours() + ":" + (sMinutes < 10 ? "0" + sMinutes : sMinutes);
+			oChangeRequest.genData.dateCreation = oDate.getFullYear() + "-" + (sMonth < 10 ? "0" + sMonth : sMonth) + "-" + oDate.getDate();
 
 			var objParam = {
 				url: "/murphyCustom/mdm/entity-service/entities/entity/create",

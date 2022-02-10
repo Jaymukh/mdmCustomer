@@ -593,7 +593,7 @@ sap.ui.define([
 			if (!sSection) {
 				sMsg = sName + " field is missing in " + sPanel + " Section";
 			} else {
-				sMsg = "No " + sSection + " is maintained in " + sSection + " table"
+				sMsg = "No " + sSection + " is maintained in " + sSection + " table";
 			}
 			return sMsg;
 		},
