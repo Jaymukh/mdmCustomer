@@ -43,27 +43,23 @@
 			<form:content>
 				<core:Title text="Relationship"/>
 				<Label text="Partner ID"/>
-				<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/parnr}"/>
+				<Input required="true" value="{Customer>/cust_knvv/parnr}"/>
 				<core:Title/>
 				<Label text="Partner Description"/>
 				<Input value=""/>
 				<core:Title text="General Data"/>
 				<Label text="Title"/>
-				<Select forceSelection="false"
-					selectedKey="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/ANRED}">
+				<ComboBox items="{Dropdowns>/TSAD3}" selectedKey="{Customer>/cust_knvv/anred}">
 					<items>
-						<core:Item text="Title 1" key="1"/>
-						<core:Item text="Title 2" key="2"/>
-						<core:Item text="Title 3" key="3"/>
+						<core:Item text="{Dropdowns>title_MEDI}" key="{Dropdowns>title}"/>
 					</items>
-				</Select>
+				</ComboBox>
 				<Label text="Last Name"/>
-				<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/NAME1}" maxLength="35"/>
+				<Input value="{Customer>/cust_knvv/name1}" maxLength="35"/>
 				<Label text="First Name"/>
-				<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/NAMEV}"/>
+				<Input value="{Customer>/cust_knvv/namev}"/>
 				<Label text="Academic Title"/>
-				<Select forceSelection="false"
-					selectedKey="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/TITEL_AP}">
+				<Select forceSelection="false" selectedKey="{Customer>/cust_knvv/titel_ap}">
 					<items>
 						<core:Item text="Title 1" key="1"/>
 						<core:Item text="Title 2" key="2"/>
@@ -72,66 +68,92 @@
 				</Select>
 				<core:Title/>
 				<Label text="Gender/Sex"/>
-				<Select forceSelection="false"
-					selectedKey="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/PARGE}">
+				<ComboBox selectedKey="{Customer>/cust_knvv/parge}">
 					<items>
 						<core:Item text="Male" key="1"/>
 						<core:Item text="Female" key="2"/>
 						<core:Item text="Others" key="3"/>
 					</items>
-				</Select>
+				</ComboBox>
 				<Label text="Date of Birth"/>
-				<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/GBDAT}"/>
+				<DatePicker value="{Customer>/cust_knvv/gbdat}"/>
 				<Label text="Marital Status"/>
-				<Select forceSelection="false"
-					selectedKey="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/FAMST}">
+				<ComboBox selectedKey="{Customer>/cust_knvv/famst}">
 					<items>
 						<core:Item text="Single" key="1"/>
 						<core:Item text="Married" key="2"/>
 						<core:Item text="Widow" key="3"/>
 					</items>
-				</Select>
+				</ComboBox>
 				<Label text="Correspondance Language"/>
-				<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/PARLA}" showValueHelp="true"
-					valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
-					<customData>
-						<core:CustomData key="title" value="Correspondance Language"></core:CustomData>
-						<core:CustomData key="table" value=""></core:CustomData>
-						<core:CustomData key="Key1" value="Column 1"></core:CustomData>
-						<core:CustomData key="Key2" value="Column 2"></core:CustomData>
-						<core:CustomData key="inputKey" value="PARLA"></core:CustomData>
-						<core:CustomData key="inputText" value=""></core:CustomData>
-					</customData>
-				</Input>
+				<ComboBox selectedKey="{Customer>/cust_knvv/parla}" items="{Dropdowns>/T002}">
+					<core:Item key="{Dropdowns>spras}" text="{Dropdowns>sptxt}"/>
+				</ComboBox>
 				<core:Title text="Contact Person Details"/>
 				<Label text="Department"/>
-				<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/ABTNR}"/>
+				<Input value="{Customer>/cust_knvv/abtnr}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+					<customData>
+						<core:CustomData key="title" value="Department"></core:CustomData>
+						<core:CustomData key="table" value="TSAB"></core:CustomData>
+						<core:CustomData key="abtnr" value="Department"></core:CustomData>
+						<core:CustomData key="vtext" value="Text"></core:CustomData>
+						<core:CustomData key="inputKey" value="abtnr"></core:CustomData>
+						<core:CustomData key="inputText" value="abtnr"></core:CustomData>
+					</customData>
+				</Input>
 				<Label text="Function"/>
-				<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/PAFKT}"/>
+				<Input value="{Customer>/cust_knvv/pafkt}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+					<customData>
+						<core:CustomData key="title" value="Function"></core:CustomData>
+						<core:CustomData key="table" value="TPFK"></core:CustomData>
+						<core:CustomData key="abtnr" value="Function"></core:CustomData>
+						<core:CustomData key="vtext" value="Text"></core:CustomData>
+						<core:CustomData key="inputKey" value="abtnr"></core:CustomData>
+						<core:CustomData key="inputText" value="abtnr"></core:CustomData>
+					</customData>
+				</Input>
 				<Label text="Note"/>
-				<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/PARAU}"/>
+				<Input value="{Customer>/cust_knvv/parau}"/>
 				<core:Title/>
 				<Label text="Authority"/>
-				<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/PARVO}"/>
+				<Input value="{Customer>/cust_knvv/parvo}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+					<customData>
+						<core:CustomData key="title" value="Authority"></core:CustomData>
+						<core:CustomData key="table" value="TVPV"></core:CustomData>
+						<core:CustomData key="parvo" value="Authority"></core:CustomData>
+						<core:CustomData key="vtext" value="Text"></core:CustomData>
+						<core:CustomData key="inputKey" value="parvo"></core:CustomData>
+						<core:CustomData key="inputText" value="parvo"></core:CustomData>
+					</customData>
+				</Input>
 				<Label text="VIP"/>
-				<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/PAVIP}"/>
+				<Input value="{Customer>/cust_knvv/pavip}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+					<customData>
+						<core:CustomData key="title" value="VIP"></core:CustomData>
+						<core:CustomData key="table" value="TVIP"></core:CustomData>
+						<core:CustomData key="pavip" value="VIP"></core:CustomData>
+						<core:CustomData key="vtext" value="Text"></core:CustomData>
+						<core:CustomData key="inputKey" value="pavip"></core:CustomData>
+						<core:CustomData key="inputText" value="pavip"></core:CustomData>
+					</customData>
+				</Input>
 				<core:Title text="Company"/>
 				<Label text="Address"/>
-				<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/PAVIP}"/>
+				<Input value="{Customer>/gen_adcp/addrnumber}"/>
 				<core:Title text="Workplace"/>
 				<Label text="Function"/>
-				<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/PAVIP}"/>
+				<Input value="{Customer>/gen_adcp/function}"/>
 				<Label text="Department"/>
-				<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/PAVIP}"/>
+				<Input value="{Customer>/gen_adcp/department}"/>
 				<Label text="Room Number"/>
-				<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/PAVIP}"/>
+				<Input value="{Customer>/gen_adcp/building}"/>
 				<Label text="Floor"/>
-				<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/PAVIP}"/>
+				<Input value="{Customer>/gen_adcp/roomnumber}"/>
 				<Label text="Building"/>
-				<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1/PAVIP}"/>
+				<Input value="{Customer>/gen_adcp/building}"/>
 				<core:Title text="Communication"/>
 				<Label text="Communication Method"/>
-				<ComboBox/>
+				<ComboBox selectedKey="{Customer>/gen_adcp/deflt_comm}"></ComboBox>
 			</form:content>
 		</form:SimpleForm>
 		<Table items="{Customer>/addCompanyCodeRows}">

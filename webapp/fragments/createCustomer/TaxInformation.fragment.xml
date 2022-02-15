@@ -5,32 +5,81 @@
 		<form:content>
 			<core:Title text="Tax Information"/>
 			<Label text="Fiscal Address"/>
-			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}" maxLength="18"/>
+			<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
+				value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/fiskn}" maxLength="18">
+				<customData>
+					<core:CustomData key="title" value="Customer"></core:CustomData>
+					<core:CustomData key="table" value="KNA1"></core:CustomData>
+					<core:CustomData key="Key1" value="Company code"></core:CustomData>
+					<core:CustomData key="Key2" value="Company Name"></core:CustomData>
+					<core:CustomData key="Key3" value="Country"></core:CustomData>
+					<core:CustomData key="Key4" value="Currency"></core:CustomData>
+					<core:CustomData key="inputKey" value=""></core:CustomData>
+					<core:CustomData key="inputText" value=""></core:CustomData>
+				</customData>
+			</Input>
 			<Label text="City code"/>
-			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}" maxLength="18"/>
+			<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
+				value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/cityc}">
+				<customData>
+					<core:CustomData key="title" value="City Code"></core:CustomData>
+					<core:CustomData key="table" value="T005G"></core:CustomData>
+					<core:CustomData key="land1" value="Country Code"></core:CustomData>
+					<core:CustomData key="qland" value="City Code"></core:CustomData>
+					<core:CustomData key="qltxt" value="City"></core:CustomData>
+					<core:CustomData key="inputKey" value="qland"></core:CustomData>
+					<core:CustomData key="inputText" value="qland"></core:CustomData>
+				</customData>
+			</Input>
 			<Label text="County code"/>
-			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}" maxLength="18"/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/regio}">
+				<customData>
+					<core:CustomData key="title" value="County Code"></core:CustomData>
+					<core:CustomData key="table" value="T005S"></core:CustomData>
+					<core:CustomData key="land1" value="Country Code"></core:CustomData>
+					<core:CustomData key="bland" value="County code"></core:CustomData>
+					<core:CustomData key="bezei" value="County"></core:CustomData>
+					<core:CustomData key="inputKey" value="bland"></core:CustomData>
+					<core:CustomData key="inputText" value="bland"></core:CustomData>
+				</customData>
+			</Input>
 			<Label text="tax type"/>
-			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}" maxLength="18"/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/fityp}"/>
 			<Label text="SubTrib Group"/>
-			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}" maxLength="18"/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/xsubt}"/>
 			<Label text="Type of business"/>
-			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}" maxLength="18"/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/j_1kftbus}"/>
 			<Label text="Representative's Name"/>
-			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}" maxLength="18"/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/j_1kfrepre}" maxLength="18"/>
 			<core:Title text=""/>
 			<Label text="Sales Equalization Tax"/>
-			<CheckBox selected="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}"/>
+			<CheckBox select="onSelectCheckBox">
+				<customData>
+					<core:CustomData key="/cust_kna1/stkza" value="X"></core:CustomData>
+				</customData>
+			</CheckBox>
 			<Label text="Liable for VAT"/>
-			<CheckBox selected="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}"/>
+			<CheckBox select="onSelectCheckBox">
+				<customData>
+					<core:CustomData key="/cust_kna1/stkzu" value="X"></core:CustomData>
+				</customData>
+			</CheckBox>
 			<Label text="ICMS-Exempt"/>
-			<CheckBox selected="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}"/>
+			<CheckBox select="onSelectCheckBox">
+				<customData>
+					<core:CustomData key="/cust_kna1/xicms" value="X"></core:CustomData>
+				</customData>
+			</CheckBox>
 			<Label text="IPI-Exempt"/>
-			<CheckBox selected="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}"/>
+			<CheckBox select="onSelectCheckBox">
+				<customData>
+					<core:CustomData key="/cust_kna1/xxipi" value="X"></core:CustomData>
+				</customData>
+			</CheckBox>
 			<Label text="CFOP Category"/>
-			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}" maxLength="18"/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/cfopc}"/>
 			<Label text="Type of Industry"/>
-			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/STCD1}" maxLength="18"/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/j_1kftind}"/>
 		</form:content>
 	</form:SimpleForm>
 </core:FragmentDefinition>

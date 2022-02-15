@@ -1,0 +1,76 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:l="sap.ui.layout" xmlns:form="sap.ui.layout.form"
+	xmlns:commons="sap.suite.ui.commons">
+	<l:DynamicSideContent id="idCRDynamicSideContent" class="sapUiDSCExplored" containerQuery="true" sideContentFallDown="BelowM"
+		showSideContent="false" breakpointChanged="handleBreakpointChangeEvent">
+		<VBox>
+			<Table id="idCRList" mode="SingleSelectLeft" fixedLayout="false" items="{ChangeRequestsModel>/ChangeRequests}"
+				selectionChange="onSelectCRinTable" noDataText="No Chnage Request available, Please adjust filter or Try Again.">
+				<headerToolbar>
+					<Toolbar>
+						<Label id="idAllChangeRequest" text="All Change Request({ChangeRequestsModel>/TotalCount})" design="Bold"></Label>
+						<ToolbarSpacer/>
+						<Button icon="sap-icon://sort" tooltip="Sort Change Requests" press="onSortChangeReq"/>
+						<SegmentedButton selectionChange="onGetCRListbyUser" selectedKey="{ChangeRequestsModel>/ReqType}">
+							<items>
+								<SegmentedButtonItem text="All Change Request" key="ALL_REQ"/>
+								<SegmentedButtonItem text="My Change Request" key="MY_REQ"/>
+							</items>
+						</SegmentedButton>
+						<Label text="Page No."/>
+						<Select forceSelection="true" items="{ChangeRequestsModel>/PageData}" selectedKey="{ChangeRequestsModel>/SelectedPageKey}"
+							change="onSelectChnageReqPage">
+							<core:Item text="{ChangeRequestsModel>text}" key="{ChangeRequestsModel>key}"/>
+						</Select>
+						<Button icon="sap-icon://navigation-left-arrow" type="Transparent" enabled="{ChangeRequestsModel>/LeftEnabled}"
+							press="onSelectChnageReqPageLeft"></Button>
+						<Button icon="sap-icon://navigation-right-arrow" type="Transparent" enabled="{ChangeRequestsModel>/RightEnabled}"
+							press="onSelectChnageReqPageRight"></Button>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column >
+						<header>
+							<Label text="Change Request" design="Bold"/>
+						</header>
+					</Column>
+					<Column >
+						<header>
+							<Label text="Description" design="Bold"/>
+						</header>
+					</Column>
+					<Column >
+						<header>
+							<Label text="Change Status" design="Bold"/>
+						</header>
+					</Column>
+					<Column >
+						<header>
+							<Label text="Change Request Date" design="Bold"/>
+						</header>
+					</Column>
+					<Column >
+						<header>
+							<Label text="Changed By" design="Bold"/>
+						</header>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem>
+						<cells>
+							<Link
+								text="{ parts: [ 'ChangeRequestsModel>crDTO/change_request_id', 'ChangeRequestsModel>crDTO/entity_id'], formatter: '.formatCR_Entiry_ID' }"
+								press="onChangeReqLinkPress"></Link>
+							<Text text="{ChangeRequestsModel>crDTO/change_request_desc}"></Text>
+							<ObjectStatus text="{path:'ChangeRequestsModel>crDTO/is_cr_closed',formatter:'.getStatusOfCr'}"/>
+							<Text text="{path:'ChangeRequestsModel>crDTO/change_request_date',formatter:'.getDateofCr'}"></Text>
+							<Text text="{ChangeRequestsModel>crDTO/change_request_by/firstname} {ChangeRequestsModel>crDTO/change_request_by/lastname}"></Text>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</VBox>
+		<l:sideContent>
+			<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.changeRequest.CRSideContent" type="XML"/>
+		</l:sideContent>
+	</l:DynamicSideContent>
+</core:FragmentDefinition>

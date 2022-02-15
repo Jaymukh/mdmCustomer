@@ -287,7 +287,7 @@ sap.ui.define([
 					if (oDataResp.result && oDataResp.result.modelMap) {
 						var obj = {};
 						obj[oData["key"]] = "";
-						obj[oData["text"]] = ""
+						obj[oData["text"]] = "";
 						oDataResp.result.modelMap.unshift(obj);
 						this.oTableDataModel.setProperty("/item", oDataResp.result.modelMap);
 						this.oTableDataModel.refresh();

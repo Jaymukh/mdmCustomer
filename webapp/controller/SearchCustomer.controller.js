@@ -133,20 +133,25 @@ sap.ui.define([
 			var sKey = oEvent.getParameter("item").getKey();
 			var titleID = this.getView().byId("idTitle");
 			titleID.setText(this.oBundle.getText(sKey + "-title"));
-			this.byId("pageContainer").to(this.getView().createId(sKey));
-			if (sKey === "CreateERPCustomer") {
+			switch (sKey) {
+			case "CreateERPCustomer":
 				this._createCREntityCustomer();
-			}
-			if (sKey === "changeRequestId" || sKey === "changeRequestId-Mass") {
+				this.byId("pageContainer").to(this.getView().createId(sKey));
+				break;
+			case "changeRequestId":
+			case "changeRequestId-Mass":
 				this.nPageNo = 1;
 				this.handleGetAllChangeRequests(this.nPageNo);
 				this.handleChangeRequestStatistics();
-			}
-			if (sKey === "srchVnd") {
+				this.byId("pageContainer").to(this.getView().createId("changeRequestId"));
+				break;
+			case "SearchCust":
 				var oParameters = {
 					sPageNo: 1
 				};
 				this.handleGo(oParameters);
+				this.byId("pageContainer").to(this.getView().createId(sKey));
+				break;
 			}
 		},
 

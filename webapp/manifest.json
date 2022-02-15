@@ -17,10 +17,6 @@
 			"CreateCustDataSource": {
 				"uri": "model/localJson.json",
 				"type": "JSON"
-			},
-			"changeRequestMetatDataSource": {
-				"uri": "model/ChangeRequestMetaData.json",
-				"type": "JSON"
 			}
 		}
 	},
@@ -52,9 +48,27 @@
 		"dependencies": {
 			"minUI5Version": "1.65.6",
 			"libs": {
-				"sap.ui.layout": {},
-				"sap.ui.core": {},
-				"sap.m": {}
+				"sap.ui.layout": {
+					"lazy": true
+				},
+				"sap.ui.core": {
+					"lazy": true
+				},
+				"sap.m": {
+					"lazy": true
+				},
+				"sap.suite.ui.commons": {
+					"lazy": true
+				},
+				"sap.ui.comp": {
+					"lazy": true
+				},
+				"sap.uxap": {
+					"lazy": true
+				},
+				"sap.f": {
+					"lazy": true
+				}
 			}
 		},
 		"contentDensities": {
@@ -88,36 +102,23 @@
 					"defaultBindingMode": "TwoWay"
 				}
 			},
-			"SearchCustomerPopupModel": {
+			"ChangeRequestsModel": {
 				"type": "sap.ui.model.json.JSONModel",
 				"settings": {
-					"defaultBindingMode": "TwoWay"
-				}
-			},
-			"ChangeRequestMetadataModel": {
-				"type": "sap.ui.model.json.JSONModel",
-				"dataSource": "changeRequestMetatDataSource",
-				"settings": {
-					"defaultBindingMode": "TwoWay"
-				}
-			},
-			"changeRequestGetAllModel": {
-				"type": "sap.ui.model.json.JSONModel",
-				"settings": {
-					"defaultBindingMode": "TwoWay"
-				}
-			},
-			"changeRequestStatisticsModel": {
-				"type": "sap.ui.model.json.JSONModel",
-				"settings": {
-					"defaultBindingMode": "TwoWay"
-				}
-			},
-			"CreateERPCustomerAddrTableModel": {
-				"type": "sap.ui.model.json.JSONModel",
-				"settings": {
-					"defaultBindingMode": "TwoWay",
-					"rows": []
+					"LeftEnabled": false,
+					"RightEnabled": false,
+					"PageData": [],
+					"TotalCount": 0,
+					"SelectedPageKey": 1,
+					"ChangeRequests": [],
+					"Statistics": null,
+					"DateFrom": null,
+					"DateTo": null,
+					"Show": "01",
+					"Customer": "",
+					"City": "",
+					"CompanyCode": "",
+					"ReqType": "ALL_REQ"
 				}
 			},
 			"userManagementModel": {
@@ -139,6 +140,9 @@
 				"type": "sap.ui.model.json.JSONModel"
 			},
 			"AuditLogModel": {
+				"type": "sap.ui.model.json.JSONModel"
+			},
+			"WorkFlowModel": {
 				"type": "sap.ui.model.json.JSONModel"
 			}
 		},

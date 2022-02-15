@@ -1,9 +1,0 @@
-{
-				"columns": [
-						{"header": "Change Request","key": "crDTO/change_request_id"},
-						{"header": "Description","key": "crDTO/change_request_desc"},
-						{"header": "Change Status","key": "crDTO/is_cr_closed"},
-						{"header": "Change Request Date","key": "crDTO/change_request_date"},
-						{"header": "Changed By","key": "crDTO/change_request_by"}
-					]
-}

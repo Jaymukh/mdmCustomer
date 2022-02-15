@@ -54,38 +54,40 @@
 			</items>
 		</Table>
 		<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
-		adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
-		singleContainerFullSize="false">
-		<form:content>
-			<core:Title text="Bank Details"/>
-			<Label text="Bank Details ID"/>
-			<Input/>
-			<Label text="Bank Account"/>
-			<Input/>
-			<Label text="Account Holder"/>
-			<Input/>
-			<Label text="IBAN"/>
-			<Input/>
-			<Label text="Account Name"/>
-			<Input/>
-			<Label text="Control Key"/>
-			<Input/>
-			<Label text="Reference Details"/>
-			<Input/>
-			<Label text="Collection Authorization"/>
-			<CheckBox/>
-			<core:Title text="Bank Data"/>
-			<Label text="Bank Country"/>
-			<Input/>
-			<Label text="Bank Key"/>
-			<Input/>
-			<Label text="Bank Name"/>
-			<Input/>
-			<Label text="Street"/>
-			<Input/>
-			<Label text="City"/>
-			<Input/>
-		</form:content>
-	</form:SimpleForm>
+			adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
+			singleContainerFullSize="false">
+			<form:content>
+				<core:Title text="Bank Details"/>
+				<Label text="Bank Details ID"/>
+				<Input value="{Customer>/cust_knbk/bvtyp}"/>
+				<Label text="Bank Account"/>
+				<Input value="{Customer>/cust_knbk/bkont}"/>
+				<Label text="Account Holder"/>
+				<Input value="{Customer>/cust_knbk/koinh}"/>
+				<Label text="IBAN"/>
+				<Input value="{Customer>/cust_knbk/tiban}"/>
+				<Label text="Account Name"/>
+				<Input value="{Customer>/cust_knbk/bankn}"/>
+				<Label text="Control Key"/>
+				<Input value="{Customer>/cust_knbk/bkont}"/>
+				<Label text="Reference Details"/>
+				<Input value="{Customer>/cust_knbk/bkref}"/>
+				<Label text="Collection Authorization"/>
+				<CheckBox/>
+				<core:Title text="Bank Data"/>
+				<Label text="Bank Country"/>
+				<ComboBox items="{Dropdowns>/T005}" selectedKey="{Customer>/gen_bnka/banks}">
+					<core:Item key="{Dropdowns>land1}" text="{Dropdowns>landx}"/>
+				</ComboBox>
+				<Label text="Bank Key"/>
+				<Input value="{Customer>/gen_bnka/bankl}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"/>
+				<Label text="Bank Name"/>
+				<Input value="{Customer>/gen_bnka/banka}" editable="false"/>
+				<Label text="Street"/>
+				<Input value="{Customer>/gen_bnka/stras}" editable="false"/>
+				<Label text="City"/>
+				<Input value="{Customer>/gen_bnka/ort01}" editable="false"/>
+			</form:content>
+		</form:SimpleForm>
 	</VBox>
 </core:FragmentDefinition>

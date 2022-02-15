@@ -1,0 +1,70 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:filterbar="sap.ui.comp.filterbar" xmlns:commons="sap.suite.ui.commons">
+	<VBox width="100%">
+		<FlexBox renderType="Bare">
+			<TileContent footer="Total Request">
+				<content>
+					<NumericContent value="{ChangeRequestsModel>/Statistics/totalCount}" valueColor="Neutral" press="onPressChngReqTile"
+						icon="sap-icon://request"/>
+				</content>
+			</TileContent>
+			<TileContent footer="Pending">
+				<content>
+					<NumericContent value="{ChangeRequestsModel>/Statistics/pendingCount}" valueColor="Critical" press="onPressChngReqTile"
+						icon="sap-icon://pending"/>
+				</content>
+			</TileContent>
+			<TileContent footer="Rejected">
+				<content>
+					<NumericContent value="{ChangeRequestsModel>/Statistics/rejectedCount}" valueColor="Error" press="onPressChngReqTile"
+						icon="sap-icon://decline"/>
+				</content>
+			</TileContent>
+			<TileContent footer="Approved">
+				<content>
+					<NumericContent value="{ChangeRequestsModel>/Statistics/approvedCount}" valueColor="Good" press="onPressChngReqTile"
+						icon="sap-icon://accept"/>
+				</content>
+			</TileContent>
+		</FlexBox>
+		<Toolbar class="sapUiMediumMarginBeginEnd noBorderToolbar">
+			<SearchField/>
+			<ToggleButton id="slideToggleButtonID" icon="sap-icon://arrow-left" pressed="false" text="Side Menu" press="handleCRSideMenu"></ToggleButton>
+		</Toolbar>
+		<filterbar:FilterBar id="idFbChangeRequests" showFilterConfiguration="false" useToolbar="false" showGoOnFB="true" search="onSearchCrList"
+			class="noBorderFilterBar">
+			<filterbar:filterGroupItems >
+				<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="ChangeReq" name="dateRange" label="Date Range">
+					<filterbar:control>
+						<DateRangeSelection dateValue="{ChangeRequestsModel>/DateFrom}" secondDateValue="{ChangeRequestsModel>/DateTo}"
+							change="handleDateRangeChange" displayFormat="{App>/dateFormat}"/>
+					</filterbar:control>
+				</filterbar:FilterGroupItem>
+				<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="ChangeReq" name="createdBy" label="Show">
+					<filterbar:control>
+						<ComboBox selectedKey="{ChangeRequestsModel>/Show}">
+							<core:Item text="All" key="01"/>
+							<core:Item text="Created by Me" key="02"/>
+							<core:Item text="To be processed by Me" key="03"/>
+							<core:Item text="Processed by Me" key="04"/>
+						</ComboBox>
+					</filterbar:control>
+				</filterbar:FilterGroupItem>
+				<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="ChangeReq" name="customer" label="Customer">
+					<filterbar:control>
+						<Input value="{ChangeRequestsModel>/Customer}"/>
+					</filterbar:control>
+				</filterbar:FilterGroupItem>
+				<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="ChangeReq" name="city" label="City">
+					<filterbar:control>
+						<Input value="{ChangeRequestsModel>/City}"/>
+					</filterbar:control>
+				</filterbar:FilterGroupItem>
+				<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="ChangeReq" name="companyCode" label="Company Code">
+					<filterbar:control>
+						<Input value="{ChangeRequestsModel>/CompanyCode}"/>
+					</filterbar:control>
+				</filterbar:FilterGroupItem>
+			</filterbar:filterGroupItems>
+		</filterbar:FilterBar>
+	</VBox>
+</core:FragmentDefinition>

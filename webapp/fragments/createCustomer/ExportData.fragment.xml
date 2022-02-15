@@ -5,18 +5,42 @@
 		<form:content>
 			<core:Title text="Classification"/>
 			<Label text="Biochemical Warfare"/>
-			<CheckBox/>
+			<CheckBox select="onSelectCheckBox">
+				<customData>
+					<core:CustomData key="/cust_kna1/ccc01" value="X"></core:CustomData>
+				</customData>
+			</CheckBox>
 			<Label text="Nuclear Nonproliferation"/>
-			<CheckBox/>
+			<CheckBox select="onSelectCheckBox">
+				<customData>
+					<core:CustomData key="/cust_kna1/ccc02" value="X"></core:CustomData>
+				</customData>
+			</CheckBox>
 			<Label text="National Security"/>
-			<CheckBox/>
+			<CheckBox select="onSelectCheckBox">
+				<customData>
+					<core:CustomData key="/cust_kna1/ccc03" value="X"></core:CustomData>
+				</customData>
+			</CheckBox>
 			<Label text="Missile Technology"/>
-			<CheckBox/>
+			<CheckBox select="onSelectCheckBox">
+				<customData>
+					<core:CustomData key="/cust_kna1/ccc04" value="X"></core:CustomData>
+				</customData>
+			</CheckBox>
 			<core:Title text="Usage"/>
 			<Label text="Non-Military Use"/>
-			<CheckBox/>
+			<CheckBox select="onSelectCheckBox">
+				<customData>
+					<core:CustomData key="/cust_kna1/civve" value="X"></core:CustomData>
+				</customData>
+			</CheckBox>
 			<Label text="Military Use"/>
-			<CheckBox/>
+			<CheckBox select="onSelectCheckBox">
+				<customData>
+					<core:CustomData key="/cust_kna1/milve" value="X"></core:CustomData>
+				</customData>
+			</CheckBox>
 		</form:content>
 	</form:SimpleForm>
 </core:FragmentDefinition>

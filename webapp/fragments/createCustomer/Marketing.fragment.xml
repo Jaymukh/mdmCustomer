@@ -4,51 +4,100 @@
 		singleContainerFullSize="false">
 		<form:content>
 			<core:Title text="Classification"/>
-			<Label text="Nielsen Indicator" required="true"/>
-			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
+			<Label text="Nielsen Indicator"/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/niels}" showValueHelp="true"
 				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 				<customData>
-					<core:CustomData key="title" value="Instruction Key"></core:CustomData>
-					<core:CustomData key="table" value="T015W"></core:CustomData>
-					<core:CustomData key="dtzus" value="Name"></core:CustomData>
-					<core:CustomData key="dtaws" value="Key"></core:CustomData>
-					<core:CustomData key="inputKey" value="dtaws"></core:CustomData>
-					<core:CustomData key="inputText" value="dtaws"></core:CustomData>
+					<core:CustomData key="title" value="Nielsen Indicator"></core:CustomData>
+					<core:CustomData key="table" value="TNLS"></core:CustomData>
+					<core:CustomData key="niels" value="Nielsen Indicator"></core:CustomData>
+					<core:CustomData key="inputKey" value="niels"></core:CustomData>
+					<core:CustomData key="inputText" value="niels"></core:CustomData>
 				</customData>
 			</Input>
 			<Label text="Customer Classification"/>
-			<Input value="{Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/DTAWS}" showValueHelp="true"
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kukla}" showValueHelp="true"
 				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 				<customData>
-					<core:CustomData key="title" value="Instruction Key"></core:CustomData>
-					<core:CustomData key="table" value="T015W"></core:CustomData>
-					<core:CustomData key="dtzus" value="Name"></core:CustomData>
-					<core:CustomData key="dtaws" value="Key"></core:CustomData>
-					<core:CustomData key="inputKey" value="dtaws"></core:CustomData>
-					<core:CustomData key="inputText" value="dtaws"></core:CustomData>
+					<core:CustomData key="title" value="Customer Classification"></core:CustomData>
+					<core:CustomData key="table" value="TKUKL"></core:CustomData>
+					<core:CustomData key="kukla" value="Customer Class"></core:CustomData>
+					<core:CustomData key="vtext" value="Description"></core:CustomData>
+					<core:CustomData key="inputKey" value="kukla"></core:CustomData>
+					<core:CustomData key="inputText" value="kukla"></core:CustomData>
 				</customData>
 			</Input>
-			<Label text="Annual Sales / Currency"/>
-			<Input/>
+			<Label text="Industry Code 1"/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/bran1}" editable="false" showValueHelp="true"
+				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<customData>
+					<core:CustomData key="title" value="Industry Code"></core:CustomData>
+					<core:CustomData key="table" value="TBRC"></core:CustomData>
+					<core:CustomData key="braco" value="Industry Code"></core:CustomData>
+					<core:CustomData key="vtext" value="Description"></core:CustomData>
+					<core:CustomData key="inputKey" value="braco"></core:CustomData>
+					<core:CustomData key="inputText" value="braco"></core:CustomData>
+				</customData>
+			</Input>
 			<Label text="Industry Code 2"/>
-			<Input/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/bran2}" editable="false" showValueHelp="true"
+				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<customData>
+					<core:CustomData key="title" value="Industry Code"></core:CustomData>
+					<core:CustomData key="table" value="TBRC"></core:CustomData>
+					<core:CustomData key="braco" value="Industry Code"></core:CustomData>
+					<core:CustomData key="vtext" value="Description"></core:CustomData>
+					<core:CustomData key="inputKey" value="braco"></core:CustomData>
+					<core:CustomData key="inputText" value="braco"></core:CustomData>
+				</customData>
+			</Input>
 			<Label text="Industry Code 3"/>
-			<Input/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/bran3}" editable="false" showValueHelp="true"
+				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<customData>
+					<core:CustomData key="title" value="Industry Code"></core:CustomData>
+					<core:CustomData key="table" value="TBRC"></core:CustomData>
+					<core:CustomData key="braco" value="Industry Code"></core:CustomData>
+					<core:CustomData key="vtext" value="Description"></core:CustomData>
+					<core:CustomData key="inputKey" value="braco"></core:CustomData>
+					<core:CustomData key="inputText" value="braco"></core:CustomData>
+				</customData>
+			</Input>
 			<Label text="Industry Code 4"/>
-			<Input/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/bran4}" editable="false" showValueHelp="true"
+				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<customData>
+					<core:CustomData key="title" value="Industry Code"></core:CustomData>
+					<core:CustomData key="table" value="TBRC"></core:CustomData>
+					<core:CustomData key="braco" value="Industry Code"></core:CustomData>
+					<core:CustomData key="vtext" value="Description"></core:CustomData>
+					<core:CustomData key="inputKey" value="braco"></core:CustomData>
+					<core:CustomData key="inputText" value="braco"></core:CustomData>
+				</customData>
+			</Input>
 			<Label text="Industry Code 5"/>
-			<Input/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/bran5}" editable="false" showValueHelp="true"
+				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<customData>
+					<core:CustomData key="title" value="Industry Code"></core:CustomData>
+					<core:CustomData key="table" value="TBRC"></core:CustomData>
+					<core:CustomData key="braco" value="Industry Code"></core:CustomData>
+					<core:CustomData key="vtext" value="Description"></core:CustomData>
+					<core:CustomData key="inputKey" value="braco"></core:CustomData>
+					<core:CustomData key="inputText" value="braco"></core:CustomData>
+				</customData>
+			</Input>
 			<core:Title text="Key Figures"/>
 			<Label text="Annual Sales / Currency"/>
-			<Input/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/umsat}" editable="false"/>
 			<Label text="Sales Year"/>
-			<Input/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/umjah}" editable="false"/>
 			<Label text="Employees"/>
-			<Input/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/jmzah}" editable="false"/>
 			<Label text="In Year"/>
-			<Input/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/jmjah}" editable="false"/>
 			<Label text="Fiscal Year Variant"/>
-			<Input/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/periv}" editable="false"/>
 		</form:content>
 	</form:SimpleForm>
 </core:FragmentDefinition>

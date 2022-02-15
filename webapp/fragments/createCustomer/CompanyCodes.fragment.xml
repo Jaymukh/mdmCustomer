@@ -43,8 +43,7 @@
 			<form:content>
 				<core:Title text="ERP Customer Company Code"/>
 				<Label text="Company Code"/>
-				<Input id="idComCodesCompanyCode" required="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-					value="{Customer>/addCompanyCodeFormData/lfb1/bukrs}">
+				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/cust_knb1/bukrs}">
 					<customData>
 						<core:CustomData key="title" value="Company Code"></core:CustomData>
 						<core:CustomData key="table" value="T001"></core:CustomData>
@@ -57,29 +56,22 @@
 					</customData>
 				</Input>
 				<core:Title text="Accounting Information"/>
-				<Label text="Reconcillation Account" required="true"/>
-				<Select id="idCompCodesReconcillationAccunt" forceSelection="false" selectedKey="{Customer>/addCompanyCodeFormData/lfb1/AKONT}">
-					<items>
-						<core:Item text="11590120-AR IC JV VENDOR" key="11590120"/>
-						<core:Item text="30000100-AP-TRADE" key="30000100"/>
-						<core:Item text="30000110-AP-JOINT VENTURE" key="30000110"/>
-						<core:Item text="30000111-CASH CALL DUE(NP)" key="30000111"/>
-						<core:Item text="30000112-CASH CALL OFFSET(NP)" key="30000112"/>
-						<core:Item text="30000114-Vendor 1099 Reconciliation Account" key="30000114"/>
-						<core:Item text="30000120-AP - EMPLOYEES" key="30000120"/>
-						<core:Item text="30000130-AP- LAND" key="30000130"/>
-						<core:Item text="30400100-AP IC auto postings" key="30400100"/>
-						<core:Item text="31000105-N_INACTIVE-Production/royalty payable(recon)" key="31000105"/>
-						<core:Item text="31000170-NGL MKTG PURCH PAY" key="31000170"/>
-						<core:Item text="30300000-Other ACCOUNTS PAY" key="30300000"/>
-					</items>
-				</Select>
+				<Label text="Reconcillation Account"/>
+				<Input value="{Customer>/cust_knb1/akont}" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+					<customData>
+						<core:CustomData key="title" value="Reconcillation Account"></core:CustomData>
+						<core:CustomData key="table" value="SKB1"></core:CustomData>
+						<core:CustomData key="akont" value="Account"></core:CustomData>
+						<core:CustomData key="text" value="Long Text"></core:CustomData>
+						<core:CustomData key="inputKey" value="akont"></core:CustomData>
+						<core:CustomData key="inputText" value="akont"></core:CustomData>
+					</customData>
+				</Input>
 				<Label text="Head Office"/>
-				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-					value="{Customer>/addCompanyCodeFormData/lfb1/LNRZE}">
+				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/cust_knb1/knrze}">
 					<customData>
 						<core:CustomData key="title" value="Head Office"></core:CustomData>
-						<core:CustomData key="table" value="LFA1"></core:CustomData>
+						<core:CustomData key="table" value="KNA1"></core:CustomData>
 						<core:CustomData key="customVendorLFA1DTO/lifnr" value="Vendor"></core:CustomData>
 						<core:CustomData key="customVendorLFA1DTO/name1" value="Name"></core:CustomData>
 						<core:CustomData key="customVendorLFA1DTO/land1" value="Country"></core:CustomData>
@@ -88,41 +80,52 @@
 					</customData>
 				</Input>
 				<Label text="Authorization Group"/>
-				<Input value="{Customer>/addCompanyCodeFormData/lfb1/BEGRU}" maxLength="4"/>
+				<Input value="{Customer>/cust_knb1/begru}"/>
 				<Label text="Value Adjustment"/>
-				<Input value="{Customer>/addCompanyCodeFormData/lfb1/BEGRU}" showValueHelp="true"/>
+				<Input value="{Customer>/cust_knb1/wbrsl}" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" showValueHelp="true">
+					<customData>
+						<core:CustomData key="title" value="Value Adjustmen"></core:CustomData>
+						<core:CustomData key="table" value="T044G"></core:CustomData>
+						<core:CustomData key="wbrsl" value="Value Adjust"></core:CustomData>
+						<core:CustomData key="bwber" value="Valuation Area"></core:CustomData>
+						<core:CustomData key="land1" value="Country"></core:CustomData>
+						<core:CustomData key="ovdue" value="Days Overdue"></core:CustomData>
+						<core:CustomData key="future" value="Future"></core:CustomData>
+						<core:CustomData key="inputKey" value="wbrsl"></core:CustomData>
+						<core:CustomData key="inputText" value="wbrsl"></core:CustomData>
+					</customData>
+				</Input>
 				<Label text="Sort Key"/>
-				<Input id="idComCodesSortKey" showValueHelp="true" required="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-					value="{Customer>/addCompanyCodeFormData/lfb1/ZUAWA}">
+				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/cust_knb1/zuawa}">
 					<customData>
 						<core:CustomData key="title" value="Sort Key"></core:CustomData>
 						<core:CustomData key="table" value="TZUN"></core:CustomData>
 						<core:CustomData key="ttext" value="Name"></core:CustomData>
 						<core:CustomData key="zuawa" value="Key"></core:CustomData>
 						<core:CustomData key="inputKey" value="zuawa"></core:CustomData>
-						<core:CustomData key="inputText" value="ttext"></core:CustomData>
+						<core:CustomData key="inputText" value="zuawa"></core:CustomData>
 					</customData>
 				</Input>
 				<Label text="Planning Group"/>
-				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-					value="{Customer>/addCompanyCodeFormData/lfb1/FDGRV}">
+				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/cust_knb1/fdgrv}">
 					<customData>
 						<core:CustomData key="title" value="Planning Group"></core:CustomData>
 						<core:CustomData key="table" value="T035"></core:CustomData>
 						<core:CustomData key="textl" value="Name"></core:CustomData>
 						<core:CustomData key="grupp" value="Key"></core:CustomData>
 						<core:CustomData key="inputKey" value="grupp"></core:CustomData>
-						<core:CustomData key="inputText" value="textl"></core:CustomData>
+						<core:CustomData key="inputText" value="grupp"></core:CustomData>
 					</customData>
 				</Input>
 				<Label text="Release Group"/>
-				<Select id="compCodesReleaseGroupId" forceSelection="false" selectedKey="{Customer>/addCompanyCodeFormData/lfb1/FRGRP}"></Select>
+				<ComboBox selectedKey="{Customer>/cust_knb1/frgrp}" items="{Dropdowns>/VBWF08}">
+					<core:Item key="{Dropdowns>frgrp}" text="{Dropdowns>frgrt}"/>
+				</ComboBox>
 				<Label text="Certification Date"/>
-				<DatePicker displayFormat="YYYYMMdd" valueFormat="YYYYMMdd" value="{Customer>/addCompanyCodeFormData/lfb1/CERDT}"/>
+				<DatePicker displayFormat="YYYYMMdd" valueFormat="YYYYMMdd" value="{Customer>/cust_knb1/CERDT}"/>
 				<core:Title text="Intrest Calculation"/>
 				<Label text="Intrest Indicator"/>
-				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-					value="{Customer>/addCompanyCodeFormData/lfb1/VZSKZ}">
+				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/cust_knb1/vzskz}">
 					<customData>
 						<core:CustomData key="title" value="Intrest Indicator"></core:CustomData>
 						<core:CustomData key="table" value="T056"></core:CustomData>
@@ -133,7 +136,7 @@
 					</customData>
 				</Input>
 				<Label text="Intrest Calculation Frequency"/>
-				<Select forceSelection="false" id="compCodesIntrCalcuFequencyId" selectedKey="{Customer>/addCompanyCodeFormData/lfb1/ZINRT}">
+				<ComboBox selectedKey="{Customer>/cust_knb1/zinrt}">
 					<items>
 						<core:Item text="1 Month" key="01"/>
 						<core:Item text="2 Month" key="02"/>
@@ -148,191 +151,275 @@
 						<core:Item text="11 Month" key="11"/>
 						<core:Item text="12 Month" key="12"/>
 					</items>
-				</Select>
+				</ComboBox>
 				<Label text="Last Key Date"/>
-				<DatePicker displayFormat="YYYYMMdd" valueFormat="YYYYMMdd" value="{Customer>/addCompanyCodeFormData/lfb1/ZINDT}"/>
+				<DatePicker displayFormat="YYYYMMdd" valueFormat="YYYYMMdd" value="{Customer>/cust_knb1/zindt}"/>
 				<Label text="Last Intrest Run"/>
-				<DatePicker displayFormat="YYYYMMdd" valueFormat="YYYYMMdd" value="{Customer>/addCompanyCodeFormData/lfb1/DATLZ}"/>
+				<DatePicker displayFormat="YYYYMMdd" valueFormat="YYYYMMdd" value="{Customer>/cust_knb1/datlz}"/>
 				<core:Title text="Reference Data"/>
 				<Label text="Previous Account Number"/>
-				<Input value="{Customer>/addCompanyCodeFormData/lfbw/WT_WITHCD}"/>
+				<Input value="{Customer>/cust_knb1/altkn}"/>
 				<Label text="Buying Group"/>
-				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<Input value="{Customer>/cust_knb1/ekvbd}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 					<customData>
-						<core:CustomData key="title" value="Withholding Tax Country"></core:CustomData>
-						<core:CustomData key="table" value="T005"></core:CustomData>
-						<core:CustomData key="land1" value="Country Code"></core:CustomData>
-						<core:CustomData key="lkvrz" value="Country"></core:CustomData>
-						<core:CustomData key="inputKey" value="land1"></core:CustomData>
-						<core:CustomData key="inputText" value="lkvrz"></core:CustomData>
+						<core:CustomData key="title" value="Buying Group"></core:CustomData>
+						<core:CustomData key="table" value="KNA1"></core:CustomData>
+						<core:CustomData key="kunnr" value="Customer Code"></core:CustomData>
+						<core:CustomData key="inputKey" value="kunnr"></core:CustomData>
+						<core:CustomData key="inputText" value="kunnr"></core:CustomData>
 					</customData>
 				</Input>
 				<Label text="Personal No."/>
-				<Input value="{Customer>/addCompanyCodeFormData/lfbw/QSREC}"></Input>
+				<Input value="{Customer>/cust_knb1/pernr}"></Input>
 				<core:Title text="Payment Data"/>
 				<Label text="Terms of Payment"/>
-				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-					value="{Customer>/addCompanyCodeFormData/lfbw/witht}">
+				<Input value="{Customer>/cust_knb1/zterm}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 					<customData>
-						<core:CustomData key="title" value="Withholding Tax Type"></core:CustomData>
-						<core:CustomData key="table" value="T059P"></core:CustomData>
-						<core:CustomData key="text40" value="Name"></core:CustomData>
-						<core:CustomData key="witht" value="Key"></core:CustomData>
-						<core:CustomData key="inputKey" value="witht"></core:CustomData>
-						<core:CustomData key="inputText" value="text40"></core:CustomData>
+						<core:CustomData key="title" value="Terms of Payment"></core:CustomData>
+						<core:CustomData key="table" value="T052"></core:CustomData>
+						<core:CustomData key="inputKey" value="zterm"></core:CustomData>
+						<core:CustomData key="inputText" value="zterm"></core:CustomData>
+						<core:CustomData key="zterm" value="Terms of Payment"></core:CustomData>
+						<core:CustomData key="text" value="Description"></core:CustomData>
 					</customData>
 				</Input>
 				<Label text="Credit Memo Payment Terms"/>
-				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-					value="{Customer>/addCompanyCodeFormData/lfbw/QSREC}">
+				<Input value="{Customer>/cust_knb1/guzte}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 					<customData>
-						<core:CustomData key="title" value="Recipient Type"></core:CustomData>
-						<core:CustomData key="table" value="T059C"></core:CustomData>
-						<core:CustomData key="rctxt" value="Name"></core:CustomData>
-						<core:CustomData key="qsrec" value="Key"></core:CustomData>
-						<core:CustomData key="land1" value="Country"></core:CustomData>
-						<core:CustomData key="inputKey" value="qsrec"></core:CustomData>
-						<core:CustomData key="inputText" value="rctxt"></core:CustomData>
+						<core:CustomData key="title" value="Payment Terms"></core:CustomData>
+						<core:CustomData key="table" value="T052"></core:CustomData>
+						<core:CustomData key="inputKey" value="zterm"></core:CustomData>
+						<core:CustomData key="inputText" value="zterm"></core:CustomData>
+						<core:CustomData key="zterm" value="Terms of Payment"></core:CustomData>
+						<core:CustomData key="text" value="Description"></core:CustomData>
 					</customData>
 				</Input>
 				<Label text="B/E Charges Payment Term"/>
-				<Input value="{Customer>/addCompanyCodeFormData/lfbw/WT_WTSTCD}" maxLength="16"/>
+				<Input value="{Customer>/cust_knb1/wakon}" maxLength="16"/>
 				<Label text="Check Cashing Time"/>
-				<Input value="{Customer>/addCompanyCodeFormData/lfbw/WT_EXRT}" maxLength="5"/>
+				<Input value="{Customer>/cust_knb1/kultg}" maxLength="5"/>
 				<Label text="Tolerance Group"/>
-				<Input/>
+				<Input value="{Customer>/cust_knb1/togru}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+					<customData>
+						<core:CustomData key="title" value="Tolerance Group"></core:CustomData>
+						<core:CustomData key="table" value="T043G"></core:CustomData>
+						<core:CustomData key="inputKey" value="togru"></core:CustomData>
+						<core:CustomData key="inputText" value="togru"></core:CustomData>
+						<core:CustomData key="togru" value="Tolerance Group"></core:CustomData>
+						<core:CustomData key="togru" value="Name"></core:CustomData>
+					</customData>
+				</Input>
 				<Label text="Known/Negotiated Leave"/>
-				<Input/>
+				<Input value="{Customer>/cust_knb1/urlid}"/>
 				<Label text="AR Pledging Indicator"/>
-				<Input/>
+				<Input value="{Customer>/cust_knb1/cession_kz}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+					<customData>
+						<core:CustomData key="title" value="AR Pledging Indicator"></core:CustomData>
+						<core:CustomData key="table" value="TCESSION"></core:CustomData>
+						<core:CustomData key="inputKey" value="cession_KZ"></core:CustomData>
+						<core:CustomData key="inputText" value="cession_KZ"></core:CustomData>
+						<core:CustomData key="cession_KZ" value="AR Pledging Indicator"></core:CustomData>
+						<core:CustomData key="cession_TEXT" value="AR Pledging Text"></core:CustomData>
+					</customData>
+				</Input>
 				<Label text="Payment History Record"/>
-				<CheckBox/>
+				<CheckBox select="onSelectCheckBox">
+					<customData>
+						<core:CustomData key="/cust_knb1/xzver" value="X"></core:CustomData>
+					</customData>
+				</CheckBox>
 				<core:Title text="Automatic Payment Transactions"/>
 				<Label text="Alternative Payer"/>
-				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-					value="{Customer>/addCompanyCodeFormData/lfbw/WT_WITHCD}">
+				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/cust_knb1/knrzb}">
 					<customData>
-						<core:CustomData key="title" value="Withholding Tax Code"></core:CustomData>
-						<core:CustomData key="table" value="T059Z"></core:CustomData>
-						<core:CustomData key="text40" value="Name"></core:CustomData>
-						<core:CustomData key="wt_WITHCD" value="Key"></core:CustomData>
-						<core:CustomData key="land1" value="Country"></core:CustomData>
-						<core:CustomData key="inputKey" value="wt_WITHCD"></core:CustomData>
-						<core:CustomData key="inputText" value="wt_WITHCD"></core:CustomData>
+						<core:CustomData key="title" value="Alternative Payer"></core:CustomData>
+						<core:CustomData key="table" value="KNA1"></core:CustomData>
+						<core:CustomData key="kunnr" value="Customer Code"></core:CustomData>
+						<core:CustomData key="inputKey" value="kunnr"></core:CustomData>
+						<core:CustomData key="inputText" value="kunnr"></core:CustomData>
 					</customData>
 				</Input>
 				<Label text="Payment Methods"/>
-				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-					value="{Customer>/addCompanyCodeFormData/lfbw/WT_WITHCD}">
+				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/cust_knb1/zwels}">
 					<customData>
-						<core:CustomData key="title" value="Withholding Tax Code"></core:CustomData>
-						<core:CustomData key="table" value="T059Z"></core:CustomData>
-						<core:CustomData key="text40" value="Name"></core:CustomData>
-						<core:CustomData key="wt_WITHCD" value="Key"></core:CustomData>
-						<core:CustomData key="land1" value="Country"></core:CustomData>
-						<core:CustomData key="inputKey" value="wt_WITHCD"></core:CustomData>
-						<core:CustomData key="inputText" value="wt_WITHCD"></core:CustomData>
+						<core:CustomData key="title" value="Payment Methods"></core:CustomData>
+						<core:CustomData key="table" value="T042Z"></core:CustomData>
+						<core:CustomData key="zwels" value="Payment Method"></core:CustomData>
+						<core:CustomData key="zwels" value="Name"></core:CustomData>
+						<core:CustomData key="zwels" value="Incoming Payments"></core:CustomData>
+						<core:CustomData key="inputKey" value="zwels"></core:CustomData>
+						<core:CustomData key="inputText" value="zwels"></core:CustomData>
 					</customData>
 				</Input>
 				<Label text="Bill of Exchange Limit"/>
-				<Input value="{Customer>/addCompanyCodeFormData/lfbw/WT_EXNR}" maxLength="25"/>
+				<Input value="{Customer>/cust_knb1/webtr}" maxLength="25"/>
 				<Label text="Payment Method Supplement"/>
-				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-					value="{Customer>/addCompanyCodeFormData/lfbw/WT_WTEXRS}">
+				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/cust_knb1/uzawe}">
 					<customData>
-						<core:CustomData key="title" value="Exemption Reason"></core:CustomData>
-						<core:CustomData key="table" value="T059V"></core:CustomData>
-						<core:CustomData key="text30" value="Name"></core:CustomData>
-						<core:CustomData key="wt_WTEXRS" value="Key"></core:CustomData>
-						<core:CustomData key="land1" value="Country"></core:CustomData>
-						<core:CustomData key="inputKey" value="wt_WTEXRS"></core:CustomData>
-						<core:CustomData key="inputText" value="text30"></core:CustomData>
+						<core:CustomData key="title" value="Payment Method Supplement"></core:CustomData>
+						<core:CustomData key="table" value="T042F"></core:CustomData>
+						<core:CustomData key="uzawe" value="Payment Method Supplement"></core:CustomData>
+						<core:CustomData key="txt30" value="Text"></core:CustomData>
+						<core:CustomData key="inputKey" value="uzawe"></core:CustomData>
+						<core:CustomData key="inputText" value="uzawe"></core:CustomData>
 					</customData>
 				</Input>
 				<Label text="Next Payee"/>
-				<Input value="{Customer>/addCompanyCodeFormData/lfbw/WT_EXNR}" maxLength="25"/>
+				<Input value="{Customer>/cust_knb1/remit}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+					<customData>
+						<core:CustomData key="title" value="Next Payee"></core:CustomData>
+						<core:CustomData key="table" value="KNA1"></core:CustomData>
+						<core:CustomData key="kunnr" value="Customer Code"></core:CustomData>
+						<core:CustomData key="inputKey" value="kunnr"></core:CustomData>
+						<core:CustomData key="inputText" value="kunnr"></core:CustomData>
+					</customData>
+				</Input>
 				<Label text="Lockbox"/>
-				<Input value="{Customer>/addCompanyCodeFormData/lfbw/WT_EXNR}" maxLength="25"/>
+				<Input value="{Customer>/cust_knb1/lockb}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+					<customData>
+						<core:CustomData key="title" value="Lockbox"></core:CustomData>
+						<core:CustomData key="table" value="T049L"></core:CustomData>
+						<core:CustomData key="lockb" value="Lockbox"></core:CustomData>
+						<core:CustomData key="hbkid" value="House Bank"></core:CustomData>
+						<core:CustomData key="lcknr" value="Lockbox Number"></core:CustomData>
+						<core:CustomData key="inputKey" value="lockb"></core:CustomData>
+						<core:CustomData key="inputText" value="lockb"></core:CustomData>
+					</customData>
+				</Input>
 				<Label text="Payment Block"/>
-				<Input value="{Customer>/addCompanyCodeFormData/lfbw/WT_EXNR}" maxLength="25"/>
+				<ComboBox selectedKey="{Customer>/cust_knb1/zahls}" items="{Dropdowns>/T008}">
+					<core:Item key="{Dropdowns>zahls}" text="{Dropdowns>textl}"/>
+				</ComboBox>
 				<Label text="House Bank"/>
-				<Input value="{Customer>/addCompanyCodeFormData/lfbw/WT_EXNR}" maxLength="25"/>
+				<Input value="{Customer>/cust_knb1/hbkid}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+					<customData>
+						<core:CustomData key="title" value="House Bank"></core:CustomData>
+						<core:CustomData key="table" value="T012"></core:CustomData>
+						<core:CustomData key="hbkid" value="House Bank"></core:CustomData>
+						<core:CustomData key="banks" value="Bank Country"></core:CustomData>
+						<core:CustomData key="bankl" value="Bank Key"></core:CustomData>
+						<core:CustomData key="name1" value="Bank Name"></core:CustomData>
+						<core:CustomData key="inputKey" value="hbkid"></core:CustomData>
+						<core:CustomData key="inputText" value="hbkid"></core:CustomData>
+					</customData>
+				</Input>
 				<Label text="Grouping Key"/>
-				<ComboBox/>
+				<ComboBox selectedKey="{Customer>/cust_knb1/zgrup}" items="{Dropdowns>/TZGR}">
+					<core:Item key="{Dropdowns>zgrup}" text="{Dropdowns>ttext}"/>
+				</ComboBox>
 				<Label text="Individual Payment"/>
-				<CheckBox/>
+				<CheckBox select="onSelectCheckBox">
+					<customData>
+						<core:CustomData key="/cust_knb1/xpore" value="X"></core:CustomData>
+					</customData>
+				</CheckBox>
 				<Label text="Payment Advice by EDI"/>
-				<CheckBox/>
+				<CheckBox select="onSelectCheckBox">
+					<customData>
+						<core:CustomData key="/cust_knb1/xedip" value="X"></core:CustomData>
+					</customData>
+				</CheckBox>
 				<core:Title text="Payment Advice Notes"/>
 				<Label text="Reason Code Conversion"/>
-				<ComboBox value="{Customer>/addCompanyCodeFormData/lfb1/ALTKN}"/>
+				<ComboBox value="{Customer>/cust_knb1/vrsdg}" items="{Dropdowns>/T053V}">
+					<core:Item key="{Dropdowns>vrsdg}" text="{Dropdowns>vrsdg}"/>
+				</ComboBox>
 				<Label text="Selection Rule"/>
-				<ComboBox value="{Customer>/addCompanyCodeFormData/lfb1/ALTKN}"/>
+				<ComboBox selectedKey="{Customer>/cust_knb1/sregl}" items="{Dropdowns>/T053A}">
+					<core:Item key="{Dropdowns>sregl}" text="{Dropdowns>sregl}"/>
+				</ComboBox>
 				<core:Title text="Export Credit Insurance"/>
 				<Label text="Policy Number"/>
-				<Input/>
+				<Input value="{Customer>/cust_knb1/vrsnr}"/>
 				<Label text="Amount Insured"/>
-				<Input/>
+				<Input value="{Customer>/cust_knb1/vlibb}"/>
 				<Label text="Lead Months"/>
-				<Input/>
+				<Input value="{Customer>/cust_knb1/vrszl}"/>
 				<Label text="Institution Number"/>
-				<Input/>
+				<Input value="{Customer>/cust_knb1/vrbkz}"/>
 				<Label text="Valid To"/>
-				<DatePicker/>
+				<DatePicker value="{Customer>/cust_knb1/verdt}"/>
 				<Label text="Deductible"/>
-				<Input/>
+				<Input value="{Customer>/cust_knb1/vrspr}"/>
 				<core:Title text="Correspondance"/>
-				<Label text="Account Clerk"/>
-				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-					value="{Customer>/addCompanyCodeFormData/lfb1/ZSABE}">
+				<Label text="Accounting Clerk"/>
+				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/cust_knb1/busab}">
 					<customData>
-						<core:CustomData key="title" value="Account Clerk"></core:CustomData>
-						<core:CustomData key="table" value="LFB1"></core:CustomData>
-						<core:CustomData key="" value="Name"></core:CustomData>
-						<core:CustomData key="" value="Key"></core:CustomData>
-						<core:CustomData key="inputKey" value=""></core:CustomData>
-						<core:CustomData key="inputText" value=""></core:CustomData>
+						<core:CustomData key="title" value="Accounting Clerk"></core:CustomData>
+						<core:CustomData key="table" value="T001s"></core:CustomData>
+						<core:CustomData key="busab" value="Accounting Clerk"></core:CustomData>
+						<core:CustomData key="sname" value="Clerk Abbrivation"></core:CustomData>
+						<core:CustomData key="inputKey" value="busab"></core:CustomData>
+						<core:CustomData key="inputText" value="busab"></core:CustomData>
 					</customData>
 				</Input>
 				<Label text="Account With Customer"/>
-				<Input value="{Customer>/addCompanyCodeFormData/lfb1/EIKTO}" maxLength="12"/>
+				<Input value="{Customer>/cust_knb1/eikto}"/>
+				<Label text="Account Memo"/>
+				<Input value="{Customer>/cust_knb1/kverm}"/>
 				<Label text="Clerk at Customer"/>
-				<Input value="{Customer>/addCompanyCodeFormData/lfb1/TLFNS}" maxLength="30"/>
+				<Input value="" maxLength="30"/>
 				<Label text="Clerk's Telephone No."/>
-				<Input value="{Customer>/addCompanyCodeFormData/lfb1/TLFNS}" maxLength="30"/>
-				<Label text="Clerk's Internet Addredd"/>
-				<Input value="{Customer>/addCompanyCodeFormData/lfb1/INTAD}" maxLength="130"/>
-				<!--<core:Title/>-->
+				<Input value="{Customer>/cust_knb1/tlfns}" maxLength="30"/>
+				<Label text="Account Statement"/>
+				<Input value="{Customer>/cust_knb1/xausz}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+					<customData>
+						<core:CustomData key="title" value="Account Statement"></core:CustomData>
+						<core:CustomData key="table" value="T048K"></core:CustomData>
+						<core:CustomData key="xausz" value="Account Statement"></core:CustomData>
+						<core:CustomData key="text1" value="Text"></core:CustomData>
+						<core:CustomData key="inputKey" value="xausz"></core:CustomData>
+						<core:CustomData key="inputText" value="xausz"></core:CustomData>
+					</customData>
+				</Input>
+				<Label text="Collective Invoice Variant"/>
+				<Input value="{Customer>/cust_knb1/perkz}"/>
 				<Label text="Local Processing"/>
 				<CheckBox select="onSelectCheckBox">
 					<customData>
-						<core:CustomData key="/vnd_lfb1/XDEZV" value="X"></core:CustomData>
+						<core:CustomData key="/cust_knb1/xdezv" value="X"></core:CustomData>
 					</customData>
 				</CheckBox>
-				<Label text="Account Statement"/>
-				<Input value="{Customer>/addCompanyCodeFormData/lfb1/XAUSZ}" maxLength="1"/>	
-				<Label text="Account Memo"/>
-				<Input value="{Customer>/addCompanyCodeFormData/lfb1/XVERM}"/>
+				<Label text="Clerk's Internet Addredd"/>
+				<Input value="{Customer>/cust_knb1/intad}" maxLength="130"/>
 				<Label text="Clerk's Fax no."/>
-				<Input value="{Customer>/addCompanyCodeFormData/lfb1/TLFXS}" maxLength="13"/>
+				<Input value="{Customer>/cust_knb1/tlfxs}" maxLength="13"/>
 				<core:Title text="Payment Notice To"/>
 				<Label text="Customer (with CI)"/>
-				<CheckBox/>
+				<CheckBox select="onSelectCheckBox">
+					<customData>
+						<core:CustomData key="/cust_knb1/zamim" value="X"></core:CustomData>
+					</customData>
+				</CheckBox>
 				<Label text="Sales"/>
-				<CheckBox/>
+				<CheckBox select="onSelectCheckBox">
+					<customData>
+						<core:CustomData key="/cust_knb1/zamiv" value="X"></core:CustomData>
+					</customData>
+				</CheckBox>
 				<Label text="Legal Department"/>
-				<CheckBox/>
+				<CheckBox select="onSelectCheckBox">
+					<customData>
+						<core:CustomData key="/cust_knb1/zamir" value="X"></core:CustomData>
+					</customData>
+				</CheckBox>
 				<Label text="Customer (w/o CI)"/>
-				<CheckBox/>
+				<CheckBox select="onSelectCheckBox">
+					<customData>
+						<core:CustomData key="/cust_knb1/zamio" value="X"></core:CustomData>
+					</customData>
+				</CheckBox>
 				<Label text="Accounting"/>
-				<CheckBox/>
+				<CheckBox select="onSelectCheckBox">
+					<customData>
+						<core:CustomData key="/cust_knb1/zamib" value="X"></core:CustomData>
+					</customData>
+				</CheckBox>
 				<core:Title text="Dunning Data"/>
 				<Label text="Grouping Key"/>
-				<Select forceSelection="false" id="compCodesGroupingKeyId" selectedKey="{Customer>/addCompanyCodeFormData/lfb1/ZGRUP}">
-					<items>
-						<core:Item text="Document Types" key="01"/>
-					</items>
-				</Select>
+				<ComboBox selectedKey="{Customer>/cust_knb1/zgrup}" items="{Dropdowns>/TZGR}">
+					<core:Item key="{Dropdowns>zgrup}" text="{Dropdowns>ttext}"/>
+				</ComboBox>
 			</form:content>
 		</form:SimpleForm>
 		<Table items="{Customer>/addCompanyCodeRows}">

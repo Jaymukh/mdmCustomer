@@ -1,0 +1,154 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:uxap="sap.uxap"
+	xmlns:commons="sap.suite.ui.commons" xmlns:f="sap.f">
+	<uxap:ObjectPageLayout useIconTabBar="true">
+		<uxap:headerTitle>
+			<uxap:ObjectPageDynamicHeaderTitle>
+				<uxap:expandedHeading>
+					<Title text="{AuditLogModel>/details/ChangeRequestID} - {AuditLogModel>/details/desc}" wrapping="true" class="sapUiTinyMarginEnd"/>
+				</uxap:expandedHeading>
+			</uxap:ObjectPageDynamicHeaderTitle>
+		</uxap:headerTitle>
+		<uxap:sections>
+			<uxap:ObjectPageSection title="Workflow">
+				<uxap:subSections>
+					<uxap:ObjectPageSubSection>
+						<uxap:blocks>
+							<commons:Timeline enableDoubleSided="true" groupBy="changeDate" growingThreshold="0" filterTitle="Job Title" sortOldestFirst="true"
+								content="{WorkFlowModel>/workflowAuditItems}" groupByType="Year" enableScroll="false">
+								<commons:content>
+									<commons:TimelineItem dateTime="{WorkFlowModel>changeDate}" title="{WorkFlowModel>status}" userNameClickable="false"
+										userName="{WorkFlowModel>changeBy/0/firstname} {WorkFlowModel>changeBy/0/lastname}" filterValue="{WorkFlowModel>status}"></commons:TimelineItem>
+								</commons:content>
+							</commons:Timeline>
+						</uxap:blocks>
+					</uxap:ObjectPageSubSection>
+				</uxap:subSections>
+			</uxap:ObjectPageSection>
+			<uxap:ObjectPageSection title="Change Documents">
+				<uxap:subSections>
+					<uxap:ObjectPageSubSection>
+						<uxap:blocks>
+							<Toolbar>
+								<ToolbarSpacer/>
+								<Switch state="false" change="onChnageLogSwitchChangeReq"></Switch>
+								<Label text="Show Attribute" class="sapUiSmallMarginTop"></Label>
+							</Toolbar>
+							<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="6"
+								adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
+								singleContainerFullSize="true">
+								<form:content>
+									<core:Title text="General Data"/>
+									<Label text="Business Partner ID"/>
+									<Text text="{AuditLogModel>/details/businessID}"></Text>
+									<Label text="Description"/>
+									<Text text="{AuditLogModel>/details/desc}"></Text>
+									<Label text="Comments"/>
+									<Text text="{AuditLogModel>/details/commentCount}"></Text>
+									<Label text="Attachement"/>
+									<Text text="{AuditLogModel>/details/attachmentCount}"></Text>
+									<core:Title text="Change Type"/>
+									<Label text="Changed"/>
+									<Text text="{AuditLogModel>/details/changedCount}"/>
+									<Label text="Delete"/>
+									<Text text="{AuditLogModel>/details/deleteCount}"/>
+									<Label text="New"/>
+									<Text text="{AuditLogModel>/details/newCount}"/>
+								</form:content>
+							</form:SimpleForm>
+							<List visible="false" id="idAuditLogListChangeRequest" items="{path: 'AuditLogModel>/items'}" noDataText="No Audit log available">
+								<CustomListItem>
+									<Panel width="auto">
+										<content>
+											<VBox>
+												<HBox alignItems="Center">
+													<f:Avatar initials="{AuditLogModel>logBy}" displaySize="XS"></f:Avatar>
+													<Text text="{AuditLogModel>logBy} added Changes"/>
+												</HBox>
+												<Table items="{path: 'AuditLogModel>logs'}">
+													<columns>
+														<Column>
+															<Text text="Change Type"/>
+														</Column>
+														<Column>
+															<Text text="Attribute"/>
+														</Column>
+														<Column >
+															<Text text="Value"/>
+														</Column>
+													</columns>
+													<items>
+														<ColumnListItem>
+															<cells>
+																<Text text="{AuditLogModel>changeLogType}"/>
+																<Text text="{AuditLogModel>attributeName}"/>
+																<VBox>
+																	<Text text="{ parts: [ 'AuditLogModel>oldValue', 'AuditLogModel>attributeName'], formatter: '.auditLogOldDateFormat' }"/>
+																	<Text text="{ parts: [ 'AuditLogModel>newValue', 'AuditLogModel>attributeName'], formatter: '.auditLogNewDateFormat' }"/>
+																</VBox>
+															</cells>
+														</ColumnListItem>
+													</items>
+												</Table>
+											</VBox>
+										</content>
+									</Panel>
+								</CustomListItem>
+							</List>
+						</uxap:blocks>
+					</uxap:ObjectPageSubSection>
+				</uxap:subSections>
+			</uxap:ObjectPageSection>
+			<uxap:ObjectPageSection title="Attachments">
+				<uxap:subSections>
+					<uxap:ObjectPageSubSection>
+						<uxap:blocks>
+							<UploadCollection id="UploadCollectionChangeReq" multiple="false" change="onChangeFileUpload" selectionChange="onSelectionDocumentChange"
+								typeMissmatch="onTypeMissmatch" items="{ path: 'AttachmentsModel>/documentInteractionDtos', templateShareable: false }"
+								numberOfAttachmentsText="Uploaded Documents" uploadEnabled="true" uploadButtonInvisible="false" mode="SingleSelectMaster"
+								fileType="{App>/supportedFileTypes}">
+								<items>
+									<UploadCollectionItem documentId="{AttachmentsModel>attachmentEntity/dms_ref_id}"
+										fileName="{AttachmentsModel>attachmentEntity/attachment_name}" mimeType="{AttachmentsModel>attachmentEntity/mime_type}" enableEdit="false"
+										enableDelete="false" visibleDelete="false" visibleEdit="false" url="abc" press="onDocumentDownload">
+										<attributes>
+											<ObjectAttribute title="Uploaded By" text="{AttachmentsModel>attachmentEntity/created_by}"/>
+											<ObjectAttribute title="Uploaded On" text="{path:'AttachmentsModel>attachmentEntity/created_on', formatter : '.dateFormater'}"/>
+										</attributes>
+									</UploadCollectionItem>
+								</items>
+							</UploadCollection>
+						</uxap:blocks>
+					</uxap:ObjectPageSubSection>
+				</uxap:subSections>
+			</uxap:ObjectPageSection>
+			<uxap:ObjectPageSection title="Comments">
+				<uxap:subSections>
+					<uxap:ObjectPageSubSection>
+						<uxap:blocks>
+							<Toolbar>
+								<ToolbarSpacer/>
+								<Button text="Add Comment" press="onPressAddComment"></Button>
+							</Toolbar>
+							<VBox id="commentVBoxID" visible="false" class="sapUiSmallMarginBegin sapUiTinyMarginTop">
+								<Label text="Write a Comment:"/>
+								<TextArea id="changeReruestListCommentBoxId" width="100%" growing="true"/>
+								<Toolbar>
+									<ToolbarSpacer/>
+									<Button text="Add" press="onAddCommentCRList"/>
+									<Button text="Cancel" press="onPressCancelComment"/>
+								</Toolbar>
+							</VBox>
+							<commons:Timeline enableDoubleSided="true" filterTitle="note_by" sortOldestFirst="false"
+								content="{CommentsModel>/parentCrDTOs/0/crCommentDTOs}" enableScroll="false">
+								<commons:content>
+									<commons:TimelineItem dateTime="{CommentsModel>note_date}" title="{CommentsModel>note_by}" userNameClickable="false"
+										text="{CommentsModel>note_desc}" userName="{CommentsModel>note_by}" filterValue="{CommentsModel>note_by}"/>
+								</commons:content>
+							</commons:Timeline>
+						</uxap:blocks>
+					</uxap:ObjectPageSubSection>
+				</uxap:subSections>
+			</uxap:ObjectPageSection>
+		</uxap:sections>
+	</uxap:ObjectPageLayout>
+</core:FragmentDefinition>

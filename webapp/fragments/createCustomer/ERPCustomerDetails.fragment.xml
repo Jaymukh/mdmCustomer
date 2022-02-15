@@ -8,7 +8,7 @@
 			<Input editable="false" value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kunnr}" maxLength="10"/>
 			<core:Title/>
 			<Label text="Account Group"/>
-			<ComboBox required="true" showSecondaryValues="true" id="accountGrpID" items="{userManagementModel>/accountGroups}"
+			<ComboBox required="true" showSecondaryValues="true" items="{userManagementModel>/accountGroups}"
 				selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/ktokd}">
 				<items>
 					<core:ListItem text="{userManagementModel>text}" additionalText="{userManagementModel>key}" key="{userManagementModel>key}"/>
@@ -95,7 +95,17 @@
 			<Label text="PO Box"/>
 			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/pfach}" maxLength="10"/>
 			<Label text="Undeliverable"/>
-			<Input value="{Customer>/createCRCustomerData/gen_adrc/dont_use_p}"/>
+			<Input value="{Customer>/createCRCustomerData/gen_adrc/dont_use_p}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+				valueHelpOnly="true">
+				<customData>
+					<core:CustomData key="title" value="Undeliverable"></core:CustomData>
+					<core:CustomData key="table" value=""></core:CustomData>
+					<core:CustomData key="inputKey" value="deli_SERV_TYPE"></core:CustomData>
+					<core:CustomData key="inputText" value="deli_SERV_DSCR"></core:CustomData>
+					<core:CustomData key="deli_SERV_TYPE" value="Delivery Type"></core:CustomData>
+					<core:CustomData key="deli_SERV_DSCR" value="Description"></core:CustomData>
+				</customData>
+			</Input>
 			<core:Title text="Address"/>
 			<Label text="Street / House No."/>
 			<Input required="ture" width="100%" value="{Customer>/createCRCustomerData/gen_adrc/street}"/>
@@ -145,7 +155,18 @@
 				<core:Item key="{Dropdowns>spras}" text="{Dropdowns>sptxt}"/>
 			</ComboBox>
 			<Label text="Transportation Zone"/>
-			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/lzone}" maxLength="10"/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/lzone}" showValueHelp="true"
+				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<customData>
+					<core:CustomData key="title" value="Transportation Zone"></core:CustomData>
+					<core:CustomData key="table" value="TZONE"></core:CustomData>
+					<core:CustomData key="inputKey" value="zone1"></core:CustomData>
+					<core:CustomData key="inputText" value="zone1"></core:CustomData>
+					<core:CustomData key="land1" value="Country Key"></core:CustomData>
+					<core:CustomData key="zone1" value="Zone Code"></core:CustomData>
+					<core:CustomData key="vtext" value="Transportation Zone"></core:CustomData>
+				</customData>
+			</Input>	
 			<Label text="PO Box Postal Code/ PO Box"/>
 			<Input liveChange="handleERPPOBOXPostalCode" value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/po_box}"/>
 			<Label text="PO Box Without No."/>
