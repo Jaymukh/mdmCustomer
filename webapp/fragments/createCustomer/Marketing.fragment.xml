@@ -89,15 +89,15 @@
 			</Input>
 			<core:Title text="Key Figures"/>
 			<Label text="Annual Sales / Currency"/>
-			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/umsat}" editable="false"/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/umsat}" maxLength="8" editable="false"/>
 			<Label text="Sales Year"/>
-			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/umjah}" editable="false"/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/umjah}" editable="false" maxLength="4"/>
 			<Label text="Employees"/>
-			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/jmzah}" editable="false"/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/jmzah}" editable="false" maxLength="6"/>
 			<Label text="In Year"/>
-			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/jmjah}" editable="false"/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/jmjah}" editable="false" maxLength="6"/>
 			<Label text="Fiscal Year Variant"/>
-			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/periv}" editable="false"/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/periv}" editable="false" maxLength="2"/>
 		</form:content>
 	</form:SimpleForm>
 </core:FragmentDefinition>

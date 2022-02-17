@@ -173,12 +173,6 @@
 				"target": [
 					"createCustomer"
 				]
-			}, {
-				"name": "erpCustomerPrev",
-				"pattern": "CustomerPreview",
-				"target": [
-					"ERPCustomerPreview"
-				]
 			}],
 			"targets": {
 				"SearchCustomer": {
@@ -192,10 +186,6 @@
 				"CreateERPCustomer": {
 					"viewType": "XML",
 					"viewName": "CreateERPCustomer"
-				},
-				"ERPCustomerPreview": {
-					"viewType": "XML",
-					"viewName": "ERPCustomerPreview"
 				},
 				"ChangeRequest": {
 					"viewType": "XML",

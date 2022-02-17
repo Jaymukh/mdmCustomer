@@ -557,10 +557,6 @@ sap.ui.define([
 			this.getView().byId("commentVBoxID").setVisible(true);
 		},
 
-		onPressCancelComment: function () {
-			this.getView().byId("commentVBoxID").setVisible(false);
-		},
-
 		onChnageLogSwitchChangeReq: function (oEvent) {
 			var oList = this.getView().byId("idAuditLogListChangeRequest");
 			oList.setVisible(oEvent.getParameter("state"));
@@ -571,7 +567,22 @@ sap.ui.define([
 				EntityID: this.getModel("AuditLogModel").getProperty("/details/businessID"),
 				Control: this.getView().byId("changeReruestListCommentBoxId")
 			});
-			this.onPressCancelComment();
+		},
+
+		getSidePanelDetails: function (oCRObject) {
+			var oAudLogModel = this.getView().getModel("AuditLogModel");
+			//Get Comments, Documents, Logs, WorkFlow
+			this.getAllCommentsForCR(oCRObject.crDTO.entity_id);
+			this.getAllDocumentsForCR(oCRObject.crDTO.entity_id);
+			this.getAuditLogsForCR(oCRObject.crDTO.entity_id);
+			this.getWorkFlowForCR(oCRObject.crDTO.change_request_id);
+			if (!oAudLogModel.getProperty("/details")) {
+				oAudLogModel.setProperty("/details", {});
+			}
+
+			oAudLogModel.setProperty("/details/desc", oCRObject.crDTO.change_request_desc);
+			oAudLogModel.setProperty("/details/businessID", oCRObject.crDTO.entity_id);
+			oAudLogModel.setProperty("/details/ChangeRequestID", oCRObject.crDTO.change_request_id);
 		},
 
 		formatCR_Entiry_ID: function (sCRId, sEntityID) {
@@ -610,7 +621,7 @@ sap.ui.define([
 				"VBWF08", //Release group
 				"T008", //Payment Block
 				"TZGR", //Grouping Key
-				"T053V", 
+				"T053V",
 				"T053A" //ReasonCode Revision
 			];
 			aDropDowns.forEach(function (sValue) {
@@ -620,11 +631,12 @@ sap.ui.define([
 
 		getDropdownTableData: function (sValue) {
 			$.ajax({
-				url: "/murphyCustom/config-service/configurations/configuration",
+				url: "/murphyCustom/config-service/configurations/configuration/filter",
 				type: "POST",
 				contentType: "application/json",
 				data: JSON.stringify({
-					"configType": sValue
+					"configType": sValue,
+					"currentPage": 1
 				}),
 				success: function (oData) {
 					this.getModel("Dropdowns").setProperty("/" + sValue, sValue === "TAXONOMY" ? oData.result.modelMap[0] : oData.result.modelMap);

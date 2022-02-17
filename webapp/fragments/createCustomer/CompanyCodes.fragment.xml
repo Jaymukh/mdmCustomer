@@ -43,7 +43,7 @@
 			<form:content>
 				<core:Title text="ERP Customer Company Code"/>
 				<Label text="Company Code"/>
-				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/cust_knb1/bukrs}">
+				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/cust_knb1/bukrs}" maxLength="4">
 					<customData>
 						<core:CustomData key="title" value="Company Code"></core:CustomData>
 						<core:CustomData key="table" value="T001"></core:CustomData>
@@ -57,7 +57,7 @@
 				</Input>
 				<core:Title text="Accounting Information"/>
 				<Label text="Reconcillation Account"/>
-				<Input value="{Customer>/cust_knb1/akont}" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<Input value="{Customer>/cust_knb1/akont}" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" maxLength="10">
 					<customData>
 						<core:CustomData key="title" value="Reconcillation Account"></core:CustomData>
 						<core:CustomData key="table" value="SKB1"></core:CustomData>
@@ -68,7 +68,7 @@
 					</customData>
 				</Input>
 				<Label text="Head Office"/>
-				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/cust_knb1/knrze}">
+				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/cust_knb1/knrze}" maxLength="10">
 					<customData>
 						<core:CustomData key="title" value="Head Office"></core:CustomData>
 						<core:CustomData key="table" value="KNA1"></core:CustomData>
@@ -80,9 +80,9 @@
 					</customData>
 				</Input>
 				<Label text="Authorization Group"/>
-				<Input value="{Customer>/cust_knb1/begru}"/>
+				<Input value="{Customer>/cust_knb1/begru}" maxLength="4"/>
 				<Label text="Value Adjustment"/>
-				<Input value="{Customer>/cust_knb1/wbrsl}" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" showValueHelp="true">
+				<Input value="{Customer>/cust_knb1/wbrsl}" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" showValueHelp="true" maxLength="2">
 					<customData>
 						<core:CustomData key="title" value="Value Adjustmen"></core:CustomData>
 						<core:CustomData key="table" value="T044G"></core:CustomData>
@@ -96,7 +96,7 @@
 					</customData>
 				</Input>
 				<Label text="Sort Key"/>
-				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/cust_knb1/zuawa}">
+				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/cust_knb1/zuawa}" maxLength="3">
 					<customData>
 						<core:CustomData key="title" value="Sort Key"></core:CustomData>
 						<core:CustomData key="table" value="TZUN"></core:CustomData>
@@ -107,7 +107,7 @@
 					</customData>
 				</Input>
 				<Label text="Planning Group"/>
-				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/cust_knb1/fdgrv}">
+				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/cust_knb1/fdgrv}" maxLength="10">
 					<customData>
 						<core:CustomData key="title" value="Planning Group"></core:CustomData>
 						<core:CustomData key="table" value="T035"></core:CustomData>
@@ -122,10 +122,10 @@
 					<core:Item key="{Dropdowns>frgrp}" text="{Dropdowns>frgrt}"/>
 				</ComboBox>
 				<Label text="Certification Date"/>
-				<DatePicker displayFormat="YYYYMMdd" valueFormat="YYYYMMdd" value="{Customer>/cust_knb1/CERDT}"/>
+				<DatePicker displayFormat="{App>/dateFormat}" valueFormat="{App>/dateValueFormat}" value="{Customer>/cust_knb1/CERDT}"/>
 				<core:Title text="Intrest Calculation"/>
 				<Label text="Intrest Indicator"/>
-				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/cust_knb1/vzskz}">
+				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/cust_knb1/vzskz}" maxLength="2">
 					<customData>
 						<core:CustomData key="title" value="Intrest Indicator"></core:CustomData>
 						<core:CustomData key="table" value="T056"></core:CustomData>
@@ -153,14 +153,14 @@
 					</items>
 				</ComboBox>
 				<Label text="Last Key Date"/>
-				<DatePicker displayFormat="YYYYMMdd" valueFormat="YYYYMMdd" value="{Customer>/cust_knb1/zindt}"/>
+				<DatePicker displayFormat="{App>/dateFormat}" valueFormat="{App>/dateValueFormat}" value="{Customer>/cust_knb1/zindt}"/>
 				<Label text="Last Intrest Run"/>
-				<DatePicker displayFormat="YYYYMMdd" valueFormat="YYYYMMdd" value="{Customer>/cust_knb1/datlz}"/>
+				<DatePicker displayFormat="{App>/dateFormat}" valueFormat="{App>/dateValueFormat}" value="{Customer>/cust_knb1/datlz}"/>
 				<core:Title text="Reference Data"/>
 				<Label text="Previous Account Number"/>
-				<Input value="{Customer>/cust_knb1/altkn}"/>
+				<Input value="{Customer>/cust_knb1/altkn}" maxLength="10"/>
 				<Label text="Buying Group"/>
-				<Input value="{Customer>/cust_knb1/ekvbd}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<Input value="{Customer>/cust_knb1/ekvbd}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" maxLength="10">
 					<customData>
 						<core:CustomData key="title" value="Buying Group"></core:CustomData>
 						<core:CustomData key="table" value="KNA1"></core:CustomData>
@@ -170,10 +170,10 @@
 					</customData>
 				</Input>
 				<Label text="Personal No."/>
-				<Input value="{Customer>/cust_knb1/pernr}"></Input>
+				<Input value="{Customer>/cust_knb1/pernr}" maxLength="8"></Input>
 				<core:Title text="Payment Data"/>
 				<Label text="Terms of Payment"/>
-				<Input value="{Customer>/cust_knb1/zterm}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<Input value="{Customer>/cust_knb1/zterm}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" maxLength="4">
 					<customData>
 						<core:CustomData key="title" value="Terms of Payment"></core:CustomData>
 						<core:CustomData key="table" value="T052"></core:CustomData>
@@ -184,7 +184,7 @@
 					</customData>
 				</Input>
 				<Label text="Credit Memo Payment Terms"/>
-				<Input value="{Customer>/cust_knb1/guzte}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<Input value="{Customer>/cust_knb1/guzte}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" maxLength="4">
 					<customData>
 						<core:CustomData key="title" value="Payment Terms"></core:CustomData>
 						<core:CustomData key="table" value="T052"></core:CustomData>
@@ -195,11 +195,11 @@
 					</customData>
 				</Input>
 				<Label text="B/E Charges Payment Term"/>
-				<Input value="{Customer>/cust_knb1/wakon}" maxLength="16"/>
+				<Input value="{Customer>/cust_knb1/wakon}" maxLength="4"/>
 				<Label text="Check Cashing Time"/>
-				<Input value="{Customer>/cust_knb1/kultg}" maxLength="5"/>
+				<Input value="{Customer>/cust_knb1/kultg}" maxLength="3"/>
 				<Label text="Tolerance Group"/>
-				<Input value="{Customer>/cust_knb1/togru}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<Input value="{Customer>/cust_knb1/togru}" maxLength="4" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 					<customData>
 						<core:CustomData key="title" value="Tolerance Group"></core:CustomData>
 						<core:CustomData key="table" value="T043G"></core:CustomData>
@@ -210,9 +210,10 @@
 					</customData>
 				</Input>
 				<Label text="Known/Negotiated Leave"/>
-				<Input value="{Customer>/cust_knb1/urlid}"/>
+				<Input value="{Customer>/cust_knb1/urlid}" maxLength="4"/>
 				<Label text="AR Pledging Indicator"/>
-				<Input value="{Customer>/cust_knb1/cession_kz}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<Input value="{Customer>/cust_knb1/cession_kz}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
+					maxLength="2">
 					<customData>
 						<core:CustomData key="title" value="AR Pledging Indicator"></core:CustomData>
 						<core:CustomData key="table" value="TCESSION"></core:CustomData>
@@ -230,7 +231,7 @@
 				</CheckBox>
 				<core:Title text="Automatic Payment Transactions"/>
 				<Label text="Alternative Payer"/>
-				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/cust_knb1/knrzb}">
+				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/cust_knb1/knrzb}" maxLength="10">
 					<customData>
 						<core:CustomData key="title" value="Alternative Payer"></core:CustomData>
 						<core:CustomData key="table" value="KNA1"></core:CustomData>
@@ -240,7 +241,7 @@
 					</customData>
 				</Input>
 				<Label text="Payment Methods"/>
-				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/cust_knb1/zwels}">
+				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/cust_knb1/zwels}" maxLength="10">
 					<customData>
 						<core:CustomData key="title" value="Payment Methods"></core:CustomData>
 						<core:CustomData key="table" value="T042Z"></core:CustomData>
@@ -252,9 +253,9 @@
 					</customData>
 				</Input>
 				<Label text="Bill of Exchange Limit"/>
-				<Input value="{Customer>/cust_knb1/webtr}" maxLength="25"/>
+				<Input value="{Customer>/cust_knb1/webtr}" maxLength="13"/>
 				<Label text="Payment Method Supplement"/>
-				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/cust_knb1/uzawe}">
+				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/cust_knb1/uzawe}" maxLength="2">
 					<customData>
 						<core:CustomData key="title" value="Payment Method Supplement"></core:CustomData>
 						<core:CustomData key="table" value="T042F"></core:CustomData>
@@ -265,7 +266,7 @@
 					</customData>
 				</Input>
 				<Label text="Next Payee"/>
-				<Input value="{Customer>/cust_knb1/remit}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<Input value="{Customer>/cust_knb1/remit}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" maxLength="10">
 					<customData>
 						<core:CustomData key="title" value="Next Payee"></core:CustomData>
 						<core:CustomData key="table" value="KNA1"></core:CustomData>
@@ -275,7 +276,7 @@
 					</customData>
 				</Input>
 				<Label text="Lockbox"/>
-				<Input value="{Customer>/cust_knb1/lockb}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<Input value="{Customer>/cust_knb1/lockb}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" maxLength="7">
 					<customData>
 						<core:CustomData key="title" value="Lockbox"></core:CustomData>
 						<core:CustomData key="table" value="T049L"></core:CustomData>
@@ -291,7 +292,7 @@
 					<core:Item key="{Dropdowns>zahls}" text="{Dropdowns>textl}"/>
 				</ComboBox>
 				<Label text="House Bank"/>
-				<Input value="{Customer>/cust_knb1/hbkid}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<Input value="{Customer>/cust_knb1/hbkid}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" maxLength="5">
 					<customData>
 						<core:CustomData key="title" value="House Bank"></core:CustomData>
 						<core:CustomData key="table" value="T012"></core:CustomData>
@@ -330,20 +331,20 @@
 				</ComboBox>
 				<core:Title text="Export Credit Insurance"/>
 				<Label text="Policy Number"/>
-				<Input value="{Customer>/cust_knb1/vrsnr}"/>
+				<Input value="{Customer>/cust_knb1/vrsnr}" maxLength="10"/>
 				<Label text="Amount Insured"/>
-				<Input value="{Customer>/cust_knb1/vlibb}"/>
+				<Input value="{Customer>/cust_knb1/vlibb}" maxLength="13"/>
 				<Label text="Lead Months"/>
-				<Input value="{Customer>/cust_knb1/vrszl}"/>
+				<Input value="{Customer>/cust_knb1/vrszl}" maxLength="3"/>
 				<Label text="Institution Number"/>
-				<Input value="{Customer>/cust_knb1/vrbkz}"/>
+				<Input value="{Customer>/cust_knb1/vrbkz}" maxLength="2"/>
 				<Label text="Valid To"/>
-				<DatePicker value="{Customer>/cust_knb1/verdt}"/>
+				<DatePicker displayFormat="{App>/dateFormat}" valueFormat="{App>/dateValueFormat}" value="{Customer>/cust_knb1/verdt}"/>
 				<Label text="Deductible"/>
-				<Input value="{Customer>/cust_knb1/vrspr}"/>
+				<Input value="{Customer>/cust_knb1/vrspr}" maxLength="3"/>
 				<core:Title text="Correspondance"/>
 				<Label text="Accounting Clerk"/>
-				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/cust_knb1/busab}">
+				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/cust_knb1/busab}" maxLength="2">
 					<customData>
 						<core:CustomData key="title" value="Accounting Clerk"></core:CustomData>
 						<core:CustomData key="table" value="T001s"></core:CustomData>
@@ -354,15 +355,15 @@
 					</customData>
 				</Input>
 				<Label text="Account With Customer"/>
-				<Input value="{Customer>/cust_knb1/eikto}"/>
+				<Input value="{Customer>/cust_knb1/eikto}" maxLength="12"/>
 				<Label text="Account Memo"/>
-				<Input value="{Customer>/cust_knb1/kverm}"/>
+				<Input value="{Customer>/cust_knb1/kverm}" maxLength="30"/>
 				<Label text="Clerk at Customer"/>
 				<Input value="" maxLength="30"/>
 				<Label text="Clerk's Telephone No."/>
 				<Input value="{Customer>/cust_knb1/tlfns}" maxLength="30"/>
 				<Label text="Account Statement"/>
-				<Input value="{Customer>/cust_knb1/xausz}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<Input value="{Customer>/cust_knb1/xausz}" maxLength="1" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 					<customData>
 						<core:CustomData key="title" value="Account Statement"></core:CustomData>
 						<core:CustomData key="table" value="T048K"></core:CustomData>
@@ -373,7 +374,7 @@
 					</customData>
 				</Input>
 				<Label text="Collective Invoice Variant"/>
-				<Input value="{Customer>/cust_knb1/perkz}"/>
+				<Input value="{Customer>/cust_knb1/perkz}" maxLength="1"/>
 				<Label text="Local Processing"/>
 				<CheckBox select="onSelectCheckBox">
 					<customData>
@@ -383,7 +384,7 @@
 				<Label text="Clerk's Internet Addredd"/>
 				<Input value="{Customer>/cust_knb1/intad}" maxLength="130"/>
 				<Label text="Clerk's Fax no."/>
-				<Input value="{Customer>/cust_knb1/tlfxs}" maxLength="13"/>
+				<Input value="{Customer>/cust_knb1/tlfxs}" maxLength="31"/>
 				<core:Title text="Payment Notice To"/>
 				<Label text="Customer (with CI)"/>
 				<CheckBox select="onSelectCheckBox">

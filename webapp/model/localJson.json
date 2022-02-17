@@ -1,8 +1,8 @@
 {
-	"preview": false,
-	"vndDetails": false,
-	"approvalView": false,
+	"edit": false,
 	"dateFormat": "dd-MM-yyyy",
+	"dateValueFormat": "yyyyMMdd",
+	"sidePanelSelectedPage": "",
 	"supportedFileTypes": ["jpg", "jpeg", "png", "pdf", "msg", "eml"],
 	"createCRCustomerData": {
 		"entityId": null,

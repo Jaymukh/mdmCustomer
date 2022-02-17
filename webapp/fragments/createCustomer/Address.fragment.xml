@@ -1,19 +1,8 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout">
 	<VBox>
-		<Table items="{Customer>/addAddressRows}">
-			<headerToolbar>
-				<Toolbar>
-					<ToolbarSpacer></ToolbarSpacer>
-					<Button text="Add" press="onAddCompanyCode"></Button>
-				</Toolbar>
-			</headerToolbar>
+		<Table>
 			<columns>
-				<Column>
-					<header>
-						<Label text="Actions" design="Bold"></Label>
-					</header>
-				</Column>
-				<Column>
+				<Column width="60%">
 					<header>
 						<Label text="Address" design="Bold"></Label>
 					</header>
@@ -23,7 +12,7 @@
 						<Label text="Country" design="Bold"></Label>
 					</header>
 				</Column>
-				<Column>
+				<Column width="10%">
 					<header>
 						<Label text="Standard" design="Bold"></Label>
 					</header>
@@ -32,10 +21,332 @@
 			<items>
 				<ColumnListItem>
 					<cells>
-						<Text text="{Customer>lfb1/bukrs}"></Text>
-						<Text text="{Customer>lfb1/AKONT}"></Text>
-						<Text text="{Customer>lfb1/bukrs}"></Text>
-						<Text text="{Customer>lfb1/bukrs}"></Text>
+						<Text
+							text="{Customer>/createCRCustomerData/gen_adrc/street} {Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/ort01} {Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/regio} {Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/pstlz}"></Text>
+						<Text text="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/land1}"></Text>
+						<CheckBox selected="true" editable="false"></CheckBox>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+			adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
+			singleContainerFullSize="false">
+			<form:content>
+				<core:Title text="Address"/>
+				<Label text="Street / House No."/>
+				<Input required="ture" width="100%" value="{Customer>/createCRCustomerData/gen_adrc/street}" maxLength="60"/>
+				<Input required="true" width="100%" value="{Customer>/createCRCustomerData/gen_adrc/house_num1}" maxLength="10">
+					<layoutData>
+						<l:GridData span="XL2 L3 M3 S4"/>
+					</layoutData>
+				</Input>
+				<Label text="Postal Code / City"/>
+				<Input required="true" value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/pstlz}" maxLength="10">
+					<layoutData>
+						<l:GridData span="XL2 L3 M3 S4"/>
+					</layoutData>
+				</Input>
+				<Input required="true" value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/ort01}" maxLength="35"/>
+				<Label text="Country"/>
+				<ComboBox required="true" items="{Dropdowns>/T005}"
+					selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/land1}">
+					<core:Item key="{Dropdowns>land1}" text="{Dropdowns>landx}"/>
+				</ComboBox>
+				<Label text="Region"/>
+				<Input required="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
+					value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/regio}" maxLength="3">
+					<customData>
+						<core:CustomData key="title" value="Region"></core:CustomData>
+						<core:CustomData key="table" value="T005S"></core:CustomData>
+						<core:CustomData key="inputKey" value="bland"></core:CustomData>
+						<core:CustomData key="inputText" value="bland"></core:CustomData>
+						<core:CustomData key="bland" value="Code"></core:CustomData>
+						<core:CustomData key="bezei" value="Region"></core:CustomData>
+					</customData>
+				</Input>
+				<Label text="Language"/>
+				<ComboBox required="true" selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/spras}"
+					items="{Dropdowns>/T002}">
+					<core:Item key="{Dropdowns>spras}" text="{Dropdowns>sptxt}"/>
+				</ComboBox>
+				<core:Title/>
+				<Label text="Transportation Zone"/>
+				<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/lzone}" showValueHelp="true"
+					valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" maxLength="10">
+					<customData>
+						<core:CustomData key="title" value="Transportation Zone"></core:CustomData>
+						<core:CustomData key="table" value="TZONE"></core:CustomData>
+						<core:CustomData key="inputKey" value="zone1"></core:CustomData>
+						<core:CustomData key="inputText" value="zone1"></core:CustomData>
+						<core:CustomData key="land1" value="Country Key"></core:CustomData>
+						<core:CustomData key="zone1" value="Zone Code"></core:CustomData>
+						<core:CustomData key="vtext" value="Transportation Zone"></core:CustomData>
+					</customData>
+				</Input>
+				<Label text="PO Box Postal Code/ PO Box"/>
+				<Input liveChange="handleERPPOBOXPostalCode" value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/po_box}"
+					maxLength="10"/>
+				<Label text="PO Box Without No."/>
+				<CheckBox select="onSelectCheckBox">
+					<customData>
+						<core:CustomData key="/gen_adrc/gen_adrc_1/po_box_num" value="X"></core:CustomData>
+					</customData>
+				</CheckBox>
+				<Label text="Company Postal Code"/>
+				<Input value="{Customer>/createCRCustomerData/gen_adrc/post_code3}" maxLength="10"/>
+				<Label text="Supplement"/>
+				<Input value="{Customer>/createCRCustomerData/gen_adrc/house_num2}" maxLength="10"/>
+			</form:content>
+		</form:SimpleForm>
+		<Table >
+			<headerToolbar>
+				<Toolbar>
+					<Title text="Telephone Numbers"/>
+					<ToolbarSpacer></ToolbarSpacer>
+					<Button text="New" press="onAddTelNo"></Button>
+				</Toolbar>
+			</headerToolbar>
+			<columns>
+				<Column >
+					<header>
+						<Label text="Country" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Telephone" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Extension" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column width="10%">
+					<header>
+						<Label text="Standard" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column width="5%">
+					<header>
+						<Label text=""></Label>
+					</header>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<ComboBox items="{Dropdowns>/T005}" selectedKey="">
+							<core:Item key="{Dropdowns>land1}" text="{Dropdowns>landx}"/>
+						</ComboBox>
+						<Text text=""/>
+						<Text text=""/>
+						<CheckBox selected="true"/>
+						<core:Icon src="sap-icon://delete" tooltip="Delete" color="Negative"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<Table >
+			<headerToolbar>
+				<Toolbar>
+					<Title text="Mobile Numbers"/>
+					<ToolbarSpacer></ToolbarSpacer>
+					<Button text="New" press="onAddMobNo"></Button>
+				</Toolbar>
+			</headerToolbar>
+			<columns>
+				<Column >
+					<header>
+						<Label text="Country" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Mobile Phone" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column width="10%">
+					<header>
+						<Label text="Standard" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column width="5%">
+					<header>
+						<Label text=""></Label>
+					</header>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<ComboBox items="{Dropdowns>/T005}" selectedKey="">
+							<core:Item key="{Dropdowns>land1}" text="{Dropdowns>landx}"/>
+						</ComboBox>
+						<Text text=""/>
+						<CheckBox selected="true"/>
+						<core:Icon src="sap-icon://delete" tooltip="Delete" color="Negative"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<Table >
+			<headerToolbar>
+				<Toolbar>
+					<Title text="Fax Numbers"/>
+					<ToolbarSpacer></ToolbarSpacer>
+					<Button text="New" press="onAddFaxNo"></Button>
+				</Toolbar>
+			</headerToolbar>
+			<columns>
+				<Column >
+					<header>
+						<Label text="Country" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Fax" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Extension" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column width="10%">
+					<header>
+						<Label text="Standard" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column width="5%">
+					<header>
+						<Label text=""></Label>
+					</header>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<ComboBox items="{Dropdowns>/T005}" selectedKey="">
+							<core:Item key="{Dropdowns>land1}" text="{Dropdowns>landx}"/>
+						</ComboBox>
+						<Text text=""/>
+						<Text text=""/>
+						<CheckBox selected="true"/>
+						<core:Icon src="sap-icon://delete" tooltip="Delete" color="Negative"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<Table >
+			<headerToolbar>
+				<Toolbar>
+					<Title text="E-Mail Addresses"/>
+					<ToolbarSpacer></ToolbarSpacer>
+					<Button text="New" press="onAddFaxNo"></Button>
+				</Toolbar>
+			</headerToolbar>
+			<columns>
+				<Column>
+					<header>
+						<Label text="E-Mail Address" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column width="10%">
+					<header>
+						<Label text="Standard" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column width="5%">
+					<header>
+						<Label text=""></Label>
+					</header>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Text text=""/>
+						<CheckBox selected="true"/>
+						<core:Icon src="sap-icon://delete" tooltip="Delete" color="Negative"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<Table >
+			<headerToolbar>
+				<Toolbar>
+					<Title text="Web Sites"/>
+					<ToolbarSpacer></ToolbarSpacer>
+					<Button text="New" press="onAddFaxNo" enabled="false"></Button>
+				</Toolbar>
+			</headerToolbar>
+			<columns>
+				<Column>
+					<header>
+						<Label text="URL" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column width="10%">
+					<header>
+						<Label text="Standard" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column width="5%">
+					<header>
+						<Label text=""></Label>
+					</header>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Text text=""/>
+						<CheckBox selected="true"/>
+						<core:Icon src="sap-icon://delete" tooltip="Delete" color="Negative"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<Table >
+			<headerToolbar>
+				<Toolbar>
+					<Title text="International Versions"/>
+					<ToolbarSpacer></ToolbarSpacer>
+					<Button text="New" press="onAddFaxNo" enabled="false"></Button>
+				</Toolbar>
+			</headerToolbar>
+			<columns>
+				<Column>
+					<header>
+						<Label text="Address Version" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Name" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column >
+					<header>
+						<Label text="Address" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column width="5%">
+					<header>
+						<Label text=""></Label>
+					</header>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Text text=""/>
+						<Text text=""/>
+						<Text text=""/>
+						<core:Icon src="sap-icon://delete" tooltip="Delete" color="Negative"/>
 					</cells>
 				</ColumnListItem>
 			</items>

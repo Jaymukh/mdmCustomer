@@ -180,7 +180,6 @@
 						</f:content>
 					</f:DynamicPage>
 					<mvc:XMLView id="CreateERPCustomer" viewName="murphy.mdm.customer.murphymdmcustomer.view.CreateERPCustomer"/>
-					<mvc:XMLView id="ERPCustomerPreView" viewName="murphy.mdm.customer.murphymdmcustomer.view.ERPCustomerPreview"/>
 					<mvc:XMLView id="changeRequestId" viewName="murphy.mdm.customer.murphymdmcustomer.view.ChangeRequest"/>
 				</pages>
 			</NavContainer>

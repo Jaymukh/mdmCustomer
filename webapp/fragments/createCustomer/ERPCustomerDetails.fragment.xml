@@ -77,7 +77,7 @@
 			<Input editable="false" value=""/>
 			<core:Title/>
 			<Label text="PO Box Lobby"/>
-			<Input value="{Customer>/createCRCustomerData/gen_adrc/po_box_lobby}"/>
+			<Input value="{Customer>/createCRCustomerData/gen_adrc/po_box_lobby}" maxLength="40"/>
 			<Label text="Type of Delivery Service"/>
 			<Input value="{Customer>/createCRCustomerData/gen_adrc/deli_serv_type}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
 				valueHelpOnly="true">
@@ -91,7 +91,7 @@
 				</customData>
 			</Input>
 			<Label text="Number of Delivery Service"/>
-			<Input value="{Customer>/createCRCustomerData/gen_adrc/deli_serv_number}"/>
+			<Input value="{Customer>/createCRCustomerData/gen_adrc/deli_serv_number}" maxLength="4"/>
 			<Label text="PO Box"/>
 			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/pfach}" maxLength="10"/>
 			<Label text="Undeliverable"/>
@@ -108,22 +108,22 @@
 			</Input>
 			<core:Title text="Address"/>
 			<Label text="Street / House No."/>
-			<Input required="ture" width="100%" value="{Customer>/createCRCustomerData/gen_adrc/street}"/>
-			<Input required="true" width="100%" value="{Customer>/createCRCustomerData/gen_adrc/house_num1}">
+			<Input required="ture" width="100%" value="{Customer>/createCRCustomerData/gen_adrc/street}" maxLength="60"/>
+			<Input required="true" width="100%" value="{Customer>/createCRCustomerData/gen_adrc/house_num1}" maxLength="10">
 				<layoutData>
 					<l:GridData span="XL2 L3 M3 S4"/>
 				</layoutData>
 			</Input>
 			<Label text="District"/>
-			<Input required="true" value="{Customer>/createCRCustomerData/gen_adrc/city2}"/>
+			<Input required="true" value="{Customer>/createCRCustomerData/gen_adrc/city2}" maxLength="40"/>
 			<Label text="Street 2"/>
-			<Input value="{Customer>/createCRCustomerData/gen_adrc/str_suppl1}"/>
+			<Input value="{Customer>/createCRCustomerData/gen_adrc/str_suppl1}" maxLength="40"/>
 			<Label text="Street 3"/>
-			<Input value="{Customer>/createCRCustomerData/gen_adrc/str_suppl2}"/>
+			<Input value="{Customer>/createCRCustomerData/gen_adrc/str_suppl2}" maxLength="40"/>
 			<Label text="Street 4"/>
-			<Input value="{Customer>/createCRCustomerData/gen_adrc/str_suppl3}"/>
+			<Input value="{Customer>/createCRCustomerData/gen_adrc/str_suppl3}" maxLength="40"/>
 			<Label text="Street 5"/>
-			<Input value="{Customer>/createCRCustomerData/gen_adrc/location}"/>
+			<Input value="{Customer>/createCRCustomerData/gen_adrc/location}" maxLength="40"/>
 			<Label text="Postal Code / City"/>
 			<Input required="true" value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/pstlz}" maxLength="10">
 				<layoutData>
@@ -166,9 +166,10 @@
 					<core:CustomData key="zone1" value="Zone Code"></core:CustomData>
 					<core:CustomData key="vtext" value="Transportation Zone"></core:CustomData>
 				</customData>
-			</Input>	
+			</Input>
 			<Label text="PO Box Postal Code/ PO Box"/>
-			<Input liveChange="handleERPPOBOXPostalCode" value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/po_box}"/>
+			<Input liveChange="handleERPPOBOXPostalCode" value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/po_box}"
+				maxLength="10"/>
 			<Label text="PO Box Without No."/>
 			<CheckBox select="onSelectCheckBox">
 				<customData>
@@ -176,9 +177,9 @@
 				</customData>
 			</CheckBox>
 			<Label text="Company Postal Code"/>
-			<Input value="{Customer>/createCRCustomerData/gen_adrc/post_code3}"/>
+			<Input value="{Customer>/createCRCustomerData/gen_adrc/post_code3}" maxLength="10"/>
 			<Label text="Supplement"/>
-			<Input value="{Customer>/createCRCustomerData/gen_adrc/house_num2}"/>
+			<Input value="{Customer>/createCRCustomerData/gen_adrc/house_num2}" maxLength="10"/>
 		</form:content>
 	</form:SimpleForm>
 </core:FragmentDefinition>

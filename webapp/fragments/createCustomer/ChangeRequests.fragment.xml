@@ -17,7 +17,7 @@
 				</items>
 			</ComboBox>
 			<Label text="Due Date"/>
-			<DatePicker displayFormat="dd-MM-YYYY" valueFormat="YYYYMMdd" value="{Customer>/changeReq/genData/dueDate}"></DatePicker>
+			<DatePicker displayFormat="{App>/dateFormat}" valueFormat="{App>/dateValueFormat}" value="{Customer>/changeReq/genData/dueDate}"></DatePicker>
 			<Label text="Reason"/>
 			<ComboBox editable="false" selectedKey="{Customer>/changeReq/genData/reason}" showSecondaryValues="true"
 				items="{Dropdowns>/TAXONOMY/CR_CHANGE_REQ_TYPE}">

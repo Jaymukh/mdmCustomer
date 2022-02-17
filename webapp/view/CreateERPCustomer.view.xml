@@ -86,42 +86,7 @@
 					</Panel>
 				</VBox>
 				<l:sideContent>
-					<IconTabBar expanded="true">
-						<items>
-							<IconTabFilter text="Attachments" key="attachments">
-								<!--<Text text="Attachments go here ..."/>-->
-								<UploadCollection id="UploadCollection" maximumFilenameLength="55" maximumFileSize="10" multiple="true" sameFilenameAllowed="true"
-									instantUpload="false" noDataDescription="Drop files or use the &quot;Add&quot; button to keep files ready for upload" change="onChange"
-									fileDeleted="onFileDeleted" filenameLengthExceed="onFilenameLengthExceed" fileSizeExceed="onFileSizeExceed" typeMissmatch="onTypeMissmatch"
-									uploadComplete="onUploadComplete" beforeUploadStarts="onBeforeUploadStarts"/>
-								<Toolbar>
-									<!--<Button text="Add"/>-->
-									<ToolbarSpacer/>
-									<Button text="Upload" press="onCreateERPCustomerUpload"/>
-								</Toolbar>
-							</IconTabFilter>
-							<IconTabFilter text="Comments" key="comments">
-								<!--<VBox>-->
-								<Label text="Write a Comment:"/>
-								<HBox width="100%">
-									<!--<Avatar initials="SD" displaySize="XS" backgroundColor="Green"/>-->
-									<TextArea id="createERPVendorCommentBoxId" width="164%" value="{Customer>/createCRVendorData/newComment}"></TextArea>
-								</HBox>
-								<Toolbar>
-									<ToolbarSpacer/>
-									<Button text="Add" press="onAddComment"/>
-								</Toolbar>
-								<!--</VBox>-->
-								<List id="createERPVendorAddedCommentListId" headerText="Added Comments" items="{createERPAddCommentedModel>/parentCrDTOs/0/crCommentDTOs}">
-									<FeedListItem sender="{createERPAddCommentedModel>note_by}" icon="{AuthorPicUrl}" senderPress="onPress" iconPress="onPress"
-										iconDensityAware="false" info="{Type}" timestamp="{createERPAddCommentedModel>note_date}" text="{createERPAddCommentedModel>note_desc}"
-										convertLinksToAnchorTags="All" actions="{path: 'Actions', templateShareable: false}">
-										<FeedListItemAction text="{createERPAddCommentedModel>note_desc}" icon="{Icon}" key="{Key}" press="onActionPressed"/>
-									</FeedListItem>
-								</List>
-							</IconTabFilter>
-						</items>
-					</IconTabBar>
+					<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.changeRequest.CRSideContent" type="XML"/>
 				</l:sideContent>
 			</l:DynamicSideContent>
 		</content>

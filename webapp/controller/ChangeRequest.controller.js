@@ -27,9 +27,18 @@ sap.ui.define([
 
 		onChangeReqLinkPress: function (oEvent) {
 			this.getView().setBusy(true);
-			var sEntityID = oEvent.getSource().getBindingContext("changeRequestGetAllModel").getObject().crDTO.entity_id;
-			var sWorkflowTaskID = oEvent.getSource().getBindingContext("changeRequestGetAllModel").getObject().crDTO.workflow_task_id;
-			this.getView().getModel("Customer").setProperty("/createCRVendorData/workflowID", sWorkflowTaskID);
+			var oCrObject = oEvent.getSource().getBindingContext("ChangeRequestsModel").getObject(),
+				sEntityID = oCrObject.crDTO.entity_id,
+				sWorkflowTaskID = oCrObject.crDTO.workflow_task_id,
+				oCustomerModel = this.getView().getModel("Customer"),
+				oAppModel = this.getModel("App"),
+				oChangeRequest = Object.assign(oAppModel.getProperty("/changeReq"), {}),
+				oCustomerData = Object.assign(oAppModel.getProperty("/createCRCustomerData"), {});
+			oCustomerModel.setProperty("/createCRVendorData/workflowID", sWorkflowTaskID);
+
+			//Get Side Panel Details 
+			this.getSidePanelDetails(oCrObject);
+
 			var objParamCreate = {
 				url: "/murphyCustom/mdm/entity-service/entities/entity/get",
 				type: 'POST',
@@ -45,126 +54,49 @@ sap.ui.define([
 						}
 					}
 				}
-
 			};
 			this.serviceCall.handleServiceRequest(objParamCreate).then(function (oDataResp) {
 				this.getView().setBusy(false);
 				if (oDataResp.result.parentDTO.customData) {
-					var respPayload = Object.keys(oDataResp.result.parentDTO.customData);
-					var addCompanyCodeRows = [];
-					for (var i = 0; i < respPayload.length; i++) {
-						switch (respPayload[i]) {
-						case "business_entity":
-							this.getView().getModel("Customer").setProperty("/createCRVendorData/entityId", oDataResp.result.parentDTO.customData
-								.business_entity.entity_id);
-							break;
-						case "vnd_lfa1":
-							this.getView().getModel("Customer").setProperty("/createCRVendorData/formData/parentDTO/customData/vnd_lfa1",
-								oDataResp.result.parentDTO.customData.vnd_lfa1);
-							break;
-						case "vnd_lfb1":
-							this.getView().getModel("Customer").setProperty(
-								"/createCRVendorData/formData/parentDTO/customData/vnd_lfb1",
-								oDataResp.result.parentDTO.customData.vnd_lfb1);
+					var sEntityId = oDataResp.result.parentDTO.customData.cust_kna1.entity_id,
+						aTables = ["cust_knb1", "cust_knbk", "cust_knbw", "cust_knb5", "cust_knvp", "cust_knvv",
+							"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "pra_bp_ad", "pra_bp_cust_md"
+						];
+					oCustomerData.cust_kna1 = oDataResp.result.parentDTO.customData.cust_kna1;
+					oCustomerData.tableRows = {};
+					aTables.forEach(function (sTable) {
+						oCustomerData.tableRows[sTable] = [];
 
-							var lfb1ObjKey = Object.keys(oDataResp.result.parentDTO.customData.vnd_lfb1);
-							for (var j = 0; j < lfb1ObjKey.length; j++) {
-								var sKey = lfb1ObjKey[j];
-								if (addCompanyCodeRows[j]) {
-									addCompanyCodeRows[j].lfb1 = oDataResp.result.parentDTO.customData.vnd_lfb1[sKey];
-								} else {
-									addCompanyCodeRows.push({
-										"lfb1": oDataResp.result.parentDTO.customData.vnd_lfb1[sKey],
-										"lfbw": {}
-									});
-								}
-
-							}
-							break;
-						case "vnd_lfbk":
-							this.getView().getModel("Customer").setProperty(
-								"/createCRVendorData/formData/parentDTO/customData/vnd_lfbk/vnd_lfbk_1",
-								oDataResp.result.parentDTO.customData.vnd_lfbk.vnd_lfbk_1);
-							break;
-						case "vnd_lfm1":
-							this.getView().getModel("Customer").setProperty(
-								"/createCRVendorData/formData/parentDTO/customData/vnd_lfm1/vnd_lfm1_1",
-								oDataResp.result.parentDTO.customData.vnd_lfm1.vnd_lfm1_1);
-							break;
-						case "vnd_lfbw":
-							this.getView().getModel("Customer").setProperty(
-								"/createCRVendorData/formData/parentDTO/customData/vnd_lfbw/vnd_lfbw_1",
-								oDataResp.result.parentDTO.customData.vnd_lfbw.vnd_lfbw_1);
-
-							var lfbwObjKey = Object.keys(oDataResp.result.parentDTO.customData.vnd_lfbw);
-							for (var j = 0; j < lfbwObjKey.length; j++) {
-								var sKey = lfbwObjKey[j];
-								if (addCompanyCodeRows[j]) {
-									addCompanyCodeRows[j].lfbw = oDataResp.result.parentDTO.customData.vnd_lfbw[sKey];
-								} else {
-									addCompanyCodeRows.push({
-										"lfbw": oDataResp.result.parentDTO.customData.vnd_lfbw[sKey],
-										"lfb1": {}
-									});
-								}
-
-							}
-							break;
-						case "vnd_knvk":
-							this.getView().getModel("Customer").setProperty(
-								"/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1",
-								oDataResp.result.parentDTO.customData.vnd_knvk.vnd_knvk_1);
-							break;
-						case "gen_adrc":
-							this.getView().getModel("Customer").setProperty(
-								"/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1",
-								oDataResp.result.parentDTO.customData.gen_adrc.gen_adrc_1);
-							break;
-						case "gen_bnka":
-							this.getView().getModel("Customer").setProperty(
-								"/createCRVendorData/formData/parentDTO/customData/gen_bnka/gen_bnka_1",
-								oDataResp.result.parentDTO.customData.gen_bnka.gen_bnka_1);
-							break;
-						case "pra_bp_ad":
-							this.getView().getModel("Customer").setProperty(
-								"/createCRVendorData/formData/parentDTO/customData/pra_bp_ad/pra_bp_ad_1",
-								oDataResp.result.parentDTO.customData.pra_bp_ad.pra_bp_ad_1);
-							break;
-						case "pra_bp_vend_esc":
-							this.getView().getModel("Customer").setProperty(
-								"/createCRVendorData/formData/parentDTO/customData/pra_bp_vend_esc/pra_bp_vend_esc_1",
-								oDataResp.result.parentDTO.customData.pra_bp_vend_esc.pra_bp_vend_esc_1);
-							break;
-						case "pra_bp_cust_md":
-							this.getView().getModel("Customer").setProperty(
-								"/createCRVendorData/formData/parentDTO/customData/pra_bp_cust_md/pra_bp_cust_md_1",
-								oDataResp.result.parentDTO.customData.pra_bp_cust_md.pra_bp_cust_md_1);
-							break;
-						case "pra_bp_vend_md":
-							this.getView().getModel("Customer").setProperty(
-								"/createCRVendorData/formData/parentDTO/customData/pra_bp_vend_md/pra_bp_vend_md_1",
-								oDataResp.result.parentDTO.customData.pra_bp_vend_md.pra_bp_vend_md_1);
-							break;
+						if (oDataResp.result.parentDTO.customData.hasOwnProperty(sTable)) {
+							Object.keys(oDataResp.result.parentDTO.customData[sTable]).forEach(function (sKey) {
+								oCustomerData.tableRows[sTable].push(oDataResp.result.parentDTO.customData[sTable][sKey]);
+							});
 						}
-					}
-					this.getView().getModel("Customer").setProperty(
-						"/addCompanyCodeRows", addCompanyCodeRows);
+
+						oCustomerData[sTable] = Object.assign(oAppModel.getProperty("/" + sTable), {});
+						if (oCustomerData[sTable].hasOwnProperty("entity_id")) {
+							oCustomerData[sTable].entity_id = sEntityId;
+						}
+					}, this);
+
+					oCustomerModel.setData({
+						changeReq: oChangeRequest,
+						createCRCustomerData: oCustomerData
+					});
+
+					//Navigate to Change Request Page	
 					var sID = this.getView().getParent().getPages().find(function (e) {
-						return e.getId().indexOf("erpVendorPreview") !== -1;
+						return e.getId().indexOf("changeRequestId") !== -1;
 					}).getId();
 					this.getView().getParent().to(sID);
-					//	this.getView().getParent().to(sID);
-					this.getView().getModel("Customer").setProperty("/preview", false);
-					this.getView().getModel("Customer").setProperty("/vndDetails", false);
-					this.getView().getModel("Customer").setProperty("/approvalView", true);
-					this.getView().getParent().getParent().getSideContent().setSelectedItem(this.getView().getParent().getParent().getSideContent()
-						.getItem()
-						.getItems()[1]);
-					var titleID = this.getView().getParent().getParent().getHeader().getContent()[2];
-					titleID.setText(this.getText("createERPVendorView-title"));
+					oAppModel.setProperty("/sidePanelSelectedPage", "idWorkFlowSection");
 				}
 			}.bind(this), function (oError) {
 				this.getView().setBusy(false);
+				oCustomerModel.setData({
+					changeReq: {},
+					createCRCustomerData: {}
+				});
 				MessageToast.show("Not able to fetch the data, Please try after some time");
 			});
 
@@ -184,17 +116,17 @@ sap.ui.define([
 		},
 
 		onSelectChnageReqPage: function () {
-			var oSelectedPage = this.getView().getModel("changeRequestGetAllModel").getProperty("/selectedPageKey");
+			var oSelectedPage = this.getView().getModel("ChangeRequestsModel").getProperty("/selectedPageKey");
 			this.handleGetAllChangeRequests(oSelectedPage);
 		},
 
 		onSelectChnageReqPageLeft: function () {
-			var oSelectedPage = this.getView().getModel("changeRequestGetAllModel").getProperty("/selectedPageKey");
+			var oSelectedPage = this.getView().getModel("ChangeRequestsModel").getProperty("/selectedPageKey");
 			this.handleGetAllChangeRequests(oSelectedPage - 1);
 		},
 
 		onSelectChnageReqPageRight: function () {
-			var oSelectedPage = this.getView().getModel("changeRequestGetAllModel").getProperty("/selectedPageKey");
+			var oSelectedPage = this.getView().getModel("ChangeRequestsModel").getProperty("/selectedPageKey");
 			this.handleGetAllChangeRequests(oSelectedPage + 1);
 		},
 
@@ -241,22 +173,8 @@ sap.ui.define([
 		},
 
 		onSelectCRinTable: function (oEvent) {
-			var oCRObject = oEvent.getParameter("listItem").getBindingContext("ChangeRequestsModel").getObject(),
-				oAudLogModel = this.getView().getModel("AuditLogModel");
-
-			//Get Comments, Documents, Logs, WorkFlow
-			this.getAllCommentsForCR(oCRObject.crDTO.entity_id);
-			this.getAllDocumentsForCR(oCRObject.crDTO.entity_id);
-			this.getAuditLogsForCR(oCRObject.crDTO.entity_id);
-			this.getWorkFlowForCR(oCRObject.crDTO.change_request_id);
-			if (!oAudLogModel.getProperty("/details")) {
-				oAudLogModel.setProperty("/details", {});
-			}
-
-			oAudLogModel.setProperty("/details/desc", oCRObject.crDTO.change_request_desc);
-			oAudLogModel.setProperty("/details/businessID", oCRObject.crDTO.entity_id);
-			oAudLogModel.setProperty("/details/ChangeRequestID", oCRObject.crDTO.change_request_id);
-
+			var oCRObject = oEvent.getParameter("listItem").getBindingContext("ChangeRequestsModel").getObject();
+			this.getSidePanelDetails(oCRObject);
 			var oToggleBtn = this.getView().byId("slideToggleButtonID");
 			oToggleBtn.firePress({
 				pressed: true

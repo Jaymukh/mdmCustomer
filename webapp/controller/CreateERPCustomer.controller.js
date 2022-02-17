@@ -93,19 +93,19 @@ sap.ui.define([
 							var sLifnr = oDataResp.result.vendorDTOs[0].customVendorLFA1DTO.lifnr;
 							oData.parentDTO.customData.vnd_lfa1.lifnr = sLifnr;
 							oData.parentDTO.customData.vnd_lfbk.vnd_lfbk_1.LIFNR = sLifnr;
-							
+
 							oData.parentDTO.customData.vnd_knvk.vnd_knvk_1.lifnr = sLifnr;
 							// oData.parentDTO.customData.vnd_lfb1.vnd_lfb1_1.lifnr = sLifnr;
 							var sKeylfb1 = Object.keys(oData.parentDTO.customData.vnd_lfb1);
 							for (var i = 0; i < sKeylfb1.length; i++) {
 								oData.parentDTO.customData.vnd_lfb1[sKeylfb1[i]]["lifnr"] = sLifnr;
 							}
-							
+
 							var sKeylfbw = Object.keys(oData.parentDTO.customData.vnd_lfbw);
 							for (var i = 0; i < sKeylfbw.length; i++) {
 								oData.parentDTO.customData.vnd_lfbw[sKeylfbw[i]]["lifnr"] = sLifnr;
 							}
-							
+
 							// oData.parentDTO.customData.vnd_lfbw.vnd_lfbw_1.lifnr = sLifnr;
 
 							oData.parentDTO.customData.vnd_lfm1.vnd_lfm1_1.lifnr = sLifnr;
@@ -138,18 +138,18 @@ sap.ui.define([
 						MessageToast.show("Error In Generating Lifnr");
 					}.bind(this));
 				} else {
-							var sLIFNR = oData.parentDTO.customData.vnd_lfa1.lifnr;
-							var sKeylfb1 = Object.keys(oData.parentDTO.customData.vnd_lfb1);
-							for (var i = 0; i < sKeylfb1.length; i++) {
-								oData.parentDTO.customData.vnd_lfb1[sKeylfb1[i]]["lifnr"] = sLIFNR;
-							}
-							
-							var sKeylfbw = Object.keys(oData.parentDTO.customData.vnd_lfbw);
-							for (var i = 0; i < sKeylfbw.length; i++) {
-								oData.parentDTO.customData.vnd_lfbw[sKeylfbw[i]]["lifnr"] = sLIFNR;
-							}
+					var sLIFNR = oData.parentDTO.customData.vnd_lfa1.lifnr;
+					var sKeylfb1 = Object.keys(oData.parentDTO.customData.vnd_lfb1);
+					for (var i = 0; i < sKeylfb1.length; i++) {
+						oData.parentDTO.customData.vnd_lfb1[sKeylfb1[i]]["lifnr"] = sLIFNR;
+					}
+
+					var sKeylfbw = Object.keys(oData.parentDTO.customData.vnd_lfbw);
+					for (var i = 0; i < sKeylfbw.length; i++) {
+						oData.parentDTO.customData.vnd_lfbw[sKeylfbw[i]]["lifnr"] = sLIFNR;
+					}
 					this._handleSaveWithLifnr(oData);
-					
+
 				}
 
 			}
@@ -274,11 +274,12 @@ sap.ui.define([
 					};
 				} else {
 					objParamCreate = {
-						url: "/murphyCustom/config-service/configurations/configuration",
+						url: "/murphyCustom/config-service/configurations/configuration/filter",
 						type: 'POST',
 						hasPayload: true,
 						data: {
-							"configType": oData.table
+							"configType": oData.table,
+							"currentPage": 1
 						}
 					};
 				}
@@ -449,142 +450,6 @@ sap.ui.define([
 				} else {
 					this.getView().getModel("Customer").setProperty(sKey, "");
 				}
-			}
-		},
-
-		onAddComment: function () {
-			var objParamCreate = {
-				url: "/murphyCustom/mdm/change-request-service/changerequests/changerequest/comments/add",
-				type: 'POST',
-				hasPayload: true,
-				data: {
-					"parentCrDTOs": [{
-						"crCommentDTOs": [{
-							"entity_id": this.getView().getModel("Customer").getProperty("/createCRVendorData/entityId"),
-							"note_desc": this.getView().getModel("Customer").getProperty("/createCRVendorData/newComment"),
-							"note_by": 1
-						}]
-					}]
-				}
-			};
-			this.serviceCall.handleServiceRequest(objParamCreate).then(function (oDataResp) {
-				this.getView().byId("createERPVendorCommentBoxId").setValue('');
-				if (oDataResp.result) {
-					var oModel = new JSONModel(oDataResp.result);
-					this.getView().byId("createERPVendorAddedCommentListId").setModel(oModel, "createERPAddCommentedModel");
-				}
-			}.bind(this));
-
-		},
-
-		onCreateERPCustomerUpload: function (oEvent) {
-			var file = this.getView().byId('UploadCollection');
-			/*	this.getBase64(file);
-				var objParamCreate = {
-					url: "/murphyCustom/mdm/change-request-service/changerequests/changerequest/comments/add",
-					type: 'POST',
-					hasPayload: true,
-					data: {
-						"parentCrDTOs": [{
-							"crCommentDTOs": [{
-								"entity_id": this.getView().getModel("Customer").getProperty("/createCRVendorData/entityId"),
-								"note_desc": this.getView().getModel("Customer").getProperty("/createCRVendorData/newComment"),
-								"note_by": 1
-							}]
-						}]
-					}
-				};
-				this.serviceCall.handleServiceRequest(objParamCreate).then(function (oDataResp) {
-					this.getView().byId("createERPVendorCommentBoxId").setValue('');
-					if (oDataResp.result) {
-						var oModel = new JSONModel(oDataResp.result);
-						this.getView().byId("createERPVendorAddedCommentListId").setModel(oModel, "createERPAddCommentedModel");
-					}
-				}.bind(this));*/
-		},
-
-		getBase64: function (file) {
-			return new Promise(function (resolve, reject) {
-				var reader = new FileReader();
-				reader.readAsDataURL(file);
-				reader.onload = function () {
-					resolve(reader.result);
-				};
-				reader.onerror = function (error) {
-					reject(error);
-				};
-			});
-		},
-
-		onCheckClick: function () {
-			var aMandFields = this.getView().getModel("Customer").getProperty("/createMandtFields");
-			var aEmptyFields = [];
-			var oData = this.getView().getModel("Customer");
-			var oController = this;
-			if (!oData.getProperty("/addCompanyCodeRows").length) {
-				this.onAddCompanyCode("onCheck");
-			}
-			aMandFields.forEach(function (oItem) {
-				var oControl = oController.getView().byId(oItem.id);
-				var sValueState = "None";
-				if (!oItem.isPRAData && (oData.getProperty(oItem.fieldMapping) === undefined || oData.getProperty(oItem.fieldMapping) === "" ||
-						oData.getProperty(oItem.fieldMapping) === null)) {
-					aEmptyFields.push(oItem);
-					sValueState = "Error";
-				} else if ((oItem.isPRAData && (oData.getProperty("/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/KTOKK") === "JVPR")) &&
-					(oData.getProperty(oItem
-							.fieldMapping) === undefined || oData.getProperty(oItem.fieldMapping) === "" ||
-						oData.getProperty(oItem.fieldMapping) === null)) {
-					aEmptyFields.push(oItem);
-					sValueState = "Error";
-				} else {
-					if (oControl.getValueState() === sap.ui.core.ValueState.Error || oControl.getValueState() === "Error") {
-						sValueState = "Success";
-					}
-				}
-				oControl.setValueState(sValueState);
-			});
-			if (!oData.getProperty("/addCompanyCodeRows").length) {
-				aEmptyFields.push({
-		 		section: "Company Code"
-			 	});
-			 }
-
-			this.getView().getModel("Customer").setProperty("/missingFields", aEmptyFields);
-			if (aEmptyFields.length) {
-				if (!this.oDefaultDialog) {
-					this.oDefaultDialog = new Dialog({
-						title: "Missing Fields",
-						content: new List({
-							items: {
-								path: "Customer>/missingFields",
-								template: new StandardListItem({
-									title: {
-										parts: ['Customer>Name', 'Customer>panelMapping', 'Customer>section'],
-										formatter: this.formatCheckErrorMessage
-									}
-									//title: "{= ${Customer>section} ? 'No ${Customer>section} is maintained in ${Customer>section} Section.'  : '${Customer>Name} field is missing in ${Customer>panelMapping} Section.'}"
-
-								})
-							}
-						}),
-						// title: "{Customer>Name}" + " field is missing in " + "{Customer>panelMapping}" + " Section"
-
-						endButton: new Button({
-							text: "Close",
-							press: function () {
-								this.oDefaultDialog.close();
-							}.bind(this)
-						})
-					});
-					// to get access to the controller's model
-					this.getView().addDependent(this.oDefaultDialog);
-				}
-				this.oDefaultDialog.open();
-				return false;
-			} else {
-				MessageToast.show("Validation Successful'");
-				return true;
 			}
 		},
 
@@ -760,8 +625,8 @@ sap.ui.define([
 			});
 			return bCheck;
 		},
-		
-		handleERPPOBOXPostalCode : function(oEvent){
+
+		handleERPPOBOXPostalCode: function (oEvent) {
 			this.getView().getModel("Customer").setProperty(
 				"/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1/po_box", oEvent.getSource().getValue());
 		}

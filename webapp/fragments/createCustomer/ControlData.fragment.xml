@@ -6,7 +6,7 @@
 			<core:Title text="Account Control"/>
 			<Label text="Vendor"/>
 			<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-				value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kunnr}">
+				value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kunnr}" maxLength="10">
 				<customData>
 					<core:CustomData key="title" value="Customer"></core:CustomData>
 					<core:CustomData key="table" value="KNA1"></core:CustomData>
@@ -20,7 +20,7 @@
 			</Input>
 			<Label text="Authorization Group"/>
 			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/begru}" showValueHelp="true"
-				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" maxLength="4">
 				<customData>
 					<core:CustomData key="title" value="Authorization Group"></core:CustomData>
 					<core:CustomData key="table" value="TBRG"></core:CustomData>
@@ -34,7 +34,7 @@
 			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/konzs}" maxLength="10"/>
 			<Label text="Trading Partner"/>
 			<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-				value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/vbund}">
+				value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/vbund}" maxLength="6">
 				<customData>
 					<core:CustomData key="title" value="Trading Partner"></core:CustomData>
 					<core:CustomData key="table" value="T880"></core:CustomData>

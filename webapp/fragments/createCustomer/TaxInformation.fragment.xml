@@ -44,13 +44,13 @@
 				</customData>
 			</Input>
 			<Label text="tax type"/>
-			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/fityp}"/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/fityp}" maxLength="2"/>
 			<Label text="SubTrib Group"/>
-			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/xsubt}"/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/xsubt}" maxLength="3"/>
 			<Label text="Type of business"/>
-			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/j_1kftbus}"/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/j_1kftbus}" maxLength="30"/>
 			<Label text="Representative's Name"/>
-			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/j_1kfrepre}" maxLength="18"/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/j_1kfrepre}" maxLength="10"/>
 			<core:Title text=""/>
 			<Label text="Sales Equalization Tax"/>
 			<CheckBox select="onSelectCheckBox">
@@ -77,9 +77,9 @@
 				</customData>
 			</CheckBox>
 			<Label text="CFOP Category"/>
-			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/cfopc}"/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/cfopc}" maxLength="2"/>
 			<Label text="Type of Industry"/>
-			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/j_1kftind}"/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/j_1kftind}" maxLength="30"/>
 		</form:content>
 	</form:SimpleForm>
 </core:FragmentDefinition>

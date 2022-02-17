@@ -5,7 +5,7 @@
 		<form:content>
 			<core:Title text="Attributes"/>
 			<Label text="Attribute 1"/>
-			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/katr1}" showValueHelp="true"
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/katr1}" maxLength="2" showValueHelp="true"
 				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 				<customData>
 					<core:CustomData key="title" value="Attribute 1"></core:CustomData>
@@ -17,7 +17,7 @@
 				</customData>
 			</Input>
 			<Label text="Attribute 2"/>
-			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/katr2}" showValueHelp="true"
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/katr2}" maxLength="2" showValueHelp="true"
 				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 				<customData>
 					<core:CustomData key="title" value="Attribute 2"></core:CustomData>
@@ -29,7 +29,7 @@
 				</customData>
 			</Input>
 			<Label text="Attribute 3"/>
-			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/katr3}" showValueHelp="true"
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/katr3}" maxLength="2" showValueHelp="true"
 				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 				<customData>
 					<core:CustomData key="title" value="Attribute 3"></core:CustomData>
@@ -41,7 +41,7 @@
 				</customData>
 			</Input>
 			<Label text="Attribute 4"/>
-			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/katr4}" showValueHelp="true"
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/katr4}" maxLength="2" showValueHelp="true"
 				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 				<customData>
 					<core:CustomData key="title" value="Attribute 4"></core:CustomData>
@@ -53,7 +53,7 @@
 				</customData>
 			</Input>
 			<Label text="Attribute 5"/>
-			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/katr5}" showValueHelp="true"
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/katr5}" maxLength="2" showValueHelp="true"
 				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 				<customData>
 					<core:CustomData key="title" value="Attribute 5"></core:CustomData>
@@ -65,7 +65,7 @@
 				</customData>
 			</Input>
 			<Label text="Attribute 6"/>
-			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/katr6}" showValueHelp="true"
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/katr6}" maxLength="3" showValueHelp="true"
 				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 				<customData>
 					<core:CustomData key="title" value="Attribute 6"></core:CustomData>
@@ -77,7 +77,7 @@
 				</customData>
 			</Input>
 			<Label text="Attribute 7"/>
-			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/katr7}" showValueHelp="true"
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/katr7}" maxLength="3" showValueHelp="true"
 				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 				<customData>
 					<core:CustomData key="title" value="Attribute 7"></core:CustomData>
@@ -89,7 +89,7 @@
 				</customData>
 			</Input>
 			<Label text="Attribute 8"/>
-			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/katr8}" showValueHelp="true"
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/katr8}" maxLength="3" showValueHelp="true"
 				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 				<customData>
 					<core:CustomData key="title" value="Attribute 8"></core:CustomData>
@@ -101,7 +101,7 @@
 				</customData>
 			</Input>
 			<Label text="Attribute 9"/>
-			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/katr9}" showValueHelp="true"
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/katr9}" maxLength="3" showValueHelp="true"
 				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 				<customData>
 					<core:CustomData key="title" value="Attribute 9"></core:CustomData>
@@ -113,7 +113,7 @@
 				</customData>
 			</Input>
 			<Label text="Attribute 10"/>
-			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/katr10}" showValueHelp="true"
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/katr10}" maxLength="3" showValueHelp="true"
 				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 				<customData>
 					<core:CustomData key="title" value="Attribute 10"></core:CustomData>

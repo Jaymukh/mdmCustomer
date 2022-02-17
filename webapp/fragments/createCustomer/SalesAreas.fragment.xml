@@ -146,7 +146,7 @@
 					</customData>
 				</Input>
 				<Label text="ABC classification"/>
-				<Input value="{Customer>/cust_knvv/klabc}"/>
+				<Input value="{Customer>/cust_knvv/klabc}" maxLength="2"/>
 				<Label text="Currency"/>
 				<Input value="{Customer>/cust_knvv/waers}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 					<customData>
@@ -166,13 +166,13 @@
 				</CheckBox>
 				<core:Title/>
 				<Label text="Order Probability %"/>
-				<Input value="{Customer>/cust_knvv/awahr}"/>
+				<Input value="{Customer>/cust_knvv/awahr}" maxLength="3"/>
 				<Label text="Authorization Group"/>
-				<Input value="{Customer>/cust_knvv/begru}"/>
+				<Input value="{Customer>/cust_knvv/begru}" maxLength="4"/>
 				<Label text="Item Proposal"/>
-				<Input value="{Customer>/cust_knvv/vsort}"/>
+				<Input value="{Customer>/cust_knvv/vsort}" maxLength="10"/>
 				<Label text="Account at Customer"/>
-				<Input value="{Customer>/cust_knvv/eikto}"/>
+				<Input value="{Customer>/cust_knvv/eikto}" maxLength="12"/>
 				<Label text="Unit of Measure Group"/>
 				<Input value="{Customer>/cust_knvv/megru}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 					<customData>
@@ -203,7 +203,7 @@
 				</ComboBox>
 				<core:Title text="Pricing / Statistics"/>
 				<Label text="Price Group"/>
-				<Input value="{Customer>/cust_knvv/konda}"/>
+				<Input value="{Customer>/cust_knvv/konda}" maxLength="2"/>
 				<Label text="Price List"/>
 				<Input value="{Customer>/cust_knvv/pltyp}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 					<customData>
@@ -300,7 +300,7 @@
 					</customData>
 				</CheckBox>
 				<Label text="POD Timeframe"/>
-				<Input value="{Customer>/cust_knvv/podtg}"/>
+				<Input value="{Customer>/cust_knvv/podtg}" maxLength="1"/>
 				<core:Title text="Partial Deliveries"/>
 				<Label text="Complete Delivery"/>
 				<CheckBox select="onSelectCheckBox">
@@ -319,7 +319,7 @@
 					</items>
 				</ComboBox>
 				<Label text="Maximum Number of Partial Deliveries"/>
-				<Input value="{Customer>/cust_knvv/antlf}"/>
+				<Input value="{Customer>/cust_knvv/antlf}" maxLength="1"/>
 				<core:Title/>
 				<Label text="Unlimited Tolerance"/>
 				<CheckBox select="onSelectCheckBox">
@@ -328,9 +328,9 @@
 					</customData>
 				</CheckBox>
 				<Label text="Underdelivery Tolerance"/>
-				<Input value="{Customer>/cust_knvv/untto}"/>
+				<Input value="{Customer>/cust_knvv/untto}" maxLength="3"/>
 				<Label text="Overdelivery Tolerance"/>
-				<Input value="{Customer>/cust_knvv/uebto}"/>
+				<Input value="{Customer>/cust_knvv/uebto}" maxLength="3"/>
 				<core:Title text="Billing Document"/>
 				<Label text="Manual Invoice Maintenance"/>
 				<CheckBox select="onSelectCheckBox">
@@ -398,7 +398,7 @@
 				</Input>
 				<core:Title/>
 				<Label text="Payment Guarantee Procedure"/>
-				<Input value="{Customer>/cust_knvv/kabss}"/>
+				<Input value="{Customer>/cust_knvv/kabss}" maxLength="4"/>
 				<Label text="Credit Control Area"/>
 				<Input value="{Customer>/cust_knvv/kkber}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 					<customData>
@@ -412,7 +412,7 @@
 				</Input>
 				<core:Title text="Accounting"/>
 				<Label text="Account Assignment Group"/>
-				<Input value="{Customer>/cust_knvv/ktgrd}"/>
+				<Input value="{Customer>/cust_knvv/ktgrd}" maxLength="2"/>
 				<core:Title/>
 				<Label text=""/>
 				<Text text=""/>

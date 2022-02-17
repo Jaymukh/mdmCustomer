@@ -10,10 +10,6 @@
     border-bottom: none !important;
 }
 
-.noBorderFilterBar{
-	border-bottom: none !important;
-}
-
-.sapUxAPBlockContainer {
-    padding: 1rem 0rem 2rem 0rem !important;
+.noBorderFilterBar {
+    border-bottom: none !important;
 }

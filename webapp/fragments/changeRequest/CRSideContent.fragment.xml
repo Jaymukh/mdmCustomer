@@ -1,6 +1,6 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:uxap="sap.uxap"
 	xmlns:commons="sap.suite.ui.commons" xmlns:f="sap.f">
-	<uxap:ObjectPageLayout useIconTabBar="true">
+	<uxap:ObjectPageLayout useIconTabBar="true" selectedSection="{App>/sidePanelSelectedPage}">
 		<uxap:headerTitle>
 			<uxap:ObjectPageDynamicHeaderTitle>
 				<uxap:expandedHeading>
@@ -9,7 +9,7 @@
 			</uxap:ObjectPageDynamicHeaderTitle>
 		</uxap:headerTitle>
 		<uxap:sections>
-			<uxap:ObjectPageSection title="Workflow">
+			<uxap:ObjectPageSection id="idWorkFlowSection" title="Workflow">
 				<uxap:subSections>
 					<uxap:ObjectPageSubSection>
 						<uxap:blocks>
@@ -24,7 +24,7 @@
 					</uxap:ObjectPageSubSection>
 				</uxap:subSections>
 			</uxap:ObjectPageSection>
-			<uxap:ObjectPageSection title="Change Documents">
+			<uxap:ObjectPageSection id="idDocumentsSection" title="Change Documents">
 				<uxap:subSections>
 					<uxap:ObjectPageSubSection>
 						<uxap:blocks>
@@ -98,7 +98,7 @@
 					</uxap:ObjectPageSubSection>
 				</uxap:subSections>
 			</uxap:ObjectPageSection>
-			<uxap:ObjectPageSection title="Attachments">
+			<uxap:ObjectPageSection id="idAttachmentsSection" title="Attachments">
 				<uxap:subSections>
 					<uxap:ObjectPageSubSection>
 						<uxap:blocks>
@@ -121,21 +121,16 @@
 					</uxap:ObjectPageSubSection>
 				</uxap:subSections>
 			</uxap:ObjectPageSection>
-			<uxap:ObjectPageSection title="Comments">
+			<uxap:ObjectPageSection id="idCommentsSection" title="Comments">
 				<uxap:subSections>
 					<uxap:ObjectPageSubSection>
 						<uxap:blocks>
-							<Toolbar>
-								<ToolbarSpacer/>
-								<Button text="Add Comment" press="onPressAddComment"></Button>
-							</Toolbar>
-							<VBox id="commentVBoxID" visible="false" class="sapUiSmallMarginBegin sapUiTinyMarginTop">
+							<VBox class="sapUiResponsiveContentPadding">
 								<Label text="Write a Comment:"/>
 								<TextArea id="changeReruestListCommentBoxId" width="100%" growing="true"/>
 								<Toolbar>
 									<ToolbarSpacer/>
 									<Button text="Add" press="onAddCommentCRList"/>
-									<Button text="Cancel" press="onPressCancelComment"/>
 								</Toolbar>
 							</VBox>
 							<commons:Timeline enableDoubleSided="true" filterTitle="note_by" sortOldestFirst="false"
