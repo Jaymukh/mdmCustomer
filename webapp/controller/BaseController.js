@@ -1,7 +1,7 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"murphy/mdm/customer/murphymdmcustomer/shared/serviceCall",
-	'sap/ui/core/Fragment',
+	"sap/ui/core/Fragment",
 	"sap/m/MessageToast"
 ], function (Controller, ServiceCall, Fragment, MessageToast) {
 	"use strict";
@@ -612,17 +612,17 @@ sap.ui.define([
 				"T005K", //Tel Country Codes
 				"T005", //Country
 				"T002", //Language
-				"TVKGG", //Condition Group
+				"vw_tvkgg", //Condition Group
 				"TVKD", //Customer Procedure
-				"TVV1", //Customer Group
-				"TVV2", //Customer Group
-				"TVV3", //Customer Group
-				"TVV4", //Customer Group
-				"VBWF08", //Release group
-				"T008", //Payment Block
-				"TZGR", //Grouping Key
-				"T053V",
-				"T053A" //ReasonCode Revision
+				"vw_tvv1", //Customer Group
+				"vw_tvv2", //Customer Group
+				"vw_tvv3", //Customer Group
+				"vw_tvv4", //Customer Group
+				"vw_vbwf08", //Release group
+				"vw_t008", //Payment Block
+				"vw_tzgr", //Grouping Key
+				"vw_t053v",
+				"vw_t053a" //ReasonCode Revision
 			];
 			aDropDowns.forEach(function (sValue) {
 				this.getDropdownTableData(sValue);

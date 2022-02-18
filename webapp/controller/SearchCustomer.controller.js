@@ -19,7 +19,7 @@ sap.ui.define([
 				sPageNo: 1
 			};
 			this.handleGo(oParameters);
-			this.getModel("SearchCustomerModel").setSizeLimit(1000);
+			this.getModel("SearchCustomerModel").setSizeLimit(100000);
 		},
 
 		handleGo: function (oParameters) {
@@ -32,7 +32,7 @@ sap.ui.define([
 			var oFilterParameters = {};
 			if (Object.keys(oParameters).length === 0) {
 				oFilterParameters = {
-					"vnd_lfa1": {}
+					"cust_kna1": {}
 				};
 			} else {
 				oFilterParameters = oParameters;
@@ -42,8 +42,8 @@ sap.ui.define([
 				type: "POST",
 				hasPayload: true,
 				data: {
-					"entitySearchType": "GET_ALL_VENDOR",
-					"entityType": "VENDOR",
+					"entitySearchType": "GET_ALL_CUSTOMER",
+					"entityType": "CUSTOMER",
 					"currentPage": iPageNo,
 					"parentDTO": {
 						"customData": oFilterParameters
@@ -52,7 +52,7 @@ sap.ui.define([
 			};
 
 			this.serviceCall.handleServiceRequest(objParam).then(function (oData) {
-				var aResultDataArr = oData.result.vendorDTOs,
+				var aResultDataArr = oData.result.customerDTOs,
 					aPageJson = [];
 				oData.result.totalRecords = aResultDataArr[0].totalCount;
 
@@ -74,47 +74,9 @@ sap.ui.define([
 		},
 
 		onSearch: function () {
-			var sVMSelectedKey = this.byId("searchVendorVM").getSelectionKey();
-			var sName1 = this.byId('fbName1').getValue();
-			var sName2 = this.byId('fbName2').getValue();
-			var sCity = this.byId('fbCity').getValue();
-			var sStreet = this.getView().byId('fbStreet').getValue();
-			var sBPId = this.getView().byId('fbBPId').getValue();
-			var sBankAcc = this.getView().byId('fbBankAcc').getValue();
-			var sBankKey = this.getView().byId('fbBankKey').getValue();
-			var sBankStreet = this.getView().byId('fbBankStreet').getValue();
 			var oFilterBarParam = {
 				sPageNo: 1
 			};
-			if (sVMSelectedKey === "*standard*") {
-				oFilterBarParam.vnd_lfa1 = {};
-				if (sName1) {
-					oFilterBarParam['vnd_lfa1']['NAME1'] = sName1;
-				}
-				if (sName2) {
-					oFilterBarParam['vnd_lfa1']['NAME2'] = sName2;
-				}
-				if (sCity) {
-					oFilterBarParam['vnd_lfa1']['ORT01'] = sCity;
-				}
-				if (sStreet) {
-					oFilterBarParam['vnd_lfa1']['STREET'] = sStreet;
-				}
-			} else if (sVMSelectedKey === "bankDetails") {
-				oFilterBarParam.vnd_lfbk = {};
-				if (sBPId) {
-					oFilterBarParam['vnd_lfbk']['LIFNR'] = sBPId;
-				}
-				if (sBankAcc) {
-					oFilterBarParam['vnd_lfbk']['BKONT'] = sBankAcc;
-				}
-				if (sBankKey) {
-					oFilterBarParam['vnd_lfbk']['BANKL'] = sBankKey;
-				}
-				if (sBankStreet) {
-					oFilterBarParam['vnd_lfbk']['STRAS'] = sBankStreet;
-				}
-			}
 			this.handleGo(oFilterBarParam);
 		},
 

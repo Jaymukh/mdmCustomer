@@ -126,23 +126,23 @@
 			</Input>
 			<core:Title text="Condition groups"/>
 			<Label text="Condition Group 1"/>
-			<ComboBox items="{Dropdowns>/TVKGG}" selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kdkg1}">
+			<ComboBox items="{Dropdowns>/vw_tvkgg}" selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kdkg1}">
 				<core:Item key="{Dropdowns>kdkgr}" text="{Dropdowns>vtext}"/>
 			</ComboBox>
 			<Label text="Condition Group 2"/>
-			<ComboBox items="{Dropdowns>/TVKGG}" selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kdkg2}">
+			<ComboBox items="{Dropdowns>/vw_tvkgg}" selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kdkg2}">
 				<core:Item key="{Dropdowns>kdkgr}" text="{Dropdowns>vtext}"/>
 			</ComboBox>
 			<Label text="Condition Group 3"/>
-			<ComboBox items="{Dropdowns>/TVKGG}" selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kdkg3}">
+			<ComboBox items="{Dropdowns>/vw_tvkgg}" selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kdkg3}">
 				<core:Item key="{Dropdowns>kdkgr}" text="{Dropdowns>vtext}"/>
 			</ComboBox>
 			<Label text="Condition Group 4"/>
-			<ComboBox items="{Dropdowns>/TVKGG}" selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kdkg4}">
+			<ComboBox items="{Dropdowns>/vw_tvkgg}" selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kdkg4}">
 				<core:Item key="{Dropdowns>kdkgr}" text="{Dropdowns>vtext}"/>
 			</ComboBox>
 			<Label text="Condition Group 5"/>
-			<ComboBox items="{Dropdowns>/TVKGG}" selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kdkg5}">
+			<ComboBox items="{Dropdowns>/vw_tvkgg}" selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kdkg5}">
 				<core:Item key="{Dropdowns>kdkgr}" text="{Dropdowns>vtext}"/>
 			</ComboBox>
 		</form:content>

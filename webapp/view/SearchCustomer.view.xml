@@ -44,7 +44,7 @@
 						<f:title>
 							<f:DynamicPageTitle>
 								<f:heading>
-									<vm:VariantManagement id="searchVendorVM" select="handleSelect" standardItemText="Address Data" defaultVariantKey="addressData">
+									<vm:VariantManagement id="idSearchVM" select="onHandleVMSelect" standardItemText="Address Data" defaultVariantKey="addressData">
 										<vm:variantItems>
 											<vm:VariantItem text="Bank Details" key="bankDetails"></vm:VariantItem>
 										</vm:variantItems>
@@ -59,44 +59,56 @@
 										<filterbar:filterGroupItems >
 											<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="addressData" name="name1" label="Name 1">
 												<filterbar:control>
-													<Input id="fbName1"></Input>
+													<Input/>
 												</filterbar:control>
 											</filterbar:FilterGroupItem>
 											<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="addressData" name="name2" label="Name 2">
 												<filterbar:control>
-													<Input id="fbName2"></Input>
+													<Input/>
 												</filterbar:control>
 											</filterbar:FilterGroupItem>
 											<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="addressData" name="city" label="City">
 												<filterbar:control>
-													<Input id="fbCity"></Input>
+													<Input/>
 												</filterbar:control>
 											</filterbar:FilterGroupItem>
 											<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="addressData" name="street" label="Street">
 												<filterbar:control>
-													<Input id="fbStreet"></Input>
+													<Input/>
+												</filterbar:control>
+											</filterbar:FilterGroupItem>
+											<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="addressData" name="country" label="Country">
+												<filterbar:control>
+													<ComboBox items="{Dropdowns>/T005}">
+														<core:ListItem key="{Dropdowns>land1}" text="{Dropdowns>landx}" additionalText="{Dropdowns>land1}"/>
+													</ComboBox>
 												</filterbar:control>
 											</filterbar:FilterGroupItem>
 										</filterbar:filterGroupItems>
 										<filterbar:filterGroupItems>
 											<filterbar:FilterGroupItem visibleInFilterBar="false" groupName="bankDetails" name="businessPartnerID" label="Business Partner ID">
 												<filterbar:control>
-													<Input id="fbBPId"></Input>
+													<Input/>
 												</filterbar:control>
 											</filterbar:FilterGroupItem>
 											<filterbar:FilterGroupItem visibleInFilterBar="false" groupName="bankDetails" name="bankAccount" label="Bank Account">
 												<filterbar:control>
-													<Input id="fbBankAcc"></Input>
+													<Input/>
 												</filterbar:control>
 											</filterbar:FilterGroupItem>
 											<filterbar:FilterGroupItem visibleInFilterBar="false" groupName="bankDetails" name="bankKey" label="Bank Key">
 												<filterbar:control>
-													<Input id="fbBankKey"></Input>
+													<Input/>
 												</filterbar:control>
 											</filterbar:FilterGroupItem>
 											<filterbar:FilterGroupItem visibleInFilterBar="false" groupName="bankDetails" name="street" label="Street">
 												<filterbar:control>
-													<Input id="fbBankStreet"></Input>
+													<Input/>
+												</filterbar:control>
+											</filterbar:FilterGroupItem>
+											<filterbar:FilterGroupItem visibleInFilterBar="false" groupName="bankDetails" name="taxNo" label="Tax Number">
+												<filterbar:control>
+													<Input maxLength="18"/>
 												</filterbar:control>
 											</filterbar:FilterGroupItem>
 										</filterbar:filterGroupItems>
@@ -105,7 +117,7 @@
 							</f:DynamicPageHeader>
 						</f:header>
 						<f:content>
-							<Table sticky="ColumnHeaders" items="{SearchCustomerModel>/searchAllModelData/vendorDTOs}">
+							<Table sticky="ColumnHeaders" items="{SearchCustomerModel>/searchAllModelData/customerDTOs}">
 								<headerToolbar>
 									<Toolbar>
 										<Label id="idTableTitle" text="Business Partner Master List({SearchCustomerModel>/searchAllModelData/totalRecords})" design="Bold"></Label>
@@ -155,6 +167,16 @@
 											<Label text="Country" design="Bold"></Label>
 										</header>
 									</Column>
+									<Column>
+										<header>
+											<Label text="Created By" wrapping="true" design="Bold"></Label>
+										</header>
+									</Column>
+									<Column>
+										<header>
+											<Label text="Finalized By" wrapping="true" design="Bold"></Label>
+										</header>
+									</Column>
 									<Column width="5%" visible="{= ${userManagementModel>/role}.indexOf('req')!== -1 ? true : false }">
 										<header>
 											<Label text=" " design="Bold"></Label>
@@ -164,7 +186,7 @@
 								<items>
 									<ColumnListItem>
 										<cells>
-											<Link text="{SearchCustomerModel>customVendorLFA1DTO/lifnr}" press="onClickVendor"></Link>
+											<Link text="{SearchCustomerModel>customCustomerCustKna1DTO/kunnr}" press="onClickVendor"></Link>
 											<ObjectStatus state="{path :'SearchCustomerModel>pendingRequest', formatter : '.handlePendingRequest'}"
 												text="{SearchCustomerModel>pendingRequest}"/>
 											<Text text="{SearchCustomerModel>overDueDate}"></Text>
@@ -172,6 +194,8 @@
 												text="{ parts:[ {path:'SearchCustomerModel>customVendorLFA1DTO/name1'}, {path:'SearchCustomerModel>customVendorLFA1DTO/name2'}, {path:'SearchCustomerModel>customVendorLFA1DTO/name3'}, {path:'SearchCustomerModel>customVendorLFA1DTO/name4'} ], formatter:'.handleDescription' }"></Text>
 											<Text text="{SearchCustomerModel>customVendorLFA1DTO/vbund}"></Text>
 											<Text text="{SearchCustomerModel>customVendorLFA1DTO/land1}"></Text>
+											<Text text=""/>
+											<Text text=""/>
 											<core:Icon src="sap-icon://overflow" press=".handleOverFlowButton"></core:Icon>
 										</cells>
 									</ColumnListItem>

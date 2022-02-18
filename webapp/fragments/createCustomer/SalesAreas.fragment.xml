@@ -105,7 +105,7 @@
 				<Input value="{Customer>/cust_knvv/bzirk}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 					<customData>
 						<core:CustomData key="title" value="Sales District"></core:CustomData>
-						<core:CustomData key="table" value="T171"></core:CustomData>
+						<core:CustomData key="table" value="vw_t171"></core:CustomData>
 						<core:CustomData key="inputKey" value="bzirk"></core:CustomData>
 						<core:CustomData key="inputText" value="bzirk"></core:CustomData>
 						<core:CustomData key="bzirk" value="Sales District"></core:CustomData>
@@ -116,7 +116,7 @@
 				<Input value="{Customer>/cust_knvv/vkbur}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 					<customData>
 						<core:CustomData key="title" value="Sales Office"></core:CustomData>
-						<core:CustomData key="table" value="TVBVK"></core:CustomData>
+						<core:CustomData key="table" value="vw_tvbvk"></core:CustomData>
 						<core:CustomData key="inputKey" value="vkbur"></core:CustomData>
 						<core:CustomData key="inputText" value="vkbur"></core:CustomData>
 						<core:CustomData key="vkbur" value="Sales Office"></core:CustomData>
@@ -127,7 +127,7 @@
 				<Input value="{Customer>/cust_knvv/vkgrp}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 					<customData>
 						<core:CustomData key="title" value="Sales Office"></core:CustomData>
-						<core:CustomData key="table" value="TVBVK"></core:CustomData>
+						<core:CustomData key="table" value="vw_tvbvk"></core:CustomData>
 						<core:CustomData key="inputKey" value="vkgrp"></core:CustomData>
 						<core:CustomData key="inputText" value="vkgrp"></core:CustomData>
 						<core:CustomData key="vkgrp" value="Sales Group"></core:CustomData>
@@ -138,7 +138,7 @@
 				<Input value="{Customer>/cust_knvv/kdgrp}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 					<customData>
 						<core:CustomData key="title" value="Customer Group"></core:CustomData>
-						<core:CustomData key="table" value="T151"></core:CustomData>
+						<core:CustomData key="table" value="vw_t151"></core:CustomData>
 						<core:CustomData key="inputKey" value="kdgrp"></core:CustomData>
 						<core:CustomData key="inputText" value="kdgrp"></core:CustomData>
 						<core:CustomData key="kdgrp" value="Customer Group"></core:CustomData>
@@ -151,7 +151,7 @@
 				<Input value="{Customer>/cust_knvv/waers}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 					<customData>
 						<core:CustomData key="title" value="Currency"></core:CustomData>
-						<core:CustomData key="table" value="TCURC"></core:CustomData>
+						<core:CustomData key="table" value="vw_tcurc"></core:CustomData>
 						<core:CustomData key="inputKey" value="waers"></core:CustomData>
 						<core:CustomData key="inputText" value="waers"></core:CustomData>
 						<core:CustomData key="waers" value="Currency Key"></core:CustomData>
@@ -188,7 +188,7 @@
 				<Input value="{Customer>/cust_knvv/kurst}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 					<customData>
 						<core:CustomData key="title" value="Exchange Rate Type"></core:CustomData>
-						<core:CustomData key="table" value="TCURV"></core:CustomData>
+						<core:CustomData key="table" value="vw_tcurv"></core:CustomData>
 						<core:CustomData key="inputKey" value="kurst"></core:CustomData>
 						<core:CustomData key="inputText" value="kurst"></core:CustomData>
 						<core:CustomData key="kurst" value="Exchange Rate Type"></core:CustomData>
@@ -208,7 +208,7 @@
 				<Input value="{Customer>/cust_knvv/pltyp}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 					<customData>
 						<core:CustomData key="title" value="Price List"></core:CustomData>
-						<core:CustomData key="table" value="T189"></core:CustomData>
+						<core:CustomData key="table" value="vw_t189"></core:CustomData>
 						<core:CustomData key="inputKey" value="pltyp"></core:CustomData>
 						<core:CustomData key="inputText" value="pltyp"></core:CustomData>
 						<core:CustomData key="pltyp" value="Price List"></core:CustomData>
@@ -257,7 +257,7 @@
 				<Input value="{Customer>/cust_knvv/lprio}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 					<customData>
 						<core:CustomData key="title" value="Delivery Priority"></core:CustomData>
-						<core:CustomData key="table" value="TPRIO"></core:CustomData>
+						<core:CustomData key="table" value="vw_tprio"></core:CustomData>
 						<core:CustomData key="inputKey" value="lprio"></core:CustomData>
 						<core:CustomData key="inputText" value="lprio"></core:CustomData>
 						<core:CustomData key="lprio" value="Delivery Priority"></core:CustomData>
@@ -342,7 +342,7 @@
 				<Input value="{Customer>/cust_knvv/perfk}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 					<customData>
 						<core:CustomData key="title" value="Invoicing Dates"></core:CustomData>
-						<core:CustomData key="table" value="TFACD"></core:CustomData>
+						<core:CustomData key="table" value="vw_tfacd"></core:CustomData>
 						<core:CustomData key="inputKey" value="ident"></core:CustomData>
 						<core:CustomData key="inputText" value="ident"></core:CustomData>
 						<core:CustomData key="ident" value="Calendar ID"></core:CustomData>
@@ -353,7 +353,7 @@
 				<Input value="{Customer>/cust_knvv/perfk}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 					<customData>
 						<core:CustomData key="title" value="Invoicing List Dates"></core:CustomData>
-						<core:CustomData key="table" value="TFACD"></core:CustomData>
+						<core:CustomData key="table" value="vw_tfacd"></core:CustomData>
 						<core:CustomData key="inputKey" value="ident"></core:CustomData>
 						<core:CustomData key="inputText" value="ident"></core:CustomData>
 						<core:CustomData key="ident" value="Calendar ID"></core:CustomData>
@@ -403,7 +403,7 @@
 				<Input value="{Customer>/cust_knvv/kkber}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
 					<customData>
 						<core:CustomData key="title" value="Credit Control Area"></core:CustomData>
-						<core:CustomData key="table" value="T014"></core:CustomData>
+						<core:CustomData key="table" value="vw_t014"></core:CustomData>
 						<core:CustomData key="inputKey" value="kkber"></core:CustomData>
 						<core:CustomData key="inputText" value="kkber"></core:CustomData>
 						<core:CustomData key="kkber" value="Credit Control Area"></core:CustomData>
@@ -418,26 +418,26 @@
 				<Text text=""/>
 				<core:Title text="Customer Groups"/>
 				<Label text="Customer Group 1"/>
-				<ComboBox selectedKey="{Customer>/cust_knvv/kvgr1}" items="{Dropdowns>/TVV1}">
+				<ComboBox selectedKey="{Customer>/cust_knvv/kvgr1}" items="{Dropdowns>/vw_tvv1}">
 					<items>
 						<core:Item text="{Dropdowns>bezei}" key="{Dropdowns>kvgr1}"/>
 					</items>
 				</ComboBox>
 				<Label text="Customer Group 2"/>
-				<ComboBox selectedKey="{Customer>/cust_knvv/kvgr2}" items="{Dropdowns>/TVV2}">
+				<ComboBox selectedKey="{Customer>/cust_knvv/kvgr2}" items="{Dropdowns>/vw_tvv2}">
 					<items>
 						<core:Item text="{Dropdowns>bezei}" key="{Dropdowns>kvgr2}"/>
 					</items>
 				</ComboBox>
 				<core:Title/>
 				<Label text="Customer Group 3"/>
-				<ComboBox selectedKey="{Customer>/cust_knvv/kvgr3}" items="{Dropdowns>/TVV3}">
+				<ComboBox selectedKey="{Customer>/cust_knvv/kvgr3}" items="{Dropdowns>/vw_tvv3}">
 					<items>
 						<core:Item text="{Dropdowns>bezei}" key="{Dropdowns>kvgr3}"/>
 					</items>
 				</ComboBox>
 				<Label text="Customer Group 4"/>
-				<ComboBox selectedKey="{Customer>/cust_knvv/kvgr4}" items="{Dropdowns>/TVV4}">
+				<ComboBox selectedKey="{Customer>/cust_knvv/kvgr4}" items="{Dropdowns>/vw_tvv4}">
 					<items>
 						<core:Item text="{Dropdowns>bezei}" key="{Dropdowns>kvgr4}"/>
 					</items>

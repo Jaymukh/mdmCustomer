@@ -262,8 +262,8 @@ sap.ui.define([
 						type: 'POST',
 						hasPayload: true,
 						data: {
-							"entitySearchType": "GET_ALL_VENDOR",
-							"entityType": "VENDOR",
+							"entitySearchType": "GET_ALL_CUSTOMER",
+							"entityType": "CUSTOMER",
 							"currentPage": 1,
 							"parentDTO": {
 								"customData": {
