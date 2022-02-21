@@ -1,10 +1,10 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout">
 	<VBox>
-		<Table items="{Customer>/addCompanyCodeRows}">
+		<Table items="{Customer>/createCRCustomerData/tableRows/gen_knvk}">
 			<headerToolbar>
 				<Toolbar>
 					<ToolbarSpacer></ToolbarSpacer>
-					<Button text="Add" press="onAddCompanyCode"></Button>
+					<Button text="Add" press="onAddContact" type="Emphasized" visible="{App>/edit}"></Button>
 				</Toolbar>
 			</headerToolbar>
 			<columns>
@@ -27,11 +27,11 @@
 			<items>
 				<ColumnListItem>
 					<cells>
-						<Text text="{Customer>lfb1/bukrs}"></Text>
-						<Text text="{Customer>lfb1/AKONT}"></Text>
+						<Text text="{Customer>parnr}"></Text>
+						<Text text="{Customer>anred}"></Text>
 						<HBox>
-							<core:Icon src="sap-icon://edit" class="sapUiSmallMarginEnd" press="onCompanYCodeEditPress"/>
-							<core:Icon src="sap-icon://delete" class="sapUiSmallMarginEnd" press="onCompanYCodeDeletePress"/>
+							<core:Icon src="sap-icon://edit" hoverBackgroundColor="#346187" hoverColor="#ffffff" class="sapUiSmallMarginEnd" press="onEditContact"/>
+							<core:Icon src="sap-icon://delete" color="Negative" class="sapUiSmallMarginEnd" press="onDeleteContact"/>
 						</HBox>
 					</cells>
 				</ColumnListItem>
@@ -43,23 +43,23 @@
 			<form:content>
 				<core:Title text="Relationship"/>
 				<Label text="Partner ID"/>
-				<Input required="true" value="{Customer>/cust_knvk/parnr}" maxLength="10"/>
+				<Input required="true" value="{Customer>/createCRCustomerData/gen_knvk/parnr}" maxLength="10" editable="false"/>
 				<core:Title/>
 				<Label text="Partner Description"/>
-				<Input value=""/>
+				<Input value="" editable="{App>/edit}"/>
 				<core:Title text="General Data"/>
 				<Label text="Title"/>
-				<ComboBox items="{Dropdowns>/TSAD3}" selectedKey="{Customer>/cust_knvk/anred}">
+				<ComboBox items="{Dropdowns>/TSAD3}" selectedKey="{Customer>/createCRCustomerData/gen_knvk/anred}" editable="{App>/edit}">
 					<items>
 						<core:Item text="{Dropdowns>title_MEDI}" key="{Dropdowns>title}"/>
 					</items>
 				</ComboBox>
 				<Label text="Last Name"/>
-				<Input value="{Customer>/cust_knvk/name1}" maxLength="35"/>
+				<Input value="{Customer>/createCRCustomerData/gen_knvk/name1}" maxLength="35" editable="{App>/edit}"/>
 				<Label text="First Name"/>
-				<Input value="{Customer>/cust_knvk/namev}" maxLength="35"/>
+				<Input value="{Customer>/createCRCustomerData/gen_knvk/namev}" maxLength="35" editable="{App>/edit}"/>
 				<Label text="Academic Title"/>
-				<ComboBox selectedKey="{Customer>/cust_knvk/titel_ap}">
+				<ComboBox selectedKey="{Customer>/createCRCustomerData/gen_knvk/titel_ap}" editable="{App>/edit}">
 					<items>
 						<core:Item text="Title 1" key="1"/>
 						<core:Item text="Title 2" key="2"/>
@@ -68,7 +68,7 @@
 				</ComboBox>
 				<core:Title/>
 				<Label text="Gender/Sex"/>
-				<ComboBox selectedKey="{Customer>/cust_knvk/parge}">
+				<ComboBox selectedKey="{Customer>/createCRCustomerData/gen_knvk/parge}" editable="{App>/edit}">
 					<items>
 						<core:Item text="Male" key="1"/>
 						<core:Item text="Female" key="2"/>
@@ -76,9 +76,10 @@
 					</items>
 				</ComboBox>
 				<Label text="Date of Birth"/>
-				<DatePicker displayFormat="{App>/dateFormat}" valueFormat="{App>/dateValueFormat}" value="{Customer>/cust_knvk/gbdat}"/>
+				<DatePicker displayFormat="{App>/dateFormat}" valueFormat="{App>/dateValueFormat}" value="{Customer>/createCRCustomerData/gen_knvk/gbdat}"
+					editable="{App>/edit}"/>
 				<Label text="Marital Status"/>
-				<ComboBox selectedKey="{Customer>/cust_knvk/famst}">
+				<ComboBox selectedKey="{Customer>/createCRCustomerData/gen_knvk/famst}" editable="{App>/edit}">
 					<items>
 						<core:Item text="Single" key="1"/>
 						<core:Item text="Married" key="2"/>
@@ -86,12 +87,13 @@
 					</items>
 				</ComboBox>
 				<Label text="Correspondance Language"/>
-				<ComboBox selectedKey="{Customer>/cust_knvk/parla}" items="{Dropdowns>/T002}">
+				<ComboBox selectedKey="{Customer>/createCRCustomerData/gen_knvk/parla}" items="{Dropdowns>/T002}" editable="{App>/edit}">
 					<core:Item key="{Dropdowns>spras}" text="{Dropdowns>sptxt}"/>
 				</ComboBox>
 				<core:Title text="Contact Person Details"/>
 				<Label text="Department"/>
-				<Input value="{Customer>/cust_knvk/abtnr}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" maxLength="4">
+				<Input value="{Customer>/createCRCustomerData/gen_knvk/abtnr}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" maxLength="4" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Department"></core:CustomData>
 						<core:CustomData key="table" value="TSAB"></core:CustomData>
@@ -102,7 +104,8 @@
 					</customData>
 				</Input>
 				<Label text="Function"/>
-				<Input value="{Customer>/cust_knvk/pafkt}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" maxLength="2">
+				<Input value="{Customer>/createCRCustomerData/gen_knvk/pafkt}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" maxLength="2" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Function"></core:CustomData>
 						<core:CustomData key="table" value="TPFK"></core:CustomData>
@@ -113,10 +116,11 @@
 					</customData>
 				</Input>
 				<Label text="Note"/>
-				<Input value="{Customer>/cust_knvk/parau}" maxLength="40"/>
+				<Input value="{Customer>/createCRCustomerData/gen_knvk/parau}" maxLength="40" editable="{App>/edit}"/>
 				<core:Title/>
 				<Label text="Authority"/>
-				<Input value="{Customer>/cust_knvk/parvo}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" maxLength="1">
+				<Input value="{Customer>/createCRCustomerData/gen_knvk/parvo}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" maxLength="1" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Authority"></core:CustomData>
 						<core:CustomData key="table" value="TVPV"></core:CustomData>
@@ -127,7 +131,8 @@
 					</customData>
 				</Input>
 				<Label text="VIP"/>
-				<Input value="{Customer>/cust_knvk/pavip}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" maxLength="1">
+				<Input value="{Customer>/createCRCustomerData/gen_knvk/pavip}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" maxLength="1" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="VIP"></core:CustomData>
 						<core:CustomData key="table" value="TVIP"></core:CustomData>
@@ -139,21 +144,21 @@
 				</Input>
 				<core:Title text="Company"/>
 				<Label text="Address"/>
-				<Input value="{Customer>/gen_adcp/addrnumber}" maxLength="10"/>
+				<Input value="{Customer>/gen_adcp/addrnumber}" maxLength="10" editable="{App>/edit}"/>
 				<core:Title text="Workplace"/>
 				<Label text="Function"/>
-				<Input value="{Customer>/gen_adcp/function}" maxLength="40"/>
+				<Input value="{Customer>/gen_adcp/function}" maxLength="40" editable="{App>/edit}"/>
 				<Label text="Department"/>
-				<Input value="{Customer>/gen_adcp/department}" maxLength="40"/>
+				<Input value="{Customer>/gen_adcp/department}" maxLength="40" editable="{App>/edit}"/>
 				<Label text="Room Number"/>
-				<Input value="{Customer>/gen_adcp/building}" maxLength="40"/>
+				<Input value="{Customer>/gen_adcp/building}" maxLength="40" editable="{App>/edit}"/>
 				<Label text="Floor"/>
-				<Input value="{Customer>/gen_adcp/roomnumber}" maxLength="10"/>
+				<Input value="{Customer>/gen_adcp/roomnumber}" maxLength="10" editable="{App>/edit}"/>
 				<Label text="Building"/>
-				<Input value="{Customer>/gen_adcp/building}" maxLength="10"/>
+				<Input value="{Customer>/gen_adcp/building}" maxLength="10" editable="{App>/edit}"/>
 				<core:Title text="Communication"/>
 				<Label text="Communication Method"/>
-				<ComboBox selectedKey="{Customer>/gen_adcp/deflt_comm}"></ComboBox>
+				<ComboBox selectedKey="{Customer>/gen_adcp/deflt_comm}" editable="{App>/edit}"></ComboBox>
 			</form:content>
 		</form:SimpleForm>
 		<Table items="{Customer>/addCompanyCodeRows}">
@@ -161,7 +166,7 @@
 				<Toolbar>
 					<Title text="Workplace Phone Numbers"/>
 					<ToolbarSpacer></ToolbarSpacer>
-					<Button text="Add" press="onAddCompanyCode"></Button>
+					<Button text="Add" press="onAddCompanyCode" visible="{App>/edit}"></Button>
 				</Toolbar>
 			</headerToolbar>
 			<columns>
@@ -217,7 +222,7 @@
 				<Toolbar>
 					<Title text="Workplace Mobile Phone Numbers"/>
 					<ToolbarSpacer></ToolbarSpacer>
-					<Button text="Add" press="onAddCompanyCode"></Button>
+					<Button text="Add" press="onAddCompanyCode" visible="{App>/edit}"></Button>
 				</Toolbar>
 			</headerToolbar>
 			<columns>
@@ -267,7 +272,7 @@
 				<Toolbar>
 					<Title text="Workplace Fax Numbers"/>
 					<ToolbarSpacer></ToolbarSpacer>
-					<Button text="Add" press="onAddCompanyCode"></Button>
+					<Button text="Add" press="onAddCompanyCode" visible="{App>/edit}"></Button>
 				</Toolbar>
 			</headerToolbar>
 			<columns>
@@ -323,7 +328,7 @@
 				<Toolbar>
 					<Title text="Workplace Email Address"/>
 					<ToolbarSpacer></ToolbarSpacer>
-					<Button text="Add" press="onAddCompanyCode"></Button>
+					<Button text="Add" press="onAddCompanyCode" visible="{App>/edit}"></Button>
 				</Toolbar>
 			</headerToolbar>
 			<columns>
@@ -367,7 +372,7 @@
 				<Toolbar>
 					<Title text="Workplace Websites"/>
 					<ToolbarSpacer></ToolbarSpacer>
-					<Button text="Add" press="onAddCompanyCode"></Button>
+					<Button text="Add" press="onAddCompanyCode" visible="{App>/edit}"></Button>
 				</Toolbar>
 			</headerToolbar>
 			<columns>

@@ -24,30 +24,26 @@ sap.ui.define([
 		_createCREntityCustomer: function () {
 			var oCustomerModel = this.getModel("Customer"),
 				oAppModel = this.getModel("App"),
-				oChangeRequest = Object.assign(oAppModel.getProperty("/changeReq"), {}),
-				oCustomerData = Object.assign(oAppModel.getProperty("/createCRCustomerData"), {}),
+				oChangeRequest = Object.assign({}, oAppModel.getProperty("/changeReq")),
+				oCustomerData = Object.assign({}, oAppModel.getProperty("/createCRCustomerData")),
+				sUserId = this.getView().getModel("userManagementModel").getProperty("/data/user_id"),
 				oDate = new Date(),
 				sMonth = oDate.getMonth() + 1,
 				sMinutes = oDate.getMinutes();
 
-			oChangeRequest.genData.change_request_id = 50001;
-			oChangeRequest.genData.reason = "30001";
-			oChangeRequest.genData.timeCreation = oDate.getHours() + ":" + (sMinutes < 10 ? "0" + sMinutes : sMinutes);
-			oChangeRequest.genData.dateCreation = oDate.getFullYear() + "-" + (sMonth < 10 ? "0" + sMonth : sMonth) + "-" + oDate.getDate();
-
 			var objParam = {
-				url: "/murphyCustom/mdm/entity-service/entities/entity/create",
+				url: "/murphyCustom/entity-service/entities/entity/create",
 				hasPayload: true,
 				type: "POST",
 				data: {
-					"entityType": "VENDOR",
+					"entityType": "CUSTOMER",
 					"parentDTO": {
 						"customData": {
 							"business_entity": {
-								"entity_type_id": "1",
-								"created_by": "1",
-								"modified_by": "1",
-								"is_draft": "1"
+								"entity_type_id": "41001",
+								"created_by": sUserId,
+								"modified_by": sUserId,
+								"is_draft": true
 							}
 						}
 					}
@@ -57,9 +53,11 @@ sap.ui.define([
 			this.serviceCall.handleServiceRequest(objParam).then(
 				//Success handler
 				function (oData) {
-					var sEntityId = oData.result.vendorDTOs[0].customVendorBusDTO.entity_id,
+					var oBusinessEntity = oData.result.customerDTOs[0].businessEntityDTO,
+						sEntityId = oBusinessEntity.entity_id,
 						aTables = ["cust_knb1", "cust_knbk", "cust_knbw", "cust_knb5", "cust_knvp", "cust_knvv",
-							"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "pra_bp_ad", "pra_bp_cust_md"
+							"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "pra_bp_ad", "pra_bp_cust_md", "gen_adr2", "gen_adr3", "gen_adr6",
+							"TAX_NUMBERS"
 						];
 
 					oCustomerData.entityId = sEntityId;
@@ -67,35 +65,42 @@ sap.ui.define([
 					oCustomerData.tableRows = {};
 					aTables.forEach(function (sTable) {
 						oCustomerData.tableRows[sTable] = [];
-						oCustomerData[sTable] = Object.assign(oAppModel.getProperty("/" + sTable), {});
+						oCustomerData[sTable] = Object.assign({}, oAppModel.getProperty("/" + sTable));
 						if (oCustomerData[sTable].hasOwnProperty("entity_id")) {
 							oCustomerData[sTable].entity_id = sEntityId;
 						}
 					}, this);
+
+					oChangeRequest.genData.change_request_id = 50001;
+					oChangeRequest.genData.reason = "30001";
+					oChangeRequest.genData.timeCreation = oDate.getHours() + ":" + (sMinutes < 10 ? "0" + sMinutes : sMinutes);
+					oChangeRequest.genData.dateCreation = oDate.getFullYear() + "-" + (sMonth < 10 ? "0" + sMonth : sMonth) + "-" + oDate.getDate();
+					oChangeRequest.genData.change_request_by = oBusinessEntity.hasOwnProperty("created_by") ? oBusinessEntity.created_by : {};
+					oChangeRequest.genData.modified_by = oBusinessEntity.hasOwnProperty("modified_by") ? oBusinessEntity.modified_by : {};
+
 					oCustomerModel.setData({
 						changeReq: oChangeRequest,
 						createCRCustomerData: oCustomerData
 					});
-
 				}.bind(this),
-				function () {
-					oCustomerModel.setData({
-						changeReq: {},
-						createCRCustomerData: {}
-					});
+				function (oError) {
+					this.clearCustomerModel();
 					MessageToast.show("Entity ID not created. Please try after some time");
-				});
+				}.bind(this));
 		},
 
 		handleChangeRequestStatistics: function () {
 			var oChangeRequestsModel = this.getModel("ChangeRequestsModel"),
 				oDataResources = this.getView().getModel("userManagementModel").getData(),
 				objParam = {
-					url: "/murphyCustom/mdm/change-request-service/changerequests/changerequest/statistics/get",
+					url: "/murphyCustom/change-request-service/changerequests/changerequest/statistics/get",
 					hasPayload: true,
 					type: "POST",
 					data: {
-						"userId": oDataResources.data.user_id
+						"userId": oDataResources.data.user_id,
+						"changeRequestSearchDTO": {
+							"entityType": "CUSTOMER"
+						}
 					}
 
 				};
@@ -150,6 +155,27 @@ sap.ui.define([
 			oChangeRequestsModel.setProperty("/TotalCount", 0);
 		},
 
+		clearCustomerModel: function () {
+			var oAppModel = this.getModel("App"),
+				oCustomerModel = this.getModel("Customer"),
+				oChangeRequest = Object.assign({}, oAppModel.getProperty("/changeReq")),
+				oCustomerData = Object.assign({}, oAppModel.getProperty("/createCRCustomerData")),
+				aTables = ["cust_knb1", "cust_knbk", "cust_knbw", "cust_knb5", "cust_knvp", "cust_knvv",
+					"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "pra_bp_ad", "pra_bp_cust_md", "gen_adr2", "gen_adr3", "gen_adr6"
+				];
+			aTables.forEach(sTable => {
+				oCustomerData.tableRows[sTable] = [];
+				oCustomerData[sTable] = Object.assign({}, oAppModel.getProperty("/" + sTable));
+				if (oCustomerData[sTable].hasOwnProperty("entity_id")) {
+					oCustomerData[sTable].entity_id = null;
+				}
+			});
+			oCustomerModel.setData({
+				changeReq: oChangeRequest,
+				createCRCustomerData: oCustomerData
+			});
+		},
+
 		getCRSearchFilters: function (nPageNo = 1) {
 			var oCRSearchData = Object.assign({}, this.getModel("ChangeRequestsModel").getData()),
 				sUserId = this.getView().getModel("userManagementModel").getProperty("/data/user_id"),
@@ -169,7 +195,7 @@ sap.ui.define([
 				oFilters.approvedEntityId = oCRSearchData.Customer;
 				oFilters.countryCode = oCRSearchData.City;
 				oFilters.companyCode = oCRSearchData.CompanyCode;
-				oFilters.entityType = "VENDOR";
+				oFilters.entityType = "CUSTOMER";
 				oFilters.listOfCRSearchCondition = [
 					"GET_CR_BY_ADDRESS",
 					"GET_CR_CREATED_BY_USER_ID",
@@ -179,16 +205,16 @@ sap.ui.define([
 					"GET_CR_PROCESSED_BY_USER_ID"
 				];
 				oFinalPayload = {
-					url: "/murphyCustom/mdm/change-request-service/changerequests/changerequest/filters/get",
+					url: "/murphyCustom/change-request-service/changerequests/changerequest/filters/get",
 					filters: {
-						"crSearchType": "GET_CR_BY_VENDOR_FILTERS",
+						"crSearchType": "GET_CR_BY_CUSTOMER_FILTERS",
 						"currentPage": nPageNo,
 						"changeRequestSearchDTO": oFilters
 					}
 				};
 			} else {
 				oFinalPayload = {
-					url: "/murphyCustom/mdm/change-request-service/changerequests/changerequest/page",
+					url: "/murphyCustom/change-request-service/changerequests/changerequest/page",
 					filters: {
 						"crSearchType": "GET_ALL_BY_USER_ID",
 						"currentPage": nPageNo,
@@ -225,7 +251,7 @@ sap.ui.define([
 			var oCommentsModel = this.getModel("CommentsModel"),
 				oAuditLogModel = this.getModel("AuditLogModel");
 			var objParamCreate = {
-				url: "/murphyCustom/mdm/change-request-service/changerequests/changerequest/comments/get",
+				url: "/murphyCustom/change-request-service/changerequests/changerequest/comments/get",
 				type: 'POST',
 				hasPayload: true,
 				data: {
@@ -261,7 +287,7 @@ sap.ui.define([
 			var oAttachModel = this.getModel("AttachmentsModel"),
 				oAuditLogModel = this.getModel("AuditLogModel");
 			var objParamCreate = {
-				url: "/murphyCustom/mdm/change-request-service/changerequests/changerequest/documents/all",
+				url: "/murphyCustom/change-request-service/changerequests/changerequest/documents/all",
 				type: 'POST',
 				hasPayload: true,
 				data: {
@@ -296,7 +322,7 @@ sap.ui.define([
 			this.getView().setBusy(true);
 			var oWorkFlowModel = this.getModel("WorkFlowModel");
 			var objParamCreate = {
-				url: "/murphyCustom/mdm/workflow-service/workflows/tasks/workbox/changerequest/logs",
+				url: "/murphyCustom/workflow-service/workflows/tasks/workbox/changerequest/logs",
 				type: "POST",
 				hasPayload: true,
 				data: {
@@ -324,7 +350,7 @@ sap.ui.define([
 			this.getView().setBusy(true);
 			var oAuditLogModel = this.getModel("AuditLogModel");
 			var objParamCreate = {
-				url: "/murphyCustom/mdm/audit-service/audits/audit/entity/all",
+				url: "/murphyCustom/audit-service/audits/audit/entity/all",
 				type: 'POST',
 				hasPayload: true,
 				data: {
@@ -421,7 +447,7 @@ sap.ui.define([
 					reader.onload = function (oReaderEVent) {
 						var sResult = `data:${oFile.type};base64,${btoa(oReaderEVent.target.result)}`;
 						var objParamCreate = {
-							url: "/murphyCustom/mdm/change-request-service/changerequests/changerequest/documents/upload",
+							url: "/murphyCustom/change-request-service/changerequests/changerequest/documents/upload",
 							type: "POST",
 							hasPayload: true,
 							data: {
@@ -467,7 +493,7 @@ sap.ui.define([
 			var sDocID = oEvent.getSource().getProperty("documentId"),
 				sDocName = oEvent.getSource().getProperty("fileName");
 			var objParamCreate = {
-				url: "/murphyCustom/mdm/change-request-service/changerequests/changerequest/documents/download",
+				url: "/murphyCustom/change-request-service/changerequests/changerequest/documents/download",
 				type: "POST",
 				hasPayload: true,
 				data: {
@@ -498,7 +524,7 @@ sap.ui.define([
 			this.getView().setBusy(true);
 			var sValue = oParameter.hasOwnProperty("Control") ? oParameter.Control.getValue() : oParameter.Comment;
 			var objParamCreate = {
-				url: "/murphyCustom/mdm/change-request-service/changerequests/changerequest/comments/add",
+				url: "/murphyCustom/change-request-service/changerequests/changerequest/comments/add",
 				type: 'POST',
 				hasPayload: true,
 				data: {
@@ -605,6 +631,22 @@ sap.ui.define([
 			return sText;
 		},
 
+		getFilterValues: function (sFilterBarId) {
+			var oFilterValues = {};
+			this.byId(sFilterBarId).getAllFilterItems().forEach(oFilterItem => {
+				var oControl = oFilterItem.getControl();
+				switch (oControl.getMetadata().getName()) {
+				case "sap.m.Input":
+					oFilterValues[oFilterItem.getName()] = oControl.getValue();
+					break;
+				case "sap.m.ComboBox":
+					oFilterValues[oFilterItem.getName()] = oControl.getSelectedKey();
+					break;
+				}
+			});
+			return oFilterValues;
+		},
+
 		getDropDownData: function () {
 			var aDropDowns = ["TAXONOMY", //Multiple values 
 				"T077D", //Account Group
@@ -633,10 +675,12 @@ sap.ui.define([
 			$.ajax({
 				url: "/murphyCustom/config-service/configurations/configuration/filter",
 				type: "POST",
+				async: true,
 				contentType: "application/json",
 				data: JSON.stringify({
 					"configType": sValue,
-					"currentPage": 1
+					"currentPage": 1,
+					"maxResults": 500
 				}),
 				success: function (oData) {
 					this.getModel("Dropdowns").setProperty("/" + sValue, sValue === "TAXONOMY" ? oData.result.modelMap[0] : oData.result.modelMap);

@@ -1,18 +1,13 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout">
 	<VBox>
-		<Table items="{Customer>/addAddressRows}">
+		<Table items="{Customer>/createCRCustomerData/tableRows/cust_knbk}">
 			<headerToolbar>
 				<Toolbar>
 					<ToolbarSpacer></ToolbarSpacer>
-					<Button text="Add" press="onAddCompanyCode"></Button>
+					<Button text="Add" type="Emphasized" press="onAddBankDet" visible="{App>/edit}"></Button>
 				</Toolbar>
 			</headerToolbar>
 			<columns>
-				<Column>
-					<header>
-						<Label text="Actions" design="Bold"></Label>
-					</header>
-				</Column>
 				<Column>
 					<header>
 						<Label text="ID" design="Bold"></Label>
@@ -38,17 +33,26 @@
 						<Label text="Account Name" design="Bold"></Label>
 					</header>
 				</Column>
+				<Column width="5%">
+					<header>
+						<Label text="" design="Bold"></Label>
+					</header>
+				</Column>
 			</columns>
 			<items>
 				<ColumnListItem>
 					<cells>
-						<Text text="{Customer>lfb1/bukrs}"></Text>
-						<Text text="{Customer>lfb1/AKONT}"></Text>
-						<Text text="{Customer>lfb1/bukrs}"></Text>
-						<Text text="{Customer>lfb1/bukrs}"></Text>
-						<Text text="{Customer>lfb1/AKONT}"></Text>
-						<Text text="{Customer>lfb1/bukrs}"></Text>
-						<Text text="{Customer>lfb1/bukrs}"></Text>
+						<Text text="{Customer>bvtyp}"></Text>
+						<ComboBox items="{Dropdowns>/T005}" selectedKey="{Customer>banks}" editable="false">
+							<core:Item key="{Dropdowns>land1}" text="{Dropdowns>landx}"/>
+						</ComboBox>
+						<Text text="{Customer>bankl}"></Text>
+						<Text text="{Customer>bkont}"></Text>
+						<Text text="{Customer>bankn}"></Text>
+						<HBox>
+							<core:Icon src="sap-icon://edit" hoverBackgroundColor="#346187" hoverColor="#ffffff" class="sapUiSmallMarginEnd" press="onEditBankDet"/>
+							<core:Icon src="sap-icon://delete" color="Negative" class="sapUiSmallMarginEnd" press="onDeleteBankDet"/>
+						</HBox>
 					</cells>
 				</ColumnListItem>
 			</items>
@@ -59,34 +63,49 @@
 			<form:content>
 				<core:Title text="Bank Details"/>
 				<Label text="Bank Details ID"/>
-				<Input value="{Customer>/cust_knbk/bvtyp}" maxLength="4"/>
+				<Input value="{Customer>/createCRCustomerData/cust_knbk/bvtyp}" maxLength="4" editable="false"/>
 				<Label text="Bank Account"/>
-				<Input value="{Customer>/cust_knbk/bkont}" maxLength="2"/>
+				<Input value="{Customer>/createCRCustomerData/cust_knbk/bkont}" maxLength="2" editable="{App>/edit}"/>
 				<Label text="Account Holder"/>
-				<Input value="{Customer>/cust_knbk/koinh}" maxLength="60"/>
+				<Input value="{Customer>/createCRCustomerData/cust_knbk/koinh}" maxLength="60" editable="{App>/edit}"/>
 				<Label text="IBAN"/>
-				<Input value="{Customer>/cust_knbk/tiban}"/>
+				<Input value="{Customer>/createCRCustomerData/cust_knbk/tiban}" editable="{App>/edit}"/>
 				<Label text="Account Name"/>
-				<Input value="{Customer>/cust_knbk/bankn}" maxLength="18"/>
+				<Input value="{Customer>/createCRCustomerData/cust_knbk/bankn}" maxLength="18" editable="{App>/edit}"/>
 				<Label text="Control Key"/>
-				<Input value="{Customer>/cust_knbk/bkont}" maxLength="2"/>
+				<Input value="{Customer>/createCRCustomerData/cust_knbk/bkont}" maxLength="2" editable="{App>/edit}"/>
 				<Label text="Reference Details"/>
-				<Input value="{Customer>/cust_knbk/bkref}" maxLength="20"/>
+				<Input value="{Customer>/createCRCustomerData/cust_knbk/bkref}" maxLength="20" editable="{App>/edit}"/>
 				<Label text="Collection Authorization"/>
 				<CheckBox/>
 				<core:Title text="Bank Data"/>
 				<Label text="Bank Country"/>
-				<ComboBox items="{Dropdowns>/T005}" selectedKey="{Customer>/gen_bnka/banks}">
+				<ComboBox items="{Dropdowns>/T005}" selectedKey="{Customer>/createCRCustomerData/gen_bnka/banks}" editable="{App>/edit}">
 					<core:Item key="{Dropdowns>land1}" text="{Dropdowns>landx}"/>
 				</ComboBox>
 				<Label text="Bank Key"/>
-				<Input value="{Customer>/gen_bnka/bankl}" maxLength="15" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"/>
+				<Input value="{Customer>/createCRCustomerData/gen_bnka/bankl}" maxLength="15" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" editable="{App>/edit}">
+					<customData>
+						<core:CustomData key="title" value="Bank Key"></core:CustomData>
+						<core:CustomData key="table" value="VW_BNKA"></core:CustomData>
+						<core:CustomData key="inputKey" value="bankl"></core:CustomData>
+						<core:CustomData key="inputText" value="bankl"></core:CustomData>
+						<core:CustomData key="bankl" value="Bank Key"></core:CustomData>
+						<core:CustomData key="banka" value="Bank Name"></core:CustomData>
+						<core:CustomData key="brnch" value="Branch"></core:CustomData>
+						<core:CustomData key="swift" value="Swift Code"></core:CustomData>
+						<core:CustomData key="stras" value="Address"></core:CustomData>
+						<core:CustomData key="ort01" value="City"></core:CustomData>
+						<core:CustomData key="banks" value="Country"></core:CustomData>
+					</customData>
+				</Input>
 				<Label text="Bank Name"/>
-				<Input value="{Customer>/gen_bnka/banka}" editable="false"/>
+				<Input value="{Customer>/createCRCustomerData/createCRCustomerData/gen_bnka/banka}" editable="false"/>
 				<Label text="Street"/>
-				<Input value="{Customer>/gen_bnka/stras}" editable="false" maxLength="60"/>
+				<Input value="{Customer>/createCRCustomerData/gen_bnka/stras}" editable="false" maxLength="60"/>
 				<Label text="City"/>
-				<Input value="{Customer>/gen_bnka/ort01}" editable="false" maxLength="40"/>
+				<Input value="{Customer>/createCRCustomerData/gen_bnka/ort01}" editable="false" maxLength="40"/>
 			</form:content>
 		</form:SimpleForm>
 	</VBox>

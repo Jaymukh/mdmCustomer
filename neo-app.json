@@ -36,7 +36,7 @@
 		"path": "/murphyCustom",
 		"target": {
 			"type": "destination",
-			"name": "MDM_JAVA_DEST"
+			"name": "MDM_CUST_JAVA_DEST"
 		},
 		"description": "Destination"
 	}, {

@@ -6,7 +6,7 @@
 			<core:Title text="Attributes"/>
 			<Label text="Attribute 1"/>
 			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/katr1}" maxLength="2" showValueHelp="true"
-				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" editable="{App>/edit}">
 				<customData>
 					<core:CustomData key="title" value="Attribute 1"></core:CustomData>
 					<core:CustomData key="table" value="TVK1"></core:CustomData>
@@ -18,7 +18,7 @@
 			</Input>
 			<Label text="Attribute 2"/>
 			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/katr2}" maxLength="2" showValueHelp="true"
-				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" editable="{App>/edit}">
 				<customData>
 					<core:CustomData key="title" value="Attribute 2"></core:CustomData>
 					<core:CustomData key="table" value="TVK2"></core:CustomData>
@@ -30,7 +30,7 @@
 			</Input>
 			<Label text="Attribute 3"/>
 			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/katr3}" maxLength="2" showValueHelp="true"
-				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" editable="{App>/edit}">
 				<customData>
 					<core:CustomData key="title" value="Attribute 3"></core:CustomData>
 					<core:CustomData key="table" value="TVK3"></core:CustomData>
@@ -42,7 +42,7 @@
 			</Input>
 			<Label text="Attribute 4"/>
 			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/katr4}" maxLength="2" showValueHelp="true"
-				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" editable="{App>/edit}">
 				<customData>
 					<core:CustomData key="title" value="Attribute 4"></core:CustomData>
 					<core:CustomData key="table" value="TVK4"></core:CustomData>
@@ -54,7 +54,7 @@
 			</Input>
 			<Label text="Attribute 5"/>
 			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/katr5}" maxLength="2" showValueHelp="true"
-				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" editable="{App>/edit}">
 				<customData>
 					<core:CustomData key="title" value="Attribute 5"></core:CustomData>
 					<core:CustomData key="table" value="TVK5"></core:CustomData>
@@ -66,7 +66,7 @@
 			</Input>
 			<Label text="Attribute 6"/>
 			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/katr6}" maxLength="3" showValueHelp="true"
-				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" editable="{App>/edit}">
 				<customData>
 					<core:CustomData key="title" value="Attribute 6"></core:CustomData>
 					<core:CustomData key="table" value="TVK6"></core:CustomData>
@@ -78,7 +78,7 @@
 			</Input>
 			<Label text="Attribute 7"/>
 			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/katr7}" maxLength="3" showValueHelp="true"
-				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" editable="{App>/edit}">
 				<customData>
 					<core:CustomData key="title" value="Attribute 7"></core:CustomData>
 					<core:CustomData key="table" value="TVK7"></core:CustomData>
@@ -90,7 +90,7 @@
 			</Input>
 			<Label text="Attribute 8"/>
 			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/katr8}" maxLength="3" showValueHelp="true"
-				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" editable="{App>/edit}">
 				<customData>
 					<core:CustomData key="title" value="Attribute 8"></core:CustomData>
 					<core:CustomData key="table" value="TVK8"></core:CustomData>
@@ -102,7 +102,7 @@
 			</Input>
 			<Label text="Attribute 9"/>
 			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/katr9}" maxLength="3" showValueHelp="true"
-				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" editable="{App>/edit}">
 				<customData>
 					<core:CustomData key="title" value="Attribute 9"></core:CustomData>
 					<core:CustomData key="table" value="TVK9"></core:CustomData>
@@ -114,7 +114,7 @@
 			</Input>
 			<Label text="Attribute 10"/>
 			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/katr10}" maxLength="3" showValueHelp="true"
-				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" editable="{App>/edit}">
 				<customData>
 					<core:CustomData key="title" value="Attribute 10"></core:CustomData>
 					<core:CustomData key="table" value="TVK0"></core:CustomData>
@@ -126,23 +126,28 @@
 			</Input>
 			<core:Title text="Condition groups"/>
 			<Label text="Condition Group 1"/>
-			<ComboBox items="{Dropdowns>/vw_tvkgg}" selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kdkg1}">
+			<ComboBox items="{Dropdowns>/vw_tvkgg}" selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kdkg1}"
+				editable="{App>/edit}">
 				<core:Item key="{Dropdowns>kdkgr}" text="{Dropdowns>vtext}"/>
 			</ComboBox>
 			<Label text="Condition Group 2"/>
-			<ComboBox items="{Dropdowns>/vw_tvkgg}" selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kdkg2}">
+			<ComboBox items="{Dropdowns>/vw_tvkgg}" selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kdkg2}"
+				editable="{App>/edit}">
 				<core:Item key="{Dropdowns>kdkgr}" text="{Dropdowns>vtext}"/>
 			</ComboBox>
 			<Label text="Condition Group 3"/>
-			<ComboBox items="{Dropdowns>/vw_tvkgg}" selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kdkg3}">
+			<ComboBox items="{Dropdowns>/vw_tvkgg}" selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kdkg3}"
+				editable="{App>/edit}">
 				<core:Item key="{Dropdowns>kdkgr}" text="{Dropdowns>vtext}"/>
 			</ComboBox>
 			<Label text="Condition Group 4"/>
-			<ComboBox items="{Dropdowns>/vw_tvkgg}" selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kdkg4}">
+			<ComboBox items="{Dropdowns>/vw_tvkgg}" selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kdkg4}"
+				editable="{App>/edit}">
 				<core:Item key="{Dropdowns>kdkgr}" text="{Dropdowns>vtext}"/>
 			</ComboBox>
 			<Label text="Condition Group 5"/>
-			<ComboBox items="{Dropdowns>/vw_tvkgg}" selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kdkg5}">
+			<ComboBox items="{Dropdowns>/vw_tvkgg}" selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kdkg5}"
+				editable="{App>/edit}">
 				<core:Item key="{Dropdowns>kdkgr}" text="{Dropdowns>vtext}"/>
 			</ComboBox>
 		</form:content>

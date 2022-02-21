@@ -9,17 +9,18 @@
 				value="{ parts: [ 'Customer>/createCRCustomerData/crID', 'Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/entity_id'], formatter: '.formatCR_Entiry_ID' }"
 				editable="false"/>
 			<Label text="Description"/>
-			<TextArea required="true" value="{Customer>/changeReq/genData/desc}"/>
+			<TextArea value="{Customer>/changeReq/genData/desc}"/>
 			<Label text="Priority"/>
-			<ComboBox required="true" selectedKey="{Customer>/changeReq/genData/priority}" items="{Dropdowns>/TAXONOMY/CR_PRIORITY}">
+			<ComboBox required="true" selectedKey="{Customer>/changeReq/genData/priority}" items="{Dropdowns>/TAXONOMY/CR_PRIORITY}"
+				editable="{App>/edit}">
 				<items>
 					<core:Item text="{Dropdowns>taxonomy_name}" key="{Dropdowns>taxonomy_code}"/>
 				</items>
 			</ComboBox>
 			<Label text="Due Date"/>
-			<DatePicker displayFormat="{App>/dateFormat}" valueFormat="{App>/dateValueFormat}" value="{Customer>/changeReq/genData/dueDate}"></DatePicker>
+			<DatePicker displayFormat="{App>/dateFormat}" valueFormat="{App>/dateValueFormat}" value="{Customer>/changeReq/genData/dueDate}"/>
 			<Label text="Reason"/>
-			<ComboBox editable="false" selectedKey="{Customer>/changeReq/genData/reason}" showSecondaryValues="true"
+			<ComboBox editable="{App>/edit}" selectedKey="{Customer>/changeReq/genData/reason}" showSecondaryValues="true"
 				items="{Dropdowns>/TAXONOMY/CR_CHANGE_REQ_TYPE}">
 				<items>
 					<core:ListItem text="{Dropdowns>taxonomy_name}" additionalText="{Dropdowns>taxonomy_id}" key="{Dropdowns>taxonomy_id}"/>
@@ -27,14 +28,15 @@
 			</ComboBox>
 			<core:Title text="Process Data"/>
 			<Label text="Status"/>
-			<Input value="{Customer>/changeReq/genData/status}" enabled="false"/>
+			<Input value="{Customer>/changeReq/genData/status}" editable="false"/>
 			<Label text="Current Work Item"/>
-			<Input value="{Customer>/changeReq/genData/currWrkItem}" enabled="false"/>
+			<Input value="{Customer>/changeReq/genData/currWrkItem}" editable="false"/>
 			<Label text="Created By"/>
-			<Input value="{Customer>/changeReq/genData/createdBy}" enabled="false"/>
+			<Input value="{Customer>/changeReq/genData/change_request_by/firstname} {Customer>/changeReq/genData/change_request_by/lastname}"
+				editable="false"/>
 			<Label text="Date/Time of Creation"/>
-			<Input value="{Customer>/changeReq/genData/dateCreation}" enabled="false"/>
-			<Input value="{Customer>/changeReq/genData/timeCreation}" enabled="false">
+			<Input value="{Customer>/changeReq/genData/dateCreation}" editable="false"/>
+			<Input value="{Customer>/changeReq/genData/timeCreation}" editable="false">
 				<layoutData>
 					<l:GridData span="XL4 L4 M4 S4"/>
 				</layoutData>

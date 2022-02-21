@@ -3,7 +3,7 @@
 	<Page id="sideContentContainer" showHeader="false" showNavButton="false" showFooter="true">
 		<content>
 			<Toolbar>
-				<Title text="{ parts: [ 'Customer>/createCRVendorData/formData/parentDTO/customData/vnd_lfa1/lifnr'], formatter: '.formatCR_Org_Name' }"
+				<Title text="{ parts: [ 'Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kunnr'], formatter: '.formatCR_Org_Name' }"
 					level="H2"></Title>
 			</Toolbar>
 			<l:DynamicSideContent id="DynamicSideContent" class="sapUiDSCExplored createPageHeight" containerQuery="true" sideContentFallDown="BelowM"
@@ -92,12 +92,18 @@
 		</content>
 		<footer>
 			<Toolbar>
+				<Button visible="true" text="Error Log" type="Transparent" press="onErrorLog"/>
 				<ToolbarSpacer/>
-				<Button text="Save" type="Transparent" press="onSaveClick"/>
-				<Button id="idCreateVendorSubmit" text="Submit" visible="false" type="Transparent" press="onSubmitClick"/>
-				<Button text="Check" type="Transparent" press="onCheckClick"/>
-				<Button icon="sap-icon://undo" type="Transparent" press="onUndoClick" visible="false"/>
-				<Button icon="sap-icon://redo" type="Transparent" press="onRedoClick" visible="false"/>
+				<Button text="Save" type="Transparent" press="onSaveCR"/>
+				<Button text="Edit" type="Transparent" press="onEditClick" visible="{= ${App>/edit} === false }"/>
+				<Button text="Submit" type="Transparent" press="onSubmitCR"/>
+				<Button text="Check" type="Transparent" press="onCheckCR"/>
+				<Button text="Approve" type="Accept" press="onApproveClick" visible="{= ${App>/edit} === false }"/>
+				<Button text="Reject" type="Reject" press="onRejectClick" visible="{= ${App>/edit} === false }"/>
+				<Button text="All Change Request" icon="sap-icon://navigation-left-arrow" type="Transparent" press="onBackToAllChangeReq"
+					visible="{= ${App>/previousPage} === 'ALL_CHANGE_REQ'}"/>
+				<Button text="Business Partner Master List" icon="sap-icon://navigation-left-arrow" type="Transparent" press="onBackToAllCust"
+					visible="{= ${App>/previousPage} === 'ALL_CUST'}"/>
 			</Toolbar>
 		</footer>
 	</Page>

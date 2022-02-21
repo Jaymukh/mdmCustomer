@@ -4,7 +4,7 @@
 			<headerToolbar>
 				<Toolbar>
 					<ToolbarSpacer></ToolbarSpacer>
-					<Button text="Add" press="onAddCompanyCode"></Button>
+					<Button text="Add" press="onAddCompanyCode" enabled="false" type="Emphasized" visible="{App>/edit}"></Button>
 				</Toolbar>
 			</headerToolbar>
 			<columns>

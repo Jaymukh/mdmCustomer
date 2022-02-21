@@ -6,7 +6,7 @@
 			<core:Title text="Classification"/>
 			<Label text="Nielsen Indicator"/>
 			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/niels}" showValueHelp="true"
-				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" editable="{App>/edit}">
 				<customData>
 					<core:CustomData key="title" value="Nielsen Indicator"></core:CustomData>
 					<core:CustomData key="table" value="TNLS"></core:CustomData>
@@ -17,7 +17,7 @@
 			</Input>
 			<Label text="Customer Classification"/>
 			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kukla}" showValueHelp="true"
-				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" editable="{App>/edit}">
 				<customData>
 					<core:CustomData key="title" value="Customer Classification"></core:CustomData>
 					<core:CustomData key="table" value="TKUKL"></core:CustomData>

@@ -35,27 +35,29 @@
 			<form:content>
 				<core:Title text="Address"/>
 				<Label text="Street / House No."/>
-				<Input required="ture" width="100%" value="{Customer>/createCRCustomerData/gen_adrc/street}" maxLength="60"/>
-				<Input required="true" width="100%" value="{Customer>/createCRCustomerData/gen_adrc/house_num1}" maxLength="10">
+				<Input required="ture" width="100%" value="{Customer>/createCRCustomerData/gen_adrc/street}" maxLength="60" editable="{App>/edit}"/>
+				<Input required="true" width="100%" value="{Customer>/createCRCustomerData/gen_adrc/house_num1}" maxLength="10" editable="{App>/edit}">
 					<layoutData>
 						<l:GridData span="XL2 L3 M3 S4"/>
 					</layoutData>
 				</Input>
 				<Label text="Postal Code / City"/>
-				<Input required="true" value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/pstlz}" maxLength="10">
+				<Input required="true" value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/pstlz}" maxLength="10"
+					editable="{App>/edit}">
 					<layoutData>
 						<l:GridData span="XL2 L3 M3 S4"/>
 					</layoutData>
 				</Input>
-				<Input required="true" value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/ort01}" maxLength="35"/>
+				<Input required="true" value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/ort01}" maxLength="35"
+					editable="{App>/edit}"/>
 				<Label text="Country"/>
-				<ComboBox required="true" items="{Dropdowns>/T005}"
+				<ComboBox required="true" items="{Dropdowns>/T005}" editable="{App>/edit}"
 					selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/land1}">
 					<core:Item key="{Dropdowns>land1}" text="{Dropdowns>landx}"/>
 				</ComboBox>
 				<Label text="Region"/>
 				<Input required="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-					value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/regio}" maxLength="3">
+					value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/regio}" maxLength="3" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Region"></core:CustomData>
 						<core:CustomData key="table" value="T005S"></core:CustomData>
@@ -67,13 +69,13 @@
 				</Input>
 				<Label text="Language"/>
 				<ComboBox required="true" selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/spras}"
-					items="{Dropdowns>/T002}">
+					items="{Dropdowns>/T002}" editable="{App>/edit}">
 					<core:Item key="{Dropdowns>spras}" text="{Dropdowns>sptxt}"/>
 				</ComboBox>
 				<core:Title/>
 				<Label text="Transportation Zone"/>
 				<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/lzone}" showValueHelp="true"
-					valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" maxLength="10">
+					valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" maxLength="10" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Transportation Zone"></core:CustomData>
 						<core:CustomData key="table" value="TZONE"></core:CustomData>
@@ -86,7 +88,7 @@
 				</Input>
 				<Label text="PO Box Postal Code/ PO Box"/>
 				<Input liveChange="handleERPPOBOXPostalCode" value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/po_box}"
-					maxLength="10"/>
+					maxLength="10" editable="{App>/edit}"/>
 				<Label text="PO Box Without No."/>
 				<CheckBox select="onSelectCheckBox">
 					<customData>
@@ -94,17 +96,17 @@
 					</customData>
 				</CheckBox>
 				<Label text="Company Postal Code"/>
-				<Input value="{Customer>/createCRCustomerData/gen_adrc/post_code3}" maxLength="10"/>
+				<Input value="{Customer>/createCRCustomerData/gen_adrc/post_code3}" maxLength="10" editable="{App>/edit}"/>
 				<Label text="Supplement"/>
-				<Input value="{Customer>/createCRCustomerData/gen_adrc/house_num2}" maxLength="10"/>
+				<Input value="{Customer>/createCRCustomerData/gen_adrc/house_num2}" maxLength="10" editable="{App>/edit}"/>
 			</form:content>
 		</form:SimpleForm>
-		<Table >
+		<Table items="{path:'Customer>/createCRCustomerData/tableRows/gen_adr2',filters : [{ path : 'consnumber', operator : 'EQ', value1 : '1' }]}">
 			<headerToolbar>
 				<Toolbar>
 					<Title text="Telephone Numbers"/>
 					<ToolbarSpacer></ToolbarSpacer>
-					<Button text="New" press="onAddTelNo"></Button>
+					<Button text="Add" type="Emphasized" press="onAddTelNo" visible="{App>/edit}"/>
 				</Toolbar>
 			</headerToolbar>
 			<columns>
@@ -137,23 +139,24 @@
 			<items>
 				<ColumnListItem>
 					<cells>
-						<ComboBox items="{Dropdowns>/T005}" selectedKey="">
-							<core:Item key="{Dropdowns>land1}" text="{Dropdowns>landx}"/>
+						<ComboBox items="{Dropdowns>/T005K}" selectedKey="{Customer>country}" editable="{App>/edit}">
+							<core:Item key="{Dropdowns>land1}" text="{Dropdowns>telefto} - {Dropdowns>land1}"/>
 						</ComboBox>
-						<Text text=""/>
-						<Text text=""/>
-						<CheckBox selected="true"/>
-						<core:Icon src="sap-icon://delete" tooltip="Delete" color="Negative"/>
+						<Input value="{Customer>tel_number}" type="Number" editable="{App>/eidt}"/>
+						<Input value="{Customer>tel_extens}" type="Number" editable="{App>/eidt}"/>
+						<CheckBox selected="{= ${Customer>flgdefault} === 'X'}" editable="{= ${Customer>flgdefault} !== 'X' &amp;&amp; ${App>/edit}}"
+							select="onSelTelDefault"/>
+						<core:Icon src="sap-icon://delete" tooltip="Delete" color="Negative" press="onDelTel"/>
 					</cells>
 				</ColumnListItem>
 			</items>
 		</Table>
-		<Table >
+		<Table items="{path:'Customer>/createCRCustomerData/tableRows/gen_adr2',filters : [{ path : 'consnumber', operator : 'EQ', value1 : '2' }]}">
 			<headerToolbar>
 				<Toolbar>
 					<Title text="Mobile Numbers"/>
 					<ToolbarSpacer></ToolbarSpacer>
-					<Button text="New" press="onAddMobNo"></Button>
+					<Button text="Add" type="Emphasized" press="onAddMobNo" visible="{App>/edit}"></Button>
 				</Toolbar>
 			</headerToolbar>
 			<columns>
@@ -172,7 +175,7 @@
 						<Label text="Standard" design="Bold"></Label>
 					</header>
 				</Column>
-				<Column width="5%">
+				<Column width="5%" visible="{App>/edit}">
 					<header>
 						<Label text=""></Label>
 					</header>
@@ -181,22 +184,23 @@
 			<items>
 				<ColumnListItem>
 					<cells>
-						<ComboBox items="{Dropdowns>/T005}" selectedKey="">
-							<core:Item key="{Dropdowns>land1}" text="{Dropdowns>landx}"/>
+						<ComboBox items="{Dropdowns>/T005K}" selectedKey="{Customer>country}" editable="{App>/edit}">
+							<core:Item key="{Dropdowns>land1}" text="{Dropdowns>telefto} - {Dropdowns>land1}"/>
 						</ComboBox>
-						<Text text=""/>
-						<CheckBox selected="true"/>
-						<core:Icon src="sap-icon://delete" tooltip="Delete" color="Negative"/>
+						<Input value="{Customer>tel_number}" type="Number"/>
+						<CheckBox selected="{= ${Customer>flgdefault} === 'X'}" editable="{= ${Customer>flgdefault} !== 'X' &amp;&amp; ${App>/edit}}"
+							select="onSelMobDefault"/>
+						<core:Icon src="sap-icon://delete" tooltip="Delete" color="Negative" visible="{App>/edit}" press="onDelMobNo"/>
 					</cells>
 				</ColumnListItem>
 			</items>
 		</Table>
-		<Table >
+		<Table items="{Customer>/createCRCustomerData/tableRows/gen_adr3}">
 			<headerToolbar>
 				<Toolbar>
 					<Title text="Fax Numbers"/>
 					<ToolbarSpacer></ToolbarSpacer>
-					<Button text="New" press="onAddFaxNo"></Button>
+					<Button text="Add" type="Emphasized" press="onAddFaxNo" visible="{App>/edit}"></Button>
 				</Toolbar>
 			</headerToolbar>
 			<columns>
@@ -220,7 +224,7 @@
 						<Label text="Standard" design="Bold"></Label>
 					</header>
 				</Column>
-				<Column width="5%">
+				<Column width="5%" visible="{App>/edit}">
 					<header>
 						<Label text=""></Label>
 					</header>
@@ -229,23 +233,24 @@
 			<items>
 				<ColumnListItem>
 					<cells>
-						<ComboBox items="{Dropdowns>/T005}" selectedKey="">
-							<core:Item key="{Dropdowns>land1}" text="{Dropdowns>landx}"/>
+						<ComboBox items="{Dropdowns>/T005K}" selectedKey="{Customer>country}" editable="{App>/edit}">
+							<core:Item key="{Dropdowns>land1}" text="{Dropdowns>telefto} - {Dropdowns>land1}"/>
 						</ComboBox>
-						<Text text=""/>
-						<Text text=""/>
-						<CheckBox selected="true"/>
-						<core:Icon src="sap-icon://delete" tooltip="Delete" color="Negative"/>
+						<Input value="{Customer>fax_number}" type="Number" editable="{App>/edit}"/>
+						<Input value="{Customer>fax_extens}" type="Number" editable="{App>/edit}"/>
+						<CheckBox selected="{= ${Customer>flgdefault} === 'X'}" editable="{= ${Customer>flgdefault} !== 'X' &amp;&amp; ${App>/edit}}"
+							select="onSelFaxDefault"/>
+						<core:Icon src="sap-icon://delete" tooltip="Delete" color="Negative" visible="{App>/edit}" press="onDelFax"/>
 					</cells>
 				</ColumnListItem>
 			</items>
 		</Table>
-		<Table >
+		<Table items="{Customer>/createCRCustomerData/tableRows/gen_adr6}">
 			<headerToolbar>
 				<Toolbar>
 					<Title text="E-Mail Addresses"/>
-					<ToolbarSpacer></ToolbarSpacer>
-					<Button text="New" press="onAddFaxNo"></Button>
+					<ToolbarSpacer/>
+					<Button text="Add" type="Emphasized" press="onAddEmail" visible="{App>/edit}"></Button>
 				</Toolbar>
 			</headerToolbar>
 			<columns>
@@ -259,7 +264,7 @@
 						<Label text="Standard" design="Bold"></Label>
 					</header>
 				</Column>
-				<Column width="5%">
+				<Column width="5%" visible="{App>/edit}">
 					<header>
 						<Label text=""></Label>
 					</header>
@@ -268,9 +273,10 @@
 			<items>
 				<ColumnListItem>
 					<cells>
-						<Text text=""/>
-						<CheckBox selected="true"/>
-						<core:Icon src="sap-icon://delete" tooltip="Delete" color="Negative"/>
+						<Input value="{Customer>smtp_addr}" editable="{App>/edit}"/>
+						<CheckBox selected="{= ${Customer>flgdefault} === 'X'}" editable="{= ${Customer>flgdefault} !== 'X' &amp;&amp; ${App>/edit}}"
+							select="onSelEmailDefault"/>
+						<core:Icon src="sap-icon://delete" tooltip="Delete" color="Negative" visible="{App>/edit}" press="onDelEmail"/>
 					</cells>
 				</ColumnListItem>
 			</items>
@@ -280,7 +286,7 @@
 				<Toolbar>
 					<Title text="Web Sites"/>
 					<ToolbarSpacer></ToolbarSpacer>
-					<Button text="New" press="onAddFaxNo" enabled="false"></Button>
+					<!--<Button text="Add" type="Emphasized" press="onAddFaxNo" visible="false"></Button>-->
 				</Toolbar>
 			</headerToolbar>
 			<columns>
@@ -304,8 +310,8 @@
 				<ColumnListItem>
 					<cells>
 						<Text text=""/>
-						<CheckBox selected="true"/>
-						<core:Icon src="sap-icon://delete" tooltip="Delete" color="Negative"/>
+						<Text text=""/>
+						<core:Icon src="sap-icon://delete" tooltip="Delete" color="Negative" visible="false"/>
 					</cells>
 				</ColumnListItem>
 			</items>
@@ -315,7 +321,7 @@
 				<Toolbar>
 					<Title text="International Versions"/>
 					<ToolbarSpacer></ToolbarSpacer>
-					<Button text="New" press="onAddFaxNo" enabled="false"></Button>
+					<Button text="Add" type="Emphasized" press="onAddFaxNo" visible="false"></Button>
 				</Toolbar>
 			</headerToolbar>
 			<columns>
@@ -346,7 +352,7 @@
 						<Text text=""/>
 						<Text text=""/>
 						<Text text=""/>
-						<core:Icon src="sap-icon://delete" tooltip="Delete" color="Negative"/>
+						<core:Icon src="sap-icon://delete" tooltip="Delete" color="Negative" visible="false"/>
 					</cells>
 				</ColumnListItem>
 			</items>

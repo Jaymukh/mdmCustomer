@@ -1,5 +1,9 @@
 {
 	"edit": false,
+	"editPreview": false,
+	"customerPreview": false,
+	"previousPage": null,
+	"appTitle": "Search ERP Customer",
 	"dateFormat": "dd-MM-yyyy",
 	"dateValueFormat": "yyyyMMdd",
 	"sidePanelSelectedPage": "",
@@ -243,6 +247,18 @@
 					},
 					"pra_bp_cust_md": {
 
+					},
+					"gen_adr2": {
+						
+					},
+					"gen_adr3": {
+						
+					},
+					"gen_adr6": {
+						
+					},
+					"TAX_NUMBERS":{
+						
 					}
 				}
 			}
@@ -258,7 +274,9 @@
 			"createdBy": "",
 			"currWrkItem": "",
 			"timeCreation": "",
-			"dateCreation": ""
+			"dateCreation": "",
+			"change_request_by": {},
+			"modified_by": {}
 		}
 	},
 	"cust_knb1": {
@@ -502,7 +520,7 @@
 		"xpcpt": null
 	},
 	"gen_knvk": {
-		"parnr": null,
+		"parnr": "NEW",
 		"kunnr": null,
 		"namev": null,
 		"name1": null,
@@ -786,6 +804,70 @@
 		"ebpp_bvstatus": null,
 		"kovon": null,
 		"kobis": null
+	},
+	"gen_adr2": {
+		"entity_id": null,
+		"addrnumber": null,
+		"persnumber": null,
+		"date_from": null,
+		"consnumber": null,
+		"country": null,
+		"flgdefault": null,
+		"flg_nouse": null,
+		"home_flag": null,
+		"tel_number": null,
+		"tel_extens": null,
+		"telnr_long": null,
+		"telnr_call": null,
+		"dft_receiv": null,
+		"r3_user": null,
+		"valid_from": null,
+		"valid_to": null
+	},
+	"gen_adr3": {
+		"entity_id": null,
+		"addrnumber": null,
+		"persnumber": null,
+		"date_from": null,
+		"consnumber": null,
+		"country": null,
+		"flgdefault": null,
+		"flg_nouse": null,
+		"home_flag": null,
+		"fax_number": null,
+		"fax_extens": null,
+		"faxnr_long": null,
+		"faxnr_call": null,
+		"fax_group": null,
+		"dft_receiv": null,
+		"r3_user": null,
+		"valid_from": null,
+		"valid_to": null
+	},
+	"gen_adr6": {
+		"entity_id": null,
+		"addrnumber": null,
+		"persnumber": null,
+		"date_from": null,
+		"consnumber": null,
+		"flgdefault": null,
+		"flg_nouse": null,
+		"home_flag": null,
+		"smtp_addr": null,
+		"smtp_srch": null,
+		"dft_receiv": null,
+		"r3_user": null,
+		"encode": null,
+		"tnef": null,
+		"valid_from": null,
+		"valid_to": null,
+		"client": null,
+		"ttx_number": null
+	},
+	"TAX_NUMBERS":{
+		"TAX_CATEGORY": null,
+		"TAX_DESCRIPTION": null,
+		"TAX_NUMBER": null
 	},
 	"accountGroupsData": [{
 		"text": "Customers (General)",

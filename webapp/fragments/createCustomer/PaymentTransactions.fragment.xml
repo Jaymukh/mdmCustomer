@@ -4,7 +4,7 @@
 		singleContainerFullSize="false">
 		<form:content>
 			<core:Title text="Payment Transactions"/>
-			<Label text="DME Indicator" />
+			<Label text="DME Indicator"/>
 			<ComboBox selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/dtams}" editable="false">
 				<items>
 					<core:Item text="Use house bank default value" key=" "/>
@@ -26,14 +26,14 @@
 			</Input>
 			<core:Title text="alternative payer"/>
 			<Label text="Alternative Payer in Document"/>
-			<CheckBox select="onSelectCheckBox">
+			<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
 				<customData>
 					<core:CustomData key="/cust_kna1/xzemp" value="X"></core:CustomData>
 				</customData>
 			</CheckBox>
 			<Label text="Alternative Payer"/>
 			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/knrza}" showValueHelp="true"
-				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" editable="{App>/edit}">
 				<customData>
 					<core:CustomData key="title" value="Alternative payee"></core:CustomData>
 					<core:CustomData key="table" value="KNA1"></core:CustomData>

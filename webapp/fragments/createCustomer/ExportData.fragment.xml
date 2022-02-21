@@ -5,38 +5,38 @@
 		<form:content>
 			<core:Title text="Classification"/>
 			<Label text="Biochemical Warfare"/>
-			<CheckBox select="onSelectCheckBox">
+			<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
 				<customData>
 					<core:CustomData key="/cust_kna1/ccc01" value="X"></core:CustomData>
 				</customData>
 			</CheckBox>
 			<Label text="Nuclear Nonproliferation"/>
-			<CheckBox select="onSelectCheckBox">
+			<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
 				<customData>
 					<core:CustomData key="/cust_kna1/ccc02" value="X"></core:CustomData>
 				</customData>
 			</CheckBox>
 			<Label text="National Security"/>
-			<CheckBox select="onSelectCheckBox">
+			<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
 				<customData>
 					<core:CustomData key="/cust_kna1/ccc03" value="X"></core:CustomData>
 				</customData>
 			</CheckBox>
 			<Label text="Missile Technology"/>
-			<CheckBox select="onSelectCheckBox">
+			<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
 				<customData>
 					<core:CustomData key="/cust_kna1/ccc04" value="X"></core:CustomData>
 				</customData>
 			</CheckBox>
 			<core:Title text="Usage"/>
 			<Label text="Non-Military Use"/>
-			<CheckBox select="onSelectCheckBox">
+			<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
 				<customData>
 					<core:CustomData key="/cust_kna1/civve" value="X"></core:CustomData>
 				</customData>
 			</CheckBox>
 			<Label text="Military Use"/>
-			<CheckBox select="onSelectCheckBox">
+			<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
 				<customData>
 					<core:CustomData key="/cust_kna1/milve" value="X"></core:CustomData>
 				</customData>

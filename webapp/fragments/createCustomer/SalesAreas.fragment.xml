@@ -1,18 +1,13 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout">
 	<VBox>
-		<Table items="{Customer>/addCompanyCodeRows}">
+		<Table items="{Customer>/createCRCustomerData/tableRows/cust_knvv}">
 			<headerToolbar>
 				<Toolbar>
 					<ToolbarSpacer></ToolbarSpacer>
-					<Button text="Add" press="onAddCompanyCode"></Button>
+					<Button text="Add" press="onAddSalesArea" type="Emphasized" visible="{App>/edit}"></Button>
 				</Toolbar>
 			</headerToolbar>
 			<columns>
-				<Column>
-					<header>
-						<Label text="Actions" design="Bold"></Label>
-					</header>
-				</Column>
 				<Column>
 					<header>
 						<Label text="Sales Organizations" design="Bold"></Label>
@@ -43,17 +38,25 @@
 						<Label text="Division Description" design="Bold"></Label>
 					</header>
 				</Column>
+				<Column width="5%">
+					<header>
+						<Label text="" design="Bold"></Label>
+					</header>
+				</Column>
 			</columns>
 			<items>
 				<ColumnListItem>
 					<cells>
-						<Text text="{Customer>lfb1/bukrs}"></Text>
+						<Text text="{Customer>vkorg}"></Text>
 						<Text text="{Customer>lfb1/AKONT}"></Text>
-						<Text text="{Customer>lfb1/bukrs}"></Text>
+						<Text text="{Customer>vtweg}"></Text>
 						<Text text="{Customer>lfb1/AKONT}"></Text>
-						<Text text="{Customer>lfb1/bukrs}"></Text>
+						<Text text="{Customer>spart}"></Text>
 						<Text text="{Customer>lfb1/AKONT}"></Text>
-						<Text text="{Customer>lfb1/bukrs}"></Text>
+						<HBox>
+							<core:Icon src="sap-icon://edit" hoverBackgroundColor="#346187" hoverColor="#ffffff" class="sapUiSmallMarginEnd" press="onEditSalesArea"/>
+							<core:Icon src="sap-icon://delete" color="Negative" class="sapUiSmallMarginEnd" press="onDeleteSalesArea"/>
+						</HBox>
 					</cells>
 				</ColumnListItem>
 			</items>
@@ -64,8 +67,8 @@
 			<form:content>
 				<core:Title text="Customer Sales Area"/>
 				<Label text="Sales Organization"/>
-				<Input required="true" value="{Customer>/cust_knvv/vkorg}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
-					valueHelpOnly="true">
+				<Input required="true" value="{Customer>/createCRCustomerData/cust_knvv/vkorg}" showValueHelp="true"
+					valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Sales Organization"></core:CustomData>
 						<core:CustomData key="table" value="TVKO"></core:CustomData>
@@ -76,8 +79,8 @@
 					</customData>
 				</Input>
 				<Label text="Division"/>
-				<Input required="true" value="{Customer>/cust_knvv/spart}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
-					valueHelpOnly="true">
+				<Input required="true" value="{Customer>/createCRCustomerData/cust_knvv/spart}" showValueHelp="true"
+					valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Division"></core:CustomData>
 						<core:CustomData key="table" value="TVTW"></core:CustomData>
@@ -89,8 +92,8 @@
 				</Input>
 				<core:Title/>
 				<Label text="Distribution Channel"/>
-				<Input required="true" value="{Customer>/cust_knvv/vtweg}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
-					valueHelpOnly="true">
+				<Input required="true" value="{Customer>/createCRCustomerData/cust_knvv/vtweg}" showValueHelp="true"
+					valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Distribution Channel"></core:CustomData>
 						<core:CustomData key="table" value="TVTW"></core:CustomData>
@@ -102,7 +105,8 @@
 				</Input>
 				<core:Title text="Sales Order"/>
 				<Label text="Sales District"/>
-				<Input value="{Customer>/cust_knvv/bzirk}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<Input value="{Customer>/createCRCustomerData/cust_knvv/bzirk}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Sales District"></core:CustomData>
 						<core:CustomData key="table" value="vw_t171"></core:CustomData>
@@ -113,7 +117,8 @@
 					</customData>
 				</Input>
 				<Label text="Sales Office "/>
-				<Input value="{Customer>/cust_knvv/vkbur}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<Input value="{Customer>/createCRCustomerData/cust_knvv/vkbur}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Sales Office"></core:CustomData>
 						<core:CustomData key="table" value="vw_tvbvk"></core:CustomData>
@@ -124,7 +129,8 @@
 					</customData>
 				</Input>
 				<Label text="Sales Group"/>
-				<Input value="{Customer>/cust_knvv/vkgrp}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<Input value="{Customer>/createCRCustomerData/cust_knvv/vkgrp}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Sales Office"></core:CustomData>
 						<core:CustomData key="table" value="vw_tvbvk"></core:CustomData>
@@ -135,7 +141,8 @@
 					</customData>
 				</Input>
 				<Label text="Customer Group"/>
-				<Input value="{Customer>/cust_knvv/kdgrp}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<Input value="{Customer>/createCRCustomerData/cust_knvv/kdgrp}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Customer Group"></core:CustomData>
 						<core:CustomData key="table" value="vw_t151"></core:CustomData>
@@ -146,9 +153,10 @@
 					</customData>
 				</Input>
 				<Label text="ABC classification"/>
-				<Input value="{Customer>/cust_knvv/klabc}" maxLength="2"/>
+				<Input value="{Customer>/createCRCustomerData/cust_knvv/klabc}" maxLength="2" editable="{App>/edit}"/>
 				<Label text="Currency"/>
-				<Input value="{Customer>/cust_knvv/waers}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<Input value="{Customer>/createCRCustomerData/cust_knvv/waers}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Currency"></core:CustomData>
 						<core:CustomData key="table" value="vw_tcurc"></core:CustomData>
@@ -159,22 +167,23 @@
 					</customData>
 				</Input>
 				<Label text="Switch off Rounding"/>
-				<CheckBox select="onSelectCheckBox">
+				<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="/cust_knvv/rdoff" value="X"></core:CustomData>
 					</customData>
 				</CheckBox>
 				<core:Title/>
 				<Label text="Order Probability %"/>
-				<Input value="{Customer>/cust_knvv/awahr}" maxLength="3"/>
+				<Input value="{Customer>/createCRCustomerData/cust_knvv/awahr}" maxLength="3" editable="{App>/edit}"/>
 				<Label text="Authorization Group"/>
-				<Input value="{Customer>/cust_knvv/begru}" maxLength="4"/>
+				<Input value="{Customer>/createCRCustomerData/cust_knvv/begru}" maxLength="4" editable="{App>/edit}"/>
 				<Label text="Item Proposal"/>
-				<Input value="{Customer>/cust_knvv/vsort}" maxLength="10"/>
+				<Input value="{Customer>/createCRCustomerData/cust_knvv/vsort}" maxLength="10" editable="{App>/edit}"/>
 				<Label text="Account at Customer"/>
-				<Input value="{Customer>/cust_knvv/eikto}" maxLength="12"/>
+				<Input value="{Customer>/createCRCustomerData/cust_knvv/eikto}" maxLength="12" editable="{App>/edit}"/>
 				<Label text="Unit of Measure Group"/>
-				<Input value="{Customer>/cust_knvv/megru}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<Input value="{Customer>/createCRCustomerData/cust_knvv/megru}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Unit of Measure Group"></core:CustomData>
 						<core:CustomData key="table" value="TWMEG"></core:CustomData>
@@ -185,7 +194,8 @@
 					</customData>
 				</Input>
 				<Label text="Exchange Rate Type"/>
-				<Input value="{Customer>/cust_knvv/kurst}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<Input value="{Customer>/createCRCustomerData/cust_knvv/kurst}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Exchange Rate Type"></core:CustomData>
 						<core:CustomData key="table" value="vw_tcurv"></core:CustomData>
@@ -196,16 +206,17 @@
 					</customData>
 				</Input>
 				<Label text="PP Customer Procedure"/>
-				<ComboBox selectedKey="{Customer>/cust_knvv/kalks}" items="{Dropdowns>/TVKD}">
+				<ComboBox selectedKey="{Customer>/createCRCustomerData/cust_knvv/kalks}" items="{Dropdowns>/TVKD}" editable="{App>/edit}">
 					<items>
 						<core:Item text="{Dropdowns>vtext}" key="{Dropdowns>kalks}"/>
 					</items>
 				</ComboBox>
 				<core:Title text="Pricing / Statistics"/>
 				<Label text="Price Group"/>
-				<Input value="{Customer>/cust_knvv/konda}" maxLength="2"/>
+				<Input value="{Customer>/createCRCustomerData/cust_knvv/konda}" maxLength="2" editable="{App>/edit}"/>
 				<Label text="Price List"/>
-				<Input value="{Customer>/cust_knvv/pltyp}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<Input value="{Customer>/createCRCustomerData/cust_knvv/pltyp}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Price List"></core:CustomData>
 						<core:CustomData key="table" value="vw_t189"></core:CustomData>
@@ -217,7 +228,8 @@
 				</Input>
 				<core:Title/>
 				<Label text="Customer Pricing Procedure"/>
-				<Input value="{Customer>/cust_knvv/kalks}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<Input value="{Customer>/createCRCustomerData/cust_knvv/kalks}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Customer Pricing Procedure"></core:CustomData>
 						<core:CustomData key="table" value="TVKD"></core:CustomData>
@@ -228,7 +240,8 @@
 					</customData>
 				</Input>
 				<Label text="Customer Statistics Group"/>
-				<Input value="{Customer>/cust_knvv/versg}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<Input value="{Customer>/createCRCustomerData/cust_knvv/versg}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Customer Statistics Group"></core:CustomData>
 						<core:CustomData key="table" value="TVSD"></core:CustomData>
@@ -240,21 +253,22 @@
 				</Input>
 				<core:Title text="Agency Business"/>
 				<Label text="Authority"/>
-				<CheckBox select="onSelectCheckBox">
+				<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="/cust_knvv/" value="X"></core:CustomData>
 					</customData>
 				</CheckBox>
 				<core:Title/>
 				<Label text="Document Index Active"/>
-				<CheckBox select="onSelectCheckBox">
+				<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="/cust_knvv/blind" value="X"></core:CustomData>
 					</customData>
 				</CheckBox>
 				<core:Title text="Shipping"/>
 				<Label text="Delivery Priority"/>
-				<Input value="{Customer>/cust_knvv/lprio}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<Input value="{Customer>/createCRCustomerData/cust_knvv/lprio}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Delivery Priority"></core:CustomData>
 						<core:CustomData key="table" value="vw_tprio"></core:CustomData>
@@ -265,7 +279,8 @@
 					</customData>
 				</Input>
 				<Label text="Shipping Conditions"/>
-				<Input value="{Customer>/cust_knvv/vsbed}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<Input value="{Customer>/createCRCustomerData/cust_knvv/vsbed}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Shipping Conditions"></core:CustomData>
 						<core:CustomData key="table" value="TVSB"></core:CustomData>
@@ -276,7 +291,8 @@
 					</customData>
 				</Input>
 				<Label text="Delivery Plant"/>
-				<Input value="{Customer>/cust_knvv/vwerk}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<Input value="{Customer>/createCRCustomerData/cust_knvv/vwerk}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Delivery Plant"></core:CustomData>
 						<core:CustomData key="table" value="T001W"></core:CustomData>
@@ -288,28 +304,28 @@
 				</Input>
 				<core:Title/>
 				<Label text="Order Combination"/>
-				<CheckBox select="onSelectCheckBox">
+				<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="/cust_knvv/kzazu" value="X"></core:CustomData>
 					</customData>
 				</CheckBox>
 				<Label text="Relevant for POD"/>
-				<CheckBox select="onSelectCheckBox">
+				<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="/cust_knvv/podkz" value="X"></core:CustomData>
 					</customData>
 				</CheckBox>
 				<Label text="POD Timeframe"/>
-				<Input value="{Customer>/cust_knvv/podtg}" maxLength="1"/>
+				<Input value="{Customer>/createCRCustomerData/cust_knvv/podtg}" maxLength="1" editable="{App>/edit}"/>
 				<core:Title text="Partial Deliveries"/>
 				<Label text="Complete Delivery"/>
-				<CheckBox select="onSelectCheckBox">
+				<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="/cust_knvv/autlf" value="X"></core:CustomData>
 					</customData>
 				</CheckBox>
 				<Label text="Partial Delivery per Item"/>
-				<ComboBox selectedKey="{Customer>/cust_knvv/kztlf}">
+				<ComboBox selectedKey="{Customer>/createCRCustomerData/cust_knvv/kztlf}" editable="{App>/edit}">
 					<items>
 						<core:Item text="Partial delivery allowed" key="1"/>
 						<core:Item text="Create a delivery with quantity greater than zero" key="2"/>
@@ -319,27 +335,28 @@
 					</items>
 				</ComboBox>
 				<Label text="Maximum Number of Partial Deliveries"/>
-				<Input value="{Customer>/cust_knvv/antlf}" maxLength="1"/>
+				<Input value="{Customer>/createCRCustomerData/cust_knvv/antlf}" maxLength="1" editable="{App>/edit}"/>
 				<core:Title/>
 				<Label text="Unlimited Tolerance"/>
-				<CheckBox select="onSelectCheckBox">
+				<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="/cust_knvv/uebtk" value="X"></core:CustomData>
 					</customData>
 				</CheckBox>
 				<Label text="Underdelivery Tolerance"/>
-				<Input value="{Customer>/cust_knvv/untto}" maxLength="3"/>
+				<Input value="{Customer>/createCRCustomerData/cust_knvv/untto}" maxLength="3" editable="{App>/edit}"/>
 				<Label text="Overdelivery Tolerance"/>
-				<Input value="{Customer>/cust_knvv/uebto}" maxLength="3"/>
+				<Input value="{Customer>/createCRCustomerData/cust_knvv/uebto}" maxLength="3" editable="{App>/edit}"/>
 				<core:Title text="Billing Document"/>
 				<Label text="Manual Invoice Maintenance"/>
-				<CheckBox select="onSelectCheckBox">
+				<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="/cust_knvv/mrnkz" value="X"></core:CustomData>
 					</customData>
 				</CheckBox>
 				<Label text="Invoicing Dates"/>
-				<Input value="{Customer>/cust_knvv/perfk}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<Input value="{Customer>/createCRCustomerData/cust_knvv/perfk}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Invoicing Dates"></core:CustomData>
 						<core:CustomData key="table" value="vw_tfacd"></core:CustomData>
@@ -350,7 +367,8 @@
 					</customData>
 				</Input>
 				<Label text="Invoicing List Dates"/>
-				<Input value="{Customer>/cust_knvv/perfk}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<Input value="{Customer>/createCRCustomerData/cust_knvv/perfk}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Invoicing List Dates"></core:CustomData>
 						<core:CustomData key="table" value="vw_tfacd"></core:CustomData>
@@ -362,20 +380,21 @@
 				</Input>
 				<core:Title/>
 				<Label text="Price Determination"/>
-				<CheckBox select="onSelectCheckBox">
+				<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="/cust_knvv/prfre" value="X"></core:CustomData>
 					</customData>
 				</CheckBox>
 				<Label text="Rebate"/>
-				<CheckBox select="onSelectCheckBox">
+				<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="/cust_knvv/bokre" value="X"></core:CustomData>
 					</customData>
 				</CheckBox>
 				<core:Title text="Delivery and Payment Terms"/>
 				<Label text="Incoterms"/>
-				<Input value="{Customer>/cust_knvv/inco1}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<Input value="{Customer>/createCRCustomerData/cust_knvv/inco1}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Incoterms"></core:CustomData>
 						<core:CustomData key="table" value="TINC"></core:CustomData>
@@ -386,7 +405,8 @@
 					</customData>
 				</Input>
 				<Label text="Terms of Payment"/>
-				<Input value="{Customer>/cust_knvv/zterm}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<Input value="{Customer>/createCRCustomerData/cust_knvv/zterm}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Terms of Payment"></core:CustomData>
 						<core:CustomData key="table" value="T052"></core:CustomData>
@@ -398,9 +418,10 @@
 				</Input>
 				<core:Title/>
 				<Label text="Payment Guarantee Procedure"/>
-				<Input value="{Customer>/cust_knvv/kabss}" maxLength="4"/>
+				<Input value="{Customer>/createCRCustomerData/cust_knvv/kabss}" maxLength="4" editable="{App>/edit}"/>
 				<Label text="Credit Control Area"/>
-				<Input value="{Customer>/cust_knvv/kkber}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				<Input value="{Customer>/createCRCustomerData/cust_knvv/kkber}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Credit Control Area"></core:CustomData>
 						<core:CustomData key="table" value="vw_t014"></core:CustomData>
@@ -412,32 +433,32 @@
 				</Input>
 				<core:Title text="Accounting"/>
 				<Label text="Account Assignment Group"/>
-				<Input value="{Customer>/cust_knvv/ktgrd}" maxLength="2"/>
+				<Input value="{Customer>/createCRCustomerData/cust_knvv/ktgrd}" maxLength="2" editable="{App>/edit}"/>
 				<core:Title/>
 				<Label text=""/>
 				<Text text=""/>
 				<core:Title text="Customer Groups"/>
 				<Label text="Customer Group 1"/>
-				<ComboBox selectedKey="{Customer>/cust_knvv/kvgr1}" items="{Dropdowns>/vw_tvv1}">
+				<ComboBox selectedKey="{Customer>/createCRCustomerData/cust_knvv/kvgr1}" items="{Dropdowns>/vw_tvv1}" editable="{App>/edit}">
 					<items>
 						<core:Item text="{Dropdowns>bezei}" key="{Dropdowns>kvgr1}"/>
 					</items>
 				</ComboBox>
 				<Label text="Customer Group 2"/>
-				<ComboBox selectedKey="{Customer>/cust_knvv/kvgr2}" items="{Dropdowns>/vw_tvv2}">
+				<ComboBox selectedKey="{Customer>/createCRCustomerData/cust_knvv/kvgr2}" items="{Dropdowns>/vw_tvv2}" editable="{App>/edit}">
 					<items>
 						<core:Item text="{Dropdowns>bezei}" key="{Dropdowns>kvgr2}"/>
 					</items>
 				</ComboBox>
 				<core:Title/>
 				<Label text="Customer Group 3"/>
-				<ComboBox selectedKey="{Customer>/cust_knvv/kvgr3}" items="{Dropdowns>/vw_tvv3}">
+				<ComboBox selectedKey="{Customer>/createCRCustomerData/cust_knvv/kvgr3}" items="{Dropdowns>/vw_tvv3}" editable="{App>/edit}">
 					<items>
 						<core:Item text="{Dropdowns>bezei}" key="{Dropdowns>kvgr3}"/>
 					</items>
 				</ComboBox>
 				<Label text="Customer Group 4"/>
-				<ComboBox selectedKey="{Customer>/cust_knvv/kvgr4}" items="{Dropdowns>/vw_tvv4}">
+				<ComboBox selectedKey="{Customer>/createCRCustomerData/cust_knvv/kvgr4}" items="{Dropdowns>/vw_tvv4}" editable="{App>/edit}">
 					<items>
 						<core:Item text="{Dropdowns>bezei}" key="{Dropdowns>kvgr4}"/>
 					</items>
@@ -449,15 +470,10 @@
 				<Toolbar>
 					<Title text="ERP Customer Sales Area"/>
 					<ToolbarSpacer></ToolbarSpacer>
-					<Button text="Add" press="onAddCompanyCode"></Button>
+					<Button text="Add" press="onAddCompanyCode" visible="{App>/edit}" enabled="false"></Button>
 				</Toolbar>
 			</headerToolbar>
 			<columns>
-				<Column>
-					<header>
-						<Label text="Actions" design="Bold"></Label>
-					</header>
-				</Column>
 				<Column>
 					<header>
 						<Label text="Partner function" design="Bold"></Label>
@@ -494,7 +510,7 @@
 					</header>
 				</Column>
 			</columns>
-			<Column>
+			<Column width="5%">
 				<header>
 					<Label text=""></Label>
 				</header>
@@ -518,7 +534,6 @@
 				<Toolbar>
 					<Title text="Tax Indicators"/>
 					<ToolbarSpacer></ToolbarSpacer>
-					<Button text="Add" press="onAddCompanyCode"></Button>
 				</Toolbar>
 			</headerToolbar>
 			<columns>

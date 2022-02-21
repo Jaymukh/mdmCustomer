@@ -1,19 +1,14 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout">
 	<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout">
 		<VBox>
-			<Table items="{Customer>/addAddressRows}">
+			<Table items="{path:'Customer>/createCRCustomerData/tableRows/TAX_NUMBERS'}">
 				<headerToolbar>
 					<Toolbar>
 						<ToolbarSpacer></ToolbarSpacer>
-						<Button text="Add" press="onAddCompanyCode"></Button>
+						<Button text="Add" press="onAddTaxNumber" type="Emphasized" visible="{App>/edit}"></Button>
 					</Toolbar>
 				</headerToolbar>
 				<columns>
-					<Column>
-						<header>
-							<Label text="Actions" design="Bold"></Label>
-						</header>
-					</Column>
 					<Column>
 						<header>
 							<Label text="Tax Number Category" design="Bold"></Label>
@@ -29,14 +24,29 @@
 							<Label text="Tax Number" design="Bold"></Label>
 						</header>
 					</Column>
+					<Column width="5%">
+						<header>
+							<Label text=""></Label>
+						</header>
+					</Column>
 				</columns>
 				<items>
 					<ColumnListItem>
 						<cells>
-							<Text text="{Customer>lfb1/bukrs}"></Text>
-							<Text text="{Customer>lfb1/AKONT}"></Text>
-							<Text text="{Customer>lfb1/bukrs}"></Text>
-							<Text text="{Customer>lfb1/bukrs}"></Text>
+							<Input value="{Customer>TAX_CATEGORY}" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="onValueHelpRequested" maxLength="3"
+								editable="{App>/edit}">
+								<customData>
+									<core:CustomData key="title" value="Tax Number Category"></core:CustomData>
+									<core:CustomData key="table" value="T685A"></core:CustomData>
+									<core:CustomData key="inputKey" value="tatyp"></core:CustomData>
+									<core:CustomData key="inputText" value="tatyp"></core:CustomData>
+									<core:CustomData key="tatyp" value="Tax Category"></core:CustomData>
+									<core:CustomData key="vtext" value="Description"></core:CustomData>
+								</customData>
+							</Input>
+							<Text text="{Customer>TAX_DESCRIPTION}"></Text>
+							<Input value="{Customer>TAX_NUMBER}" editable="{App>/edit}"/>
+							<core:Icon src="sap-icon://delete" tooltip="Delete" color="Negative" visible="{App>/edit}" press="onDelTaxNumber"/>
 						</cells>
 					</ColumnListItem>
 				</items>

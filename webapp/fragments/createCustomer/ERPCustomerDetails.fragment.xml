@@ -9,66 +9,67 @@
 			<core:Title/>
 			<Label text="Account Group"/>
 			<ComboBox required="true" showSecondaryValues="true" items="{userManagementModel>/accountGroups}"
-				selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/ktokd}">
+				selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/ktokd}" editable="{App>/edit}">
 				<items>
 					<core:ListItem text="{userManagementModel>text}" additionalText="{userManagementModel>key}" key="{userManagementModel>key}"/>
 				</items>
 			</ComboBox>
 			<core:Title text="General Data"/>
 			<Label text="Title"/>
-			<ComboBox items="{Dropdowns>/TSAD3}" selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/anred}">
+			<ComboBox items="{Dropdowns>/TSAD3}" selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/anred}"
+				editable="{App>/edit}">
 				<items>
 					<core:Item text="{Dropdowns>title_MEDI}" key="{Dropdowns>title}"/>
 				</items>
 			</ComboBox>
 			<Label text="Name1"/>
 			<Input required="true" value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/name1}" maxLength="35"
-				liveChange="handleName1"/>
+				liveChange="handleName1" editable="{App>/edit}"/>
 			<Label text="Name2"/>
-			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/name2}" maxLength="35"/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/name2}" maxLength="35" editable="{App>/edit}"/>
 			<Label text="Name3"/>
-			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/name3}" maxLength="35"/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/name3}" maxLength="35" editable="{App>/edit}"/>
 			<core:Title/>
 			<Label text="Legal Name (Name4)"/>
-			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/name4}" maxLength="35"/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/name4}" maxLength="35" editable="{App>/edit}"/>
 			<Label text="Natural person"/>
-			<CheckBox select="onSelectCheckBox">
+			<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
 				<customData>
 					<core:CustomData key="/cust_kna1/stkzn" value="X"></core:CustomData>
 				</customData>
 			</CheckBox>
 			<Label text="Search Terms"/>
 			<Input required="true" liveChange="handleSearchTerms" value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/sortl}"
-				maxLength="10"/>
+				maxLength="10" editable="{App>/edit}"/>
 			<core:Title text="Communication Data"/>
 			<Label text="Telephone"/>
-			<ComboBox items="{Dropdowns>/T005K}">
+			<ComboBox id="idPhoneCountry" items="{Dropdowns>/T005K}" editable="{App>/edit}" selectionChange="onDefChangePhone">
 				<layoutData>
 					<l:GridData span="XL2 L2 M3 S4"/>
 				</layoutData>
-				<core:Item key="{Dropdowns>telefto}" text="{Dropdowns>telefto} - {Dropdowns>land1}"/>
+				<core:Item key="{Dropdowns>land1}" text="{Dropdowns>telefto} - {Dropdowns>land1}"/>
 			</ComboBox>
-			<Input type="Number" value="" placeholder="Phone"></Input>
-			<Input type="Number" value="" placeholder="Ext"/>
+			<Input id="idPhone" type="Number" value="" placeholder="Number" editable="{App>/edit}" liveChange="onDefChangePhone"></Input>
+			<Input id="idPhoneExt" type="Number" value="" placeholder="Ext" editable="{App>/edit}" liveChange="onDefChangePhone"/>
 			<Label text="Mobile"/>
-			<ComboBox items="{Dropdowns>/T005K}">
+			<ComboBox id="idMobCountry" items="{Dropdowns>/T005K}" editable="{App>/edit}" selectionChange="onDefChangeMobile">
 				<layoutData>
 					<l:GridData span="XL2 L2 M3 S4"/>
 				</layoutData>
-				<core:Item key="{Dropdowns>telefto}" text="{Dropdowns>telefto} - {Dropdowns>land1}"/>
+				<core:Item key="{Dropdowns>land1}" text="{Dropdowns>telefto} - {Dropdowns>land1}"/>
 			</ComboBox>
-			<Input type="Number" value="" placeholder="Phone"></Input>
+			<Input id="idMobile" type="Number" value="" placeholder="Number" editable="{App>/edit}" liveChange="onDefChangeMobile"></Input>
 			<Label text="E-mail Address"/>
-			<Input type="Email" value=""/>
+			<Input id="idEmail" type="Email" value="" editable="{App>/edit}" liveChange="onDefChangeEmail"/>
 			<Label text="Fax"/>
-			<ComboBox items="{Dropdowns>/T005K}">
+			<ComboBox id="idFaxCountry" items="{Dropdowns>/T005K}" editable="{App>/edit}" selectionChange="onDefFaxChange">
 				<layoutData>
 					<l:GridData span="XL2 L2 M3 S4"/>
 				</layoutData>
-				<core:Item key="{Dropdowns>telefto}" text="{Dropdowns>telefto} - {Dropdowns>land1}"/>
+				<core:Item key="{Dropdowns>land1}" text="{Dropdowns>telefto} - {Dropdowns>land1}"/>
 			</ComboBox>
-			<Input value="" placeholder="Phone"></Input>
-			<Input value="" placeholder="Ext">
+			<Input id="idFax" value="" placeholder="Fax" editable="{App>/edit}" liveChange="onDefFaxChange"></Input>
+			<Input id="idFaxExt" value="" placeholder="Ext" editable="{App>/edit}" liveChange="onDefFaxChange">
 				<layoutData>
 					<l:GridData span="XL2 L2 M3 S4"/>
 				</layoutData>
@@ -77,10 +78,10 @@
 			<Input editable="false" value=""/>
 			<core:Title/>
 			<Label text="PO Box Lobby"/>
-			<Input value="{Customer>/createCRCustomerData/gen_adrc/po_box_lobby}" maxLength="40"/>
+			<Input value="{Customer>/createCRCustomerData/gen_adrc/po_box_lobby}" maxLength="40" editable="{App>/edit}"/>
 			<Label text="Type of Delivery Service"/>
 			<Input value="{Customer>/createCRCustomerData/gen_adrc/deli_serv_type}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
-				valueHelpOnly="true">
+				valueHelpOnly="true" editable="{App>/edit}">
 				<customData>
 					<core:CustomData key="title" value="Type of Delivery Service"></core:CustomData>
 					<core:CustomData key="table" value="ADDRC_DELI_SERV"></core:CustomData>
@@ -91,12 +92,12 @@
 				</customData>
 			</Input>
 			<Label text="Number of Delivery Service"/>
-			<Input value="{Customer>/createCRCustomerData/gen_adrc/deli_serv_number}" maxLength="4"/>
+			<Input value="{Customer>/createCRCustomerData/gen_adrc/deli_serv_number}" maxLength="4" editable="{App>/edit}"/>
 			<Label text="PO Box"/>
-			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/pfach}" maxLength="10"/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/pfach}" maxLength="10" editable="{App>/edit}"/>
 			<Label text="Undeliverable"/>
 			<Input value="{Customer>/createCRCustomerData/gen_adrc/dont_use_p}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
-				valueHelpOnly="true">
+				valueHelpOnly="true" editable="{App>/edit}">
 				<customData>
 					<core:CustomData key="title" value="Undeliverable"></core:CustomData>
 					<core:CustomData key="table" value=""></core:CustomData>
@@ -108,38 +109,40 @@
 			</Input>
 			<core:Title text="Address"/>
 			<Label text="Street / House No."/>
-			<Input required="ture" width="100%" value="{Customer>/createCRCustomerData/gen_adrc/street}" maxLength="60"/>
-			<Input required="true" width="100%" value="{Customer>/createCRCustomerData/gen_adrc/house_num1}" maxLength="10">
+			<Input required="ture" width="100%" value="{Customer>/createCRCustomerData/gen_adrc/street}" maxLength="60" editable="{App>/edit}"/>
+			<Input required="true" width="100%" value="{Customer>/createCRCustomerData/gen_adrc/house_num1}" maxLength="10" editable="{App>/edit}">
 				<layoutData>
 					<l:GridData span="XL2 L3 M3 S4"/>
 				</layoutData>
 			</Input>
 			<Label text="District"/>
-			<Input required="true" value="{Customer>/createCRCustomerData/gen_adrc/city2}" maxLength="40"/>
+			<Input required="true" value="{Customer>/createCRCustomerData/gen_adrc/city2}" maxLength="40" editable="{App>/edit}"/>
 			<Label text="Street 2"/>
-			<Input value="{Customer>/createCRCustomerData/gen_adrc/str_suppl1}" maxLength="40"/>
+			<Input value="{Customer>/createCRCustomerData/gen_adrc/str_suppl1}" maxLength="40" editable="{App>/edit}"/>
 			<Label text="Street 3"/>
-			<Input value="{Customer>/createCRCustomerData/gen_adrc/str_suppl2}" maxLength="40"/>
+			<Input value="{Customer>/createCRCustomerData/gen_adrc/str_suppl2}" maxLength="40" editable="{App>/edit}"/>
 			<Label text="Street 4"/>
-			<Input value="{Customer>/createCRCustomerData/gen_adrc/str_suppl3}" maxLength="40"/>
+			<Input value="{Customer>/createCRCustomerData/gen_adrc/str_suppl3}" maxLength="40" editable="{App>/edit}"/>
 			<Label text="Street 5"/>
-			<Input value="{Customer>/createCRCustomerData/gen_adrc/location}" maxLength="40"/>
+			<Input value="{Customer>/createCRCustomerData/gen_adrc/location}" maxLength="40" editable="{App>/edit}"/>
 			<Label text="Postal Code / City"/>
-			<Input required="true" value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/pstlz}" maxLength="10">
+			<Input required="true" value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/pstlz}" maxLength="10"
+				editable="{App>/edit}">
 				<layoutData>
 					<l:GridData span="XL2 L3 M3 S4"/>
 				</layoutData>
 			</Input>
-			<Input required="true" value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/ort01}" maxLength="35"/>
+			<Input required="true" value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/ort01}" maxLength="35"
+				editable="{App>/edit}"/>
 			<Label text="Country"/>
 			<ComboBox required="true" items="{Dropdowns>/T005}"
-				selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/land1}">
+				selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/land1}" editable="{App>/edit}">
 				<core:Item key="{Dropdowns>land1}" text="{Dropdowns>landx}"/>
 			</ComboBox>
 			<core:Title/>
 			<Label text="Region"/>
 			<Input required="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-				value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/regio}">
+				value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/regio}" editable="{App>/edit}">
 				<customData>
 					<core:CustomData key="title" value="Region"></core:CustomData>
 					<core:CustomData key="table" value="T005S"></core:CustomData>
@@ -151,12 +154,12 @@
 			</Input>
 			<Label text="Language"/>
 			<ComboBox required="true" selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/spras}"
-				items="{Dropdowns>/T002}">
+				items="{Dropdowns>/T002}" editable="{App>/edit}">
 				<core:Item key="{Dropdowns>spras}" text="{Dropdowns>sptxt}"/>
 			</ComboBox>
 			<Label text="Transportation Zone"/>
 			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/lzone}" showValueHelp="true"
-				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" editable="{App>/edit}">
 				<customData>
 					<core:CustomData key="title" value="Transportation Zone"></core:CustomData>
 					<core:CustomData key="table" value="TZONE"></core:CustomData>
@@ -169,17 +172,17 @@
 			</Input>
 			<Label text="PO Box Postal Code/ PO Box"/>
 			<Input liveChange="handleERPPOBOXPostalCode" value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/po_box}"
-				maxLength="10"/>
+				maxLength="10" editable="{App>/edit}"/>
 			<Label text="PO Box Without No."/>
-			<CheckBox select="onSelectCheckBox">
+			<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
 				<customData>
 					<core:CustomData key="/gen_adrc/gen_adrc_1/po_box_num" value="X"></core:CustomData>
 				</customData>
 			</CheckBox>
 			<Label text="Company Postal Code"/>
-			<Input value="{Customer>/createCRCustomerData/gen_adrc/post_code3}" maxLength="10"/>
+			<Input value="{Customer>/createCRCustomerData/gen_adrc/post_code3}" maxLength="10" editable="{App>/edit}"/>
 			<Label text="Supplement"/>
-			<Input value="{Customer>/createCRCustomerData/gen_adrc/house_num2}" maxLength="10"/>
+			<Input value="{Customer>/createCRCustomerData/gen_adrc/house_num2}" maxLength="10" editable="{App>/edit}"/>
 		</form:content>
 	</form:SimpleForm>
 </core:FragmentDefinition>

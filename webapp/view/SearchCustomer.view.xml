@@ -12,7 +12,7 @@
 					</layoutData>
 				</Button>
 				<ToolbarSpacer width="20px"/>
-				<Title id="idTitle" text="Search ERP Customer">
+				<Title text="{App>/appTitle}">
 					<layoutData>
 						<OverflowToolbarLayoutData priority="Low"/>
 					</layoutData>
@@ -55,7 +55,7 @@
 						<f:header>
 							<f:DynamicPageHeader>
 								<f:content>
-									<filterbar:FilterBar id="filterBar" reset="onReset" search="onSearch" useToolbar="false" showGoOnFB="true">
+									<filterbar:FilterBar id="idSearchFilterBar" reset="onReset" search="onSearchCustomer" useToolbar="false" showGoOnFB="true">
 										<filterbar:filterGroupItems >
 											<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="addressData" name="name1" label="Name 1">
 												<filterbar:control>
@@ -86,7 +86,7 @@
 											</filterbar:FilterGroupItem>
 										</filterbar:filterGroupItems>
 										<filterbar:filterGroupItems>
-											<filterbar:FilterGroupItem visibleInFilterBar="false" groupName="bankDetails" name="businessPartnerID" label="Business Partner ID">
+											<filterbar:FilterGroupItem visibleInFilterBar="false" groupName="bankDetails" name="lifnr" label="Business Partner ID">
 												<filterbar:control>
 													<Input/>
 												</filterbar:control>
@@ -101,7 +101,7 @@
 													<Input/>
 												</filterbar:control>
 											</filterbar:FilterGroupItem>
-											<filterbar:FilterGroupItem visibleInFilterBar="false" groupName="bankDetails" name="street" label="Street">
+											<filterbar:FilterGroupItem visibleInFilterBar="false" groupName="bankDetails" name="bankStreet" label="Street">
 												<filterbar:control>
 													<Input/>
 												</filterbar:control>
@@ -123,7 +123,7 @@
 										<Label id="idTableTitle" text="Business Partner Master List({SearchCustomerModel>/searchAllModelData/totalRecords})" design="Bold"></Label>
 										<ToolbarSpacer></ToolbarSpacer>
 										<Button text="Create ERP Customer" visible="{= ${userManagementModel>/role}.indexOf('req')!== -1 ? true : false }" type="Emphasized"
-											press="handleCreateERPCustomer"></Button>
+											press="onNavToCreateERPCustomer"></Button>
 										<Button text="Copy" visible="false"></Button>
 										<Label text="Page No."/>
 										<Select id="searchAllVendorPageSelectID" items="{SearchCustomerModel>/PageData}" selectedKey="{SearchCustomerModel>/selectedPageKey}"
@@ -186,7 +186,7 @@
 								<items>
 									<ColumnListItem>
 										<cells>
-											<Link text="{SearchCustomerModel>customCustomerCustKna1DTO/kunnr}" press="onClickVendor"></Link>
+											<Link text="{SearchCustomerModel>customCustomerCustKna1DTO/kunnr}" press="onGetCustomerDetails"></Link>
 											<ObjectStatus state="{path :'SearchCustomerModel>pendingRequest', formatter : '.handlePendingRequest'}"
 												text="{SearchCustomerModel>pendingRequest}"/>
 											<Text text="{SearchCustomerModel>overDueDate}"></Text>

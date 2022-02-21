@@ -28,27 +28,24 @@ sap.ui.define([
 			oSearchModel.setProperty("/leftEnabled", false);
 			oSearchModel.setProperty("/rightEnabled", false);
 
-			delete oParameters.sPageNo;
-			var oFilterParameters = {};
-			if (Object.keys(oParameters).length === 0) {
-				oFilterParameters = {
-					"cust_kna1": {}
+			//Get filter details
+			var oFilterValues = this.getFilterValues("idSearchFilterBar"),
+				sFilterBy = this.byId("idSearchVM").getSelectionKey(),
+				oObjectParam = {
+					"entitySearchType": "GET_BY_CUSTOMER_FILTERS",
+					"entityType": "CUSTOMER",
+					"customerSearchDTO": {},
+					"currentPage": iPageNo
 				};
-			} else {
-				oFilterParameters = oParameters;
-			}
+
+			oFilterValues.customerSearchType = sFilterBy === "*standard*" ? "SEARCH_BY_ADDRESS" : "SEARCH_BY_BANK_DETAILS";
+			oObjectParam.customerSearchDTO = oFilterValues;
+
 			var objParam = {
-				url: "/murphyCustom/mdm/entity-service/entities/entity/get",
+				url: "/murphyCustom/entity-service/entities/entity/get",
 				type: "POST",
 				hasPayload: true,
-				data: {
-					"entitySearchType": "GET_ALL_CUSTOMER",
-					"entityType": "CUSTOMER",
-					"currentPage": iPageNo,
-					"parentDTO": {
-						"customData": oFilterParameters
-					}
-				}
+				data: oObjectParam
 			};
 
 			this.serviceCall.handleServiceRequest(objParam).then(function (oData) {
@@ -73,7 +70,7 @@ sap.ui.define([
 			});
 		},
 
-		onSearch: function () {
+		onSearchCustomer: function () {
 			var oFilterBarParam = {
 				sPageNo: 1
 			};
@@ -93,28 +90,46 @@ sap.ui.define([
 
 		onSideItemSelect: function (oEvent) {
 			var sKey = oEvent.getParameter("item").getKey();
-			var titleID = this.getView().byId("idTitle");
-			titleID.setText(this.oBundle.getText(sKey + "-title"));
 			switch (sKey) {
 			case "CreateERPCustomer":
-				this._createCREntityCustomer();
-				this.byId("pageContainer").to(this.getView().createId(sKey));
+				this.onNavToCreateERPCustomer();
 				break;
 			case "changeRequestId":
 			case "changeRequestId-Mass":
-				this.nPageNo = 1;
-				this.handleGetAllChangeRequests(this.nPageNo);
-				this.handleChangeRequestStatistics();
-				this.byId("pageContainer").to(this.getView().createId("changeRequestId"));
+				this.onNavToChangeReqList();
 				break;
 			case "SearchCust":
-				var oParameters = {
-					sPageNo: 1
-				};
-				this.handleGo(oParameters);
-				this.byId("pageContainer").to(this.getView().createId(sKey));
+				this.onNavToErpCustList();
 				break;
 			}
+		},
+
+		onNavToCreateERPCustomer: function () {
+			var oAppModel = this.getModel("App");
+			oAppModel.setProperty("/edit", true);
+			oAppModel.setProperty("/appTitle", "Create ERP Customer");
+			oAppModel.setProperty("/previousPage", "");
+			this._createCREntityCustomer();
+			this.byId("pageContainer").to(this.getView().createId("CreateERPCustomer"));
+		},
+
+		onNavToChangeReqList: function () {
+			var oAppModel = this.getModel("App");
+			oAppModel.setProperty("/appTitle", "Change Request And Documents");
+			this.nPageNo = 1;
+			this.handleGetAllChangeRequests(this.nPageNo);
+			this.handleChangeRequestStatistics();
+			this.byId("pageContainer").to(this.getView().createId("changeRequestId"));
+		},
+
+		onNavToErpCustList: function () {
+			var oAppModel = this.getModel("App");
+			var oParameters = {
+				sPageNo: 1
+			};
+			oAppModel.setProperty("/appTitle", "Search ERP Customer");
+			this.handleGo(oParameters);
+			this.byId("pageContainer").to(this.getView().createId("SearchCust"));
 		},
 
 		handlePendingRequest: function (sValue) {
@@ -158,14 +173,11 @@ sap.ui.define([
 		},
 
 		handleCreateERPCustomer: function (oEvent) {
-			this.getView().byId("pageContainer").to(this.createId("createERPVendorView"));
+			this.getView().byId("pageContainer").to(this.createId("CreateERPCustomer"));
 			this.byId("sideNavigation").setSelectedItem(this.byId("sideNavigation").getItem().getItems()[1]);
 			var titleID = this.getView().byId("idTitle");
-			titleID.setText(this.oBundle.getText("createERPVendorView-title"));
-			this.getView().getModel("Customer").setProperty("/preview", false);
-			this.getView().getModel("Customer").setProperty("/vndDetails", false);
-			this.getView().getModel("Customer").setProperty("/approvalView", false);
-			this._createCREntityID();
+			titleID.setText(this.oBundle.getText("CreateERPCustomer-title"));
+			this._createCREntityCustomer();
 		},
 
 		handleSelect: function (oEvent) {
@@ -213,152 +225,76 @@ sap.ui.define([
 			this.handleGo(oParameters);
 		},
 
-		onClickVendor: function (oEvent) {
+		onGetCustomerDetails: function (oEvent) {
 			this.getView().setBusy(true);
-			var sVendorSelected = oEvent.getSource().getText();
-			var objParamCreate = {
-				url: "/murphyCustom/mdm/entity-service/entities/entity/get",
-				type: 'POST',
-				hasPayload: true,
-				data: {
-					"entitySearchType": "GET_BY_VENDOR_ID",
-					"entityType": "VENDOR",
-					"parentDTO": {
-						"customData": {
-							"vnd_lfa1": {
-								"lifnr": sVendorSelected
+			var sCustomerNo = oEvent.getSource().getText(),
+				oAppModel = this.getModel("App"),
+				oCustomerModel = this.getModel("Customer"),
+				oChangeRequest = Object.assign(oAppModel.getProperty("/changeReq"), {}),
+				oCustomerData = Object.assign(oAppModel.getProperty("/createCRCustomerData"), {}),
+				objParamCreate = {
+					url: "/murphyCustom/entity-service/entities/entity/get",
+					type: "POST",
+					hasPayload: true,
+					data: {
+						"entitySearchType": "GET_BY_CUSTOMER_ID",
+						"entityType": "CUSTOMER",
+						"parentDTO": {
+							"customData": {
+								"cust_kna1": {
+									"kunnr": sCustomerNo
+								}
 							}
 						}
 					}
-				}
+				};
 
-			};
+			oAppModel.setProperty("/appTitle", "Create ERP Customer");
+			oAppModel.setProperty("/edit", false);
+			oAppModel.setProperty("/customerPreview", true);
+			oAppModel.setProperty("/customerPreview", "ALL_CUST");
+
 			this.serviceCall.handleServiceRequest(objParamCreate).then(function (oDataResp) {
 				this.getView().setBusy(false);
-				if (oDataResp.result.parentDTO.customData) {
-					var respPayload = Object.keys(oDataResp.result.parentDTO.customData);
-					var addCompanyCodeRows = [];
-					for (var i = 0; i < respPayload.length; i++) {
-						switch (respPayload[i]) {
-						case "business_entity":
-							this.getView().getModel("Customer").setProperty("/createCRVendorData/entityId", oDataResp.result.parentDTO.customData
-								.business_entity.entity_id);
-							break;
-						case "vnd_lfa1":
-							this.getView().getModel("Customer").setProperty("/createCRVendorData/formData/parentDTO/customData/vnd_lfa1",
-								oDataResp.result.parentDTO.customData.vnd_lfa1);
-							break;
-						case "vnd_lfb1":
-							this.getView().getModel("Customer").setProperty(
-								"/createCRVendorData/formData/parentDTO/customData/vnd_lfb1",
-								oDataResp.result.parentDTO.customData.vnd_lfb1);
+				var aTables = ["cust_knb1", "cust_knbk", "cust_knbw", "cust_knb5", "cust_knvp", "cust_knvv",
+					"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "pra_bp_ad", "pra_bp_cust_md", "gen_adr2", "gen_adr3", "gen_adr6",
+					"TAX_NUMBERS"
+				];
 
-							var lfb1ObjKey = Object.keys(oDataResp.result.parentDTO.customData.vnd_lfb1);
-							for (var j = 0; j < lfb1ObjKey.length; j++) {
-								var sKey = lfb1ObjKey[j];
-								if (addCompanyCodeRows[j]) {
-									addCompanyCodeRows[j].lfb1 = oDataResp.result.parentDTO.customData.vnd_lfb1[sKey];
-								} else {
-									addCompanyCodeRows.push({
-										"lfb1": oDataResp.result.parentDTO.customData.vnd_lfb1[sKey],
-										"lfbw": {}
-									});
-								}
+				if (oDataResp.result.parentDTO.hasOwnProperty("customData")) {
+					oCustomerData.formData.parentDTO.customData.cust_kna1 = oDataResp.result.parentDTO.customData.cust_kna1;
+					oCustomerData.tableRows = {};
 
-							}
-
-							var sSelectedKey = oDataResp.result.parentDTO.customData.vnd_lfb1.vnd_lfb1_1.bukrs;
-							var aPaymentMethodData = this.getOwnerComponent().getModel('Customer').getProperty('/paymentMethodData');
-							var obj = aPaymentMethodData.find(oItem => Number(oItem.compCode) === Number(sSelectedKey));
-							if (obj && obj.payMethod) {
-								this.getOwnerComponent().getModel('Customer').setProperty('/paymentMehtodBinding', obj.payMethod);
-								this.getOwnerComponent().getModel('Customer').refresh(true);
-							}
-							break;
-						case "vnd_lfbk":
-							this.getView().getModel("Customer").setProperty(
-								"/createCRVendorData/formData/parentDTO/customData/vnd_lfbk/vnd_lfbk_1",
-								oDataResp.result.parentDTO.customData.vnd_lfbk.vnd_lfbk_1);
-							break;
-						case "vnd_lfm1":
-							this.getView().getModel("Customer").setProperty(
-								"/createCRVendorData/formData/parentDTO/customData/vnd_lfm1/vnd_lfm1_1",
-								oDataResp.result.parentDTO.customData.vnd_lfm1.vnd_lfm1_1);
-							break;
-						case "vnd_lfbw":
-							this.getView().getModel("Customer").setProperty(
-								"/createCRVendorData/formData/parentDTO/customData/vnd_lfbw",
-								oDataResp.result.parentDTO.customData.vnd_lfbw);
-
-							var lfbwObjKey = Object.keys(oDataResp.result.parentDTO.customData.vnd_lfbw);
-							for (var j = 0; j < lfbwObjKey.length; j++) {
-								var sKey = lfbwObjKey[j];
-								if (addCompanyCodeRows[j]) {
-									addCompanyCodeRows[j].lfbw = oDataResp.result.parentDTO.customData.vnd_lfbw[sKey];
-								} else {
-									addCompanyCodeRows.push({
-										"lfbw": oDataResp.result.parentDTO.customData.vnd_lfbw[sKey],
-										"lfb1": {}
-									});
-								}
-
-							}
-							break;
-						case "vnd_knvk":
-							this.getView().getModel("Customer").setProperty(
-								"/createCRVendorData/formData/parentDTO/customData/vnd_knvk/vnd_knvk_1",
-								oDataResp.result.parentDTO.customData.vnd_knvk.vnd_knvk_1);
-							break;
-						case "gen_adrc":
-							this.getView().getModel("Customer").setProperty(
-								"/createCRVendorData/formData/parentDTO/customData/gen_adrc/gen_adrc_1",
-								oDataResp.result.parentDTO.customData.gen_adrc.gen_adrc_1);
-							break;
-						case "gen_bnka":
-							this.getView().getModel("Customer").setProperty(
-								"/createCRVendorData/formData/parentDTO/customData/gen_bnka/gen_bnka_1",
-								oDataResp.result.parentDTO.customData.gen_bnka.gen_bnka_1);
-							break;
-						case "pra_bp_ad":
-							this.getView().getModel("Customer").setProperty(
-								"/createCRVendorData/formData/parentDTO/customData/pra_bp_ad/pra_bp_ad_1",
-								oDataResp.result.parentDTO.customData.pra_bp_ad.pra_bp_ad_1);
-							break;
-						case "pra_bp_vend_esc":
-							this.getView().getModel("Customer").setProperty(
-								"/createCRVendorData/formData/parentDTO/customData/pra_bp_vend_esc/pra_bp_vend_esc_1",
-								oDataResp.result.parentDTO.customData.pra_bp_vend_esc.pra_bp_vend_esc_1);
-							break;
-						case "pra_bp_cust_md":
-							this.getView().getModel("Customer").setProperty(
-								"/createCRVendorData/formData/parentDTO/customData/pra_bp_cust_md/pra_bp_cust_md_1",
-								oDataResp.result.parentDTO.customData.pra_bp_cust_md.pra_bp_cust_md_1);
-							break;
-						case "pra_bp_vend_md":
-							this.getView().getModel("Customer").setProperty(
-								"/createCRVendorData/formData/parentDTO/customData/pra_bp_vend_md/pra_bp_vend_md_1",
-								oDataResp.result.parentDTO.customData.pra_bp_vend_md.pra_bp_vend_md_1);
-							break;
+					aTables.forEach(function (sTable) {
+						oCustomerData.tableRows[sTable] = [];
+						if (oDataResp.result.parentDTO.customData.hasOwnProperty(sTable)) {
+							Object.keys(oDataResp.result.parentDTO.customData[sTable]).forEach(oItem => {
+								oCustomerData.tableRows[sTable].push(oItem);
+							});
 						}
-					}
 
-					this.getView().byId("pageContainer").to(this.createId("erpVendorPreview"));
-					this.getView().getModel("Customer").setProperty("/preview", false);
-					this.getView().getModel("Customer").setProperty("/vndDetails", true);
-					this.getView().getModel("Customer").setProperty("/approvalView", false);
+						oCustomerData[sTable] = Object.assign(oAppModel.getProperty("/" + sTable), {});
+						if (oCustomerData[sTable].hasOwnProperty("entity_id")) {
+							oCustomerData[sTable].entity_id = null;
+						}
+					}, this);
+
+					this.getView().byId("pageContainer").to(this.createId("CreateERPCustomer"));
 					this.byId("sideNavigation").setSelectedItem(this.byId("sideNavigation").getItem().getItems()[1]);
-					var titleID = this.getView().byId("idTitle");
-					titleID.setText(this.oBundle.getText("createERPVendorView-title"));
+					oCustomerModel.setData({
+						changeReq: oChangeRequest,
+						createCRCustomerData: oCustomerData
+					});
 				}
 			}.bind(this), function (oError) {
 				this.getView().setBusy(false);
-				MessageToast.show("Not able to fetch the Vendor Details, Please try after some time");
+				this.clearCustomerModel();
+				MessageToast.show("Not able to fetch the Customer Details, Please try after some time");
 			}.bind(this));
 
 		},
 
 		onDeleteVendorPress: function (oEvent) {
-
 			var oSelctedObj = oEvent.getSource().getParent().getParent()._oOpenBy.getBindingContext("SearchCustomerModel").getObject().customVendorLFA1DTO;
 			var sEntityID = oSelctedObj.entity_id;
 			var sVendorNo = oSelctedObj.lifnr;

@@ -25,10 +25,10 @@ sap.ui.define([
 			this.getRouter().initialize();
 			this.setModel(models.createDeviceModel(), "device");
 			this.setModel(models.createUserModel(), "userModel");
-			
+
 			this.getModel("userModel").attachRequestCompleted(function (oData) {
 				this.setModel(models.createUserInfoModel(oData.getSource().getProperty("/email")), "userRoleModel");
-				
+
 				// creating the user request
 				this.getModel("userRoleModel").attachRequestCompleted(function (oData) {
 					var oUserModelResources = this.getModel("userRoleModel").getData().Resources[0],
@@ -37,7 +37,7 @@ sap.ui.define([
 						aRoles = [],
 						aTempAccountGrps = [],
 						aAccountGrps = [];
-					
+
 					oUserModelResources.groups.forEach(function (oItem) {
 						if (oItem.value.split("DA_MDM_VEND_")[1]) {
 							var aResultArr = oItem.value.split("DA_MDM_VEND_")[1].split("_");
@@ -57,7 +57,7 @@ sap.ui.define([
 					oUserManagementModel.setProperty("/accountGroups", aAccountGroup);
 					oUserManagementModel.refresh(true);
 					var oObjParam = {
-						url: "/murphyCustom/mdm/usermgmt-service/users/user/create",
+						url: "/murphyCustom/usermgmt-service/users/user/create",
 						hasPayload: true,
 						type: "POST",
 						data: {
