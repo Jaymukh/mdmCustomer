@@ -86,7 +86,7 @@
 											</filterbar:FilterGroupItem>
 										</filterbar:filterGroupItems>
 										<filterbar:filterGroupItems>
-											<filterbar:FilterGroupItem visibleInFilterBar="false" groupName="bankDetails" name="lifnr" label="Business Partner ID">
+											<filterbar:FilterGroupItem visibleInFilterBar="false" groupName="bankDetails" name="kunnr" label="Business Partner ID">
 												<filterbar:control>
 													<Input/>
 												</filterbar:control>
@@ -149,11 +149,6 @@
 									</Column>
 									<Column>
 										<header>
-											<Label text="Over due Date" design="Bold"></Label>
-										</header>
-									</Column>
-									<Column>
-										<header>
 											<Label text="Description" design="Bold"></Label>
 										</header>
 									</Column>
@@ -189,7 +184,6 @@
 											<Link text="{SearchCustomerModel>customCustomerCustKna1DTO/kunnr}" press="onGetCustomerDetails"></Link>
 											<ObjectStatus state="{path :'SearchCustomerModel>pendingRequest', formatter : '.handlePendingRequest'}"
 												text="{SearchCustomerModel>pendingRequest}"/>
-											<Text text="{SearchCustomerModel>overDueDate}"></Text>
 											<Text
 												text="{ parts:[ {path:'SearchCustomerModel>customVendorLFA1DTO/name1'}, {path:'SearchCustomerModel>customVendorLFA1DTO/name2'}, {path:'SearchCustomerModel>customVendorLFA1DTO/name3'}, {path:'SearchCustomerModel>customVendorLFA1DTO/name4'} ], formatter:'.handleDescription' }"></Text>
 											<Text text="{SearchCustomerModel>customVendorLFA1DTO/vbund}"></Text>

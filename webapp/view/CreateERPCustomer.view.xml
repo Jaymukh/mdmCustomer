@@ -94,12 +94,12 @@
 			<Toolbar>
 				<Button visible="true" text="Error Log" type="Transparent" press="onErrorLog"/>
 				<ToolbarSpacer/>
-				<Button text="Save" type="Transparent" press="onSaveCR"/>
-				<Button text="Edit" type="Transparent" press="onEditClick" visible="{= ${App>/edit} === false }"/>
-				<Button text="Submit" type="Transparent" press="onSubmitCR"/>
-				<Button text="Check" type="Transparent" press="onCheckCR"/>
-				<Button text="Approve" type="Accept" press="onApproveClick" visible="{= ${App>/edit} === false }"/>
-				<Button text="Reject" type="Reject" press="onRejectClick" visible="{= ${App>/edit} === false }"/>
+				<Button text="Save" type="Transparent" press="onSaveCR" visible="{App>/saveButton}"/>
+				<Button text="Edit" type="Transparent" press="onEditClick" visible="{App>/editButton}"/>
+				<Button text="Submit" type="Transparent" press="onSubmitCR" visible="{App>/submitButton}"/>
+				<Button text="Check" type="Transparent" press="onCheckCR" visible="{App>/saveButton}"/>
+				<Button text="Approve" type="Accept" press="onApproveClick" visible="{App>/approveButton}"/>
+				<Button text="Reject" type="Reject" press="onRejectClick" visible="{App>/rejectButton}"/>
 				<Button text="All Change Request" icon="sap-icon://navigation-left-arrow" type="Transparent" press="onBackToAllChangeReq"
 					visible="{= ${App>/previousPage} === 'ALL_CHANGE_REQ'}"/>
 				<Button text="Business Partner Master List" icon="sap-icon://navigation-left-arrow" type="Transparent" press="onBackToAllCust"

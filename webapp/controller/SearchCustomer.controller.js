@@ -106,7 +106,10 @@ sap.ui.define([
 
 		onNavToCreateERPCustomer: function () {
 			var oAppModel = this.getModel("App");
+			this.clearAllButtons();
 			oAppModel.setProperty("/edit", true);
+			oAppModel.setProperty("/saveButton", true);
+			oAppModel.setProperty("/checkButton", true);
 			oAppModel.setProperty("/appTitle", "Create ERP Customer");
 			oAppModel.setProperty("/previousPage", "");
 			this._createCREntityCustomer();
@@ -115,6 +118,7 @@ sap.ui.define([
 
 		onNavToChangeReqList: function () {
 			var oAppModel = this.getModel("App");
+			this.clearAllButtons();
 			oAppModel.setProperty("/appTitle", "Change Request And Documents");
 			this.nPageNo = 1;
 			this.handleGetAllChangeRequests(this.nPageNo);
@@ -124,6 +128,7 @@ sap.ui.define([
 
 		onNavToErpCustList: function () {
 			var oAppModel = this.getModel("App");
+			this.clearAllButtons();
 			var oParameters = {
 				sPageNo: 1
 			};

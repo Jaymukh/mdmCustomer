@@ -1,7 +1,10 @@
 {
 	"edit": false,
-	"editPreview": false,
-	"customerPreview": false,
+	"editButton": false,
+	"saveButton": false,
+	"approveButton": false,
+	"rejectButton": false,
+	"submitButton": false,
 	"previousPage": null,
 	"appTitle": "Search ERP Customer",
 	"dateFormat": "dd-MM-yyyy",
@@ -249,16 +252,16 @@
 
 					},
 					"gen_adr2": {
-						
+
 					},
 					"gen_adr3": {
-						
+
 					},
 					"gen_adr6": {
-						
+
 					},
-					"TAX_NUMBERS":{
-						
+					"TAX_NUMBERS": {
+
 					}
 				}
 			}
@@ -771,7 +774,11 @@
 		"bukrs": null,
 		"madat": null,
 		"mahns": null,
-		"gmvdt": null
+		"gmvdt": null,
+		"maber": null,
+		"mansp": null,
+		"knrma": null,
+		"busab": null
 	},
 	"cust_knbw": {
 		"entity_id": null,
@@ -864,7 +871,7 @@
 		"client": null,
 		"ttx_number": null
 	},
-	"TAX_NUMBERS":{
+	"TAX_NUMBERS": {
 		"TAX_CATEGORY": null,
 		"TAX_DESCRIPTION": null,
 		"TAX_NUMBER": null

@@ -144,21 +144,25 @@
 				</Input>
 				<core:Title text="Company"/>
 				<Label text="Address"/>
-				<Input value="{Customer>/gen_adcp/addrnumber}" maxLength="10" editable="{App>/edit}"/>
+				<Input value="{Customer>/createCRCustomerData/gen_adcp/addrnumber}" maxLength="10" editable="{App>/edit}"/>
 				<core:Title text="Workplace"/>
 				<Label text="Function"/>
-				<Input value="{Customer>/gen_adcp/function}" maxLength="40" editable="{App>/edit}"/>
+				<Input value="{Customer>/createCRCustomerData/gen_adcp/function}" maxLength="40" editable="{App>/edit}"/>
 				<Label text="Department"/>
-				<Input value="{Customer>/gen_adcp/department}" maxLength="40" editable="{App>/edit}"/>
+				<Input value="{Customer>/createCRCustomerData/gen_adcp/department}" maxLength="40" editable="{App>/edit}"/>
 				<Label text="Room Number"/>
-				<Input value="{Customer>/gen_adcp/building}" maxLength="40" editable="{App>/edit}"/>
+				<Input value="{Customer>/createCRCustomerData/gen_adcp/building}" maxLength="40" editable="{App>/edit}"/>
 				<Label text="Floor"/>
-				<Input value="{Customer>/gen_adcp/roomnumber}" maxLength="10" editable="{App>/edit}"/>
+				<Input value="{Customer>/createCRCustomerData/gen_adcp/roomnumber}" maxLength="10" editable="{App>/edit}"/>
 				<Label text="Building"/>
-				<Input value="{Customer>/gen_adcp/building}" maxLength="10" editable="{App>/edit}"/>
+				<Input value="{Customer>/createCRCustomerData/gen_adcp/building}" maxLength="10" editable="{App>/edit}"/>
 				<core:Title text="Communication"/>
 				<Label text="Communication Method"/>
-				<ComboBox selectedKey="{Customer>/gen_adcp/deflt_comm}" editable="{App>/edit}"></ComboBox>
+				<ComboBox items="{Dropdowns>/TSAC}" selectedKey="{Customer>/createCRCustomerData/gen_adcp/deflt_comm}" editable="{App>/edit}">
+					<items>
+						<core:Item text="{Dropdowns>comm_TYPE}" key="{Dropdowns>comm_TEXT}"/>
+					</items>
+				</ComboBox>
 			</form:content>
 		</form:SimpleForm>
 		<Table items="{Customer>/addCompanyCodeRows}">
@@ -166,7 +170,7 @@
 				<Toolbar>
 					<Title text="Workplace Phone Numbers"/>
 					<ToolbarSpacer></ToolbarSpacer>
-					<Button text="Add" press="onAddCompanyCode" visible="{App>/edit}"></Button>
+					<Button text="Add" press="onAddCompanyCode" type="Emphasized" visible="{App>/edit}"></Button>
 				</Toolbar>
 			</headerToolbar>
 			<columns>
@@ -222,7 +226,7 @@
 				<Toolbar>
 					<Title text="Workplace Mobile Phone Numbers"/>
 					<ToolbarSpacer></ToolbarSpacer>
-					<Button text="Add" press="onAddCompanyCode" visible="{App>/edit}"></Button>
+					<Button text="Add" press="onAddCompanyCode" type="Emphasized" visible="{App>/edit}"></Button>
 				</Toolbar>
 			</headerToolbar>
 			<columns>
@@ -272,7 +276,7 @@
 				<Toolbar>
 					<Title text="Workplace Fax Numbers"/>
 					<ToolbarSpacer></ToolbarSpacer>
-					<Button text="Add" press="onAddCompanyCode" visible="{App>/edit}"></Button>
+					<Button text="Add" press="onAddCompanyCode" type="Emphasized" visible="{App>/edit}"></Button>
 				</Toolbar>
 			</headerToolbar>
 			<columns>
@@ -328,7 +332,7 @@
 				<Toolbar>
 					<Title text="Workplace Email Address"/>
 					<ToolbarSpacer></ToolbarSpacer>
-					<Button text="Add" press="onAddCompanyCode" visible="{App>/edit}"></Button>
+					<Button text="Add" press="onAddCompanyCode" type="Emphasized" visible="{App>/edit}"></Button>
 				</Toolbar>
 			</headerToolbar>
 			<columns>
@@ -372,7 +376,7 @@
 				<Toolbar>
 					<Title text="Workplace Websites"/>
 					<ToolbarSpacer></ToolbarSpacer>
-					<Button text="Add" press="onAddCompanyCode" visible="{App>/edit}"></Button>
+					<Button text="Add" press="onAddCompanyCode" type="Emphasized" visible="{App>/edit}"></Button>
 				</Toolbar>
 			</headerToolbar>
 			<columns>

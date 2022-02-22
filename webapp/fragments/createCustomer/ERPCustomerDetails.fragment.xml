@@ -1,6 +1,6 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout">
-	<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
-		adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
+	<form:SimpleForm id="idErpCustDetails" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+		labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
 		singleContainerFullSize="false">
 		<form:content>
 			<core:Title text="Administrative Data"/>
@@ -33,9 +33,10 @@
 			<Label text="Legal Name (Name4)"/>
 			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/name4}" maxLength="35" editable="{App>/edit}"/>
 			<Label text="Natural person"/>
-			<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
+			<CheckBox select="onSelectCheckBox" selected="{= ${Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/stkzn} === 'X'}"
+				editable="{App>/edit}">
 				<customData>
-					<core:CustomData key="/cust_kna1/stkzn" value="X"></core:CustomData>
+					<core:CustomData key="Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/stkzn"></core:CustomData>
 				</customData>
 			</CheckBox>
 			<Label text="Search Terms"/>
@@ -109,7 +110,7 @@
 			</Input>
 			<core:Title text="Address"/>
 			<Label text="Street / House No."/>
-			<Input required="ture" width="100%" value="{Customer>/createCRCustomerData/gen_adrc/street}" maxLength="60" editable="{App>/edit}"/>
+			<Input required="true" width="100%" value="{Customer>/createCRCustomerData/gen_adrc/street}" maxLength="60" editable="{App>/edit}"/>
 			<Input required="true" width="100%" value="{Customer>/createCRCustomerData/gen_adrc/house_num1}" maxLength="10" editable="{App>/edit}">
 				<layoutData>
 					<l:GridData span="XL2 L3 M3 S4"/>
@@ -174,9 +175,9 @@
 			<Input liveChange="handleERPPOBOXPostalCode" value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/po_box}"
 				maxLength="10" editable="{App>/edit}"/>
 			<Label text="PO Box Without No."/>
-			<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
+			<CheckBox select="onSelectCheckBox" selected="{= ${Customer>/createCRCustomerData/gen_adrc/stkzn} === 'X'}" editable="{App>/edit}">
 				<customData>
-					<core:CustomData key="/gen_adrc/gen_adrc_1/po_box_num" value="X"></core:CustomData>
+					<core:CustomData key="Customer>/createCRCustomerData/gen_adrc/stkzn"></core:CustomData>
 				</customData>
 			</CheckBox>
 			<Label text="Company Postal Code"/>

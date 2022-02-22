@@ -77,7 +77,11 @@
 				<Label text="Reference Details"/>
 				<Input value="{Customer>/createCRCustomerData/cust_knbk/bkref}" maxLength="20" editable="{App>/edit}"/>
 				<Label text="Collection Authorization"/>
-				<CheckBox/>
+				<CheckBox select="onSelectCheckBox" selected="{= ${Customer>/createCRCustomerData/cust_knbk/xezer} === 'X'}" editable="{App>/eidt}">
+					<customData>
+						<core:CustomData key="Customer>/createCRCustomerData/cust_knbk/xezer"></core:CustomData>
+					</customData>
+				</CheckBox>
 				<core:Title text="Bank Data"/>
 				<Label text="Bank Country"/>
 				<ComboBox items="{Dropdowns>/T005}" selectedKey="{Customer>/createCRCustomerData/gen_bnka/banks}" editable="{App>/edit}">

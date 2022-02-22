@@ -90,9 +90,9 @@
 				<Input liveChange="handleERPPOBOXPostalCode" value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/po_box}"
 					maxLength="10" editable="{App>/edit}"/>
 				<Label text="PO Box Without No."/>
-				<CheckBox select="onSelectCheckBox">
+				<CheckBox select="onSelectCheckBox" selected="{= ${Customer>/createCRCustomerData/gen_adrc/po_box_num} === 'X'}">
 					<customData>
-						<core:CustomData key="/gen_adrc/gen_adrc_1/po_box_num" value="X"></core:CustomData>
+						<core:CustomData key="Customer>/createCRCustomerData/gen_adrc/po_box_num"></core:CustomData>
 					</customData>
 				</CheckBox>
 				<Label text="Company Postal Code"/>

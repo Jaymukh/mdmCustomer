@@ -35,6 +35,14 @@ sap.ui.define([
 			this.byId("pageContainer").to("SearchCust");
 		},
 
+		onCheckCR: function () {
+			var aForms = ["idChangeReqForm", "idErpCustDetails"],
+				aMessages = [];
+			aForms.forEach(sForm => {
+				aMessages = aMessages.concat(this.checkFormReqFields(sForm).message);
+			});
+		},
+
 		onSaveCR: function (oEvent) {
 			//Check for all mandatory fields
 
@@ -52,7 +60,7 @@ sap.ui.define([
 						"customData": {
 							"cust_kna1": {
 								"entity_id": oCustomerData.createCRCustomerData.formData.parentDTO.customData.cust_kna1.entity_id,
-								"KTOKK": oCustomerData.createCRCustomerData.formData.parentDTO.customData.cust_kna1.ktokd
+								"KTOKD": oCustomerData.createCRCustomerData.formData.parentDTO.customData.cust_kna1.ktokd
 							}
 						}
 					}
@@ -62,7 +70,7 @@ sap.ui.define([
 			this.getView().setBusy(true);
 			this.serviceCall.handleServiceRequest(oObjectKunnr).then((oData) => {
 				//Success Handler for KUNNR Creation
-				var sKunnr = "";
+				var sKunnr = oData.result.customerDTOs[0].customCustomerCustKna1DTO.kunnr;
 				this.saveCustomerWithKunnr(sKunnr);
 			}, (oError) => {
 				//Error Handler for KUNNR Creation
@@ -311,7 +319,12 @@ sap.ui.define([
 			});
 		},
 
-		onSelectCheckBox: function (oEvent) {},
+		onSelectCheckBox: function (oEvent) {
+			var oSource = oEvent.getSource(),
+				sKey = oSource.getCustomData()[0].getKey(),
+				aModel = sKey.split(">");
+			this.getModel(aModel[0]).setProperty(aModel[1], oEvent.getParameter("selected") ? "X" : "");
+		},
 
 		formatCheckErrorMessage: function (sName, sPanel, sSection) {
 			var sMsg = "";
@@ -634,11 +647,15 @@ sap.ui.define([
 		},
 
 		onAddSalesArea: function () {
-			var oCustModel = this.getModel("Customer"),
-				oCustData = oCustModel.getData();
-			oCustData.createCRCustomerData.tableRows.cust_knvv.push(Object.assign({}, oCustData.createCRCustomerData.cust_knvv));
-			oCustData.createCRCustomerData.cust_knvv = Object.assign({}, this.getModel("App").getProperty("/cust_knvv"));
-			oCustData.createCRCustomerData.cust_knvv.entity_id = oCustData.createCRCustomerData.formData.parentDTO.customData.cust_kna1.entity_id;
+			if (this.checkFormReqFields("idSalesAreaForm").bValid) {
+				var oCustModel = this.getModel("Customer"),
+					oCustData = oCustModel.getData();
+				oCustData.createCRCustomerData.tableRows.cust_knvv.push(Object.assign({}, oCustData.createCRCustomerData.cust_knvv));
+				oCustData.createCRCustomerData.cust_knvv = Object.assign({}, this.getModel("App").getProperty("/cust_knvv"));
+				oCustData.createCRCustomerData.cust_knvv.entity_id = oCustData.createCRCustomerData.formData.parentDTO.customData.cust_kna1.entity_id;
+			} else {
+				MessageToast.show("Please Fill Mandatory Fields");
+			}
 		},
 
 		onEditSalesArea: function (oEvent) {
@@ -667,24 +684,36 @@ sap.ui.define([
 		},
 
 		onAddCompCode: function () {
-			var oCustModel = this.getModel("Customer"),
-				oCustData = oCustModel.getData();
-			oCustData.createCRCustomerData.tableRows.cust_knb1.push(Object.assign({}, oCustData.createCRCustomerData.cust_knb1));
-			oCustData.createCRCustomerData.cust_knb1 = Object.assign({}, this.getModel("App").getProperty("/cust_knb1"));
-			oCustData.createCRCustomerData.cust_knb1.entity_id = oCustData.createCRCustomerData.formData.parentDTO.customData.cust_kna1.entity_id;
+			if (this.checkFormReqFields("idCompanyCodeForm").bValid) {
+				var oCustModel = this.getModel("Customer"),
+					oCustData = oCustModel.getData();
+				oCustData.createCRCustomerData.tableRows.cust_knb1.push(Object.assign({}, oCustData.createCRCustomerData.cust_knb1));
+				oCustData.createCRCustomerData.cust_knb1 = Object.assign({}, this.getModel("App").getProperty("/cust_knb1"));
+				oCustData.createCRCustomerData.cust_knb1.entity_id = oCustData.createCRCustomerData.formData.parentDTO.customData.cust_kna1.entity_id;
+				this.dunningAreaFilter("");
+				this.taxTypeFilter("");
+			} else {
+				MessageToast.show("Please Fill All Required Fields");
+			}
 		},
 
 		onEditCompCode: function (oEvent) {
-			var sPath = oEvent.getSource().getBindingContext("Customer").getPath(),
-				oCompCode = oEvent.getSource().getBindingContext("Customer").getObject(),
-				oCustomerModel = this.getView().getModel("Customer"),
-				oCustData = oCustomerModel.getData(),
-				iIndex = Number(sPath.replace("/createCRCustomerData/tableRows/cust_knb1/", ""));
-			if (iIndex > -1) {
-				oCustData.createCRCustomerData.tableRows.cust_knb1.splice(iIndex, 1);
-				oCustData.createCRCustomerData.cust_knb1 = Object.assign({}, oCompCode);
+			if (this.checkFormReqFields("idCompanyCodeForm").bValid) {
+				var sPath = oEvent.getSource().getBindingContext("Customer").getPath(),
+					oCompCode = oEvent.getSource().getBindingContext("Customer").getObject(),
+					oCustomerModel = this.getView().getModel("Customer"),
+					oCustData = oCustomerModel.getData(),
+					iIndex = Number(sPath.replace("/createCRCustomerData/tableRows/cust_knb1/", ""));
+				if (iIndex > -1) {
+					oCustData.createCRCustomerData.tableRows.cust_knb1.splice(iIndex, 1);
+					oCustData.createCRCustomerData.cust_knb1 = Object.assign({}, oCompCode);
 
-				oCustomerModel.setData(oCustData);
+					oCustomerModel.setData(oCustData);
+					this.dunningAreaFilter(oCustData.createCRCustomerData.cust_knb1.bukrs);
+					this.taxTypeFilter(oCustData.createCRCustomerData.cust_knb1.bukrs);
+				}
+			} else {
+				MessageToast.show("Please Fill All Required Fields");
 			}
 		},
 
@@ -696,6 +725,8 @@ sap.ui.define([
 			if (iIndex > -1) {
 				oCustData.createCRCustomerData.tableRows.cust_knb1.splice(iIndex, 1);
 				oCustomerModel.setData(oCustData);
+				this.dunningAreaFilter(oCustData.createCRCustomerData.cust_knb1.bukrs);
+				this.taxTypeFilter(oCustData.createCRCustomerData.cust_knb1.bukrs);
 			}
 		},
 
@@ -730,6 +761,100 @@ sap.ui.define([
 				oCustData.createCRCustomerData.tableRows.gen_knvk.splice(iIndex, 1);
 				oCustomerModel.setData(oCustData);
 			}
+		},
+
+		onAddWithholdingTypes: function () {
+			var oCustModel = this.getModel("Customer"),
+				oCustData = oCustModel.getData();
+
+			oCustData.createCRCustomerData.cust_knbw.bukrs = oCustData.createCRCustomerData.cust_knb1.bukrs;
+			oCustData.createCRCustomerData.tableRows.cust_knbw.push(Object.assign({}, oCustData.createCRCustomerData.cust_knbw));
+			oCustData.createCRCustomerData.cust_knbw = Object.assign({}, this.getModel("App").getProperty("/cust_knbw"));
+			oCustData.createCRCustomerData.cust_knbw.entity_id = oCustData.createCRCustomerData.formData.parentDTO.customData.cust_kna1.entity_id;
+
+			//Apply filters to show only company code related records
+			this.taxTypeFilter(oCustData.createCRCustomerData.cust_knb1.bukrs);
+		},
+
+		onEditWithholdingTypes: function (oEvent) {
+			var sPath = oEvent.getSource().getBindingContext("Customer").getPath(),
+				oTaxType = oEvent.getSource().getBindingContext("Customer").getObject(),
+				oCustomerModel = this.getView().getModel("Customer"),
+				oCustData = oCustomerModel.getData(),
+				iIndex = Number(sPath.replace("/createCRCustomerData/tableRows/cust_knbw/", ""));
+			if (iIndex > -1) {
+				oCustData.createCRCustomerData.tableRows.cust_knbw.splice(iIndex, 1);
+				oCustData.createCRCustomerData.cust_knbw = Object.assign({}, oTaxType);
+				oCustomerModel.setData(oCustData);
+			}
+			//Apply filters to show only company code related records
+			this.taxTypeFilter(oCustData.createCRCustomerData.cust_knb1.bukrs);
+		},
+
+		onDeleteWithholdingTypes: function (oEvent) {
+			var sPath = oEvent.getSource().getBindingContext("Customer").getPath(),
+				oCustomerModel = this.getView().getModel("Customer"),
+				oCustData = oCustomerModel.getData(),
+				iIndex = Number(sPath.replace("/createCRCustomerData/tableRows/cust_knbw/", ""));
+			if (iIndex > -1) {
+				oCustData.createCRCustomerData.tableRows.cust_knbw.splice(iIndex, 1);
+				oCustomerModel.setData(oCustData);
+			}
+			//Apply filters to show only company code related records
+			this.taxTypeFilter(oCustData.createCRCustomerData.cust_knb1.bukrs);
+		},
+
+		taxTypeFilter: function (sBukrs) {
+			var oTable = this.byId("idTaxTypesTable"),
+				oBinding = oTable.getBinding("items");
+			oBinding.filter([new Filter("bukrs", FilterOperator.EQ, sBukrs)]);
+		},
+
+		onAddDunningArea: function () {
+			var oCustModel = this.getModel("Customer"),
+				oCustData = oCustModel.getData();
+
+			oCustData.createCRCustomerData.cust_knb5.bukrs = oCustData.createCRCustomerData.cust_knb1.bukrs;
+			oCustData.createCRCustomerData.tableRows.cust_knb5.push(Object.assign({}, oCustData.createCRCustomerData.cust_knb5));
+			oCustData.createCRCustomerData.cust_knb5 = Object.assign({}, this.getModel("App").getProperty("/cust_knb5"));
+			oCustData.createCRCustomerData.cust_knb5.entity_id = oCustData.createCRCustomerData.formData.parentDTO.customData.cust_kna1.entity_id;
+
+			//Apply filters to show only company code related records
+			this.dunningAreaFilter(oCustData.createCRCustomerData.cust_knb1.bukrs);
+		},
+
+		onEditDunningArea: function (oEvent) {
+			var sPath = oEvent.getSource().getBindingContext("Customer").getPath(),
+				oDunningArea = oEvent.getSource().getBindingContext("Customer").getObject(),
+				oCustomerModel = this.getView().getModel("Customer"),
+				oCustData = oCustomerModel.getData(),
+				iIndex = Number(sPath.replace("/createCRCustomerData/tableRows/cust_knb5/", ""));
+			if (iIndex > -1) {
+				oCustData.createCRCustomerData.tableRows.cust_knbw.splice(iIndex, 1);
+				oCustData.createCRCustomerData.cust_knb5 = Object.assign({}, oDunningArea);
+				oCustomerModel.setData(oCustData);
+			}
+			//Apply filters to show only company code related records
+			this.dunningAreaFilter(oCustData.createCRCustomerData.cust_knb1.bukrs);
+		},
+
+		onDeleteDunningArea: function (oEvent) {
+			var sPath = oEvent.getSource().getBindingContext("Customer").getPath(),
+				oCustomerModel = this.getView().getModel("Customer"),
+				oCustData = oCustomerModel.getData(),
+				iIndex = Number(sPath.replace("/createCRCustomerData/tableRows/cust_knb5/", ""));
+			if (iIndex > -1) {
+				oCustData.createCRCustomerData.tableRows.cust_knb5.splice(iIndex, 1);
+				oCustomerModel.setData(oCustData);
+			}
+			//Apply filters to show only company code related records
+			this.dunningAreaFilter(oCustData.createCRCustomerData.cust_knb1.bukrs);
+		},
+
+		dunningAreaFilter: function (sBukrs) {
+			var oTable = this.byId("idDunningTable"),
+				oBinding = oTable.getBinding("items");
+			oBinding.filter([new Filter("bukrs", FilterOperator.EQ, sBukrs)]);
 		}
 
 	});

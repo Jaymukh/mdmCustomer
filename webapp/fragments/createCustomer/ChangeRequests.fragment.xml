@@ -1,6 +1,6 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout">
-	<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
-		adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
+	<form:SimpleForm id="idChangeReqForm" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+		labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
 		singleContainerFullSize="false">
 		<form:content>
 			<core:Title text="General Data"/>
@@ -9,21 +9,22 @@
 				value="{ parts: [ 'Customer>/createCRCustomerData/crID', 'Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/entity_id'], formatter: '.formatCR_Entiry_ID' }"
 				editable="false"/>
 			<Label text="Description"/>
-			<TextArea value="{Customer>/changeReq/genData/desc}"/>
+			<TextArea required="true" value="{Customer>/changeReq/genData/desc}"/>
 			<Label text="Priority"/>
-			<ComboBox required="true" selectedKey="{Customer>/changeReq/genData/priority}" items="{Dropdowns>/TAXONOMY/CR_PRIORITY}"
-				editable="{App>/edit}">
+			<ComboBox selectedKey="{Customer>/changeReq/genData/priority}" showSecondaryValues="true"
+				items="{path:'Dropdowns>/TAXONOMY',filters : [{ path : 'taxonomyType', operator : 'EQ', value1 : 'CR_PRIORITY' }]}" editable="{App>/edit}">
 				<items>
-					<core:Item text="{Dropdowns>taxonomy_name}" key="{Dropdowns>taxonomy_code}"/>
+					<core:ListItem key="{Dropdowns>taxonomyId}" additionalText="{Dropdowns>taxonomyId}" text="{Dropdowns>taxonomyName}"/>
 				</items>
 			</ComboBox>
 			<Label text="Due Date"/>
 			<DatePicker displayFormat="{App>/dateFormat}" valueFormat="{App>/dateValueFormat}" value="{Customer>/changeReq/genData/dueDate}"/>
 			<Label text="Reason"/>
-			<ComboBox editable="{App>/edit}" selectedKey="{Customer>/changeReq/genData/reason}" showSecondaryValues="true"
-				items="{Dropdowns>/TAXONOMY/CR_CHANGE_REQ_TYPE}">
+			<ComboBox required="true" selectedKey="{Customer>/changeReq/genData/reason}" showSecondaryValues="true"
+				items="{path:'Dropdowns>/TAXONOMY',filters : [{ path : 'taxonomyType', operator : 'EQ', value1 : 'CUSTOMER_CR_REASON' }]}"
+				editable="{App>/edit}">
 				<items>
-					<core:ListItem text="{Dropdowns>taxonomy_name}" additionalText="{Dropdowns>taxonomy_id}" key="{Dropdowns>taxonomy_id}"/>
+					<core:ListItem key="{Dropdowns>taxonomyId}" additionalText="{Dropdowns>taxonomyId}" text="{Dropdowns>taxonomyName}"/>
 				</items>
 			</ComboBox>
 			<core:Title text="Process Data"/>

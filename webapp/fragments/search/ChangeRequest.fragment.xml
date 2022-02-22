@@ -10,12 +10,12 @@
 						<Label id="idAllChangeRequest" text="All Change Request({ChangeRequestsModel>/TotalCount})" design="Bold"></Label>
 						<ToolbarSpacer/>
 						<Button icon="sap-icon://sort" tooltip="Sort Change Requests" press="onSortChangeReq"/>
-						<SegmentedButton selectionChange="onGetCRListbyUser" selectedKey="{ChangeRequestsModel>/ReqType}">
+						<!--<SegmentedButton selectionChange="onGetCRListbyUser" selectedKey="{ChangeRequestsModel>/ReqType}">
 							<items>
 								<SegmentedButtonItem text="All Change Request" key="ALL_REQ"/>
 								<SegmentedButtonItem text="My Change Request" key="MY_REQ"/>
 							</items>
-						</SegmentedButton>
+						</SegmentedButton>-->
 						<Label text="Page No."/>
 						<Select forceSelection="true" items="{ChangeRequestsModel>/PageData}" selectedKey="{ChangeRequestsModel>/SelectedPageKey}"
 							change="onSelectChnageReqPage">

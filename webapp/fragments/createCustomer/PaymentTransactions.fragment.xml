@@ -26,9 +26,10 @@
 			</Input>
 			<core:Title text="alternative payer"/>
 			<Label text="Alternative Payer in Document"/>
-			<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
+			<CheckBox select="onSelectCheckBox" selected="{= ${Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/xzemp} === 'X'}"
+				editable="{App>/edit}">
 				<customData>
-					<core:CustomData key="/cust_kna1/xzemp" value="X"></core:CustomData>
+					<core:CustomData key="Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/xzemp"></core:CustomData>
 				</customData>
 			</CheckBox>
 			<Label text="Alternative Payer"/>

@@ -53,27 +53,31 @@
 			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/j_1kfrepre}" maxLength="10" editable="{App>/edit}"/>
 			<core:Title text=""/>
 			<Label text="Sales Equalization Tax"/>
-			<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
+			<CheckBox select="onSelectCheckBox" selected="{= ${Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/stkza} === 'X'}"
+				editable="{App>/edit}">
 				<customData>
-					<core:CustomData key="/cust_kna1/stkza" value="X"></core:CustomData>
+					<core:CustomData key="Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/stkza"></core:CustomData>
 				</customData>
 			</CheckBox>
 			<Label text="Liable for VAT"/>
-			<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
+			<CheckBox select="onSelectCheckBox" selected="{= ${Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/stkzu} === 'X'}"
+				editable="{App>/edit}">
 				<customData>
-					<core:CustomData key="/cust_kna1/stkzu" value="X"></core:CustomData>
+					<core:CustomData key="Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/stkzu" ></core:CustomData>
 				</customData>
 			</CheckBox>
 			<Label text="ICMS-Exempt"/>
-			<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
+			<CheckBox select="onSelectCheckBox" selected="{= ${Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/xicms} === 'X'}"
+				editable="{App>/edit}">
 				<customData>
-					<core:CustomData key="/cust_kna1/xicms" value="X"></core:CustomData>
+					<core:CustomData key="Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/xicms" ></core:CustomData>
 				</customData>
 			</CheckBox>
 			<Label text="IPI-Exempt"/>
-			<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
+			<CheckBox select="onSelectCheckBox" selected="{= ${Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/xxipi} === 'X'}"
+				editable="{App>/edit}">
 				<customData>
-					<core:CustomData key="/cust_kna1/xxipi" value="X"></core:CustomData>
+					<core:CustomData key="Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/xxipi" ></core:CustomData>
 				</customData>
 			</CheckBox>
 			<Label text="CFOP Category"/>

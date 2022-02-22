@@ -61,8 +61,8 @@
 				</ColumnListItem>
 			</items>
 		</Table>
-		<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
-			adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
+		<form:SimpleForm id="idSalesAreaForm" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+			labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
 			singleContainerFullSize="false">
 			<form:content>
 				<core:Title text="Customer Sales Area"/>
@@ -167,9 +167,9 @@
 					</customData>
 				</Input>
 				<Label text="Switch off Rounding"/>
-				<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
+				<CheckBox select="onSelectCheckBox" selected="{Customer>/createCRCustomerData/cust_knvv/rdoff}" editable="{App>/edit}">
 					<customData>
-						<core:CustomData key="/cust_knvv/rdoff" value="X"></core:CustomData>
+						<core:CustomData key="Customer>/createCRCustomerData/cust_knvv/rdoff"></core:CustomData>
 					</customData>
 				</CheckBox>
 				<core:Title/>
@@ -253,16 +253,16 @@
 				</Input>
 				<core:Title text="Agency Business"/>
 				<Label text="Authority"/>
-				<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
+				<CheckBox select="onSelectCheckBox" selected="{= ${Customer>/createCRCustomerData/cust_knvv/parvo} === 'X'}" editable="{App>/edit}">
 					<customData>
-						<core:CustomData key="/cust_knvv/" value="X"></core:CustomData>
+						<core:CustomData key="Customer>/createCRCustomerData/cust_knvv/parvo"></core:CustomData>
 					</customData>
 				</CheckBox>
 				<core:Title/>
 				<Label text="Document Index Active"/>
-				<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
+				<CheckBox select="onSelectCheckBox" selected="{= ${Customer>/createCRCustomerData/cust_knvv/blind} === 'X'}" editable="{App>/edit}">
 					<customData>
-						<core:CustomData key="/cust_knvv/blind" value="X"></core:CustomData>
+						<core:CustomData key="Customer>/createCRCustomerData/cust_knvv/blind"></core:CustomData>
 					</customData>
 				</CheckBox>
 				<core:Title text="Shipping"/>
@@ -304,24 +304,24 @@
 				</Input>
 				<core:Title/>
 				<Label text="Order Combination"/>
-				<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
+				<CheckBox select="onSelectCheckBox" selected="{= ${Customer>/createCRCustomerData/cust_knvv/kzazu} === 'X'}" editable="{App>/edit}">
 					<customData>
-						<core:CustomData key="/cust_knvv/kzazu" value="X"></core:CustomData>
+						<core:CustomData key="Customer>/createCRCustomerData/cust_knvv/kzazu"></core:CustomData>
 					</customData>
 				</CheckBox>
 				<Label text="Relevant for POD"/>
-				<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
+				<CheckBox select="onSelectCheckBox" selected="{= ${Customer>/createCRCustomerData/cust_knvv/podkz} === 'X'}" editable="{App>/edit}">
 					<customData>
-						<core:CustomData key="/cust_knvv/podkz" value="X"></core:CustomData>
+						<core:CustomData key="Customer>/createCRCustomerData/cust_knvv/podkz"></core:CustomData>
 					</customData>
 				</CheckBox>
 				<Label text="POD Timeframe"/>
 				<Input value="{Customer>/createCRCustomerData/cust_knvv/podtg}" maxLength="1" editable="{App>/edit}"/>
 				<core:Title text="Partial Deliveries"/>
 				<Label text="Complete Delivery"/>
-				<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
+				<CheckBox select="onSelectCheckBox" selected="{= ${Customer>/createCRCustomerData/cust_knvv/autlf} === 'X'}" editable="{App>/edit}">
 					<customData>
-						<core:CustomData key="/cust_knvv/autlf" value="X"></core:CustomData>
+						<core:CustomData key="Customer>/createCRCustomerData/cust_knvv/autlf"></core:CustomData>
 					</customData>
 				</CheckBox>
 				<Label text="Partial Delivery per Item"/>
@@ -338,9 +338,9 @@
 				<Input value="{Customer>/createCRCustomerData/cust_knvv/antlf}" maxLength="1" editable="{App>/edit}"/>
 				<core:Title/>
 				<Label text="Unlimited Tolerance"/>
-				<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
+				<CheckBox select="onSelectCheckBox" selected="{= ${Customer>/createCRCustomerData/cust_knvv/uebtk} === 'X'}" editable="{App>/edit}">
 					<customData>
-						<core:CustomData key="/cust_knvv/uebtk" value="X"></core:CustomData>
+						<core:CustomData key="Customer>/createCRCustomerData/cust_knvv/uebtk"></core:CustomData>
 					</customData>
 				</CheckBox>
 				<Label text="Underdelivery Tolerance"/>
@@ -349,9 +349,9 @@
 				<Input value="{Customer>/createCRCustomerData/cust_knvv/uebto}" maxLength="3" editable="{App>/edit}"/>
 				<core:Title text="Billing Document"/>
 				<Label text="Manual Invoice Maintenance"/>
-				<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
+				<CheckBox select="onSelectCheckBox" selected="{= ${Customer>/createCRCustomerData/cust_knvv/mrnkz} === 'X'}" editable="{App>/edit}">
 					<customData>
-						<core:CustomData key="/cust_knvv/mrnkz" value="X"></core:CustomData>
+						<core:CustomData key="Customer>/createCRCustomerData/cust_knvv/mrnkz"></core:CustomData>
 					</customData>
 				</CheckBox>
 				<Label text="Invoicing Dates"/>
@@ -380,15 +380,15 @@
 				</Input>
 				<core:Title/>
 				<Label text="Price Determination"/>
-				<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
+				<CheckBox select="onSelectCheckBox" selected="{= ${Customer>/createCRCustomerData/cust_knvv/prfre} === 'X'}" editable="{App>/edit}">
 					<customData>
-						<core:CustomData key="/cust_knvv/prfre" value="X"></core:CustomData>
+						<core:CustomData key="Customer>/createCRCustomerData/cust_knvv/prfre"></core:CustomData>
 					</customData>
 				</CheckBox>
 				<Label text="Rebate"/>
-				<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
+				<CheckBox select="onSelectCheckBox" selected="{= ${Customer>/createCRCustomerData/cust_knvv/bokre} === 'X'}" editable="{App>/edit}">
 					<customData>
-						<core:CustomData key="/cust_knvv/bokre" value="X"></core:CustomData>
+						<core:CustomData key="Customer>/createCRCustomerData/cust_knvv/bokre"></core:CustomData>
 					</customData>
 				</CheckBox>
 				<core:Title text="Delivery and Payment Terms"/>
@@ -465,10 +465,10 @@
 				</ComboBox>
 			</form:content>
 		</form:SimpleForm>
-		<Table items="{Customer>/addCompanyCodeRows}">
+		<!--<Table items="{Customer>/addCompanyCodeRows}">
 			<headerToolbar>
 				<Toolbar>
-					<Title text="ERP Customer Sales Area"/>
+					<Title text="Partner Functions"/>
 					<ToolbarSpacer></ToolbarSpacer>
 					<Button text="Add" press="onAddCompanyCode" visible="{App>/edit}" enabled="false"></Button>
 				</Toolbar>
@@ -528,8 +528,9 @@
 					</cells>
 				</ColumnListItem>
 			</items>
-		</Table>
-		<Table items="{Customer>/addCompanyCodeRows}">
+		</Table>-->
+		<!--Use Maintable for Tax Indicators-->
+		<!--<Table items="{Customer>/addCompanyCodeRows}">
 			<headerToolbar>
 				<Toolbar>
 					<Title text="Tax Indicators"/>
@@ -582,6 +583,6 @@
 					</cells>
 				</ColumnListItem>
 			</items>
-		</Table>
+		</Table>-->
 	</VBox>
 </core:FragmentDefinition>

@@ -72,7 +72,7 @@ sap.ui.define([
 					}, this);
 
 					oChangeRequest.genData.change_request_id = 50001;
-					oChangeRequest.genData.reason = "30001";
+					oChangeRequest.genData.reason = "";
 					oChangeRequest.genData.timeCreation = oDate.getHours() + ":" + (sMinutes < 10 ? "0" + sMinutes : sMinutes);
 					oChangeRequest.genData.dateCreation = oDate.getFullYear() + "-" + (sMonth < 10 ? "0" + sMonth : sMonth) + "-" + oDate.getDate();
 					oChangeRequest.genData.change_request_by = oBusinessEntity.hasOwnProperty("created_by") ? oBusinessEntity.created_by : {};
@@ -123,8 +123,13 @@ sap.ui.define([
 			this.getView().setBusy(true);
 			this.serviceCall.handleServiceRequest(objParam).then(function (oData) {
 				if (oData.result.currentPage === 1) {
-					var aPageJson = [];
-					for (var i = 0; i < oData.result.totalPageCount; i++) {
+					var aPageJson = [],
+						iTotalPage = oData.result.totalPageCount;
+
+					if (oData.result.totalPageCount === 0) {
+						iTotalPage = oData.result.maxPageSize > 0 ? Math.ceil(oData.result.totalCount / oData.result.maxPageSize) : 1;
+					}
+					for (var i = 0; i < iTotalPage; i++) {
 						aPageJson.push({
 							key: i + 1,
 							text: i + 1
@@ -181,48 +186,35 @@ sap.ui.define([
 				sUserId = this.getView().getModel("userManagementModel").getProperty("/data/user_id"),
 				oFilters = {},
 				oFinalPayload = {};
-			if (oCRSearchData.ReqType === "ALL_REQ") {
-				oCRSearchData.DateFrom = oCRSearchData.DateFrom ? oCRSearchData.DateFrom : new Date(0);
-				oCRSearchData.DateTo = oCRSearchData.DateTo ? oCRSearchData.DateTo : new Date();
-				oFilters.dateRangeFrom =
-					`${oCRSearchData.DateFrom.getFullYear()}-${("0" + (oCRSearchData.DateFrom.getMonth() + 1) ).slice(-2)}-${("0" + oCRSearchData.DateFrom.getDate()).slice(-2)}`;
-				oFilters.dateRangeTo =
-					`${oCRSearchData.DateTo.getFullYear()}-${("0" + (oCRSearchData.DateTo.getMonth() + 1) ).slice(-2)}-${("0" + oCRSearchData.DateTo.getDate()).slice(-2)}`;
-
-				oFilters.createdBy = oCRSearchData.Show === "01" ? "" : sUserId;
-				oFilters.isClaimed = oCRSearchData.Show === "01" || oCRSearchData.Show === "02" ? "" : true;
-				oFilters.isCrClosed = oCRSearchData.Show === "04" ? true : oCRSearchData.Show === "03" ? false : "";
-				oFilters.approvedEntityId = oCRSearchData.Customer;
-				oFilters.countryCode = oCRSearchData.City;
-				oFilters.companyCode = oCRSearchData.CompanyCode;
-				oFilters.entityType = "CUSTOMER";
-				oFilters.listOfCRSearchCondition = [
-					"GET_CR_BY_ADDRESS",
-					"GET_CR_CREATED_BY_USER_ID",
-					"GET_CR_BY_DATE_RANGE",
-					"GET_CR_BY_ENTITY",
-					"GET_CR_BY_COMPANY_CODE",
-					"GET_CR_PROCESSED_BY_USER_ID"
-				];
-				oFinalPayload = {
-					url: "/murphyCustom/change-request-service/changerequests/changerequest/filters/get",
-					filters: {
-						"crSearchType": "GET_CR_BY_CUSTOMER_FILTERS",
-						"currentPage": nPageNo,
-						"changeRequestSearchDTO": oFilters
-					}
-				};
-			} else {
-				oFinalPayload = {
-					url: "/murphyCustom/change-request-service/changerequests/changerequest/page",
-					filters: {
-						"crSearchType": "GET_ALL_BY_USER_ID",
-						"currentPage": nPageNo,
-						"userId": sUserId
-					}
-				};
-			}
-
+			oCRSearchData.DateFrom = oCRSearchData.DateFrom ? oCRSearchData.DateFrom : new Date(0);
+			oCRSearchData.DateTo = oCRSearchData.DateTo ? oCRSearchData.DateTo : new Date();
+			oFilters.dateRangeFrom =
+				`${oCRSearchData.DateFrom.getFullYear()}-${("0" + (oCRSearchData.DateFrom.getMonth() + 1) ).slice(-2)}-${("0" + oCRSearchData.DateFrom.getDate()).slice(-2)}`;
+			oFilters.dateRangeTo =
+				`${oCRSearchData.DateTo.getFullYear()}-${("0" + (oCRSearchData.DateTo.getMonth() + 1) ).slice(-2)}-${("0" + oCRSearchData.DateTo.getDate()).slice(-2)}`;
+			oFilters.createdBy = oCRSearchData.Show === "01" ? "" : sUserId;
+			oFilters.isClaimed = oCRSearchData.Show === "01" || oCRSearchData.Show === "02" ? "" : true;
+			oFilters.isCrClosed = oCRSearchData.Show === "04" ? true : oCRSearchData.Show === "03" ? false : "";
+			oFilters.approvedEntityId = oCRSearchData.Customer;
+			oFilters.countryCode = oCRSearchData.City;
+			oFilters.companyCode = oCRSearchData.CompanyCode;
+			oFilters.entityType = "CUSTOMER";
+			oFilters.listOfCRSearchCondition = [
+				"GET_CR_BY_ADDRESS",
+				"GET_CR_CREATED_BY_USER_ID",
+				"GET_CR_BY_DATE_RANGE",
+				"GET_CR_BY_ENTITY",
+				"GET_CR_BY_COMPANY_CODE",
+				"GET_CR_PROCESSED_BY_USER_ID"
+			];
+			oFinalPayload = {
+				url: "/murphyCustom/change-request-service/changerequests/changerequest/filters/get",
+				filters: {
+					"crSearchType": "GET_CR_BY_CUSTOMER_FILTERS",
+					"currentPage": nPageNo,
+					"changeRequestSearchDTO": oFilters
+				}
+			};
 			return oFinalPayload;
 		},
 
@@ -611,6 +603,17 @@ sap.ui.define([
 			oAudLogModel.setProperty("/details/ChangeRequestID", oCRObject.crDTO.change_request_id);
 		},
 
+		clearAllButtons: function () {
+			var oAppModel = this.getModel("App");
+			oAppModel.setProperty("/edit", false);
+			oAppModel.setProperty("/editButton", false);
+			oAppModel.setProperty("/saveButton", false);
+			oAppModel.setProperty("/approveButton", false);
+			oAppModel.setProperty("/rejectButton", false);
+			oAppModel.setProperty("/submitButton", false);
+			oAppModel.setProperty("/previousPage", null);
+		},
+
 		formatCR_Entiry_ID: function (sCRId, sEntityID) {
 			var sID = "";
 			if (sCRId) {
@@ -647,7 +650,40 @@ sap.ui.define([
 			return oFilterValues;
 		},
 
+		checkFormReqFields: function (sFormId) {
+			var oForm = this.byId(sFormId),
+				bValid = true,
+				aMessages = [];
+			oForm.getContent().forEach(oItem => {
+				var sClass = oItem.getMetadata().getName();
+				if (sClass === "sap.m.Input" || sClass === "sap.m.ComboBox" || sClass === "sap.m.TextArea") {
+					if (oItem.getRequired()) {
+						var sValue = "";
+						switch (sClass) {
+						case "sap.m.Input":
+						case "sap.m.TextArea":
+							sValue = oItem.getValue();
+							break;
+						case "sap.m.ComboBox":
+							sValue = oItem.getSelectedKey();
+							break;
+						}
+						oItem.setValueState(sValue ? "None" : "Error");
+						if (!sValue && oItem.getLabels().length) {
+							aMessages.push(`Please Enter a Value for ${oItem.getLabels()[0].getText()}`);
+						}
+						bValid = bValid && sValue ? true : false;
+					}
+				}
+			});
+			return {
+				bValid: bValid,
+				message: aMessages
+			};
+		},
+
 		getDropDownData: function () {
+			this.getModel("Dropdowns").setSizeLimit(100000);
 			var aDropDowns = ["TAXONOMY", //Multiple values 
 				"T077D", //Account Group
 				"TSAD3", //Title,
@@ -664,7 +700,9 @@ sap.ui.define([
 				"vw_t008", //Payment Block
 				"vw_tzgr", //Grouping Key
 				"vw_t053v",
-				"vw_t053a" //ReasonCode Revision
+				"vw_t053a", //ReasonCode Revision
+				"TSAC", //Communication Method
+				"T001" //Company Codes
 			];
 			aDropDowns.forEach(function (sValue) {
 				this.getDropdownTableData(sValue);
@@ -683,7 +721,7 @@ sap.ui.define([
 					"maxResults": 500
 				}),
 				success: function (oData) {
-					this.getModel("Dropdowns").setProperty("/" + sValue, sValue === "TAXONOMY" ? oData.result.modelMap[0] : oData.result.modelMap);
+					this.getModel("Dropdowns").setProperty("/" + sValue, oData.result.modelMap);
 				}.bind(this)
 			});
 		}

@@ -1,26 +1,10 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout">
 	<VBox>
-		<Table items="{Customer>/addCompanyCodeRows}">
-			<headerToolbar>
-				<Toolbar>
-					<ToolbarSpacer></ToolbarSpacer>
-					<Button text="Add" press="onAddCompanyCode" enabled="false" type="Emphasized" visible="{App>/edit}"></Button>
-				</Toolbar>
-			</headerToolbar>
+		<Table items="{Customer>/createCRCustomerData/tableRows/cust_knvi}">
 			<columns>
 				<Column>
 					<header>
-						<Label text="Actions" design="Bold"></Label>
-					</header>
-				</Column>
-				<Column>
-					<header>
 						<Label text="Country" design="Bold"></Label>
-					</header>
-				</Column>
-				<Column>
-					<header>
-						<Label text="Country Description" design="Bold"></Label>
 					</header>
 				</Column>
 				<Column>
@@ -47,13 +31,22 @@
 			<items>
 				<ColumnListItem>
 					<cells>
-						<Text text="{Customer>lfb1/bukrs}"></Text>
-						<Text text="{Customer>lfb1/AKONT}"></Text>
-						<Text text="{Customer>lfb1/bukrs}"></Text>
-						<Text text="{Customer>lfb1/AKONT}"></Text>
-						<Text text="{Customer>lfb1/bukrs}"></Text>
-						<Text text="{Customer>lfb1/AKONT}"></Text>
-						<Text text="{Customer>lfb1/bukrs}"></Text>
+						<ComboBox items="{Dropdowns>/T005}" selectedKey="{Customer>aland}" editable="false">
+							<core:Item key="{Dropdowns>land1}" text="{Dropdowns>landx}"/>
+						</ComboBox>
+						<Text text="{Customer>tatyp}"></Text>
+						<Text text="{Customer>VTEXT}"></Text>
+						<Input value="{Customer>taxkd}" editable="{App>/edit}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true">
+							<customData>
+								<core:CustomData key="title" value="Tax Classification"></core:CustomData>
+								<core:CustomData key="table" value="TSKD"></core:CustomData>
+								<core:CustomData key="inputKey" value="tatyp"></core:CustomData>
+								<core:CustomData key="inputText" value="tatyp"></core:CustomData>
+								<core:CustomData key="tatyp" value="Tax Classification"></core:CustomData>
+								<core:CustomData key="taxkd" value="Description"></core:CustomData>
+							</customData>
+						</Input>
+						<Text text="{Customer>VTEXT}"></Text>
 					</cells>
 				</ColumnListItem>
 			</items>

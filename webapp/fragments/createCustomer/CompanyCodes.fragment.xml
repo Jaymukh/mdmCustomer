@@ -37,29 +37,20 @@
 				</ColumnListItem>
 			</items>
 		</Table>
-		<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
-			adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
+		<form:SimpleForm id="idCompanyCodeForm" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4"
+			labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
 			singleContainerFullSize="false">
 			<form:content>
 				<core:Title text="ERP Customer Company Code"/>
 				<Label text="Company Code"/>
-				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/createCRCustomerData/cust_knb1/bukrs}" maxLength="4"
-					editable="{App>/edit}">
-					<customData>
-						<core:CustomData key="title" value="Company Code"></core:CustomData>
-						<core:CustomData key="table" value="T001"></core:CustomData>
-						<core:CustomData key="bukrs" value="Company code"></core:CustomData>
-						<core:CustomData key="butxt" value="Company Name"></core:CustomData>
-						<core:CustomData key="land1" value="Country"></core:CustomData>
-						<core:CustomData key="waers" value="Currency"></core:CustomData>
-						<core:CustomData key="inputKey" value="bukrs"></core:CustomData>
-						<core:CustomData key="inputText" value="bukrs"></core:CustomData>
-					</customData>
-				</Input>
+				<ComboBox required="true" selectedKey="{Customer>/createCRCustomerData/cust_knb1/bukrs}" items="{Dropdowns>/T001}" editable="{App>/edit}"
+					showSecondaryValues="true">
+					<core:ListItem key="{Dropdowns>bukrs}" text="{Dropdowns>butxt}" additionalText="{Dropdowns>bukrs}"/>
+				</ComboBox>
 				<core:Title text="Accounting Information"/>
 				<Label text="Reconcillation Account"/>
-				<Input value="{Customer>/createCRCustomerData/cust_knb1/akont}" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" maxLength="10"
-					editable="{App>/edit}">
+				<Input required="true" value="{Customer>/createCRCustomerData/cust_knb1/akont}" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" maxLength="10" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Reconcillation Account"></core:CustomData>
 						<core:CustomData key="table" value="vw_skb1"></core:CustomData>
@@ -70,8 +61,8 @@
 					</customData>
 				</Input>
 				<Label text="Head Office"/>
-				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/createCRCustomerData/cust_knb1/knrze}" maxLength="10"
-					editable="{App>/edit}">
+				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
+					value="{Customer>/createCRCustomerData/cust_knb1/knrze}" maxLength="10" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Head Office"></core:CustomData>
 						<core:CustomData key="table" value="KNA1"></core:CustomData>
@@ -85,8 +76,8 @@
 				<Label text="Authorization Group"/>
 				<Input value="{Customer>/createCRCustomerData/cust_knb1/begru}" maxLength="4"/>
 				<Label text="Value Adjustment"/>
-				<Input value="{Customer>/createCRCustomerData/cust_knb1/wbrsl}" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" showValueHelp="true" maxLength="2"
-					editable="{App>/edit}">
+				<Input value="{Customer>/createCRCustomerData/cust_knb1/wbrsl}" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
+					showValueHelp="true" maxLength="2" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Value Adjustmen"></core:CustomData>
 						<core:CustomData key="table" value="T044G"></core:CustomData>
@@ -100,8 +91,8 @@
 					</customData>
 				</Input>
 				<Label text="Sort Key"/>
-				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/createCRCustomerData/cust_knb1/zuawa}" maxLength="3"
-					editable="{App>/edit}">
+				<Input required="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
+					value="{Customer>/createCRCustomerData/cust_knb1/zuawa}" maxLength="3" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Sort Key"></core:CustomData>
 						<core:CustomData key="table" value="TZUN"></core:CustomData>
@@ -112,8 +103,8 @@
 					</customData>
 				</Input>
 				<Label text="Planning Group"/>
-				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/createCRCustomerData/cust_knb1/fdgrv}" maxLength="10"
-					editable="{App>/edit}">
+				<Input required="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
+					value="{Customer>/createCRCustomerData/cust_knb1/fdgrv}" maxLength="10" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Planning Group"></core:CustomData>
 						<core:CustomData key="table" value="T035"></core:CustomData>
@@ -132,8 +123,8 @@
 					editable="{App>/edit}"/>
 				<core:Title text="Intrest Calculation"/>
 				<Label text="Intrest Indicator"/>
-				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/createCRCustomerData/cust_knb1/vzskz}" maxLength="2"
-					editable="{App>/edit}">
+				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
+					value="{Customer>/createCRCustomerData/cust_knb1/vzskz}" maxLength="2" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Intrest Indicator"></core:CustomData>
 						<core:CustomData key="table" value="T056"></core:CustomData>
@@ -170,8 +161,8 @@
 				<Label text="Previous Account Number"/>
 				<Input value="{Customer>/createCRCustomerData/cust_knb1/altkn}" maxLength="10" editable="{App>/edit}"/>
 				<Label text="Buying Group"/>
-				<Input value="{Customer>/createCRCustomerData/cust_knb1/ekvbd}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" maxLength="10"
-					editable="{App>/edit}">
+				<Input value="{Customer>/createCRCustomerData/cust_knb1/ekvbd}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" maxLength="10" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Buying Group"></core:CustomData>
 						<core:CustomData key="table" value="KNA1"></core:CustomData>
@@ -184,8 +175,8 @@
 				<Input value="{Customer>/createCRCustomerData/cust_knb1/pernr}" maxLength="8" editable="{App>/edit}"/>
 				<core:Title text="Payment Data"/>
 				<Label text="Terms of Payment"/>
-				<Input value="{Customer>/createCRCustomerData/cust_knb1/zterm}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" maxLength="4"
-					editable="{App>/edit}">
+				<Input value="{Customer>/createCRCustomerData/cust_knb1/zterm}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" maxLength="4" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Terms of Payment"></core:CustomData>
 						<core:CustomData key="table" value="T052"></core:CustomData>
@@ -196,8 +187,8 @@
 					</customData>
 				</Input>
 				<Label text="Credit Memo Payment Terms"/>
-				<Input value="{Customer>/createCRCustomerData/cust_knb1/guzte}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" maxLength="4"
-					editable="{App>/edit}">
+				<Input value="{Customer>/createCRCustomerData/cust_knb1/guzte}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" maxLength="4" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Payment Terms"></core:CustomData>
 						<core:CustomData key="table" value="T052"></core:CustomData>
@@ -212,8 +203,8 @@
 				<Label text="Check Cashing Time"/>
 				<Input value="{Customer>/createCRCustomerData/cust_knb1/kultg}" maxLength="3" editable="{App>/edit}"/>
 				<Label text="Tolerance Group"/>
-				<Input value="{Customer>/createCRCustomerData/cust_knb1/togru}" maxLength="4" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-					editable="{App>/edit}">
+				<Input value="{Customer>/createCRCustomerData/cust_knb1/togru}" maxLength="4" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Tolerance Group"></core:CustomData>
 						<core:CustomData key="table" value="vw_t043g43g"></core:CustomData>
@@ -226,8 +217,8 @@
 				<Label text="Known/Negotiated Leave"/>
 				<Input value="{Customer>/createCRCustomerData/cust_knb1/urlid}" maxLength="4" editable="{App>/edit}"/>
 				<Label text="AR Pledging Indicator"/>
-				<Input value="{Customer>/createCRCustomerData/cust_knb1/cession_kz}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-					maxLength="2" editable="{App>/edit}">
+				<Input value="{Customer>/createCRCustomerData/cust_knb1/cession_kz}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" maxLength="2" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="AR Pledging Indicator"></core:CustomData>
 						<core:CustomData key="table" value="vw_tcession"></core:CustomData>
@@ -238,15 +229,15 @@
 					</customData>
 				</Input>
 				<Label text="Payment History Record"/>
-				<CheckBox select="onSelectCheckBox" selected="" editable="{App>/edit}">
+				<CheckBox select="onSelectCheckBox" selected="{= ${Customer>/createCRCustomerData/cust_knb1/xzver} === 'X'}" editable="{App>/edit}">
 					<customData>
-						<core:CustomData key="/cust_knb1/xzver" value="X"></core:CustomData>
+						<core:CustomData key="Customer>/createCRCustomerData/cust_knb1/xzver"></core:CustomData>
 					</customData>
 				</CheckBox>
 				<core:Title text="Automatic Payment Transactions"/>
 				<Label text="Alternative Payer"/>
-				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/createCRCustomerData/cust_knb1/knrzb}" maxLength="10"
-					editable="{App>/edit}">
+				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
+					value="{Customer>/createCRCustomerData/cust_knb1/knrzb}" maxLength="10" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Alternative Payer"></core:CustomData>
 						<core:CustomData key="table" value="KNA1"></core:CustomData>
@@ -256,8 +247,8 @@
 					</customData>
 				</Input>
 				<Label text="Payment Methods"/>
-				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/createCRCustomerData/cust_knb1/zwels}" maxLength="10"
-					editable="{App>/edit}">
+				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
+					value="{Customer>/createCRCustomerData/cust_knb1/zwels}" maxLength="10" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Payment Methods"></core:CustomData>
 						<core:CustomData key="table" value="T042Z"></core:CustomData>
@@ -271,8 +262,8 @@
 				<Label text="Bill of Exchange Limit"/>
 				<Input value="{Customer>/createCRCustomerData/cust_knb1/webtr}" maxLength="13" editable="{App>/edit}"/>
 				<Label text="Payment Method Supplement"/>
-				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/createCRCustomerData/cust_knb1/uzawe}" maxLength="2"
-					editable="{App>/edit}">
+				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
+					value="{Customer>/createCRCustomerData/cust_knb1/uzawe}" maxLength="2" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Payment Method Supplement"></core:CustomData>
 						<core:CustomData key="table" value="vw_t042f"></core:CustomData>
@@ -283,8 +274,8 @@
 					</customData>
 				</Input>
 				<Label text="Next Payee"/>
-				<Input value="{Customer>/createCRCustomerData/cust_knb1/remit}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" maxLength="10"
-					editable="{App>/edit}">
+				<Input value="{Customer>/createCRCustomerData/cust_knb1/remit}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" maxLength="10" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Next Payee"></core:CustomData>
 						<core:CustomData key="table" value="KNA1"></core:CustomData>
@@ -294,8 +285,8 @@
 					</customData>
 				</Input>
 				<Label text="Lockbox"/>
-				<Input value="{Customer>/createCRCustomerData/cust_knb1/lockb}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" maxLength="7"
-					editable="{App>/edit}">
+				<Input value="{Customer>/createCRCustomerData/cust_knb1/lockb}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" maxLength="7" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Lockbox"></core:CustomData>
 						<core:CustomData key="table" value="T049L"></core:CustomData>
@@ -311,8 +302,8 @@
 					<core:Item key="{Dropdowns>zahls}" text="{Dropdowns>textl}"/>
 				</ComboBox>
 				<Label text="House Bank"/>
-				<Input value="{Customer>/createCRCustomerData/cust_knb1/hbkid}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" maxLength="5"
-					editable="{App>/edit}">
+				<Input value="{Customer>/createCRCustomerData/cust_knb1/hbkid}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" maxLength="5" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="House Bank"></core:CustomData>
 						<core:CustomData key="table" value="vw_t012"></core:CustomData>
@@ -329,15 +320,15 @@
 					<core:Item key="{Dropdowns>zgrup}" text="{Dropdowns>ttext}"/>
 				</ComboBox>
 				<Label text="Individual Payment"/>
-				<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
+				<CheckBox select="onSelectCheckBox" selected="{= ${Customer>/createCRCustomerData/cust_knb1/xpore} === 'X'}" editable="{App>/eidt}">
 					<customData>
-						<core:CustomData key="/cust_knb1/xpore" value="X"></core:CustomData>
+						<core:CustomData key="Customer>/createCRCustomerData/cust_knb1/xpore"></core:CustomData>
 					</customData>
 				</CheckBox>
 				<Label text="Payment Advice by EDI"/>
-				<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
+				<CheckBox select="onSelectCheckBox" selected="{= ${Customer>/createCRCustomerData/cust_knb1/xedip} === 'X'}" editable="{App>/edit}">
 					<customData>
-						<core:CustomData key="/cust_knb1/xedip" value="X"></core:CustomData>
+						<core:CustomData key="Customer>/createCRCustomerData/cust_knb1/xedip"></core:CustomData>
 					</customData>
 				</CheckBox>
 				<core:Title text="Payment Advice Notes"/>
@@ -365,8 +356,8 @@
 				<Input value="{Customer>/createCRCustomerData/cust_knb1/vrspr}" maxLength="3" editable="{App>/edit}"/>
 				<core:Title text="Correspondance"/>
 				<Label text="Accounting Clerk"/>
-				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" value="{Customer>/createCRCustomerData/cust_knb1/busab}" maxLength="2"
-					editable="{App>/edit}">
+				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
+					value="{Customer>/createCRCustomerData/cust_knb1/busab}" maxLength="2" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Accounting Clerk"></core:CustomData>
 						<core:CustomData key="table" value="T001s"></core:CustomData>
@@ -385,8 +376,8 @@
 				<Label text="Clerk's Telephone No."/>
 				<Input value="{Customer>/createCRCustomerData/cust_knb1/tlfns}" maxLength="30" editable="{App>/edit}"/>
 				<Label text="Account Statement"/>
-				<Input value="{Customer>/createCRCustomerData/cust_knb1/xausz}" maxLength="1" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-					editable="{App>/edit}">
+				<Input value="{Customer>/createCRCustomerData/cust_knb1/xausz}" maxLength="1" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Account Statement"></core:CustomData>
 						<core:CustomData key="table" value="vw_t048k"></core:CustomData>
@@ -399,9 +390,9 @@
 				<Label text="Collective Invoice Variant"/>
 				<Input value="{Customer>/createCRCustomerData/cust_knb1/perkz}" maxLength="1" editable="{App>/edit}"/>
 				<Label text="Local Processing"/>
-				<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
+				<CheckBox select="onSelectCheckBox" selected="{= ${Customer>/createCRCustomerData/cust_knb1/xdezv} === 'X'}" editable="{App>/edit}">
 					<customData>
-						<core:CustomData key="/cust_knb1/xdezv" value="X"></core:CustomData>
+						<core:CustomData key="Customer>/createCRCustomerData/cust_knb1/xdezv"></core:CustomData>
 					</customData>
 				</CheckBox>
 				<Label text="Clerk's Internet Addredd"/>
@@ -410,33 +401,33 @@
 				<Input value="{Customer>/createCRCustomerData/cust_knb1/tlfxs}" maxLength="31" editable="{App>/edit}"/>
 				<core:Title text="Payment Notice To"/>
 				<Label text="Customer (with CI)"/>
-				<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
+				<CheckBox select="onSelectCheckBox" selected="{= ${Customer>/createCRCustomerData/cust_knb1/zamim} === 'X'}" editable="{App>/edit}">
 					<customData>
-						<core:CustomData key="/cust_knb1/zamim" value="X"></core:CustomData>
+						<core:CustomData key="Customer>/createCRCustomerData/cust_knb1/zamim"></core:CustomData>
 					</customData>
 				</CheckBox>
 				<Label text="Sales"/>
-				<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
+				<CheckBox select="onSelectCheckBox" selected="{= ${Customer>/createCRCustomerData/cust_knb1/zamiv} === 'X'}" editable="{App>/edit}">
 					<customData>
-						<core:CustomData key="/cust_knb1/zamiv" value="X"></core:CustomData>
+						<core:CustomData key="Customer>/createCRCustomerData/cust_knb1/zamiv"></core:CustomData>
 					</customData>
 				</CheckBox>
 				<Label text="Legal Department"/>
-				<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
+				<CheckBox select="onSelectCheckBox" selected="{= ${Customer>/createCRCustomerData/cust_knb1/zamir} === 'X'}" editable="{App>/edit}">
 					<customData>
-						<core:CustomData key="/cust_knb1/zamir" value="X"></core:CustomData>
+						<core:CustomData key="Customer>/createCRCustomerData/cust_knb1/zamir"></core:CustomData>
 					</customData>
 				</CheckBox>
 				<Label text="Customer (w/o CI)"/>
-				<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
+				<CheckBox select="onSelectCheckBox" selected="{= ${Customer>/createCRCustomerData/cust_knb1/zamio} === 'X'}" editable="{App>/edit}">
 					<customData>
-						<core:CustomData key="/cust_knb1/zamio" value="X"></core:CustomData>
+						<core:CustomData key="Customer>/createCRCustomerData/cust_knb1/zamio"></core:CustomData>
 					</customData>
 				</CheckBox>
 				<Label text="Accounting"/>
-				<CheckBox select="onSelectCheckBox" editable="{App>/edit}">
+				<CheckBox select="onSelectCheckBox" selected="{= ${Customer>/createCRCustomerData/cust_knb1/zamib} === 'X'}" editable="{App>/edit}">
 					<customData>
-						<core:CustomData key="/cust_knb1/zamib" value="X"></core:CustomData>
+						<core:CustomData key="Customer>/createCRCustomerData/cust_knb1/zamib"></core:CustomData>
 					</customData>
 				</CheckBox>
 				<core:Title text="Dunning Data"/>
@@ -446,12 +437,13 @@
 				</ComboBox>
 			</form:content>
 		</form:SimpleForm>
-		<Table items="{Customer>/addCompanyCodeRows}">
+		<Table id="idDunningTable" items="{Customer>/createCRCustomerData/tableRows/cust_knb5}">
 			<headerToolbar>
 				<Toolbar>
 					<Title text="Dunning Areas"/>
 					<ToolbarSpacer></ToolbarSpacer>
-					<Button text="Add" press="onAddCompanyCode" visible="{App>/edit}"></Button>
+					<Button text="Add" press="onAddDunningArea" type="Emphasized"
+						visible="{= ${App>/edit} &amp;&amp; ${Customer>/createCRCustomerData/cust_knb1/bukrs} ? true : false }"></Button>
 				</Toolbar>
 			</headerToolbar>
 			<columns>
@@ -465,7 +457,7 @@
 						<Label text="Dunning Area Description" design="Bold"></Label>
 					</header>
 				</Column>
-				<Column>
+				<Column width="5%">
 					<header>
 						<Label text=""></Label>
 					</header>
@@ -474,22 +466,47 @@
 			<items>
 				<ColumnListItem>
 					<cells>
-						<Text text="{Customer>lfb1/bukrs}"></Text>
-						<Text text="{Customer>lfb1/AKONT}"></Text>
+						<Text text="{Customer>maber}"/>
+						<Text text="{Customer>text1}"></Text>
 						<HBox>
-							<core:Icon src="sap-icon://edit" class="sapUiSmallMarginEnd" press="onCompanYCodeEditPress"/>
-							<core:Icon src="sap-icon://delete" class="sapUiSmallMarginEnd" press="onCompanYCodeDeletePress"/>
+							<core:Icon src="sap-icon://edit" hoverBackgroundColor="#346187" hoverColor="#ffffff" class="sapUiSmallMarginEnd" press="onEditDunningArea"/>
+							<core:Icon src="sap-icon://delete" color="Negative" class="sapUiSmallMarginEnd" press="onDeleteDunningArea"/>
 						</HBox>
 					</cells>
 				</ColumnListItem>
 			</items>
 		</Table>
-		<Table items="{Customer>/addCompanyCodeRows}">
+		<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+			adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
+			singleContainerFullSize="false">
+			<form:content>
+				<core:Title text="Dunning Area"/>
+				<Label text="Dunning Area"/>
+				<Input editable="false" value="{Customer>/createCRCustomerData/cust_knb5/maber}"/>
+				<Label text="Dunning Recipient"/>
+				<Input value="{Customer>/createCRCustomerData/cust_knb5/knrma}"/>
+				<Label text="Dunning Block"/>
+				<Input value="{Customer>/createCRCustomerData/cust_knb5/mansp}" showValueHelp="true"/>
+				<Label text="Last Dunned"/>
+				<DatePicker displayFormat="{App>/dateFormat}" valueFormat="{App>/dateValueFormat}" value="{Customer>/createCRCustomerData/cust_knb5/madat}"/>
+				<core:Title/>
+				<Label text="Dunning Procedure"/>
+				<Input value="{Customer>/createCRCustomerData/cust_knb5/mahna}"/>
+				<Label text="Dunning Clerk"/>
+				<Input value="{Customer>/createCRCustomerData/cust_knb5/busab}"/>
+				<Label text="Dunning Level"/>
+				<Input value="{Customer>/createCRCustomerData/cust_knb5/mahns}"/>
+				<Label text="Date of Legal Dunning Proceedings"/>
+				<DatePicker displayFormat="{App>/dateFormat}" valueFormat="{App>/dateValueFormat}" value="{Customer>/createCRCustomerData/cust_knb5/gmvdt}"/>
+			</form:content>
+		</form:SimpleForm>
+		<Table id="idTaxTypesTable" items="{Customer>/createCRCustomerData/tableRows/cust_knbw}">
 			<headerToolbar>
 				<Toolbar>
-					<Title text="Dunning Areas"/>
+					<Title text="Extended Withholding Tax Types"/>
 					<ToolbarSpacer></ToolbarSpacer>
-					<Button text="Add" press="onAddCompanyCode" visible="{App>/edit}"></Button>
+					<Button text="Add" press="onAddWithholdingTypes" type="Emphasized"
+						visible="{= ${App>/edit} &amp;&amp; ${Customer>/createCRCustomerData/cust_knb1/bukrs} ? true : false}"></Button>
 				</Toolbar>
 			</headerToolbar>
 			<columns>
@@ -503,7 +520,7 @@
 						<Label text="Withholding Tax Type Description" design="Bold"></Label>
 					</header>
 				</Column>
-				<Column>
+				<Column width="5%">
 					<header>
 						<Label text=""></Label>
 					</header>
@@ -512,15 +529,37 @@
 			<items>
 				<ColumnListItem>
 					<cells>
-						<Text text="{Customer>lfb1/bukrs}"></Text>
-						<Text text="{Customer>lfb1/AKONT}"></Text>
+						<Text text="{Customer>witht}"></Text>
+						<Text text="{Customer>vtext}"></Text>
 						<HBox>
-							<core:Icon src="sap-icon://edit" class="sapUiSmallMarginEnd" press="onCompanYCodeEditPress"/>
-							<core:Icon src="sap-icon://delete" class="sapUiSmallMarginEnd" press="onCompanYCodeDeletePress"/>
+							<core:Icon src="sap-icon://edit" hoverBackgroundColor="#346187" hoverColor="#ffffff" class="sapUiSmallMarginEnd"
+								press="onEditWithholdingTypes"/>
+							<core:Icon src="sap-icon://delete" color="Negative" class="sapUiSmallMarginEnd" press="onDeleteWithholdingTypes"/>
 						</HBox>
 					</cells>
 				</ColumnListItem>
 			</items>
 		</Table>
+		<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+			adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
+			singleContainerFullSize="false">
+			<form:content>
+				<core:Title text="Extended Withholding Tax Type"/>
+				<Label text="Withholding Tax Type"/>
+				<Input required="true" value="{Customer>/createCRCustomerData/cust_knbw/witht}" showValueHelp="true"/>
+				<Label text="Withholding Tax Identification Number"/>
+				<Input value="{Customer>/createCRCustomerData/cust_knbw/wt_wtstcd}"/>
+				<Label text="Withholding Tax Obligated From"/>
+				<Input value="{Customer>/createCRCustomerData/cust_knbw/wt_agtdf}" showValueHelp="true"/>
+				<core:Title/>
+				<Label text="Withholding Tax Code"/>
+				<Input value="{Customer>/createCRCustomerData/cust_knbw/wt_withcd}" showValueHelp="true"/>
+				<Label text="Indicator: Withholding Tax Agent"/>
+				<CheckBox selected="{Customer>/createCRCustomerData/cust_knbw/wt_agent}"/>
+				<Label text="Withholding Tax Obligated Until"/>
+				<DatePicker displayFormat="{App>/dateFormat}" valueFormat="{App>/dateValueFormat}"
+					value="{Customer>/createCRCustomerData/cust_knbw/wt_agtdt}"/>
+			</form:content>
+		</form:SimpleForm>
 	</VBox>
 </core:FragmentDefinition>

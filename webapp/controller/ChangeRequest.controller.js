@@ -116,18 +116,18 @@ sap.ui.define([
 		},
 
 		onSelectChnageReqPage: function () {
-			var oSelectedPage = this.getView().getModel("ChangeRequestsModel").getProperty("/selectedPageKey");
-			this.handleGetAllChangeRequests(oSelectedPage);
+			var sPageNo = this.getView().getModel("ChangeRequestsModel").getProperty("/SelectedPageKey");
+			this.handleGetAllChangeRequests(sPageNo);
 		},
 
 		onSelectChnageReqPageLeft: function () {
-			var oSelectedPage = this.getView().getModel("ChangeRequestsModel").getProperty("/selectedPageKey");
-			this.handleGetAllChangeRequests(oSelectedPage - 1);
+			var sPageNo = this.getView().getModel("ChangeRequestsModel").getProperty("/SelectedPageKey");
+			this.handleGetAllChangeRequests(sPageNo - 1);
 		},
 
 		onSelectChnageReqPageRight: function () {
-			var oSelectedPage = this.getView().getModel("ChangeRequestsModel").getProperty("/selectedPageKey");
-			this.handleGetAllChangeRequests(oSelectedPage + 1);
+			var sPageNo = this.getView().getModel("ChangeRequestsModel").getProperty("/SelectedPageKey");
+			this.handleGetAllChangeRequests(sPageNo + 1);
 		},
 
 		onSearchCrList: function () {
