@@ -11,9 +11,11 @@ sap.ui.define([
 	"murphy/mdm/customer/murphymdmcustomer/shared/serviceCall",
 	"sap/m/StandardListItem",
 	"sap/m/Dialog",
-	"sap/m/MessageToast"
+	"sap/m/MessageToast",
+	"sap/m/Button",
+	"sap/m/List"
 ], function (BaseController, JSONModel, ColumnListItem, Label, SearchField, Token, Filter, FilterOperator, Fragment,
-	ServiceCall, StandardListItem, Dialog, MessageToast) {
+	ServiceCall, StandardListItem, Dialog, MessageToast, Button, List) {
 	"use strict";
 
 	return BaseController.extend("murphy.mdm.customer.murphymdmcustomer.controller.CreateERPCustomer", {
@@ -41,42 +43,71 @@ sap.ui.define([
 			aForms.forEach(sForm => {
 				aMessages = aMessages.concat(this.checkFormReqFields(sForm).message);
 			});
+			if (aMessages.length) {
+				var oList = new List();
+				aMessages.forEach(sMessage => {
+					oList.addItem(new StandardListItem({
+						title: sMessage
+					}));
+				});
+				this.sMessageDialog = new Dialog({
+					title: "Missing Fields",
+					content: oList,
+					endButton: new Button({
+						text: "Close",
+						press: () => {
+							this.sMessageDialog.close();
+							this.sMessageDialog.destroy();
+						}
+					})
+				});
+				this.getView().addDependent(this.sMessageDialog);
+				this.sMessageDialog.open();
+			} else {
+				MessageToast.show("Validation Successful");
+			}
+
 		},
 
 		onSaveCR: function (oEvent) {
 			//Check for all mandatory fields
-
-			//Generate Kunnr passing entity id and account group
-			var oCustomerModel = this.getModel("Customer"),
-				oCustomerData = oCustomerModel.getData();
-
-			var oObjectKunnr = {
-				url: "/murphyCustom/entity-service/entities/entity/update",
-				hasPayload: true,
-				type: "POST",
-				data: {
-					"entityType": "CUSTOMER",
-					"parentDTO": {
-						"customData": {
-							"cust_kna1": {
-								"entity_id": oCustomerData.createCRCustomerData.formData.parentDTO.customData.cust_kna1.entity_id,
-								"KTOKD": oCustomerData.createCRCustomerData.formData.parentDTO.customData.cust_kna1.ktokd
+			if (this.onCheckCR().bValid) {
+				//Check for Kunnr
+				var oCustomerModel = this.getModel("Customer"),
+					oCustomerData = oCustomerModel.getData();
+				if (oCustomerData.createCRCustomerData.formData.parentDTO.customData.cust_kna1.kunnr) {
+					this.saveCustomerWithKunnr(oCustomerData.createCRCustomerData.formData.parentDTO.customData.cust_kna1.kunnr);
+				} else {
+					//Generate Kunnr passing entity id and account group
+					var oObjectKunnr = {
+						url: "/murphyCustom/entity-service/entities/entity/update",
+						hasPayload: true,
+						type: "POST",
+						data: {
+							"entityType": "CUSTOMER",
+							"parentDTO": {
+								"customData": {
+									"cust_kna1": {
+										"entity_id": oCustomerData.createCRCustomerData.formData.parentDTO.customData.cust_kna1.entity_id,
+										"KTOKD": oCustomerData.createCRCustomerData.formData.parentDTO.customData.cust_kna1.ktokd
+									}
+								}
 							}
 						}
-					}
-				}
-			};
+					};
 
-			this.getView().setBusy(true);
-			this.serviceCall.handleServiceRequest(oObjectKunnr).then((oData) => {
-				//Success Handler for KUNNR Creation
-				var sKunnr = oData.result.customerDTOs[0].customCustomerCustKna1DTO.kunnr;
-				this.saveCustomerWithKunnr(sKunnr);
-			}, (oError) => {
-				//Error Handler for KUNNR Creation
-				this.getView().setBusy(false);
-				MessageToast.show("Error While Generating Customer No.");
-			});
+					this.getView().setBusy(true);
+					this.serviceCall.handleServiceRequest(oObjectKunnr).then((oData) => {
+						//Success Handler for KUNNR Creation
+						var sKunnr = oData.result.customerDTOs[0].customCustomerCustKna1DTO.kunnr;
+						this.saveCustomerWithKunnr(sKunnr);
+					}, oError => {
+						//Error Handler for KUNNR Creation
+						this.getView().setBusy(false);
+						MessageToast.show("Error While Generating Customer No.");
+					});
+				}
+			}
 		},
 
 		saveCustomerWithKunnr: function (sKunnr) {
@@ -113,10 +144,12 @@ sap.ui.define([
 				type: "POST"
 			};
 
+			this.getView().setBusy(true);
 			this.serviceCall.handleServiceRequest(oObjParamCreate).then(
 				oDataResp => {
 					//Success Handle after save CR
 					//Go to preview mode
+					this.getView().setBusy(false);
 					this.getAllCommentsForCR(oFormData.parentDTO.customData.cust_kna1.entity_id);
 					this.getAllDocumentsForCR(oFormData.parentDTO.customData.cust_kna1.entity_id);
 					this.getAuditLogsForCR(oFormData.parentDTO.customData.cust_kna1.entity_id);

@@ -48,10 +48,7 @@
 		"dependencies": {
 			"minUI5Version": "1.65.6",
 			"libs": {
-				"sap.ui.layout": {
-					"lazy": true
-				},
-				"sap.ui.core": {
+				"sap.f": {
 					"lazy": true
 				},
 				"sap.m": {
@@ -63,10 +60,13 @@
 				"sap.ui.comp": {
 					"lazy": true
 				},
-				"sap.uxap": {
+				"sap.ui.core": {
 					"lazy": true
 				},
-				"sap.f": {
+				"sap.ui.layout": {
+					"lazy": true
+				},
+				"sap.uxap": {
 					"lazy": true
 				}
 			}
@@ -147,9 +147,11 @@
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		},
 		"routing": {
 			"config": {
@@ -161,19 +163,22 @@
 				"controlId": "app",
 				"clearControlAggregation": false
 			},
-			"routes": [{
-				"name": "SearchCustomer",
-				"pattern": "",
-				"target": [
-					"SearchCustomer"
-				]
-			}, {
-				"name": "createCustomer",
-				"pattern": "CreateCustomer",
-				"target": [
-					"createCustomer"
-				]
-			}],
+			"routes": [
+				{
+					"name": "SearchCustomer",
+					"pattern": "",
+					"target": [
+						"SearchCustomer"
+					]
+				},
+				{
+					"name": "createCustomer",
+					"pattern": "CreateCustomer",
+					"target": [
+						"createCustomer"
+					]
+				}
+			],
 			"targets": {
 				"SearchCustomer": {
 					"viewType": "XML",

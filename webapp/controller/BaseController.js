@@ -22,6 +22,7 @@ sap.ui.define([
 
 		//Create Change Request for Customer
 		_createCREntityCustomer: function () {
+			this.clearCustModelData();
 			var oCustomerModel = this.getModel("Customer"),
 				oAppModel = this.getModel("App"),
 				oChangeRequest = Object.assign({}, oAppModel.getProperty("/changeReq")),
@@ -61,6 +62,8 @@ sap.ui.define([
 						];
 
 					oCustomerData.entityId = sEntityId;
+					oCustomerData.formData.parentDTO.customData.cust_kna1 = Object.assign({}, oAppModel.getProperty(
+						"/createCRCustomerData/formData/parentDTO/customData/cust_kna1"));
 					oCustomerData.formData.parentDTO.customData.cust_kna1.entity_id = sEntityId;
 					oCustomerData.tableRows = {};
 					aTables.forEach(function (sTable) {
@@ -650,6 +653,20 @@ sap.ui.define([
 			return oFilterValues;
 		},
 
+		clearFilterValues: function (sFilterBarId) {
+			this.byId(sFilterBarId).getAllFilterItems().forEach(oFilterItem => {
+				var oControl = oFilterItem.getControl();
+				switch (oControl.getMetadata().getName()) {
+				case "sap.m.Input":
+					oControl.setValue("");
+					break;
+				case "sap.m.ComboBox":
+					oControl.setSelectedKey("");
+					break;
+				}
+			});
+		},
+
 		checkFormReqFields: function (sFormId) {
 			var oForm = this.byId(sFormId),
 				bValid = true,
@@ -670,7 +687,7 @@ sap.ui.define([
 						}
 						oItem.setValueState(sValue ? "None" : "Error");
 						if (!sValue && oItem.getLabels().length) {
-							aMessages.push(`Please Enter a Value for ${oItem.getLabels()[0].getText()}`);
+							aMessages.push(`${oItem.getLabels()[0].getText()} field is missing in Section`);
 						}
 						bValid = bValid && sValue ? true : false;
 					}
@@ -680,6 +697,31 @@ sap.ui.define([
 				bValid: bValid,
 				message: aMessages
 			};
+		},
+
+		clearCustModelData: function () {
+			var oCustomerModel = this.getModel("Customer"),
+				oAppModel = this.getModel("App"),
+				oChangeRequest = Object.assign({}, oAppModel.getProperty("/changeReq")),
+				oCustomerData = Object.assign({}, oAppModel.getProperty("/createCRCustomerData")),
+				aTables = ["cust_knb1", "cust_knbk", "cust_knbw", "cust_knb5", "cust_knvp", "cust_knvv",
+					"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "pra_bp_ad", "pra_bp_cust_md", "gen_adr2", "gen_adr3", "gen_adr6",
+					"TAX_NUMBERS"
+				];
+
+			Object.keys(oCustomerData.formData.parentDTO.customData.cust_kna1).forEach(sKey => {
+				oCustomerData.formData.parentDTO.customData.cust_kna1[sKey] = null;
+			});
+			oCustomerData.tableRows = {};
+			aTables.forEach(sTable => {
+				oCustomerData.tableRows[sTable] = [];
+				oCustomerData[sTable] = Object.assign({}, oAppModel.getProperty("/" + sTable));
+
+			});
+			oCustomerModel.setData({
+				changeReq: oChangeRequest,
+				createCRCustomerData: oCustomerData
+			});
 		},
 
 		getDropDownData: function () {
