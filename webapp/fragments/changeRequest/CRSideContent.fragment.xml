@@ -13,11 +13,12 @@
 				<uxap:subSections>
 					<uxap:ObjectPageSubSection>
 						<uxap:blocks>
-							<commons:Timeline enableDoubleSided="true" groupBy="changeDate" growingThreshold="0" filterTitle="Job Title" sortOldestFirst="true"
-								content="{WorkFlowModel>/workflowAuditItems}" groupByType="Year" enableScroll="false">
+							<commons:Timeline enableDoubleSided="true" growingThreshold="0" filterTitle="Status" sortOldestFirst="true"
+								content="{WorkFlowModel>/workflowAuditItems}" groupByType="Month" enableScroll="false">
 								<commons:content>
-									<commons:TimelineItem dateTime="{WorkFlowModel>changeDate}" title="{WorkFlowModel>status}" userNameClickable="false"
-										userName="{WorkFlowModel>changeBy/0/firstname} {WorkFlowModel>changeBy/0/lastname}" filterValue="{WorkFlowModel>status}"></commons:TimelineItem>
+									<commons:TimelineItem dateTime="{path:'WorkFlowModel>statusChangedDate', formatter : '.changeWorkflowDate'}"
+										title="{path:'WorkFlowModel>status', formatter : '.changeWorkflowStatus'}" userNameClickable="false"
+										userName="{WorkFlowModel>assignmentUserName} {WorkFlowModel>assignmentStageName}" filterValue="{WorkFlowModel>status}"></commons:TimelineItem>
 								</commons:content>
 							</commons:Timeline>
 						</uxap:blocks>
@@ -104,12 +105,12 @@
 						<uxap:blocks>
 							<UploadCollection id="UploadCollectionChangeReq" multiple="false" change="onChangeFileUpload" selectionChange="onSelectionDocumentChange"
 								typeMissmatch="onTypeMissmatch" items="{ path: 'AttachmentsModel>/documentInteractionDtos', templateShareable: false }"
-								numberOfAttachmentsText="Uploaded Documents" uploadEnabled="true" uploadButtonInvisible="false" mode="SingleSelectMaster"
+								numberOfAttachmentsText="Uploaded Documents" uploadEnabled="true" uploadButtonInvisible="false" mode="Delete"
 								fileType="{App>/supportedFileTypes}">
 								<items>
 									<UploadCollectionItem documentId="{AttachmentsModel>attachmentEntity/dms_ref_id}"
 										fileName="{AttachmentsModel>attachmentEntity/attachment_name}" mimeType="{AttachmentsModel>attachmentEntity/mime_type}" enableEdit="false"
-										enableDelete="false" visibleDelete="false" visibleEdit="false" url="abc" press="onDocumentDownload">
+										enableDelete="false" deletePress="onDeleteAttachment" visibleDelete="true" visibleEdit="false" url="abc" press="onDocumentDownload">
 										<attributes>
 											<ObjectAttribute title="Uploaded By" text="{AttachmentsModel>attachmentEntity/created_by}"/>
 											<ObjectAttribute title="Uploaded On" text="{path:'AttachmentsModel>attachmentEntity/created_on', formatter : '.dateFormater'}"/>

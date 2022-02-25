@@ -27,25 +27,80 @@ sap.ui.define([
 
 		onChangeReqLinkPress: function (oEvent) {
 			this.getView().setBusy(true);
+			this.clearCustModelData();
+			this.clearAllButtons();
+
 			var oCrObject = oEvent.getSource().getBindingContext("ChangeRequestsModel").getObject(),
 				sEntityID = oCrObject.crDTO.entity_id,
 				sWorkflowTaskID = oCrObject.crDTO.workflow_task_id,
+				sChangeRequestId = oCrObject.crDTO.change_request_id,
 				oCustomerModel = this.getView().getModel("Customer"),
 				oAppModel = this.getModel("App"),
-				oChangeRequest = Object.assign(oAppModel.getProperty("/changeReq"), {}),
-				oCustomerData = Object.assign(oAppModel.getProperty("/createCRCustomerData"), {});
-			oCustomerModel.setProperty("/createCRVendorData/workflowID", sWorkflowTaskID);
+				oUserData = this.getModel("userManagementModel").getData(),
+				oChangeRequest = Object.assign({}, oAppModel.getProperty("/changeReq")),
+				oCustomerData = Object.assign({}, oAppModel.getProperty("/createCRCustomerData"));
 
 			//Get Side Panel Details 
 			this.getSidePanelDetails(oCrObject);
 
-			var objParamCreate = {
-				url: "/murphyCustom/mdm/entity-service/entities/entity/get",
+			//Get Change Request Details
+			var oParamChangeReq = {
+				url: "/murphyCustom/change-request-service/changerequests/changerequest/page",
 				type: 'POST',
 				hasPayload: true,
 				data: {
+					"crSearchType": "GET_BY_CR_ID",
+					"parentCrDTOs": [{
+						"crDTO": {
+							"change_request_id": sChangeRequestId
+						}
+					}],
+					"userId": this.getView().getModel("userManagementModel").getProperty("/data/user_id")
+				}
+			};
+
+			this.serviceCall.handleServiceRequest(oParamChangeReq).then(oData => {
+				var oChangeReq = oData.result.parentCrDTOs[0].crDTO;
+				oChangeRequest.genData.priority = oChangeReq.change_request_priority_id;
+				oChangeRequest.genData.change_request_id = oChangeReq.change_request_type_id;
+				oChangeRequest.genData.reason = oChangeReq.change_request_reason_id;
+				oChangeRequest.genData.change_request_by = oChangeReq.change_request_by;
+				oChangeRequest.genData.modified_by = oChangeReq.modified_by;
+				oChangeRequest.genData.isClaimable = oChangeReq.isClaimable;
+				oChangeRequest.genData.createdBy = oChangeReq.modified_by.created_by;
+				oChangeRequest.genData.desc = oChangeReq.change_request_desc;
+				if (oChangeReq.change_request_due_date) {
+					var sDueDate = oChangeReq.change_request_due_date.substring(0, 10).replaceAll("-", "");
+					oChangeRequest.genData.dueDate = sDueDate;
+				}
+
+				if (oChangeReq.change_request_date) {
+					var sReqTime = oChangeReq.change_request_date.substring(11, 16);
+					oChangeRequest.genData.timeCreation = sReqTime;
+				}
+				oCustomerModel.setProperty("/changeReq", oChangeRequest);
+				//Enable Edit Button
+				if (oChangeReq.isClaimable &&
+					(oChangeReq.change_request_type_id === 50002 || oChangeReq.change_request_type_id === 50001) &&
+					oUserData.role.indexOf('approv') === -1) {
+					oAppModel.setProperty("/editButton", true);
+				}
+				
+				//Enable Approve Button
+				if (oChangeReq.isClaimable &&
+					(oUserData.role.indexOf('approv') !== -1 || oUserData.role.indexOf('stew') !== -1 )) {
+					oAppModel.setProperty("/approveButton", true);
+					oAppModel.setProperty("/rejectButton", true);
+				}
+			});
+
+			var objParamCreate = {
+				url: "/murphyCustom/entity-service/entities/entity/get",
+				type: "POST",
+				hasPayload: true,
+				data: {
 					"entitySearchType": "GET_BY_ENTITY_ID",
-					"entityType": "VENDOR",
+					"entityType": "CUSTOMER",
 					"parentDTO": {
 						"customData": {
 							"business_entity": {
@@ -79,10 +134,8 @@ sap.ui.define([
 						}
 					}, this);
 
-					oCustomerModel.setData({
-						changeReq: oChangeRequest,
-						createCRCustomerData: oCustomerData
-					});
+					oCustomerData.workflowID = sWorkflowTaskID;
+					oCustomerModel.setProperty("/createCRCustomerData", oCustomerData);
 
 					//Navigate to Change Request Page	
 					var sID = this.getView().getParent().getPages().find(function (e) {

@@ -13,9 +13,10 @@ sap.ui.define([
 	"sap/m/Dialog",
 	"sap/m/MessageToast",
 	"sap/m/Button",
-	"sap/m/List"
+	"sap/m/List",
+	"sap/m/TextArea"
 ], function (BaseController, JSONModel, ColumnListItem, Label, SearchField, Token, Filter, FilterOperator, Fragment,
-	ServiceCall, StandardListItem, Dialog, MessageToast, Button, List) {
+	ServiceCall, StandardListItem, Dialog, MessageToast, Button, List, TextArea) {
 	"use strict";
 
 	return BaseController.extend("murphy.mdm.customer.murphymdmcustomer.controller.CreateERPCustomer", {
@@ -28,6 +29,16 @@ sap.ui.define([
 		},
 
 		onBackToAllChangeReq: function () {
+			if (!this.getOwnerComponent().getModel("ChangeRequestsModel").getProperty("/ChangeRequests")) {
+				this.nPageNo = 1;
+				this.handleGetAllChangeRequests(this.nPageNo);
+				this.handleChangeRequestStatistics();
+			}
+			this.byId("pageContainer").to("changeRequestId");
+			this.clearAllButtons();
+			this.getView().getParent().getParent().getSideContent().setSelectedItem(this.getView().getParent().getParent().getSideContent().getItem()
+				.getItems()[2]);
+
 			this.getModel("App").setProperty("/appTitle", "Change Request And Documents");
 			this.byId("pageContainer").to("changeRequestId");
 		},
@@ -39,11 +50,16 @@ sap.ui.define([
 
 		onCheckCR: function () {
 			var aForms = ["idChangeReqForm", "idErpCustDetails"],
-				aMessages = [];
+				aMessages = [],
+				bValid = true;
 			aForms.forEach(sForm => {
-				aMessages = aMessages.concat(this.checkFormReqFields(sForm).message);
+				var oMessages = this.checkFormReqFields(sForm);
+				if (!oMessages.bValid) {
+					aMessages = aMessages.concat(this.checkFormReqFields(sForm).message);
+					bValid = false;
+				}
 			});
-			if (aMessages.length) {
+			if (aMessages.length && !bValid) {
 				var oList = new List();
 				aMessages.forEach(sMessage => {
 					oList.addItem(new StandardListItem({
@@ -65,13 +81,15 @@ sap.ui.define([
 				this.sMessageDialog.open();
 			} else {
 				MessageToast.show("Validation Successful");
+				bValid = true;
 			}
+			return bValid;
 
 		},
 
 		onSaveCR: function (oEvent) {
 			//Check for all mandatory fields
-			if (this.onCheckCR().bValid) {
+			if (this.onCheckCR()) {
 				//Check for Kunnr
 				var oCustomerModel = this.getModel("Customer"),
 					oCustomerData = oCustomerModel.getData();
@@ -113,10 +131,10 @@ sap.ui.define([
 		saveCustomerWithKunnr: function (sKunnr) {
 			var oCustomerModel = this.getModel("Customer"),
 				oCustomerData = oCustomerModel.getData(),
+				oAppModel = this.getModel("App"),
 				oFormData = Object.assign({}, oCustomerData.createCRCustomerData.formData),
 				aTables = ["cust_knb1", "cust_knbk", "cust_knbw", "cust_knb5", "cust_knvp", "cust_knvv",
-					"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "pra_bp_ad", "pra_bp_cust_md", "gen_adr2", "gen_adr3", "gen_adr6",
-					"TAX_NUMBERS"
+					"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "pra_bp_ad", "pra_bp_cust_md", "gen_adr2", "gen_adr3", "gen_adr6"
 				];
 
 			if (oFormData.parentDTO.customData.hasOwnProperty("cust_kna1")) {
@@ -134,6 +152,17 @@ sap.ui.define([
 						}
 						oFormData.parentDTO.customData[sKey][sKey + "_" + (iIndex + 1)] = oItem;
 					});
+
+					/*if (Object.keys(oFormData.parentDTO.customData[sKey]).length === 0) {
+						var oKeyData = Object.assign({}, oAppModel.getProperty(`/${sKey}`));
+						if (oKeyData.hasOwnProperty("entity_id")) {
+							oKeyData.entity_id = oFormData.parentDTO.customData.cust_kna1.entity_id;
+						}
+						if (oKeyData.hasOwnProperty("kunnr")) {
+							oKeyData.kunnr = sKunnr;
+						}
+						oFormData.parentDTO.customData[sKey][`${sKey}_1`] = oKeyData;
+					}*/
 				}
 			});
 
@@ -148,17 +177,432 @@ sap.ui.define([
 			this.serviceCall.handleServiceRequest(oObjParamCreate).then(
 				oDataResp => {
 					//Success Handle after save CR
-					//Go to preview mode
 					this.getView().setBusy(false);
 					this.getAllCommentsForCR(oFormData.parentDTO.customData.cust_kna1.entity_id);
 					this.getAllDocumentsForCR(oFormData.parentDTO.customData.cust_kna1.entity_id);
 					this.getAuditLogsForCR(oFormData.parentDTO.customData.cust_kna1.entity_id);
+					this.clearAllButtons();
+					oAppModel.setProperty("/edit", false);
+					oAppModel.setProperty("/submitButton", true);
+					oAppModel.setProperty("/editButton", true);
 				},
 				oError => {
 					//Error Hanlder while saving CR
 					this.getView().setBusy(false);
 					MessageToast.show("Error In Creating Draft Version");
 				});
+		},
+
+		onSubmitCR: function () {
+			if (this.onCheckCR().bValid) {
+				this.getView().setBusy(true);
+				this._createTask();
+			}
+		},
+
+		_createTask: function () {
+			var oCustomerData = this.getModel("Customer").getData(),
+				oData = {
+					"workboxCreateTaskRequestDTO": {
+						"listOfProcesssAttributes": [{
+							"customAttributeTemplateDto": [{
+								"processName": "STANDARD",
+								"key": "description",
+								"label": "Description",
+								"processType": "",
+								"isEditable": true,
+								"isActive": true,
+								"isMandatory": true,
+								"isEdited": 2,
+								"attrDes": "",
+								"value": oCustomerData.changeReq.genData.desc,
+								"dataType": null,
+								"valueList": null,
+								"attachmentType": null,
+								"attachmentSize": null,
+								"attachmentName": null,
+								"attachmentId": null,
+								"dataTypeKey": 0,
+								"dropDownType": null,
+								"url": null,
+								"taskId": null,
+								"origin": null,
+								"attributePath": null,
+								"dependantOn": null,
+								"rowNumber": 0,
+								"tableAttributes": null,
+								"tableContents": null,
+								"isDeleted": false,
+								"isRunTime": null,
+								"isVisible": null
+							}, {
+								"processName": "MDGVendorWorkflow",
+								"key": "6b70i8618f269",
+								"label": "CountryCode",
+								"processType": null,
+								"isEditable": true,
+								"isActive": true,
+								"isMandatory": true,
+								"isEdited": 2,
+								"attrDes": "Country Code",
+								"value": oCustomerData.createCRCustomerData.formData.parentDTO.customData.cust_kna1.kunnr,
+								"dataType": "INPUT",
+								"valueList": [],
+								"attachmentType": null,
+								"attachmentSize": null,
+								"attachmentName": null,
+								"attachmentId": null,
+								"dataTypeKey": 0,
+								"dropDownType": null,
+								"url": null,
+								"taskId": null,
+								"origin": "Process",
+								"attributePath": null,
+								"dependantOn": null,
+								"rowNumber": 0,
+								"tableAttributes": null,
+								"tableContents": null,
+								"isDeleted": false,
+								"isRunTime": null,
+								"isVisible": null
+							}, {
+								"processName": "MDGVendorWorkflow",
+								"key": "4b64h3j5jjij",
+								"label": "AccountGroup",
+								"processType": null,
+								"isEditable": true,
+								"isActive": true,
+								"isMandatory": true,
+								"isEdited": 2,
+								"attrDes": "Account Group",
+								"value": oCustomerData.createCRCustomerData.formData.parentDTO.customData.cust_kna1.ktokd,
+								"dataType": "INPUT",
+								"valueList": [],
+								"attachmentType": null,
+								"attachmentSize": null,
+								"attachmentName": null,
+								"attachmentId": null,
+								"dataTypeKey": 0,
+								"dropDownType": null,
+								"url": null,
+								"taskId": null,
+								"origin": "Process",
+								"attributePath": null,
+								"dependantOn": null,
+								"rowNumber": 0,
+								"tableAttributes": null,
+								"tableContents": null,
+								"isDeleted": false,
+								"isRunTime": false,
+								"isVisible": null
+							}, {
+								"processName": "MDGVendorWorkflow",
+								"key": "a8a1154f4ggda",
+								"label": "Data Domain",
+								"processType": null,
+								"isEditable": true,
+								"isActive": true,
+								"isMandatory": true,
+								"isEdited": 2,
+								"attrDes": "Data Domain",
+								"value": "CUSTOMER",
+								"dataType": "INPUT",
+								"valueList": [],
+								"attachmentType": null,
+								"attachmentSize": null,
+								"attachmentName": null,
+								"attachmentId": null,
+								"dataTypeKey": 0,
+								"dropDownType": null,
+								"url": null,
+								"taskId": null,
+								"origin": "Process",
+								"attributePath": null,
+								"dependantOn": null,
+								"rowNumber": 0,
+								"tableAttributes": null,
+								"tableContents": null,
+								"isDeleted": false,
+								"isRunTime": false,
+								"isVisible": null
+							}, {
+								"processName": "MDGVendorWorkflow",
+								"key": "6f83h9g3fe04h",
+								"label": "CountryCodeAccountGroup",
+								"processType": null,
+								"isEditable": true,
+								"isActive": true,
+								"isMandatory": true,
+								"isEdited": 2,
+								"attrDes": "CountryCodeAccountGroup",
+								"value": oCustomerData.createCRCustomerData.formData.parentDTO.customData.cust_kna1.land1 + "+" +
+									oCustomerData.createCRCustomerData.formData.parentDTO.customData.cust_kna1.ktokd,
+								"dataType": "INPUT",
+								"valueList": [],
+								"attachmentType": null,
+								"attachmentSize": null,
+								"attachmentName": null,
+								"attachmentId": null,
+								"dataTypeKey": 0,
+								"dropDownType": null,
+								"url": null,
+								"taskId": null,
+								"origin": "Process",
+								"attributePath": null,
+								"dependantOn": null,
+								"rowNumber": 0,
+								"tableAttributes": null,
+								"tableContents": null,
+								"isDeleted": false,
+								"isRunTime": false,
+								"isVisible": null
+							}],
+							"userId": this.getView().getModel("userManagementModel").getProperty("/data/user_id")
+						}],
+						"type": "Multiple Instance",
+						"resourceid": null,
+						"actionType": "Submit",
+						"processName": "MDGVendorWorkflow",
+						"processId": null,
+						"isEdited": 2,
+						"requestId": null,
+						"responseMessage": null,
+						"userId": this.getView().getModel("userManagementModel").getProperty("/data/user_id"),
+						"emailId": this.getView().getModel("userManagementModel").getProperty("/data/email_id"),
+						"userName": this.getView().getModel("userManagementModel").getProperty("/data/firstname") + " " +
+							this.getView().getModel("userManagementModel").getProperty("/data/lastname")
+					},
+					"changeRequestDTO": {
+						"entity_id": oCustomerData.createCRCustomerData.formData.parentDTO.customData.cust_kna1.entity_id,
+						"change_request_by": {
+							"user_id": this.getView().getModel("userManagementModel").getProperty("/data/user_id")
+						},
+						"modified_by": {
+							"user_id": this.getView().getModel("userManagementModel").getProperty("/data/user_id")
+						},
+						"entity_type_id": "41001",
+						"change_request_type_id": oCustomerData.changeReq.genData.change_request_id,
+						"change_request_priority_id": oCustomerData.changeReq.genData.priority,
+						"change_request_due_date": oCustomerData.changeReq.genData.dueDate,
+						"change_request_desc": oCustomerData.changeReq.genData.desc,
+						"change_request_reason_id": oCustomerData.changeReq.genData.reason
+					}
+				};
+			var objParamCreate = {
+				url: "/murphyCustom/workflow-service/workflows/tasks/task/create",
+				hasPayload: true,
+				data: oData,
+				type: "POST"
+			};
+
+			this.serviceCall.handleServiceRequest(objParamCreate).then(function (oDataResp) {
+				this.getView().setBusy(false);
+				if (oDataResp.result && oDataResp.result.changeRequestDTO) {
+					MessageToast.show("Change Request ID - " + oDataResp.result.changeRequestDTO.change_request_id + " Generated.");
+					this._EntityIDDraftFalse();
+				}
+			}.bind(this), function (oError) {
+				this.getView().setBusy(false);
+				MessageToast.show("Error In Creating Workflow Task");
+			}.bind(this));
+		},
+
+		_EntityIDDraftFalse: function () {
+			var objParamSubmit = {
+				url: "/murphyCustom/entity-service/entities/entity/create",
+				type: "POST",
+				hasPayload: true,
+				data: {
+					"entityType": "CUSTOMER",
+					"parentDTO": {
+						"customData": {
+							"business_entity": {
+								"entity_id": this.getModel("Customer").getProperty("/createCRCustomerData/entityId"),
+								"is_draft": "false"
+							}
+						}
+					}
+				}
+
+			};
+			this.serviceCall.handleServiceRequest(objParamSubmit).then(
+				oData => {
+					this.getView().setBusy(false);
+					this.onBackToAllChangeReq();
+				},
+				oError => {
+					this.getView().setBusy(false);
+					MessageToast.show("Error while updating draft falg.");
+				});
+		},
+
+		onApproveClick: function () {
+			var sWorkFlowID = this.getView().getModel("Customer").getProperty("/createCRCustomerData/workflowID");
+			this._claimTask(sWorkFlowID, "Approve", "");
+		},
+
+		onRejectClick: function () {
+			if (!this.oRejectDailog) {
+				this.oRejectDailog = new Dialog({
+					title: "Confirmation",
+					width: "40%",
+					type: "Message",
+					state: "Warning",
+					content: [
+						new sap.m.VBox({
+							items: [
+								new Text({
+									text: "Please enter reject reason and click 'Ok' to reject:"
+								}),
+								new TextArea({
+									id: "idRejectReason",
+									width: "100%"
+								})
+							]
+						})
+					],
+					beginButton: new Button({
+						text: "Ok",
+						press: function () {
+							var sRejectReason = sap.ui.getCore().byId("idRejectReason").getValue();
+							if (sRejectReason) {
+								var sWorkFlowID = this.getView().getModel("Customer").getProperty("/createCRCustomerData/workflowID");
+								this._claimTask(sWorkFlowID, "Reject", sRejectReason);
+								this.oRejectDailog.close();
+							} else {
+								MessageToast.show("Please provide reject reason to continoue");
+							}
+						}.bind(this)
+					}),
+					endButton: new Button({
+						text: "Cancel",
+						press: function () {
+							this.oRejectDailog.close();
+						}.bind(this)
+					}),
+					afterClose: function () {
+						sap.ui.getCore().byId("idRejectReason").setValue("");
+					}
+				});
+			}
+
+			this.getView().addDependent(this.oRejectDailog);
+			this.oRejectDailog.open();
+		},
+
+		_claimTask: function (sTaskID, sAction, sReason) {
+			this.getView().setBusy(true);
+			var oData = {
+				"workboxTaskActionRequestDTO": {
+					"isChatBot": true,
+					"userId": this.getView().getModel("userManagementModel").getProperty("/data/user_id"),
+					"userDisplay": this.getView().getModel("userManagementModel").getProperty("/data/firstname"),
+					"task": [{
+						"instanceId": sTaskID,
+						"origin": "Ad-hoc",
+						"actionType": "Claim",
+						"isAdmin": false,
+						"platform": "Web",
+						"signatureVerified": "NO",
+						"userId": this.getView().getModel("userManagementModel").getProperty("/data/user_id")
+					}]
+				}
+			};
+			var objParamCreate = {
+				url: "/murphyCustom/workflow-service/workflows/tasks/task/claim",
+				hasPayload: true,
+				data: oData,
+				type: "POST"
+			};
+
+			this.serviceCall.handleServiceRequest(objParamCreate).then(
+				oDataResp => {
+					if (oDataResp.result) {
+						this._ApproveRejectTask(sTaskID, sAction, sReason);
+					}
+				},
+				oError => {
+					this.getView().setBusy(false);
+					MessageToast.show("Error In Claiming Workflow Task");
+				});
+		},
+
+		_ApproveRejectTask: function (sTaskID, sAction, sReason) {
+			var sUrl = "";
+
+			var oData = {
+				"workboxTaskActionRequestDTO": {
+					"isChatBot": true,
+					"userId": this.getView().getModel("userManagementModel").getProperty("/data/user_id"),
+					"userDisplay": this.getView().getModel("userManagementModel").getProperty("/data/firstname"),
+					"task": [{
+						"instanceId": sTaskID,
+						"origin": "Ad-hoc",
+						"actionType": sAction,
+						"isAdmin": false,
+						"platform": "Web",
+						"signatureVerified": "NO",
+						"comment": sAction + " task",
+						"userId": this.getView().getModel("userManagementModel").getProperty("/data/user_id")
+					}]
+				}
+			};
+			if (sAction === "Approve") {
+				sUrl = "approve";
+				oData.changeRequestDTO = {
+					"entity_id": this.getView().getModel("Customer").getProperty(
+						"/createCRCustomerData/formData/parentDTO/customData/cust_kna1/entity_id")
+				};
+			} else {
+				sUrl = "reject";
+			}
+			var objParamCreate = {
+				url: "/murphyCustom/workflow-service/workflows/tasks/task/" + sUrl,
+				hasPayload: true,
+				data: oData,
+				type: 'POST'
+			};
+
+			this.serviceCall.handleServiceRequest(objParamCreate).then(
+				function (oDataResp) {
+					if (oDataResp.result) {
+						this.nPageNo = 1;
+						this.handleGetAllChangeRequests(this.nPageNo);
+						this.handleChangeRequestStatistics();
+						this.onAllChangeReqClick();
+					}
+
+					//Adding rejection reason to comment section
+					if (sAction.toLowerCase() === "reject") {
+						this.onAddComment({
+							sEntityID: this.getView().getModel("Customer").getProperty("/createCRCustomerData/entityId"),
+							comment: sReason,
+							sControlID: "previewCRCommentBoxId"
+						});
+					}
+
+					this.getView().setBusy(false);
+					var sMessage = sAction.toLowerCase() === "approve" ? "Approved" : "Rejected";
+					MessageToast.show(sMessage);
+				}.bind(this),
+				function (oError) {
+					this.getView().setBusy(false);
+					var aError = [];
+					if (oError.responseJSON.result && oError.responseJSON.result.workboxCreateTaskResponseDTO && oError.responseJSON.result.workboxCreateTaskResponseDTO
+						.response.EXT_MESSAGES.MESSAGES.item &&
+						oError.responseJSON.result.workboxCreateTaskResponseDTO.response.EXT_MESSAGES.MESSAGES.item.length > 0) {
+						oError.responseJSON.result.workboxCreateTaskResponseDTO.response.EXT_MESSAGES.MESSAGES.item.forEach(function (oItem) {
+							aError.push({
+								ErrorMessage: oItem.MESSAGE
+							});
+						});
+					} else if (!oError.responseJSON.result) {
+						aError.push({
+							ErrorMessage: oError.responseJSON.error
+						});
+					}
+					MessageToast.show("Error In " + sAction + " Workflow Task");
+				}.bind(this));
 		},
 
 		onValueHelpRequested: function (oEvent) {
@@ -888,6 +1332,13 @@ sap.ui.define([
 			var oTable = this.byId("idDunningTable"),
 				oBinding = oTable.getBinding("items");
 			oBinding.filter([new Filter("bukrs", FilterOperator.EQ, sBukrs)]);
+		},
+
+		onChangeCountry: function () {
+			this.byId("idCustRegion").getBinding("items").filter([
+				new Filter("land1", FilterOperator.EQ, this.getModel("Customer").getProperty(
+					"/createCRCustomerData/formData/parentDTO/customData/cust_kna1/land1"))
+			]);
 		}
 
 	});

@@ -57,8 +57,7 @@ sap.ui.define([
 					var oBusinessEntity = oData.result.customerDTOs[0].businessEntityDTO,
 						sEntityId = oBusinessEntity.entity_id,
 						aTables = ["cust_knb1", "cust_knbk", "cust_knbw", "cust_knb5", "cust_knvp", "cust_knvv",
-							"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "pra_bp_ad", "pra_bp_cust_md", "gen_adr2", "gen_adr3", "gen_adr6",
-							"TAX_NUMBERS"
+							"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "pra_bp_ad", "pra_bp_cust_md", "gen_adr2", "gen_adr3", "gen_adr6"
 						];
 
 					oCustomerData.entityId = sEntityId;
@@ -457,7 +456,7 @@ sap.ui.define([
 										"created_by": this.getView().getModel("userManagementModel").getProperty("/data/user_id"),
 										"file_name_with_extension": oFile.name
 									},
-									"entityType": "VENDOR",
+									"entityType": "CUSTOMER",
 									"businessEntity": {
 										"entity_id": sEntityID
 									},
@@ -572,6 +571,20 @@ sap.ui.define([
 				sValue = (sValue && sValue !== "null") ? this.getDateFromTime(sValue) : "";
 			}
 			return "New : " + ((sValue && sValue !== "null") ? sValue : "");
+		},
+
+		getDateFromTime: function (sValue) {
+			var date = new Date(1970, 0, 1);
+			date.setSeconds(sValue.slice(0, 10));
+			var sDate = ("" + date.getDate()).length === 1 ? "0" + date.getDate() : date.getDate();
+			var sMonth = ("" + (date.getMonth() + 1)).length === 1 ? "0" + (date.getMonth() + 1) : (date.getMonth() + 1);
+			var sYear = date.getFullYear();
+			var sHour = ("" + date.getHours()).length === 1 ? "0" + date.getHours() : date.getHours();
+			var sMinute = ("" + date.getMinutes()).length === 1 ? "0" + date.getMinutes() : date.getMinutes();
+			date.getMinutes();
+			var sSeconds = ("" + date.getSeconds()).length === 1 ? "0" + date.getSeconds() : date.getSeconds();
+			date.getSeconds();
+			return sMonth + "-" + sDate + "-" + sYear + " at " + sHour + ":" + sMinute + ":" + sSeconds;
 		},
 
 		onPressAddComment: function () {
@@ -705,8 +718,7 @@ sap.ui.define([
 				oChangeRequest = Object.assign({}, oAppModel.getProperty("/changeReq")),
 				oCustomerData = Object.assign({}, oAppModel.getProperty("/createCRCustomerData")),
 				aTables = ["cust_knb1", "cust_knbk", "cust_knbw", "cust_knb5", "cust_knvp", "cust_knvv",
-					"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "pra_bp_ad", "pra_bp_cust_md", "gen_adr2", "gen_adr3", "gen_adr6",
-					"TAX_NUMBERS"
+					"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "pra_bp_ad", "pra_bp_cust_md", "gen_adr2", "gen_adr3", "gen_adr6"
 				];
 
 			Object.keys(oCustomerData.formData.parentDTO.customData.cust_kna1).forEach(sKey => {
@@ -731,6 +743,7 @@ sap.ui.define([
 				"TSAD3", //Title,
 				"T005K", //Tel Country Codes
 				"T005", //Country
+				"T005S", //Region
 				"T002", //Language
 				"vw_tvkgg", //Condition Group
 				"TVKD", //Customer Procedure
@@ -760,13 +773,72 @@ sap.ui.define([
 				data: JSON.stringify({
 					"configType": sValue,
 					"currentPage": 1,
-					"maxResults": 500
+					"maxResults": 10000
 				}),
 				success: function (oData) {
 					this.getModel("Dropdowns").setProperty("/" + sValue, oData.result.modelMap);
 				}.bind(this)
 			});
-		}
+		},
 
+		changeWorkflowDate: function (sDate) {
+			var sDateTime = "";
+			if (sDate) {
+				var dateTime = sDate.split("T");
+				var date = dateTime[0];
+				date = date.split("-");
+				var time = dateTime[1].split(".")[0];
+				sDateTime = date[1] + "-" + date[2] + "-" + date[0] + " at " + time;
+			}
+			return sDateTime;
+		},
+
+		changeWorkflowStatus: function (sStatus) {
+			if (sStatus === "UNCLAIMED") {
+				sStatus = "ASSIGNED";
+			}
+			return sStatus;
+		},
+
+		onDeleteAttachment: function (oEvent) {
+			var oFileData = oEvent.getSource().getBindingContext("AttachmentsModel").getObject();
+			var sEntityID;
+			if (this.getView().getId().indexOf("changeRequestId") > -1) {
+				sEntityID = this.getView().byId("crList").getSelectedItem().getBindingContext("changeRequestGetAllModel").getObject().crDTO.entity_id;
+			} else {
+				sEntityID = this.getView().getModel("CreateVendorModel").getProperty("/createCRVendorData/entityId");
+			}
+			this.getView().setBusy(true);
+			var objParamCreate = {
+				url: "/murphyCustom/change-request-service/changerequests/changerequest/documents/delete",
+				type: 'POST',
+				hasPayload: true,
+				data: {
+					"documentInteractionDtos": [{
+						"attachmentEntity": {
+							"attachment_id": oFileData.attachmentEntity.attachment_id,
+							"dms_ref_id": oFileData.attachmentEntity.dms_ref_id
+						},
+						"entityType": "CUSTOMER",
+						"businessEntity": {
+							"entity_id": sEntityID
+						},
+						"fileContent": ""
+					}]
+				}
+			};
+			this.serviceCall.handleServiceRequest(objParamCreate).then(function (oDataResp) {
+					this.getView().setBusy(false);
+					if (oDataResp.result) {
+						this.getAllDocumentsForCR(sEntityID);
+						MessageToast.show("Attachment Deleted Successfully.");
+					}
+				}.bind(this),
+				function (oError) {
+					this.getView().setBusy(false);
+					MessageToast.show("Failed to delete the attachment");
+				}.bind(this)
+			);
+		}
 	});
 });

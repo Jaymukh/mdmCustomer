@@ -29,7 +29,7 @@ sap.ui.define([
 			oSearchModel.setProperty("/rightEnabled", false);
 
 			//Get filter details
-			/*var oFilterValues = this.getFilterValues("idSearchFilterBar"),
+			var oFilterValues = this.getFilterValues("idSearchFilterBar"),
 				sFilterBy = this.byId("idSearchVM").getSelectionKey(),
 				oObjectParam = {
 					"entitySearchType": "GET_BY_CUSTOMER_FILTERS",
@@ -39,22 +39,13 @@ sap.ui.define([
 				};
 
 			oFilterValues.customerSearchType = sFilterBy === "*standard*" ? "SEARCH_BY_ADDRESS" : "SEARCH_BY_BANK_DETAILS";
-			oObjectParam.customerSearchDTO = oFilterValues;*/
+			oObjectParam.customerSearchDTO = oFilterValues;
 
 			var objParam = {
 				url: "/murphyCustom/entity-service/entities/entity/get",
 				type: "POST",
 				hasPayload: true,
-				data: {
-					"entitySearchType": "GET_ALL_CUSTOMER",
-					"entityType": "CUSTOMER",
-					"currentPage": 1,
-					"parentDTO": {
-						"customData": {
-							"cust_kna1": {}
-						}
-					}
-				}
+				data: oObjectParam
 			};
 
 			this.serviceCall.handleServiceRequest(objParam).then(function (oData) {
@@ -325,8 +316,7 @@ sap.ui.define([
 						oChangeRequest = Object.assign({}, oAppModel.getProperty("/changeReq")),
 						oCustomerData = Object.assign({}, oAppModel.getProperty("/createCRCustomerData")),
 						aTables = ["cust_knb1", "cust_knbk", "cust_knbw", "cust_knb5", "cust_knvp", "cust_knvv",
-							"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "pra_bp_ad", "pra_bp_cust_md", "gen_adr2", "gen_adr3", "gen_adr6",
-							"TAX_NUMBERS"
+							"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "pra_bp_ad", "pra_bp_cust_md", "gen_adr2", "gen_adr3", "gen_adr6"
 						];
 
 					oCustomerData.formData.parentDTO.customData.cust_kna1 = oData.result.parentDTO.customData.cust_kna1;

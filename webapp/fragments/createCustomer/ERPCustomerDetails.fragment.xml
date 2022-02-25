@@ -136,13 +136,17 @@
 			<Input required="true" value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/ort01}" maxLength="35"
 				editable="{App>/edit}"/>
 			<Label text="Country"/>
-			<ComboBox required="true" items="{Dropdowns>/T005}"
+			<ComboBox required="true" items="{Dropdowns>/T005}" selectionChange="onChangeCountry"
 				selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/land1}" editable="{App>/edit}">
 				<core:Item key="{Dropdowns>land1}" text="{Dropdowns>landx}"/>
 			</ComboBox>
 			<core:Title/>
 			<Label text="Region"/>
-			<Input required="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
+			<ComboBox id="idCustRegion" required="true" items="{Dropdowns>/T005S}"
+				selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/regio}" editable="{App>/edit}">
+				<core:Item key="{Dropdowns>bland}" text="{Dropdowns>bland} - {Dropdowns>bezei}"/>
+			</ComboBox>
+			<!--<Input required="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
 				value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/regio}" editable="{App>/edit}">
 				<customData>
 					<core:CustomData key="title" value="Region"></core:CustomData>
@@ -152,7 +156,7 @@
 					<core:CustomData key="bland" value="Code"></core:CustomData>
 					<core:CustomData key="bezei" value="Region"></core:CustomData>
 				</customData>
-			</Input>
+			</Input>-->
 			<Label text="Language"/>
 			<ComboBox required="true" selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/spras}"
 				items="{Dropdowns>/T002}" editable="{App>/edit}">

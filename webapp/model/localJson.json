@@ -15,6 +15,7 @@
 		"entityId": null,
 		"crID": null,
 		"crTime": null,
+		"workflowID": null,
 		"formData": {
 			"entityType": "CUSTOMER",
 			"parentDTO": {
@@ -55,7 +56,7 @@
 						"knazk": null,
 						"knrza": null,
 						"konzs": null,
-						"ktokd": null,
+						"ktokd": "CUST",
 						"kukla": null,
 						"lifnr": null,
 						"lifsd": null,
@@ -177,16 +178,6 @@
 						"tdt": null,
 						"comsize": null,
 						"decregpc": null,
-						"__vso__r_palhgt": null,
-						"__vso__r_pal_ul": null,
-						"__vso__r_pk_mat": null,
-						"__vso__r_matpal": null,
-						"__vso__r_i_no_lyr": null,
-						"__vso__r_one_mat": null,
-						"__vso__r_one_sort": null,
-						"__vso__r_uld_side": null,
-						"__vso__r_load_pref": null,
-						"__vso__r_dpoint": null,
 						"alc": null,
 						"pmt_office": null,
 						"psofg": null,
@@ -210,7 +201,17 @@
 						"ccode": null,
 						"fee_schedule": null,
 						"duns": null,
-						"duns4": null
+						"duns4": null,
+						"_vso_r_palhgt": null,
+						"_vso_r_pal_ul": null,
+						"_vso_r_pk_mat": null,
+						"_vso_r_matpal": null,
+						"_vso_r_i_no_lyr": null,
+						"_vso_r_one_mat": null,
+						"_vso_r_one_sort": null,
+						"_vso_r_uld_side": null,
+						"_vso_r_load_pref": null,
+						"_vso_r_dpoint": null
 					},
 					"cust_knb1": {
 
@@ -258,9 +259,6 @@
 
 					},
 					"gen_adr6": {
-
-					},
-					"TAX_NUMBERS": {
 
 					}
 				}
@@ -322,7 +320,7 @@
 		"verdt": null,
 		"perkz": null,
 		"xdezv": null,
-		"xausz": null,
+		"ausz": null,
 		"webtr": null,
 		"remit": null,
 		"datlz": null,
@@ -724,8 +722,6 @@
 		"blind": null,
 		"carrier_notif": null,
 		"cvp_xblck_v": null,
-		"__bev1__emlgpfand": null,
-		"__bev1__emlgforts": null,
 		"oic_mot": null,
 		"oilastor": null,
 		"oic_hobind": null,
@@ -752,7 +748,9 @@
 		"fsh_grsgy": null,
 		"fsh_ss": null,
 		"fsh_msocdc": null,
-		"fsh_msopid": null
+		"fsh_msopid": null,
+		"_bev1_emlgpfand": null,
+		"_bev1_emlgforts": null
 	},
 	"cust_knvp": {
 		"entity_id": null,
@@ -766,18 +764,20 @@
 		"lifnr": null,
 		"pernr": null,
 		"parnr": null,
+		"knref": null,
 		"defpa": null
 	},
 	"cust_knb5": {
 		"entity_id": null,
 		"kunnr": null,
 		"bukrs": null,
+		"maber": null,
+		"mahna": null,
+		"mansp": null,
 		"madat": null,
 		"mahns": null,
-		"gmvdt": null,
-		"maber": null,
-		"mansp": null,
 		"knrma": null,
+		"gmvdt": null,
 		"busab": null
 	},
 	"cust_knbw": {
@@ -870,11 +870,6 @@
 		"valid_to": null,
 		"client": null,
 		"ttx_number": null
-	},
-	"TAX_NUMBERS": {
-		"TAX_CATEGORY": null,
-		"TAX_DESCRIPTION": null,
-		"TAX_NUMBER": null
 	},
 	"accountGroupsData": [{
 		"text": "Customers (General)",
