@@ -41,7 +41,7 @@ sap.ui.define([
 					"parentDTO": {
 						"customData": {
 							"business_entity": {
-								"entity_type_id": "41001",
+								"entity_type_id": "41002",
 								"created_by": sUserId,
 								"modified_by": sUserId,
 								"is_draft": true

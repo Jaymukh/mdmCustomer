@@ -42,7 +42,7 @@ sap.ui.define([
 			oObjectParam.customerSearchDTO = oFilterValues;
 
 			var objParam = {
-				url: "/murphyCustom/entity-service/entities/entity/get",
+				url: "/murphyCustom/mdmcustomer/entity-service/entities/entity/get",
 				type: "POST",
 				hasPayload: true,
 				data: oObjectParam

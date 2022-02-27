@@ -72,7 +72,7 @@
 						"cityc": null,
 						"rpmkr": null,
 						"sperr": null,
-						"spras": null,
+						"spras": "E",
 						"stcd1": null,
 						"stcd2": null,
 						"stkza": null,
@@ -202,16 +202,16 @@
 						"fee_schedule": null,
 						"duns": null,
 						"duns4": null,
-						"_vso_r_palhgt": null,
-						"_vso_r_pal_ul": null,
-						"_vso_r_pk_mat": null,
-						"_vso_r_matpal": null,
-						"_vso_r_i_no_lyr": null,
-						"_vso_r_one_mat": null,
-						"_vso_r_one_sort": null,
-						"_vso_r_uld_side": null,
-						"_vso_r_load_pref": null,
-						"_vso_r_dpoint": null
+						"VSO__R_PALHGT": null,
+						"VSO__R_PAL_UL": null,
+						"VSO__R__PK_MAT": null,
+						"VSO__R_MATPAL": null,
+						"VSO__R_I_NO_LYR": null,
+						"VSO__R_ONE_MAT": null,
+						"VSO__R_ONE_SORT": null,
+						"VSO__R_ULD_SIDE": null,
+						"VSO__R_LOAD_PREF": null,
+						"VSO__r_DPOINT": null
 					},
 					"cust_knb1": {
 
@@ -234,9 +234,7 @@
 					"cust_knvi": {
 
 					},
-					"gen_adcp": {
 
-					},
 					"gen_knvk": {
 
 					},
@@ -244,12 +242,6 @@
 
 					},
 					"gen_bnka": {
-
-					},
-					"pra_bp_ad": {
-
-					},
-					"pra_bp_cust_md": {
 
 					},
 					"gen_adr2": {
@@ -422,8 +414,8 @@
 	"gen_adrc": {
 		"entity_id": null,
 		"addrnumber": null,
-		"date_from": null,
-		"nation": null,
+		"date_from": "2022-02-27",
+		"nation": "",
 		"date_to": null,
 		"title": null,
 		"name1": null,
@@ -469,8 +461,8 @@
 		"building": null,
 		"floor": null,
 		"roomnumber": null,
-		"country": null,
-		"langu": null,
+		"country": "",
+		"langu": "EN",
 		"region": null,
 		"addr_group": null,
 		"flaggroups": null,

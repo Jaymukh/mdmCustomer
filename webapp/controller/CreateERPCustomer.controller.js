@@ -98,7 +98,7 @@ sap.ui.define([
 				} else {
 					//Generate Kunnr passing entity id and account group
 					var oObjectKunnr = {
-						url: "/murphyCustom/entity-service/entities/entity/update",
+						url: "/murphyCustom/mdmcustomer/entity-service/entities/entity/update",
 						hasPayload: true,
 						type: "POST",
 						data: {
@@ -153,21 +153,25 @@ sap.ui.define([
 						oFormData.parentDTO.customData[sKey][sKey + "_" + (iIndex + 1)] = oItem;
 					});
 
-					/*if (Object.keys(oFormData.parentDTO.customData[sKey]).length === 0) {
-						var oKeyData = Object.assign({}, oAppModel.getProperty(`/${sKey}`));
-						if (oKeyData.hasOwnProperty("entity_id")) {
-							oKeyData.entity_id = oFormData.parentDTO.customData.cust_kna1.entity_id;
-						}
-						if (oKeyData.hasOwnProperty("kunnr")) {
-							oKeyData.kunnr = sKunnr;
-						}
-						oFormData.parentDTO.customData[sKey][`${sKey}_1`] = oKeyData;
-					}*/
+					/*	if (Object.keys(oFormData.parentDTO.customData[sKey]).length === 0) {
+							var oKeyData = Object.assign({}, oAppModel.getProperty(`/${sKey}`));
+							if (oKeyData.hasOwnProperty("entity_id")) {
+								oKeyData.entity_id = oFormData.parentDTO.customData.cust_kna1.entity_id;
+							}
+							if (oKeyData.hasOwnProperty("kunnr")) {
+								oKeyData.kunnr = sKunnr;
+							}
+							if(sKey === "gen_adrc"){
+								oKeyData.addrnumber = oFormData.parentDTO.customData.cust_kna1.entity_id;                   
+							}
+							oFormData.parentDTO.customData[sKey][`${sKey}_1`] = oKeyData;
+						}*/
+
 				}
 			});
 
 			var oObjParamCreate = {
-				url: "/murphyCustom/entity-service/entities/entity/update",
+				url: "/murphyCustom/mdmcustomer/entity-service/entities/entity/update",
 				hasPayload: true,
 				data: oFormData,
 				type: "POST"
@@ -389,7 +393,7 @@ sap.ui.define([
 					}
 				};
 			var objParamCreate = {
-				url: "/murphyCustom/workflow-service/workflows/tasks/task/create",
+				url: "/mdmcustomer/workflow-service/workflows/tasks/task/create",
 				hasPayload: true,
 				data: oData,
 				type: "POST"
@@ -409,7 +413,7 @@ sap.ui.define([
 
 		_EntityIDDraftFalse: function () {
 			var objParamSubmit = {
-				url: "/murphyCustom/entity-service/entities/entity/create",
+				url: "/mdmcustomer/entity-service/entities/entity/create",
 				type: "POST",
 				hasPayload: true,
 				data: {
@@ -509,7 +513,7 @@ sap.ui.define([
 				}
 			};
 			var objParamCreate = {
-				url: "/murphyCustom/workflow-service/workflows/tasks/task/claim",
+				url: "/mdmcustomer/workflow-service/workflows/tasks/task/claim",
 				hasPayload: true,
 				data: oData,
 				type: "POST"
@@ -557,7 +561,7 @@ sap.ui.define([
 				sUrl = "reject";
 			}
 			var objParamCreate = {
-				url: "/murphyCustom/workflow-service/workflows/tasks/task/" + sUrl,
+				url: "/mdmcustomer/workflow-service/workflows/tasks/task/" + sUrl,
 				hasPayload: true,
 				data: oData,
 				type: 'POST'
@@ -646,7 +650,7 @@ sap.ui.define([
 			var objParamCreate;
 			if (oData.table === "kna1") {
 				objParamCreate = {
-					url: "/murphyCustom/entity-service/entities/entity/get",
+					url: "/mdmcustomer/entity-service/entities/entity/get",
 					type: "POST",
 					hasPayload: true,
 					data: {
@@ -662,7 +666,7 @@ sap.ui.define([
 				};
 			} else {
 				objParamCreate = {
-					url: "/murphyCustom/config-service/configurations/configuration/filter",
+					url: "/mdmcustomer/config-service/configurations/configuration/filter",
 					type: "POST",
 					hasPayload: true,
 					data: {
