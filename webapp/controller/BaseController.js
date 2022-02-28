@@ -777,7 +777,6 @@ sap.ui.define([
 			$.ajax({
 				url: "/murphyCustom/config-service/configurations/configuration/filter",
 				type: "POST",
-				async: true,
 				contentType: "application/json",
 				data: JSON.stringify({
 					"configType": sValue,

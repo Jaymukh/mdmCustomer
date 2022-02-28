@@ -14,9 +14,10 @@ sap.ui.define([
 	"sap/m/MessageToast",
 	"sap/m/Button",
 	"sap/m/List",
-	"sap/m/TextArea"
+	"sap/m/TextArea",
+	"sap/ui/core/syncStyleClass"
 ], function (BaseController, JSONModel, ColumnListItem, Label, SearchField, Token, Filter, FilterOperator, Fragment,
-	ServiceCall, StandardListItem, Dialog, MessageToast, Button, List, TextArea) {
+	ServiceCall, StandardListItem, Dialog, MessageToast, Button, List, TextArea, syncStyleClass) {
 	"use strict";
 
 	return BaseController.extend("murphy.mdm.customer.murphymdmcustomer.controller.CreateERPCustomer", {
@@ -200,6 +201,14 @@ sap.ui.define([
 					this.getView().setBusy(false);
 					MessageToast.show("Error In Creating Draft Version");
 				});
+		},
+
+		onEditClick: function () {
+			var oAppModel = this.getModel("App");
+			oAppModel.setProperty("/edit", true);
+			oAppModel.setProperty("/submitButton", false);
+			oAppModel.setProperty("/editButton", false);
+			oAppModel.setProperty("/saveButton", true);
 		},
 
 		onSubmitCR: function () {
@@ -698,6 +707,7 @@ sap.ui.define([
 			}).then(function name(oFragment) {
 				this._oValueHelpDialog = oFragment;
 				this.getView().addDependent(this._oValueHelpDialog);
+				syncStyleClass(this.getOwnerComponent().getContentDensityClass(), this.getView(), this._oValueHelpDialog);
 				this._oValueHelpDialog.setModel(this.oColModel, "oViewModel");
 
 				var oFilterBar = this._oValueHelpDialog.getFilterBar();

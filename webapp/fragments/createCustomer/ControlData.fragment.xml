@@ -6,10 +6,10 @@
 			<core:Title text="Account Control"/>
 			<Label text="Vendor"/>
 			<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
-				value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kunnr}" maxLength="10" editable="{App>/edit}">
+				value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/lifnr}" maxLength="10" editable="{App>/edit}">
 				<customData>
 					<core:CustomData key="title" value="Customer"></core:CustomData>
-					<core:CustomData key="table" value="KNA1"></core:CustomData>
+					<core:CustomData key="table" value="VW_KNA1"></core:CustomData>
 					<core:CustomData key="Key1" value="Company code"></core:CustomData>
 					<core:CustomData key="Key2" value="Company Name"></core:CustomData>
 					<core:CustomData key="Key3" value="Country"></core:CustomData>
