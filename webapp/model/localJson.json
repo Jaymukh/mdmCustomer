@@ -589,7 +589,7 @@
 	},
 	"gen_adcp": {
 		"addrnumber": null,
-		"persnumber": null,
+		"persnumber": "",
 		"date_from": null,
 		"nation": null,
 		"date_to": null,
@@ -806,7 +806,7 @@
 	"gen_adr2": {
 		"entity_id": null,
 		"addrnumber": null,
-		"persnumber": null,
+		"persnumber": "",
 		"date_from": null,
 		"consnumber": null,
 		"country": null,
@@ -820,12 +820,13 @@
 		"dft_receiv": null,
 		"r3_user": null,
 		"valid_from": null,
-		"valid_to": null
+		"valid_to": null,
+		"client":""
 	},
 	"gen_adr3": {
 		"entity_id": null,
 		"addrnumber": null,
-		"persnumber": null,
+		"persnumber": "",
 		"date_from": null,
 		"consnumber": null,
 		"country": null,
@@ -840,12 +841,13 @@
 		"dft_receiv": null,
 		"r3_user": null,
 		"valid_from": null,
-		"valid_to": null
+		"valid_to": null,
+		"client":""
 	},
 	"gen_adr6": {
 		"entity_id": null,
 		"addrnumber": null,
-		"persnumber": null,
+		"persnumber": "",
 		"date_from": null,
 		"consnumber": null,
 		"flgdefault": null,
@@ -859,7 +861,7 @@
 		"tnef": null,
 		"valid_from": null,
 		"valid_to": null,
-		"client": null,
+		"client": "",
 		"ttx_number": null
 	},
 	"accountGroupsData": [{
