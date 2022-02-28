@@ -12,6 +12,7 @@
 	"sidePanelSelectedPage": "",
 	"supportedFileTypes": ["jpg", "jpeg", "png", "pdf", "msg", "eml"],
 	"createCRCustomerData": {
+		
 		"entityId": null,
 		"crID": null,
 		"crTime": null,
