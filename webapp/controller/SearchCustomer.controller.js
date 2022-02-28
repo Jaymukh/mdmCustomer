@@ -316,7 +316,7 @@ sap.ui.define([
 						oChangeRequest = Object.assign({}, oAppModel.getProperty("/changeReq")),
 						oCustomerData = Object.assign({}, oAppModel.getProperty("/createCRCustomerData")),
 						aTables = ["cust_knb1", "cust_knbk", "cust_knbw", "cust_knb5", "cust_knvp", "cust_knvv",
-							"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "pra_bp_ad", "pra_bp_cust_md", "gen_adr2", "gen_adr3", "gen_adr6"
+							"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "gen_adr2", "gen_adr3", "gen_adr6"
 						];
 
 					oCustomerData.formData.parentDTO.customData.cust_kna1 = oData.result.parentDTO.customData.cust_kna1;

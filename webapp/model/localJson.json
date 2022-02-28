@@ -234,9 +234,6 @@
 					"cust_knvi": {
 
 					},
-					"gen_adcp": {
-
-					},
 					"gen_knvk": {
 
 					},
@@ -244,12 +241,6 @@
 
 					},
 					"gen_bnka": {
-
-					},
-					"pra_bp_ad": {
-
-					},
-					"pra_bp_cust_md": {
 
 					},
 					"gen_adr2": {
@@ -422,8 +413,8 @@
 	"gen_adrc": {
 		"entity_id": null,
 		"addrnumber": null,
-		"date_from": null,
-		"nation": null,
+		"date_from": "",
+		"nation": "",
 		"date_to": null,
 		"title": null,
 		"name1": null,
@@ -469,8 +460,8 @@
 		"building": null,
 		"floor": null,
 		"roomnumber": null,
-		"country": null,
-		"langu": null,
+		"country": "",
+		"langu": "EN",
 		"region": null,
 		"addr_group": null,
 		"flaggroups": null,

@@ -57,8 +57,16 @@ sap.ui.define([
 					var oBusinessEntity = oData.result.customerDTOs[0].businessEntityDTO,
 						sEntityId = oBusinessEntity.entity_id,
 						aTables = ["cust_knb1", "cust_knbk", "cust_knbw", "cust_knb5", "cust_knvp", "cust_knvv",
-							"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "pra_bp_ad", "pra_bp_cust_md", "gen_adr2", "gen_adr3", "gen_adr6"
+							"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "gen_adr2", "gen_adr3", "gen_adr6"
 						];
+					var oAudLogModel = this.getView().getModel("AuditLogModel");
+					if (!oAudLogModel.getProperty("/details")) {
+						oAudLogModel.setProperty("/details", {});
+					}
+
+					oAudLogModel.setProperty("/details/desc", "");
+					oAudLogModel.setProperty("/details/businessID", sEntityId);
+					oAudLogModel.setProperty("/details/ChangeRequestID", "");
 
 					oCustomerData.entityId = sEntityId;
 					oCustomerData.formData.parentDTO.customData.cust_kna1 = Object.assign({}, oAppModel.getProperty(
@@ -168,7 +176,7 @@ sap.ui.define([
 				oChangeRequest = Object.assign({}, oAppModel.getProperty("/changeReq")),
 				oCustomerData = Object.assign({}, oAppModel.getProperty("/createCRCustomerData")),
 				aTables = ["cust_knb1", "cust_knbk", "cust_knbw", "cust_knb5", "cust_knvp", "cust_knvv",
-					"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "pra_bp_ad", "pra_bp_cust_md", "gen_adr2", "gen_adr3", "gen_adr6"
+					"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "gen_adr2", "gen_adr3", "gen_adr6"
 				];
 			aTables.forEach(sTable => {
 				oCustomerData.tableRows[sTable] = [];
@@ -605,11 +613,6 @@ sap.ui.define([
 
 		getSidePanelDetails: function (oCRObject) {
 			var oAudLogModel = this.getView().getModel("AuditLogModel");
-			//Get Comments, Documents, Logs, WorkFlow
-			this.getAllCommentsForCR(oCRObject.crDTO.entity_id);
-			this.getAllDocumentsForCR(oCRObject.crDTO.entity_id);
-			this.getAuditLogsForCR(oCRObject.crDTO.entity_id);
-			this.getWorkFlowForCR(oCRObject.crDTO.change_request_id);
 			if (!oAudLogModel.getProperty("/details")) {
 				oAudLogModel.setProperty("/details", {});
 			}
@@ -617,6 +620,12 @@ sap.ui.define([
 			oAudLogModel.setProperty("/details/desc", oCRObject.crDTO.change_request_desc);
 			oAudLogModel.setProperty("/details/businessID", oCRObject.crDTO.entity_id);
 			oAudLogModel.setProperty("/details/ChangeRequestID", oCRObject.crDTO.change_request_id);
+
+			//Get Comments, Documents, Logs, WorkFlow
+			this.getAllCommentsForCR(oCRObject.crDTO.entity_id);
+			this.getAllDocumentsForCR(oCRObject.crDTO.entity_id);
+			this.getAuditLogsForCR(oCRObject.crDTO.entity_id);
+			this.getWorkFlowForCR(oCRObject.crDTO.change_request_id);
 		},
 
 		clearAllButtons: function () {
@@ -718,7 +727,7 @@ sap.ui.define([
 				oChangeRequest = Object.assign({}, oAppModel.getProperty("/changeReq")),
 				oCustomerData = Object.assign({}, oAppModel.getProperty("/createCRCustomerData")),
 				aTables = ["cust_knb1", "cust_knbk", "cust_knbw", "cust_knb5", "cust_knvp", "cust_knvv",
-					"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "pra_bp_ad", "pra_bp_cust_md", "gen_adr2", "gen_adr3", "gen_adr6"
+					"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "gen_adr2", "gen_adr3", "gen_adr6"
 				];
 
 			Object.keys(oCustomerData.formData.parentDTO.customData.cust_kna1).forEach(sKey => {
@@ -801,17 +810,14 @@ sap.ui.define([
 		},
 
 		onDeleteAttachment: function (oEvent) {
-			var oFileData = oEvent.getSource().getBindingContext("AttachmentsModel").getObject();
-			var sEntityID;
-			if (this.getView().getId().indexOf("changeRequestId") > -1) {
-				sEntityID = this.getView().byId("crList").getSelectedItem().getBindingContext("changeRequestGetAllModel").getObject().crDTO.entity_id;
-			} else {
-				sEntityID = this.getView().getModel("CreateVendorModel").getProperty("/createCRVendorData/entityId");
-			}
+			var oFileData = oEvent.getSource().getBindingContext("AttachmentsModel").getObject(),
+				oAudLogModel = this.getView().getModel("AuditLogModel"),
+				sEntityID = oAudLogModel.getProperty("/details/businessID");
+
 			this.getView().setBusy(true);
 			var objParamCreate = {
 				url: "/murphyCustom/change-request-service/changerequests/changerequest/documents/delete",
-				type: 'POST',
+				type: "POST",
 				hasPayload: true,
 				data: {
 					"documentInteractionDtos": [{
@@ -827,17 +833,17 @@ sap.ui.define([
 					}]
 				}
 			};
-			this.serviceCall.handleServiceRequest(objParamCreate).then(function (oDataResp) {
+			this.serviceCall.handleServiceRequest(objParamCreate).then(oDataResp => {
 					this.getView().setBusy(false);
 					if (oDataResp.result) {
 						this.getAllDocumentsForCR(sEntityID);
 						MessageToast.show("Attachment Deleted Successfully.");
 					}
-				}.bind(this),
-				function (oError) {
+				},
+				oError => {
 					this.getView().setBusy(false);
 					MessageToast.show("Failed to delete the attachment");
-				}.bind(this)
+				}
 			);
 		}
 	});

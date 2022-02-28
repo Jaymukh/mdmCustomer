@@ -110,7 +110,7 @@
 								<items>
 									<UploadCollectionItem documentId="{AttachmentsModel>attachmentEntity/dms_ref_id}"
 										fileName="{AttachmentsModel>attachmentEntity/attachment_name}" mimeType="{AttachmentsModel>attachmentEntity/mime_type}" enableEdit="false"
-										enableDelete="false" deletePress="onDeleteAttachment" visibleDelete="true" visibleEdit="false" url="abc" press="onDocumentDownload">
+										enableDelete="true" deletePress="onDeleteAttachment" visibleDelete="true" visibleEdit="false" url="abc" press="onDocumentDownload">
 										<attributes>
 											<ObjectAttribute title="Uploaded By" text="{AttachmentsModel>attachmentEntity/created_by}"/>
 											<ObjectAttribute title="Uploaded On" text="{path:'AttachmentsModel>attachmentEntity/created_on', formatter : '.dateFormater'}"/>

@@ -132,13 +132,16 @@ sap.ui.define([
 			var oCustomerModel = this.getModel("Customer"),
 				oCustomerData = oCustomerModel.getData(),
 				oAppModel = this.getModel("App"),
+				oDate = new Date(),
+				sDate = `${oDate.getFullYear()}-${("0" + (oDate.getMonth() + 1) ).slice(-2)}-${("0" + oDate.getDate()).slice(-2)}`,
 				oFormData = Object.assign({}, oCustomerData.createCRCustomerData.formData),
 				aTables = ["cust_knb1", "cust_knbk", "cust_knbw", "cust_knb5", "cust_knvp", "cust_knvv",
-					"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "pra_bp_ad", "pra_bp_cust_md", "gen_adr2", "gen_adr3", "gen_adr6"
+					"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "gen_adr2", "gen_adr3", "gen_adr6"
 				];
 
 			if (oFormData.parentDTO.customData.hasOwnProperty("cust_kna1")) {
 				oFormData.parentDTO.customData.cust_kna1.kunnr = sKunnr;
+				oFormData.parentDTO.customData.cust_kna1.adrnr = oFormData.parentDTO.customData.cust_kna1.entity_id;
 			}
 			aTables.forEach(sKey => {
 				if (oFormData.parentDTO.customData.hasOwnProperty(sKey)) {
@@ -152,19 +155,25 @@ sap.ui.define([
 						}
 						oFormData.parentDTO.customData[sKey][sKey + "_" + (iIndex + 1)] = oItem;
 					});
-
-					/*if (Object.keys(oFormData.parentDTO.customData[sKey]).length === 0) {
-						var oKeyData = Object.assign({}, oAppModel.getProperty(`/${sKey}`));
-						if (oKeyData.hasOwnProperty("entity_id")) {
-							oKeyData.entity_id = oFormData.parentDTO.customData.cust_kna1.entity_id;
-						}
-						if (oKeyData.hasOwnProperty("kunnr")) {
-							oKeyData.kunnr = sKunnr;
-						}
-						oFormData.parentDTO.customData[sKey][`${sKey}_1`] = oKeyData;
-					}*/
 				}
 			});
+
+			//Capture ADRC Details.
+			var oDefAddress = Object.assign({}, oCustomerData.createCRCustomerData.gen_adrc);
+			oDefAddress.addrnumber = oFormData.parentDTO.customData.cust_kna1.entity_id;
+			oDefAddress.country = oFormData.parentDTO.customData.cust_kna1.land1;
+			oDefAddress.name1 = oFormData.parentDTO.customData.cust_kna1.name1;
+			oDefAddress.region = oFormData.parentDTO.customData.cust_kna1.regio;
+			oDefAddress.langu = oFormData.parentDTO.customData.cust_kna1.spras;
+			oDefAddress.sort1 = oFormData.parentDTO.customData.cust_kna1.sortl;
+			oDefAddress.name2 = oFormData.parentDTO.customData.cust_kna1.name2;
+			oDefAddress.title = oFormData.parentDTO.customData.cust_kna1.anred;
+			oDefAddress.city1 = oFormData.parentDTO.customData.cust_kna1.ort01;
+			oDefAddress.post_code1 = oFormData.parentDTO.customData.cust_kna1.pstlz;
+			oDefAddress.date_from = sDate;
+			oFormData.parentDTO.customData.gen_adrc = {
+				gen_adrc_1: oDefAddress
+			};
 
 			var oObjParamCreate = {
 				url: "/murphyCustom/entity-service/entities/entity/update",
@@ -194,7 +203,7 @@ sap.ui.define([
 		},
 
 		onSubmitCR: function () {
-			if (this.onCheckCR().bValid) {
+			if (this.onCheckCR()) {
 				this.getView().setBusy(true);
 				this._createTask();
 			}
