@@ -79,11 +79,11 @@
 							<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.CompanyCodes" type="XML"/>
 						</content>
 					</Panel>
-					<Panel expandable="true" expanded="false" headerText="Contact Persons">
+					<!--<Panel expandable="true" expanded="false" headerText="Contact Persons">
 						<content>
 							<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.ContactPersons" type="XML"/>
 						</content>
-					</Panel>
+					</Panel>-->
 				</VBox>
 				<l:sideContent>
 					<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.changeRequest.CRSideContent" type="XML"/>

@@ -12,6 +12,7 @@
 	"sidePanelSelectedPage": "",
 	"supportedFileTypes": ["jpg", "jpeg", "png", "pdf", "msg", "eml"],
 	"createCRCustomerData": {
+		
 		"entityId": null,
 		"crID": null,
 		"crTime": null,
@@ -512,7 +513,7 @@
 		"xpcpt": null
 	},
 	"gen_knvk": {
-		"entity_id": "",
+		"entity_id":"",
 		"parnr": "NEW",
 		"kunnr": "",
 		"namev": null,
@@ -742,7 +743,7 @@
 		"fsh_msocdc": null,
 		"fsh_msopid": null,
 		"BEVL1_EMLGPFAND": null,
-		"BEVL1_EMLGRORTS": null
+		"BEVL1_EMLGRORTS": null 
 	},
 	"cust_knvp": {
 		"entity_id": "",
@@ -822,7 +823,7 @@
 		"r3_user": null,
 		"valid_from": null,
 		"valid_to": null,
-		"client": ""
+		"client":""
 	},
 	"gen_adr3": {
 		"entity_id": "",
@@ -843,7 +844,7 @@
 		"r3_user": null,
 		"valid_from": null,
 		"valid_to": null,
-		"client": ""
+		"client":""
 	},
 	"gen_adr6": {
 		"entity_id": "",

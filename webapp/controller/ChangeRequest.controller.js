@@ -67,7 +67,7 @@ sap.ui.define([
 				oChangeRequest.genData.change_request_by = oChangeReq.change_request_by;
 				oChangeRequest.genData.modified_by = oChangeReq.modified_by;
 				oChangeRequest.genData.isClaimable = oChangeReq.isClaimable;
-				oChangeRequest.genData.createdBy = oChangeReq.modified_by.created_by;
+			//	oChangeRequest.genData.createdBy = oChangeReq.modified_by.created_by;
 				oChangeRequest.genData.desc = oChangeReq.change_request_desc;
 				if (oChangeReq.change_request_due_date) {
 					var sDueDate = oChangeReq.change_request_due_date.substring(0, 10).replaceAll("-", "");
@@ -99,7 +99,7 @@ sap.ui.define([
 				type: "POST",
 				hasPayload: true,
 				data: {
-					"entitySearchType": "GET_BY_ENTITY_ID",
+					"entitySearchType": "GET_CUSTOMER_BY_ENTITY_ID",
 					"entityType": "CUSTOMER",
 					"parentDTO": {
 						"customData": {
@@ -112,7 +112,7 @@ sap.ui.define([
 			};
 			this.serviceCall.handleServiceRequest(objParamCreate).then(function (oDataResp) {
 				this.getView().setBusy(false);
-				if (oDataResp.result.parentDTO.customData) {
+				if (oDataResp.result.parentDTO.customerDTOs) {
 					var sEntityId = oDataResp.result.parentDTO.customData.cust_kna1.entity_id,
 						aTables = ["cust_knb1", "cust_knbk", "cust_knbw", "cust_knb5", "cust_knvp", "cust_knvv",
 							"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "pra_bp_ad", "pra_bp_cust_md"
@@ -145,7 +145,7 @@ sap.ui.define([
 					oAppModel.setProperty("/sidePanelSelectedPage", "idWorkFlowSection");
 				}
 			}.bind(this), function (oError) {
-				this.getView().setBusy(false);
+			//	this.getView().setBusy(false);
 				oCustomerModel.setData({
 					changeReq: {},
 					createCRCustomerData: {}
