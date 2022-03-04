@@ -44,7 +44,7 @@
 							<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.BankAccounts" type="XML"/>
 						</content>
 					</Panel>
-					<Panel expandable="true" expanded="false" headerText="Payment Transactions*">
+					<Panel expandable="true" expanded="false" headerText="Payment Transactions">
 						<content>
 							<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.PaymentTransactions" type="XML"/>
 						</content>

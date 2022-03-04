@@ -105,7 +105,7 @@
 					</customData>
 				</Input>
 				<Label text="Bank Name"/>
-				<Input value="{Customer>/createCRCustomerData/createCRCustomerData/gen_bnka/banka}" editable="false"/>
+				<Input value="{Customer>/createCRCustomerData/gen_bnka/banka}" editable="false"/>
 				<Label text="Street"/>
 				<Input value="{Customer>/createCRCustomerData/gen_bnka/stras}" editable="false" maxLength="60"/>
 				<Label text="City"/>
