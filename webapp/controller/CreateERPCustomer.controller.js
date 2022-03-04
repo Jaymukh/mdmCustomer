@@ -214,7 +214,50 @@ sap.ui.define([
 		onSubmitCR: function () {
 			if (this.onCheckCR()) {
 				this.getView().setBusy(true);
-				this._createTask();
+			 var objParamSubmit = {
+			 	url: "/murphyCustom/mdm/workflow-service/workflows/tasks/task/action",
+				type: 'POST',
+				hasPayload: true,
+			 	data: {
+					"operationType": "CREATE",
+			 		"changeRequestDTO": {
+			 			 "entity_type_id": "41002",
+						"entity_id": this.getView().getModel("Customer").getProperty("/createCRCustomerData/entityId")
+			 		}
+			 	}
+			 };
+			 this.serviceCall.handleServiceRequest(objParamSubmit).then(function (oDataResp) {
+			 this.getView().setBusy(false);
+			 MessageToast.show("Submission Successful");
+			 	this._CreateCRID();
+			 	this.getView().getModel("Customer").refresh(true);
+			 //	this.getView().byId("idCreateVendorSubmitErrors").setVisible(false);
+			 }.bind(this), function (oError) {
+			 	this.getView().setBusy(false);
+				var sError = "";
+			 	var aError = [];
+			 	if (oError.responseJSON.result&& oError.responseJSON.result.workboxCreateTaskResponseDTO && oError.responseJSON.result.workboxCreateTaskResponseDTO.response.EXT_MESSAGES.MESSAGES.item &&
+			 		oError.responseJSON.result.workboxCreateTaskResponseDTO.response.EXT_MESSAGES.MESSAGES.item.length > 0) {
+			 		oError.responseJSON.result.workboxCreateTaskResponseDTO.response.EXT_MESSAGES.MESSAGES.item.forEach(function (oItem) {
+			 				sError = sError + oItem.MESSAGE + "\n" ;
+			 			aError.push({
+			 				ErrorMessage: oItem.MESSAGE
+			 			});
+			 		});
+			 	} else if (!oError.responseJSON.result) {
+			 		aError.push({
+			 			ErrorMessage: oError.responseJSON.error
+			 		});
+			 		sError = oError.responseJSON.error;
+			 	}
+			 //	this.getView().getModel("Customer").setProperty("/missingFields", aError);
+			 	this.getView().getModel("Customer").refresh(true);
+			 	//this.getView().byId("idCreateVendorSubmitErrors").setVisible(true);
+			 //	this.handleErrorLogs();
+			// 	//oError.responseJSON.result.workboxCreateTaskResponseDTO.response.EXT_MESSAGES.MESSAGES.item
+				MessageToast.show(sError,{ duration: 6000,width: "100%"});
+			 }.bind(this));
+			//	this._createTask();
 			}
 		},
 
@@ -429,7 +472,7 @@ sap.ui.define([
 						"modified_by": {
 							"user_id": this.getView().getModel("userManagementModel").getProperty("/data/user_id")
 						},
-						"entity_type_id": "41001",
+						"entity_type_id": "41002",
 						"change_request_type_id": oCustomerData.changeReq.genData.change_request_id,
 						"change_request_priority_id": oCustomerData.changeReq.genData.priority,
 						"change_request_due_date": oCustomerData.changeReq.genData.dueDate,
@@ -777,11 +820,22 @@ sap.ui.define([
 		onValueHelpOkPress: function (oEvent) {
 			var aToken = oEvent.getParameter("tokens");
 			var oVal = aToken[0].getCustomData()[0].getValue();
+			var oModel = this.getOwnerComponent().getModel('Customer');
 			if (this._sKey.split("/").length > 1) {
 				this._oInput.setValue(oVal[this._sKey.split("/")[0]][this._sKey.split("/")[1]]);
 			} else {
 				this._oInput.setValue(oVal[this._sKey]);
 			}
+			
+			oModel.setProperty('/createCRCustomerData/createCRCustomerData/gen_bnka/banka', oVal.bankl);
+				// oModel.setProperty('/createCRVendorData/formData/parentDTO/customData/gen_bnka/gen_bnka_1/banka', oVal.banka);
+				oModel.setProperty('/createCRCustomerData/gen_bnka/stras', oVal.stras);
+				oModel.setProperty('/createCRCustomerData/gen_bnka/ort01', oVal.ort01);
+				// oModel.setProperty('/createCRVendorData/formData/parentDTO/customData/vnd_lfbk/vnd_lfbk_1/BANKS', oVal.banks);
+				oModel.refresh(true);
+			
+			
+			
 			this._oValueHelpDialog.close();
 		},
 
@@ -1389,6 +1443,40 @@ sap.ui.define([
 				new Filter("land1", FilterOperator.EQ, this.getModel("Customer").getProperty(
 					"/createCRCustomerData/formData/parentDTO/customData/cust_kna1/land1"))
 			]);
+		},
+		
+		// we should remove this code 
+		
+		_CreateCRID: function () {
+			var oCustomerData = this.getModel("Customer").getData();
+			var objParamSubmit = {
+				url: "/murphyCustom/mdm/change-request-service/changerequests/changerequest/create",
+				type: 'POST',
+				hasPayload: true,
+				data: {
+					"parentCrDTOs": [{
+						"crDTO": {
+							"entity_id": this.getView().getModel("Customer").getProperty("/createCRCustomerData/entityId"),
+							"change_request_by": this.getView().getModel("userManagementModel").getProperty("/data/user_id"),
+							"entity_type_id": "41002",
+							"change_request_type_id": 1,
+							"change_request_priority_id": 1,
+							"change_request_due_date":oCustomerData.changeReq.genData.dueDate,
+							"change_request_desc": oCustomerData.changeReq.genData.desc,
+							"change_request_reason_id": oCustomerData.changeReq.genData.reason
+						}
+					}]
+				}
+			};
+			this.serviceCall.handleServiceRequest(objParamSubmit).then(function (oDataResp) {
+				debugger;
+				// this.getView().setBusy(false);
+				MessageToast.show("Change Request ID - " + oDataResp.result.parentCrDTOs[0].crDTO.change_request_id + " Generated.");
+				this._EntityIDDraftFalse();
+			}.bind(this), function (oError) {
+				this.getView().setBusy(false);
+				MessageToast.show("Error in CR Create Call");
+			}.bind(this));
 		}
 
 	});

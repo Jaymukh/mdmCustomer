@@ -41,7 +41,7 @@ sap.ui.define([
 					"parentDTO": {
 						"customData": {
 							"business_entity": {
-								"entity_type_id": "40002",
+								"entity_type_id": "41002",
 								"created_by": sUserId,
 								"modified_by": sUserId,
 								"is_draft": true
@@ -209,7 +209,7 @@ sap.ui.define([
 			oFilters.countryCode = oCRSearchData.City;
 			oFilters.companyCode = oCRSearchData.CompanyCode;
 			oFilters.entityType = "CUSTOMER";
-			oFilters.entity_type_id = "40002";
+			//oFilters.entity_type_id = "41002";
 			oFilters.listOfCRSearchCondition = [
 				"GET_CR_BY_ADDRESS",
 				"GET_CR_CREATED_BY_USER_ID",

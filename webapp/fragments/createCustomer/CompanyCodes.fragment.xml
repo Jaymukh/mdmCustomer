@@ -49,7 +49,25 @@
 				</ComboBox>
 				<core:Title text="Accounting Information"/>
 				<Label text="Reconcillation Account"/>
-				<Input required="true" value="{Customer>/createCRCustomerData/cust_knb1/akont}" valueHelpRequest=".onValueHelpRequested"
+					<ComboBox  selectedKey="{Customer>/createCRCustomerData/cust_knb1/akont}"
+					editable="{App>/edit}">
+					<items>
+						<core:Item text="0011590120-AR IC JV VENDOR" key="0011590120"/>
+						<core:Item text="0030000100-AP-TRADE" key="0030000100"/>
+						<core:Item text="0030000110-AP-JOINT VENTURE" key="0030000110"/>
+						<core:Item text="0030000111-CASH CALL DUE(NP)" key="0030000111"/>
+						<core:Item text="0030000112-CASH CALL OFFSET(NP)" key="0030000112"/>
+						<core:Item text="0030000114-Vendor 1099 Reconciliation Account" key="0030000114"/>
+						<core:Item text="0030000120-AP - EMPLOYEES" key="0030000120"/>
+						<core:Item text="0030000130-AP- LAND" key="0030000130"/>
+						<core:Item text="0030400100-AP IC auto postings" key="0030400100"/>
+						<core:Item text="0031000105-N_INACTIVE-Production/royalty payable(recon)" key="0031000105"/>
+						<core:Item text="0031000170-NGL MKTG PURCH PAY" key="0031000170"/>
+						<core:Item text="0030300000-Other ACCOUNTS PAY" key="0030300000"/>
+					</items>
+				</ComboBox>
+											
+				<!--<Input required="true" value="{Customer>/createCRCustomerData/cust_knb1/akont}" valueHelpRequest=".onValueHelpRequested"
 					valueHelpOnly="true" maxLength="10" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Reconcillation Account"></core:CustomData>
@@ -59,7 +77,7 @@
 						<core:CustomData key="inputKey" value="akont"></core:CustomData>
 						<core:CustomData key="inputText" value="akont"></core:CustomData>
 					</customData>
-				</Input>
+				</Input>-->
 				<Label text="Head Office"/>
 				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
 					value="{Customer>/createCRCustomerData/cust_knb1/knrze}" maxLength="10" editable="{App>/edit}">
