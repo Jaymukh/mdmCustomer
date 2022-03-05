@@ -30,18 +30,20 @@ sap.ui.define([
 		},
 
 		onBackToAllChangeReq: function () {
-			if (!this.getOwnerComponent().getModel("ChangeRequestsModel").getProperty("/ChangeRequests")) {
+			if (!this.getOwnerComponent().getModel("ChangeRequestsModel").getProperty("/ChangeRequests").length) {
 				this.nPageNo = 1;
 				this.handleGetAllChangeRequests(this.nPageNo);
 				this.handleChangeRequestStatistics();
 			}
-			this.byId("pageContainer").to("changeRequestId");
 			this.clearAllButtons();
 			this.getView().getParent().getParent().getSideContent().setSelectedItem(this.getView().getParent().getParent().getSideContent().getItem()
 				.getItems()[2]);
 
 			this.getModel("App").setProperty("/appTitle", "Change Request And Documents");
-			this.byId("pageContainer").to("changeRequestId");
+			var sID = this.getView().getParent().getPages().find(function (e) {
+						return e.getId().indexOf("changeRequestId") !== -1;
+					}).getId();
+			this.getView().getParent().to(sID);
 		},
 
 		onBackToAllCust: function () {
@@ -118,7 +120,7 @@ sap.ui.define([
 					this.getView().setBusy(true);
 					this.serviceCall.handleServiceRequest(oObjectKunnr).then((oData) => {
 						//Success Handler for KUNNR Creation
-						var sKunnr = oData.result.customerDTOs[0].customCustomerCustKna1DTO.kunnr;
+						var sKunnr = oData.result.customerDTOs[0].customCustomerCustKna1DTO.KUNNR;
 						this.saveCustomerWithKunnr(sKunnr);
 					}, oError => {
 						//Error Handler for KUNNR Creation
@@ -215,7 +217,7 @@ sap.ui.define([
 			if (this.onCheckCR()) {
 				this.getView().setBusy(true);
 			 var objParamSubmit = {
-			 	url: "/murphyCustom/mdm/workflow-service/workflows/tasks/task/action",
+			 	url: "/murphyCustom/workflow-service/workflows/tasks/task/action",
 				type: 'POST',
 				hasPayload: true,
 			 	data: {
@@ -1450,7 +1452,7 @@ sap.ui.define([
 		_CreateCRID: function () {
 			var oCustomerData = this.getModel("Customer").getData();
 			var objParamSubmit = {
-				url: "/murphyCustom/mdm/change-request-service/changerequests/changerequest/create",
+				url: "/murphyCustom/change-request-service/changerequests/changerequest/create",
 				type: 'POST',
 				hasPayload: true,
 				data: {
@@ -1469,8 +1471,6 @@ sap.ui.define([
 				}
 			};
 			this.serviceCall.handleServiceRequest(objParamSubmit).then(function (oDataResp) {
-				debugger;
-				// this.getView().setBusy(false);
 				MessageToast.show("Change Request ID - " + oDataResp.result.parentCrDTOs[0].crDTO.change_request_id + " Generated.");
 				this._EntityIDDraftFalse();
 			}.bind(this), function (oError) {

@@ -139,7 +139,7 @@ sap.ui.define([
 
 					//Navigate to Change Request Page	
 					var sID = this.getView().getParent().getPages().find(function (e) {
-						return e.getId().indexOf("changeRequestId") !== -1;
+						return e.getId().indexOf("CreateERPCustomer") !== -1;
 					}).getId();
 					this.getView().getParent().to(sID);
 					oAppModel.setProperty("/sidePanelSelectedPage", "idWorkFlowSection");
