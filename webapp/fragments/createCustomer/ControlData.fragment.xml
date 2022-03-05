@@ -26,6 +26,7 @@
 					<core:CustomData key="table" value="TBRG"></core:CustomData>
 					<core:CustomData key="brgru" value="Authorization Group Code"></core:CustomData>
 					<core:CustomData key="bezei" value="Authorization Group"></core:CustomData>
+					<core:CustomData key="brobj" value="Authorization Object"></core:CustomData>
 					<core:CustomData key="inputKey" value="brgru"></core:CustomData>
 					<core:CustomData key="inputText" value="brgru"></core:CustomData>
 				</customData>

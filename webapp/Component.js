@@ -65,17 +65,18 @@ sap.ui.define([
 								"email_id": oUserModelResources.emails[0].value,
 								"firstname": oUserModelResources.name.givenName,
 								"lastname": oUserModelResources.name.familyName,
-								"display_name": oUserModelResources.displayName,
+								"display_name": oUserModelResources.name.givenName + " " + oUserModelResources.name.familyName,
 								"external_id": oUserModelResources.id,
 								"created_by": 1,
 								"modified_by": 1,
 								"roles": [{
 									"role_code_btp": "DA_MDM_ADMIN"
 								}],
-								"_active": true
+								"is_active": true
 							}]
 						}
 					};
+					
 					this.serviceCall.handleServiceRequest(oObjParam).then(function (oDataResp) {
 						this.getModel("userManagementModel").setProperty("/data", oDataResp.result.userDetails[0]);
 					}.bind(this));

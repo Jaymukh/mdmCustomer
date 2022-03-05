@@ -74,7 +74,7 @@
 				<Label text="Language"/>
 				<ComboBox required="true" selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/spras}"
 					items="{Dropdowns>/T002}" editable="{App>/edit}">
-					<core:Item key="{Dropdowns>spras}" text="{Dropdowns>sptxt}"/>
+					<core:Item key="{Dropdowns>laiso}" text="{Dropdowns>sptxt}"/>
 				</ComboBox>
 				<core:Title/>
 				<Label text="Transportation Zone"/>
@@ -285,7 +285,7 @@
 				</ColumnListItem>
 			</items>
 		</Table>
-		<Table >
+		<Table visible="false">
 			<headerToolbar>
 				<Toolbar>
 					<Title text="Web Sites"/>
@@ -320,7 +320,7 @@
 				</ColumnListItem>
 			</items>
 		</Table>
-		<Table >
+		<Table visible="false">
 			<headerToolbar>
 				<Toolbar>
 					<Title text="International Versions"/>

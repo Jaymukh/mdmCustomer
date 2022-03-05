@@ -72,6 +72,7 @@ sap.ui.define([
 					oCustomerData.formData.parentDTO.customData.cust_kna1 = Object.assign({}, oAppModel.getProperty(
 						"/createCRCustomerData/formData/parentDTO/customData/cust_kna1"));
 					oCustomerData.formData.parentDTO.customData.cust_kna1.entity_id = sEntityId;
+					oCustomerData.formData.parentDTO.customData.cust_kna1.spras = "EN";
 					oCustomerData.tableRows = {};
 					aTables.forEach(function (sTable) {
 						oCustomerData.tableRows[sTable] = [];

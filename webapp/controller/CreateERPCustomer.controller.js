@@ -41,8 +41,8 @@ sap.ui.define([
 
 			this.getModel("App").setProperty("/appTitle", "Change Request And Documents");
 			var sID = this.getView().getParent().getPages().find(function (e) {
-						return e.getId().indexOf("changeRequestId") !== -1;
-					}).getId();
+				return e.getId().indexOf("changeRequestId") !== -1;
+			}).getId();
 			this.getView().getParent().to(sID);
 		},
 
@@ -52,16 +52,19 @@ sap.ui.define([
 		},
 
 		onCheckCR: function () {
-			var aForms = ["idChangeReqForm", "idErpCustDetails"],
-				aMessages = [],
-				bValid = true;
-			aForms.forEach(sForm => {
-				var oMessages = this.checkFormReqFields(sForm);
-				if (!oMessages.bValid) {
-					aMessages = aMessages.concat(this.checkFormReqFields(sForm).message);
-					bValid = false;
-				}
-			});
+			var oPostCheck = this._handlePostalCodeCheck(),
+				aMessages = oPostCheck.aMessage,
+				bValid = oPostCheck.bValid;
+			if (bValid) {
+				var aForms = ["idChangeReqForm", "idErpCustDetails"];
+				aForms.forEach(sForm => {
+					var oMessages = this.checkFormReqFields(sForm);
+					if (!oMessages.bValid) {
+						aMessages = aMessages.concat(this.checkFormReqFields(sForm).message);
+						bValid = false;
+					}
+				});
+			}
 			if (aMessages.length && !bValid) {
 				var oList = new List();
 				aMessages.forEach(sMessage => {
@@ -88,6 +91,30 @@ sap.ui.define([
 			}
 			return bValid;
 
+		},
+
+		_handlePostalCodeCheck: function () {
+			var oCustomer = this.getModel("Customer").getData(),
+				oReturnObj = {
+					bValid: true,
+					aMessage: []
+				},
+				iPostLength = 0;
+			if (oCustomer.createCRCustomerData.formData.parentDTO.customData.cust_kna1.pstlz) {
+				iPostLength = oCustomer.createCRCustomerData.formData.parentDTO.customData.cust_kna1.pstlz.length;
+			}
+			if (oCustomer.createCRCustomerData.formData.parentDTO.customData.cust_kna1.land1 === "US") {
+				if (iPostLength !== 5 && iPostLength !== 10) {
+					oReturnObj.bValid = false;
+					oReturnObj.aMessage.push("Postal Code should be 5 or 10 digits for USA.");
+				}
+			} else if (oCustomer.createCRCustomerData.formData.parentDTO.customData.cust_kna1.land1 === "CA") {
+				if (iPostLength !== 6) {
+					oReturnObj.bValid = false;
+					oReturnObj.aMessage.push("Postal Code should be 6 digits for Canada.");
+				}
+			}
+			return oReturnObj;
 		},
 
 		onSaveCR: function (oEvent) {
@@ -216,50 +243,54 @@ sap.ui.define([
 		onSubmitCR: function () {
 			if (this.onCheckCR()) {
 				this.getView().setBusy(true);
-			 var objParamSubmit = {
-			 	url: "/murphyCustom/workflow-service/workflows/tasks/task/action",
-				type: 'POST',
-				hasPayload: true,
-			 	data: {
-					"operationType": "CREATE",
-			 		"changeRequestDTO": {
-			 			 "entity_type_id": "41002",
-						"entity_id": this.getView().getModel("Customer").getProperty("/createCRCustomerData/entityId")
-			 		}
-			 	}
-			 };
-			 this.serviceCall.handleServiceRequest(objParamSubmit).then(function (oDataResp) {
-			 this.getView().setBusy(false);
-			 MessageToast.show("Submission Successful");
-			 	this._CreateCRID();
-			 	this.getView().getModel("Customer").refresh(true);
-			 //	this.getView().byId("idCreateVendorSubmitErrors").setVisible(false);
-			 }.bind(this), function (oError) {
-			 	this.getView().setBusy(false);
-				var sError = "";
-			 	var aError = [];
-			 	if (oError.responseJSON.result&& oError.responseJSON.result.workboxCreateTaskResponseDTO && oError.responseJSON.result.workboxCreateTaskResponseDTO.response.EXT_MESSAGES.MESSAGES.item &&
-			 		oError.responseJSON.result.workboxCreateTaskResponseDTO.response.EXT_MESSAGES.MESSAGES.item.length > 0) {
-			 		oError.responseJSON.result.workboxCreateTaskResponseDTO.response.EXT_MESSAGES.MESSAGES.item.forEach(function (oItem) {
-			 				sError = sError + oItem.MESSAGE + "\n" ;
-			 			aError.push({
-			 				ErrorMessage: oItem.MESSAGE
-			 			});
-			 		});
-			 	} else if (!oError.responseJSON.result) {
-			 		aError.push({
-			 			ErrorMessage: oError.responseJSON.error
-			 		});
-			 		sError = oError.responseJSON.error;
-			 	}
-			 //	this.getView().getModel("Customer").setProperty("/missingFields", aError);
-			 	this.getView().getModel("Customer").refresh(true);
-			 	//this.getView().byId("idCreateVendorSubmitErrors").setVisible(true);
-			 //	this.handleErrorLogs();
-			// 	//oError.responseJSON.result.workboxCreateTaskResponseDTO.response.EXT_MESSAGES.MESSAGES.item
-				MessageToast.show(sError,{ duration: 6000,width: "100%"});
-			 }.bind(this));
-			//	this._createTask();
+				var objParamSubmit = {
+					url: "/murphyCustom/workflow-service/workflows/tasks/task/action",
+					type: 'POST',
+					hasPayload: true,
+					data: {
+						"operationType": "CREATE",
+						"changeRequestDTO": {
+							"entity_type_id": "41002",
+							"entity_id": this.getView().getModel("Customer").getProperty("/createCRCustomerData/entityId")
+						}
+					}
+				};
+				this.serviceCall.handleServiceRequest(objParamSubmit).then(function (oDataResp) {
+					this.getView().setBusy(false);
+					MessageToast.show("Submission Successful");
+					this._CreateCRID();
+					this.getView().getModel("Customer").refresh(true);
+					//	this.getView().byId("idCreateVendorSubmitErrors").setVisible(false);
+				}.bind(this), function (oError) {
+					this.getView().setBusy(false);
+					var sError = "";
+					var aError = [];
+					if (oError.responseJSON.result && oError.responseJSON.result.workboxCreateTaskResponseDTO && oError.responseJSON.result.workboxCreateTaskResponseDTO
+						.response.EXT_MESSAGES.MESSAGES.item &&
+						oError.responseJSON.result.workboxCreateTaskResponseDTO.response.EXT_MESSAGES.MESSAGES.item.length > 0) {
+						oError.responseJSON.result.workboxCreateTaskResponseDTO.response.EXT_MESSAGES.MESSAGES.item.forEach(function (oItem) {
+							sError = sError + oItem.MESSAGE + "\n";
+							aError.push({
+								ErrorMessage: oItem.MESSAGE
+							});
+						});
+					} else if (!oError.responseJSON.result) {
+						aError.push({
+							ErrorMessage: oError.responseJSON.error
+						});
+						sError = oError.responseJSON.error;
+					}
+					//	this.getView().getModel("Customer").setProperty("/missingFields", aError);
+					this.getView().getModel("Customer").refresh(true);
+					//this.getView().byId("idCreateVendorSubmitErrors").setVisible(true);
+					//	this.handleErrorLogs();
+					// 	//oError.responseJSON.result.workboxCreateTaskResponseDTO.response.EXT_MESSAGES.MESSAGES.item
+					MessageToast.show(sError, {
+						duration: 6000,
+						width: "100%"
+					});
+				}.bind(this));
+				//	this._createTask();
 			}
 		},
 
@@ -419,38 +450,37 @@ sap.ui.define([
 								"isDeleted": false,
 								"isRunTime": false,
 								"isVisible": null
-							},
-		                {
-		                    "processName": "MDGCustomerWorkflow",
-		                    "key": "hhcie3a1d1a7a",
-		                    "label": "CR Number",
-		                    "processType": null,
-		                    "isEditable": true,
-		                    "isActive": true,
-		                    "isMandatory": true,
-		                    "isEdited": 2,
-		                    "attrDes": "CR Number",
-		                    "value": "CR0033",
-		                    "dataType": "INPUT",
-		                    "valueList": [],
-		                    "attachmentType": null,
-		                    "attachmentSize": null,
-		                    "attachmentName": null,
-		                    "attachmentId": null,
-		                    "dataTypeKey": 0,
-		                    "dropDownType": null,
-		                    "url": null,
-		                    "taskId": null,
-		                    "origin": "Process",
-		                    "attributePath": null,
-		                    "dependantOn": null,
-		                    "rowNumber": 0,
-		                    "tableAttributes": null,
-		                    "tableContents": null,
-		                    "isDeleted": false,
-		                    "isRunTime": false,
-		                    "isVisible": null
-		                }],
+							}, {
+								"processName": "MDGCustomerWorkflow",
+								"key": "hhcie3a1d1a7a",
+								"label": "CR Number",
+								"processType": null,
+								"isEditable": true,
+								"isActive": true,
+								"isMandatory": true,
+								"isEdited": 2,
+								"attrDes": "CR Number",
+								"value": "CR0033",
+								"dataType": "INPUT",
+								"valueList": [],
+								"attachmentType": null,
+								"attachmentSize": null,
+								"attachmentName": null,
+								"attachmentId": null,
+								"dataTypeKey": 0,
+								"dropDownType": null,
+								"url": null,
+								"taskId": null,
+								"origin": "Process",
+								"attributePath": null,
+								"dependantOn": null,
+								"rowNumber": 0,
+								"tableAttributes": null,
+								"tableContents": null,
+								"isDeleted": false,
+								"isRunTime": false,
+								"isVisible": null
+							}],
 							"userId": this.getView().getModel("userManagementModel").getProperty("/data/user_id")
 						}],
 						"type": "Multiple Instance",
@@ -828,16 +858,14 @@ sap.ui.define([
 			} else {
 				this._oInput.setValue(oVal[this._sKey]);
 			}
-			
+
 			oModel.setProperty('/createCRCustomerData/createCRCustomerData/gen_bnka/banka', oVal.bankl);
-				// oModel.setProperty('/createCRVendorData/formData/parentDTO/customData/gen_bnka/gen_bnka_1/banka', oVal.banka);
-				oModel.setProperty('/createCRCustomerData/gen_bnka/stras', oVal.stras);
-				oModel.setProperty('/createCRCustomerData/gen_bnka/ort01', oVal.ort01);
-				// oModel.setProperty('/createCRVendorData/formData/parentDTO/customData/vnd_lfbk/vnd_lfbk_1/BANKS', oVal.banks);
-				oModel.refresh(true);
-			
-			
-			
+			// oModel.setProperty('/createCRVendorData/formData/parentDTO/customData/gen_bnka/gen_bnka_1/banka', oVal.banka);
+			oModel.setProperty('/createCRCustomerData/gen_bnka/stras', oVal.stras);
+			oModel.setProperty('/createCRCustomerData/gen_bnka/ort01', oVal.ort01);
+			// oModel.setProperty('/createCRVendorData/formData/parentDTO/customData/vnd_lfbk/vnd_lfbk_1/BANKS', oVal.banks);
+			oModel.refresh(true);
+
 			this._oValueHelpDialog.close();
 		},
 
@@ -1446,9 +1474,9 @@ sap.ui.define([
 					"/createCRCustomerData/formData/parentDTO/customData/cust_kna1/land1"))
 			]);
 		},
-		
+
 		// we should remove this code 
-		
+
 		_CreateCRID: function () {
 			var oCustomerData = this.getModel("Customer").getData();
 			var objParamSubmit = {
@@ -1463,7 +1491,7 @@ sap.ui.define([
 							"entity_type_id": "41002",
 							"change_request_type_id": 1,
 							"change_request_priority_id": 1,
-							"change_request_due_date":oCustomerData.changeReq.genData.dueDate,
+							"change_request_due_date": oCustomerData.changeReq.genData.dueDate,
 							"change_request_desc": oCustomerData.changeReq.genData.desc,
 							"change_request_reason_id": oCustomerData.changeReq.genData.reason
 						}

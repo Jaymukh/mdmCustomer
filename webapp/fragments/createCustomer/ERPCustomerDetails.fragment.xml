@@ -89,6 +89,7 @@
 					<core:CustomData key="inputKey" value="deli_SERV_TYPE"></core:CustomData>
 					<core:CustomData key="inputText" value="deli_SERV_DSCR"></core:CustomData>
 					<core:CustomData key="deli_SERV_TYPE" value="Delivery Type"></core:CustomData>
+					<core:CustomData key="deli_SERV_TEXT" value="Text"></core:CustomData>
 					<core:CustomData key="deli_SERV_DSCR" value="Description"></core:CustomData>
 				</customData>
 			</Input>
@@ -97,17 +98,20 @@
 			<Label text="PO Box"/>
 			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/pfach}" maxLength="10" editable="{App>/edit}"/>
 			<Label text="Undeliverable"/>
-			<Input value="{Customer>/createCRCustomerData/gen_adrc/dont_use_p}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
-				valueHelpOnly="true" editable="{App>/edit}">
-				<customData>
-					<core:CustomData key="title" value="Undeliverable"></core:CustomData>
-					<core:CustomData key="table" value=""></core:CustomData>
-					<core:CustomData key="inputKey" value="deli_SERV_TYPE"></core:CustomData>
-					<core:CustomData key="inputText" value="deli_SERV_DSCR"></core:CustomData>
-					<core:CustomData key="deli_SERV_TYPE" value="Delivery Type"></core:CustomData>
-					<core:CustomData key="deli_SERV_DSCR" value="Description"></core:CustomData>
-				</customData>
-			</Input>
+			<ComboBox showSecondaryValues="true" 
+				selectedKey="{Customer>/createCRCustomerData/gen_adrc/dont_use_p}">
+				<items>
+					<core:ListItem text="Unknown" key="0001" additionalText="0001"/>
+					<core:ListItem text="Moved w/o Forwarding" key="0002" additionalText="0002"/>
+					<core:ListItem text="Inadequate Address" key="0003" additionalText="0003"/>
+					<core:ListItem text="Illegible Address" key="0004" additionalText="0004"/>
+					<core:ListItem text="No Letter Box" key="0005" additionalText="0005"/>
+					<core:ListItem text="No PO Box" key="0006" additionalText="0006"/>
+					<core:ListItem text="Rejected" key="0007" additionalText="0007"/>
+					<core:ListItem text="Deceased" key="0008" additionalText="0008"/>
+					<core:ListItem text="Company wound-up" key="0009" additionalText="0009"/>
+				</items>
+			</ComboBox>
 			<core:Title text="Address"/>
 			<Label text="Street / House No."/>
 			<Input required="true" width="100%" value="{Customer>/createCRCustomerData/gen_adrc/street}" maxLength="60" editable="{App>/edit}"/>
@@ -160,7 +164,7 @@
 			<Label text="Language"/>
 			<ComboBox required="true" selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/spras}"
 				items="{Dropdowns>/T002}" editable="{App>/edit}">
-				<core:Item key="{Dropdowns>spras}" text="{Dropdowns>sptxt}"/>
+				<core:Item key="{Dropdowns>laiso}" text="{Dropdowns>sptxt}"/>
 			</ComboBox>
 			<Label text="Transportation Zone"/>
 			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/lzone}" showValueHelp="true"
