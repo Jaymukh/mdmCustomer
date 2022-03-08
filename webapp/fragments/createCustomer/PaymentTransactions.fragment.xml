@@ -37,7 +37,7 @@
 				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" editable="{App>/edit}">
 				<customData>
 					<core:CustomData key="title" value="Alternative payee"></core:CustomData>
-					<core:CustomData key="table" value="KNA1"></core:CustomData>
+					<core:CustomData key="table" value="VM_KNA1"></core:CustomData>
 					<core:CustomData key="customVendorLFA1DTO/lifnr" value="Vendor"></core:CustomData>
 					<core:CustomData key="customVendorLFA1DTO/name1" value="Name"></core:CustomData>
 					<core:CustomData key="customVendorLFA1DTO/land1" value="Country"></core:CustomData>

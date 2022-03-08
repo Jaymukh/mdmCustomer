@@ -52,6 +52,8 @@
 					<ComboBox  selectedKey="{Customer>/createCRCustomerData/cust_knb1/akont}"
 					editable="{App>/edit}">
 					<items>
+						
+						<core:Item text="11300100 - A/R other recon" key="0011300100"/>
 						<core:Item text="0011590120-AR IC JV VENDOR" key="0011590120"/>
 						<core:Item text="0030000100-AP-TRADE" key="0030000100"/>
 						<core:Item text="0030000110-AP-JOINT VENTURE" key="0030000110"/>
@@ -193,14 +195,14 @@
 				<Input value="{Customer>/createCRCustomerData/cust_knb1/pernr}" maxLength="8" editable="{App>/edit}"/>
 				<core:Title text="Payment Data"/>
 				<Label text="Terms of Payment"/>
-				<Input value="{Customer>/createCRCustomerData/cust_knb1/zterm}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+				<Input  value="{Customer>/createCRCustomerData/cust_knb1/zterm}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
 					valueHelpOnly="true" maxLength="4" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Terms of Payment"></core:CustomData>
-						<core:CustomData key="table" value="T052"></core:CustomData>
-						<core:CustomData key="inputKey" value="zterm"></core:CustomData>
-						<core:CustomData key="inputText" value="zterm"></core:CustomData>
-						<core:CustomData key="zterm" value="Terms of Payment"></core:CustomData>
+						<core:CustomData key="table" value="local"></core:CustomData>
+						<core:CustomData key="inputKey" value="key"></core:CustomData>
+						<core:CustomData key="inputText" value="text"></core:CustomData>
+						<core:CustomData key="key" value="Terms of Payment"></core:CustomData>
 						<core:CustomData key="text" value="Description"></core:CustomData>
 					</customData>
 				</Input>

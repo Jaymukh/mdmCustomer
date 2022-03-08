@@ -203,16 +203,17 @@
 						"fee_schedule": null,
 						"duns": null,
 						"duns4": null,
-						"VSO__R_PALHGT;": null,
-						"VSO__R_PAL_UL": null,
-						"VSO__R__PK_MAT": null,
-						"VSO__R_MATPAL": null,
-						"VSO__R_I_NO_LYR": null,
-						"VSO__R_ONE_MAT": null,
-						"VSO__R_ONE_SORT": null,
-						"VSO__R_ULD_SIDE": null,
-						"VSO__R_LOAD_PREF": null,
-						"VSO__r_DPOINT": null
+						"vso__r_palhgt": null,
+						"vso__r_pal_ul": null,
+						"vso__r__pk_mat": null,
+                        "vso__r_matpal": null,
+                        "vso__r_i_no_lyr": null,
+                        "vso__r_one_mat": null,
+                        "vso__r_one_sort": null,
+                        "vso__r_uld_side": null,
+                        "vso__r_load_pref": null,
+                        "vso__r_dpoint": null
+					
 					},
 					"cust_knb1": {
 
@@ -874,5 +875,206 @@
 		"text": "HR Customers",
 		"additionalText": "HRAR",
 		"key": "HRAR"
+	},{
+		"text": "Intercompany Vendors",
+		"additionalText": "INCO",
+		"key": "INCO"
+	},{
+		"text": "JV / PRA Vendors",
+		"additionalText": "JVPR",
+		"key": "JVPR"
+	}, {
+		"text": "JV International",
+		"additionalText": "JVIN",
+		"key": "JVIN"
+	},{
+		"text": "Oil and Gas Purchasers",
+		"additionalText": "OGPR",
+		"key": "OGPR"
+	}],
+
+	"paymentTermsData": [{
+		"key": "0001",
+		"text": "Payable immediately Due net"
+	}, {
+		"key": "0002",
+		"text": "within 14 days 2 % cash discount within 30 days Due net"
+	}, {
+		"key": "0003",
+		"text": "within 14 days 3 % cash discount within 20 days 2 % cash discount within 30 days Due net"
+	}, {
+		"key": "0004",
+		"text": "Payable immediately Due net Baseline date on End of the month"
+	}, {
+		"key": "0005",
+		"text": "Payable immediately Due net Baseline date on 10 of next month"
+	}, {
+		"key": "0006",
+		"text": "Before End of the month 4 % cash discount Before 15 of the next month ;; 2 % cash discount Before 15 in 2 months Due net"
+	}, {
+		"key": "0007",
+		"text": "For incoming invoices until 15 of the month Before 15 of the next month ;; 2 % cash discount Before End of the next month ;; Due net For incoming invoices until End  of the month Before End of the next month ;; 2 % cash discount Before 15 in 2 months Due net"
+	}, {
+		"key": "0008",
+		"text": "For incoming invoices until 15 of the month within 14 days 2 % cash discount within 30 days 1.5 % cash discount within 45 days Due net Baseline date on 30 of the month For incoming invoices until End  of the month within 14 days 2 % cash discount within 30 days 1.5 % cash discount within 45 days Due net Baseline date on 15 of next month"
+	}, {
+		"key": "0009",
+		"text": "Payable in 3 partial amounts 1 installment: 30.000 % with payment term 0001 2 installment: 40.000 % with payment term 0001 3 installment: 30.000 % with payment term 0001"
+	}, {
+		"key": "0010",
+		"text": "within 10 days 2 % cash discount within 30 days Due net"
+	}, {
+		"key": "0011",
+		"text": "within 10 days 3 % cash discount within 30 days Due net"
+	}, {
+		"key": "0012",
+		"text": "within 12 days Due net"
+	}, {
+		"key": "0014",
+		"text": "within 14 days Due net"
+	}, {
+		"key": "0015",
+		"text": "within 15 days Due net"
+	}, {
+		"key": "0017",
+		"text": "within 5 days Due net"
+	}, {
+		"key": "0018",
+		"text": "within 7 days Due net"
+	}, {
+		"key": "0019",
+		"text": "within 10 days Due net"
+	}, {
+		"key": "0020",
+		"text": "within 20 days Due net"
+	}, {
+		"key": "0021",
+		"text": "within 21 days Due net"
+	}, {
+		"key": "0025",
+		"text": "within 25 days Due net"
+	}, {
+		"key": "0030",
+		"text": "within 30 days Due net"
+	}, {
+		"key": "0031",
+		"text": "Before 30 of the month Due net"
+	}, {
+		"key": "0032",
+		"text": "Before 28 of the next month ;; Due net"
+	}, {
+		"key": "0045",
+		"text": "within 45 days Due net"
+	}, {
+		"key": "C001",
+		"text": "Payable immediately Due net"
+	}, {
+		"key": "C004",
+		"text": "Payable immediately Due net Baseline date on End of the month"
+	}, {
+		"key": "C014",
+		"text": "within 14 days Due net"
+	}, {
+		"key": "C017",
+		"text": "within 5 days Due net"
+	}, {
+		"key": "C020",
+		"text": "within 20 days Due net"
+	}, {
+		"key": "C025",
+		"text": "within 25 days Due net"
+	}, {
+		"key": "C030",
+		"text": "within 30 days Due net"
+	}, {
+		"key": "C045",
+		"text": "within 45 days Due net"
+	}, {
+		"key": "D010",
+		"text": "2 percent within 10 days"
+	}, {
+		"key": "D011",
+		"text": "2 percent within 10 days"
+	}, {
+		"key": "D012",
+		"text": "1 percent within 12 days"
+	}, {
+		"key": "D015",
+		"text": "1 percent within 15 days"
+	}, {
+		"key": "D115",
+		"text": "1.5 percent within 20 days"
+	}, {
+		"key": "D130",
+		"text": "1 percent within 30 days"
+	}, {
+		"key": "D212",
+		"text": "2 percent within 12 days"
+	}, {
+		"key": "D215",
+		"text": "2 percent within 15 days"
+	}, {
+		"key": "N003",
+		"text": "within 3 days Due net"
+	}, {
+		"key": "N004",
+		"text": "within 4 days Due net"
+	}, {
+		"key": "N005",
+		"text": "within 5 days Due net"
+	}, {
+		"key": "N006",
+		"text": "within 6 days Due net"
+	}, {
+		"key": "N007",
+		"text": "within 7 days Due net"
+	}, {
+		"key": "N008",
+		"text": "within 8 days Due net"
+	}, {
+		"key": "N009",
+		"text": "within 9 days Due net"
+	}, {
+		"key": "N010",
+		"text": "within 10 days Due net"
+	}, {
+		"key": "N011",
+		"text": "within 11 days Due net"
+	}, {
+		"key": "N015",
+		"text": "within 15 days Due net"
+	}, {
+		"key": "N020",
+		"text": "Net 20 days"
+	}, {
+		"key": "N025",
+		"text": "Net 25 days"
+	}, {
+		"key": "N027",
+		"text": "Net 27 days"
+	}, {
+		"key": "N030",
+		"text": "Net 30 days"
+	}, {
+		"key": "N060",
+		"text": "within 60 days Due net"
+	}, {
+		"key": "N110",
+		"text": "within 10 days 1 % cash discount within 30 days Due net"
+	}, {
+		"key": "N115",
+		"text": "within 15 days 1 % cash discount within 30 days Due net"
+	}, {
+		"key": "N210",
+		"text": "within 10 days 2 % cash discount within 30 days Due net"
+	}, {
+		"key": "N211",
+		"text": "90% paid at invoicing and 10% heldback"
+	}, {
+		"key": "N212",
+		"text": "90% paid at invoicing and 10% heldback"
+	}, {
+		"key": "N213",
+		"text": "within 45 days Due net"
 	}]
 }
