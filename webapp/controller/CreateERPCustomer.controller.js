@@ -137,7 +137,7 @@ sap.ui.define([
 								"customData": {
 									"cust_kna1": {
 										"entity_id": oCustomerData.createCRCustomerData.formData.parentDTO.customData.cust_kna1.entity_id,
-										"KTOKD": oCustomerData.createCRCustomerData.formData.parentDTO.customData.cust_kna1.ktokd
+										"ktokd": oCustomerData.createCRCustomerData.formData.parentDTO.customData.cust_kna1.ktokd
 									}
 								}
 							}
@@ -147,7 +147,7 @@ sap.ui.define([
 					this.getView().setBusy(true);
 					this.serviceCall.handleServiceRequest(oObjectKunnr).then((oData) => {
 						//Success Handler for KUNNR Creation
-						var sKunnr = oData.result.customerDTOs[0].customCustomerCustKna1DTO.KUNNR;
+						var sKunnr = oData.result.customerDTOs[0].customCustomerCustKna1DTO.kunnr;
 						this.saveCustomerWithKunnr(sKunnr);
 					}, oError => {
 						//Error Handler for KUNNR Creation
@@ -768,7 +768,19 @@ sap.ui.define([
 			var aCols = oData.cols;
 			this._oBasicSearchField = new SearchField();
 			var objParamCreate;
-			if (oData.table === "kna1") {
+			if( oData.table === "local"){
+				var oModel = this.getOwnerComponent().getModel("App"),
+				 aData;
+				switch (oData.title) {
+				case "Terms of Payment":
+					aData = oModel.getProperty("/paymentTermsData");
+					break;
+				}
+				if (aData.length > 0) {
+					this.oTableDataModel.setProperty("/item", aData);
+					this.oTableDataModel.refresh();
+				}
+			}else if (oData.table === "kna1") {
 				objParamCreate = {
 					url: "/murphyCustom/entity-service/entities/entity/get",
 					type: "POST",
@@ -1487,7 +1499,7 @@ sap.ui.define([
 					"parentCrDTOs": [{
 						"crDTO": {
 							"entity_id": this.getView().getModel("Customer").getProperty("/createCRCustomerData/entityId"),
-							"change_request_by": this.getView().getModel("userManagementModel").getProperty("/data/user_id"),
+							"change_request_by":{"user_id" : this.getView().getModel("userManagementModel").getProperty("/data/user_id")},
 							"entity_type_id": "41002",
 							"change_request_type_id": 1,
 							"change_request_priority_id": 1,
