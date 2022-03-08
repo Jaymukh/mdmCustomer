@@ -195,7 +195,7 @@
 				<Input value="{Customer>/createCRCustomerData/cust_knb1/pernr}" maxLength="8" editable="{App>/edit}"/>
 				<core:Title text="Payment Data"/>
 				<Label text="Terms of Payment"/>
-				<Input  value="{Customer>/createCRCustomerData/cust_knb1/zterm}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+				<Input  required="true"  value="{Customer>/createCRCustomerData/cust_knb1/zterm}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
 					valueHelpOnly="true" maxLength="4" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Terms of Payment"></core:CustomData>
