@@ -2,8 +2,9 @@ sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"murphy/mdm/customer/murphymdmcustomer/shared/serviceCall",
 	"sap/ui/core/Fragment",
-	"sap/m/MessageToast"
-], function (Controller, ServiceCall, Fragment, MessageToast) {
+	"sap/m/MessageToast",
+	"sap/ui/export/Spreadsheet"
+], function (Controller, ServiceCall, Fragment, MessageToast, Spreadsheet) {
 	"use strict";
 
 	return Controller.extend("murphy.mdm.customer.murphymdmcustomer.controller.BaseController", {
@@ -339,6 +340,8 @@ sap.ui.define([
 					this.getView().setBusy(false);
 					if (oDataResp.result && oDataResp.result.workflowAuditLogDTO) {
 						oWorkFlowModel.setData(oDataResp.result.workflowAuditLogDTO);
+					} else {
+						oWorkFlowModel.setData();
 					}
 				}.bind(this),
 				function () {
@@ -381,6 +384,10 @@ sap.ui.define([
 						if (!oAuditLogModel.getProperty("/details")) {
 							oAuditLogModel.setProperty("/details", {});
 						}
+						if (!oAuditLogModel.getProperty("/allLogs")) {
+							oAuditLogModel.setProperty("/allLogs", []);
+						}
+						oAuditLogModel.setProperty("/allLogs", oDataResp.result.changeRequestLogs);
 						oAuditLogModel.setProperty("/details/newCount", nNewCount);
 						oAuditLogModel.setProperty("/details/changedCount", nChangedCount);
 						oAuditLogModel.setProperty("/details/deleteCount", nDeleteCount);
@@ -528,7 +535,7 @@ sap.ui.define([
 			this.getView().setBusy(true);
 			var sValue = oParameter.hasOwnProperty("Control") ? oParameter.Control.getValue() : oParameter.Comment;
 			var objParamCreate = {
-				url: "/murphyCustom/change-request-service/changerequests/changerequest/comments/add",
+				url: "/murphyCustom//change-request-service/changerequests/changerequest/comments/add",
 				type: 'POST',
 				hasPayload: true,
 				data: {
@@ -848,6 +855,62 @@ sap.ui.define([
 					MessageToast.show("Failed to delete the attachment");
 				}
 			);
+		},
+		
+		createColumnConfig: function () {
+			return [{
+					label: 'Change Request ID',
+					property: 'changeRequestId'
+				}, {
+					label: 'Attribute ID',
+					property: 'attributeCategoryId'
+				}, {
+					label: 'Attribute Name',
+					property: 'attributeName'
+				}, {
+					label: 'Change Log Type',
+					property: 'changeLogType'
+				}, {
+					label: 'CR Log ID',
+					property: 'change_request_log_id'
+				}, {
+					label: 'Log By',
+					property: 'logBy'
+				},
+				// {
+				// 	label: 'Log Date',
+				// 	property: 'logDate',
+				// 	type: 'date'
+				// },
+				{
+					label: 'Old Value',
+					property: 'oldValue'
+				}, {
+					label: 'New Value',
+					property: 'newValue'
+				}
+			];
+		},
+
+		onExportAttributes: function () {
+			var aCols, aProducts, oSettings;
+
+			aCols = this.createColumnConfig();
+			aProducts = this.getModel("AuditLogModel").getProperty("/allLogs");
+
+			oSettings = {
+				workbook: {
+					columns: aCols
+				},
+				dataSource: aProducts,
+				fileName: "Attributes.xlsx"
+			};
+
+			new Spreadsheet(oSettings)
+				.build()
+				.then(function () {
+					MessageToast.show("Spreadsheet export has finished");
+				});
 		}
 	});
 });
