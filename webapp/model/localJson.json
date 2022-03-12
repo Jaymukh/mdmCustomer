@@ -878,20 +878,20 @@
 		"text": "HR Customers",
 		"additionalText": "HRAR",
 		"key": "HRAR"
-	}, {
-		"text": "Intercompany Vendors",
+	},{
+		"text": "Inter company",
 		"additionalText": "INCO",
 		"key": "INCO"
-	}, {
-		"text": "JV / PRA Vendors",
+	},{
+		"text": "Joint Venture Domestic/PRA",
 		"additionalText": "JVPR",
 		"key": "JVPR"
 	}, {
-		"text": "JV International",
+		"text": "JVA International",
 		"additionalText": "JVIN",
 		"key": "JVIN"
-	}, {
-		"text": "Oil and Gas Purchasers",
+	},{
+		"text": "O&G Purchasers/Remitters",
 		"additionalText": "OGPR",
 		"key": "OGPR"
 	}],
