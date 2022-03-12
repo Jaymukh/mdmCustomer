@@ -1,205 +1,163 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:tnt="sap.tnt" height="100%" xmlns:f="sap.f"
-	xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" height="100%" xmlns:f="sap.f" xmlns:l="sap.ui.layout"
 	xmlns:filterbar="sap.ui.comp.filterbar" xmlns:vm="sap.ui.comp.variants"
 	controllerName="murphy.mdm.customer.murphymdmcustomer.controller.SearchCustomer"
 	xmlns:customData="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" xmlns:html="http://www.w3.org/1999/xhtml">
-	<tnt:ToolPage id="toolPage">
-		<tnt:header>
-			<tnt:ToolHeader>
-				<Button id="sideNavigationToggleButton" icon="sap-icon://menu2" type="Transparent" press=".onSideNavButtonPress">
-					<layoutData>
-						<OverflowToolbarLayoutData priority="NeverOverflow"/>
-					</layoutData>
-				</Button>
-				<ToolbarSpacer width="20px"/>
-				<Title text="{App>/appTitle}">
-					<layoutData>
-						<OverflowToolbarLayoutData priority="Low"/>
-					</layoutData>
-				</Title>
-			</tnt:ToolHeader>
-		</tnt:header>
-		<tnt:sideContent>
-			<tnt:SideNavigation id="sideNavigation" selectedKey="SearchCust" itemSelect="onSideItemSelect">
-				<tnt:NavigationList>
-					<tnt:NavigationListItem text="Search Customer" icon="sap-icon://detail-view" key="SearchCust"/>
-					<tnt:NavigationListItem text="Create Customer" visible="{= ${userManagementModel>/role}.indexOf('req')!== -1 ? true : false }"
-						icon="sap-icon://create" key="CreateERPCustomer"/>
-					<tnt:NavigationListItem text="Change" icon="sap-icon://request" key="changeRequestId">
-						<tnt:NavigationListItem text="All Change Request" key="changeRequestId"/>
-						<tnt:NavigationListItem text="Mass Change Request" key="changeRequestId-Mass"/>
-					</tnt:NavigationListItem>
-				</tnt:NavigationList>
-				<tnt:fixedItem>
-					<tnt:NavigationList>
-						<tnt:NavigationListItem text="Lock Menu" icon="sap-icon://unlocked" key="unlock"/>
-					</tnt:NavigationList>
-				</tnt:fixedItem>
-			</tnt:SideNavigation>
-		</tnt:sideContent>
-		<tnt:mainContents>
-			<NavContainer id="pageContainer" initialPage="SearchCust">
-				<pages>
-					<f:DynamicPage id="SearchCust" fitContent="true">
-						<f:title>
-							<f:DynamicPageTitle>
-								<f:heading>
-									<vm:VariantManagement id="idSearchVM" select="onHandleVMSelect" standardItemText="Address Data" defaultVariantKey="addressData">
-										<vm:variantItems>
-											<vm:VariantItem text="Bank Details" key="bankDetails"></vm:VariantItem>
-										</vm:variantItems>
-									</vm:VariantManagement>
-								</f:heading>
-							</f:DynamicPageTitle>
-						</f:title>
-						<f:header>
-							<f:DynamicPageHeader>
-								<f:content>
-									<filterbar:FilterBar id="idSearchFilterBar" reset="onReset" search="onSearchCustomer" useToolbar="false" showGoOnFB="true">
-										<filterbar:filterGroupItems >
-											<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="*standard*" name="name1" label="Name 1">
-												<filterbar:control>
-													<Input/>
-												</filterbar:control>
-											</filterbar:FilterGroupItem>
-											<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="*standard*" name="name2" label="Name 2">
-												<filterbar:control>
-													<Input/>
-												</filterbar:control>
-											</filterbar:FilterGroupItem>
-											<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="*standard*" name="city" label="City">
-												<filterbar:control>
-													<Input/>
-												</filterbar:control>
-											</filterbar:FilterGroupItem>
-											<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="*standard*" name="street" label="Street">
-												<filterbar:control>
-													<Input/>
-												</filterbar:control>
-											</filterbar:FilterGroupItem>
-											<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="*standard*" name="country" label="Country">
-												<filterbar:control>
-													<ComboBox items="{Dropdowns>/T005}">
-														<core:ListItem key="{Dropdowns>land1}" text="{Dropdowns>landx}" additionalText="{Dropdowns>land1}"/>
-													</ComboBox>
-												</filterbar:control>
-											</filterbar:FilterGroupItem>
-										</filterbar:filterGroupItems>
-										<filterbar:filterGroupItems>
-											<filterbar:FilterGroupItem visibleInFilterBar="false" groupName="bankDetails" name="kunnr" label="Business Partner ID">
-												<filterbar:control>
-													<Input/>
-												</filterbar:control>
-											</filterbar:FilterGroupItem>
-											<filterbar:FilterGroupItem visibleInFilterBar="false" groupName="bankDetails" name="bankAccount" label="Bank Account">
-												<filterbar:control>
-													<Input/>
-												</filterbar:control>
-											</filterbar:FilterGroupItem>
-											<filterbar:FilterGroupItem visibleInFilterBar="false" groupName="bankDetails" name="bankKey" label="Bank Key">
-												<filterbar:control>
-													<Input/>
-												</filterbar:control>
-											</filterbar:FilterGroupItem>
-											<filterbar:FilterGroupItem visibleInFilterBar="false" groupName="bankDetails" name="bankStreet" label="Street">
-												<filterbar:control>
-													<Input/>
-												</filterbar:control>
-											</filterbar:FilterGroupItem>
-											<filterbar:FilterGroupItem visibleInFilterBar="false" groupName="bankDetails" name="taxNo" label="Tax Number">
-												<filterbar:control>
-													<Input maxLength="18"/>
-												</filterbar:control>
-											</filterbar:FilterGroupItem>
-										</filterbar:filterGroupItems>
-									</filterbar:FilterBar>
-								</f:content>
-							</f:DynamicPageHeader>
-						</f:header>
-						<f:content>
-							<Table sticky="ColumnHeaders" items="{SearchCustomerModel>/searchAllModelData/customerDTOs}">
-								<headerToolbar>
-									<Toolbar>
-										<Label id="idTableTitle" text="Business Partner Master List({SearchCustomerModel>/searchAllModelData/totalRecords})" design="Bold"></Label>
-										<ToolbarSpacer></ToolbarSpacer>
-										<Button text="Create ERP Customer" visible="{= ${userManagementModel>/role}.indexOf('req')!== -1 ? true : false }" type="Emphasized"
-											press="onNavToCreateERPCustomer"></Button>
-										<Label text="Page No."/>
-										<Select id="searchAllVendorPageSelectID" items="{SearchCustomerModel>/PageData}" selectedKey="{SearchCustomerModel>/selectedPageKey}"
-											change="onSelectSearchAllVendorPage">
-											<core:Item text="{SearchCustomerModel>text}" key="{SearchCustomerModel>key}"/>
-										</Select>
-										<Button icon="sap-icon://navigation-left-arrow" type="Transparent" enabled="{SearchCustomerModel>/leftEnabled}"
-											press="onSelectSearchAllVendorPageLeft"></Button>
-										<Button icon="sap-icon://navigation-right-arrow" type="Transparent" enabled="{SearchCustomerModel>/rightEnabled}"
-											press="onSelectSearchAllVendorPageRight"></Button>
-									</Toolbar>
-								</headerToolbar>
-								<columns>
-									<Column>
-										<header>
-											<Label text="Business Partner ID" design="Bold"></Label>
-										</header>
-									</Column>
-									<Column>
-										<header>
-											<Label text="Pending Request" design="Bold"></Label>
-										</header>
-									</Column>
-									<Column>
-										<header>
-											<Label text="Description" design="Bold"></Label>
-										</header>
-									</Column>
-									<Column>
-										<header>
-											<Label text="Customer Contact" design="Bold"></Label>
-										</header>
-									</Column>
-									<Column>
-										<header>
-											<Label text="Country" design="Bold"></Label>
-										</header>
-									</Column>
-									<Column>
-										<header>
-											<Label text="Created By" wrapping="true" design="Bold"></Label>
-										</header>
-									</Column>
-									<Column>
-										<header>
-											<Label text="Finalized By" wrapping="true" design="Bold"></Label>
-										</header>
-									</Column>
-									<Column width="5%" visible="{= ${userManagementModel>/role}.indexOf('req')!== -1 ? true : false }">
-										<header>
-											<Label text=" " design="Bold"></Label>
-										</header>
-									</Column>
-								</columns>
-								<items>
-									<ColumnListItem >
-										<cells>
-											<Link text="{SearchCustomerModel>customCustomerCustKna1DTO/kunnr}" press="onGetCustomerDetails"></Link>
-											<ObjectStatus state="{path :'SearchCustomerModel>pendingRequest', formatter : '.handlePendingRequest'}"
-												text="{SearchCustomerModel>pendingRequest}"/>
-											<Text
-												text="{ parts:[ {path:'SearchCustomerModel>customVendorLFA1DTO/name1'}, {path:'SearchCustomerModel>customVendorLFA1DTO/name2'}, {path:'SearchCustomerModel>customVendorLFA1DTO/name3'}, {path:'SearchCustomerModel>customVendorLFA1DTO/name4'} ], formatter:'.handleDescription' }"></Text>
-											<Text text="{SearchCustomerModel>customVendorLFA1DTO/vbund}"></Text>
-											<Text text="{SearchCustomerModel>customVendorLFA1DTO/land1}"></Text>
-											<Text text=""/>
-											<Text text=""/>
-											<core:Icon src="sap-icon://overflow" press="handleOverFlowButton"></core:Icon>
-										</cells>
-									</ColumnListItem>
-								</items>
-							</Table>
-						</f:content>
-					</f:DynamicPage>
-					<mvc:XMLView id="CreateERPCustomer" viewName="murphy.mdm.customer.murphymdmcustomer.view.CreateERPCustomer"/>
-					<mvc:XMLView id="changeRequestId" viewName="murphy.mdm.customer.murphymdmcustomer.view.ChangeRequest"/>
-				</pages>
-			</NavContainer>
-		</tnt:mainContents>
-	</tnt:ToolPage>
+	<f:DynamicPage id="SearchCust" fitContent="true">
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<vm:VariantManagement id="idSearchVM" select="onHandleVMSelect" standardItemText="Address Data" defaultVariantKey="addressData">
+						<vm:variantItems>
+							<vm:VariantItem text="Bank Details" key="bankDetails"></vm:VariantItem>
+						</vm:variantItems>
+					</vm:VariantManagement>
+				</f:heading>
+			</f:DynamicPageTitle>
+		</f:title>
+		<f:header>
+			<f:DynamicPageHeader>
+				<f:content>
+					<filterbar:FilterBar id="idSearchFilterBar" reset="onReset" search="onSearchCustomer" useToolbar="false" showGoOnFB="true">
+						<filterbar:filterGroupItems >
+							<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="*standard*" name="name1" label="Name 1">
+								<filterbar:control>
+									<Input/>
+								</filterbar:control>
+							</filterbar:FilterGroupItem>
+							<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="*standard*" name="name2" label="Name 2">
+								<filterbar:control>
+									<Input/>
+								</filterbar:control>
+							</filterbar:FilterGroupItem>
+							<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="*standard*" name="city" label="City">
+								<filterbar:control>
+									<Input/>
+								</filterbar:control>
+							</filterbar:FilterGroupItem>
+							<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="*standard*" name="street" label="Street">
+								<filterbar:control>
+									<Input/>
+								</filterbar:control>
+							</filterbar:FilterGroupItem>
+							<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="*standard*" name="country" label="Country">
+								<filterbar:control>
+									<ComboBox items="{Dropdowns>/T005}">
+										<core:ListItem key="{Dropdowns>land1}" text="{Dropdowns>landx}" additionalText="{Dropdowns>land1}"/>
+									</ComboBox>
+								</filterbar:control>
+							</filterbar:FilterGroupItem>
+						</filterbar:filterGroupItems>
+						<filterbar:filterGroupItems>
+							<filterbar:FilterGroupItem visibleInFilterBar="false" groupName="bankDetails" name="kunnr" label="Business Partner ID">
+								<filterbar:control>
+									<Input/>
+								</filterbar:control>
+							</filterbar:FilterGroupItem>
+							<filterbar:FilterGroupItem visibleInFilterBar="false" groupName="bankDetails" name="bankAccount" label="Bank Account">
+								<filterbar:control>
+									<Input/>
+								</filterbar:control>
+							</filterbar:FilterGroupItem>
+							<filterbar:FilterGroupItem visibleInFilterBar="false" groupName="bankDetails" name="bankKey" label="Bank Key">
+								<filterbar:control>
+									<Input/>
+								</filterbar:control>
+							</filterbar:FilterGroupItem>
+							<filterbar:FilterGroupItem visibleInFilterBar="false" groupName="bankDetails" name="bankStreet" label="Street">
+								<filterbar:control>
+									<Input/>
+								</filterbar:control>
+							</filterbar:FilterGroupItem>
+							<filterbar:FilterGroupItem visibleInFilterBar="false" groupName="bankDetails" name="taxNo" label="Tax Number">
+								<filterbar:control>
+									<Input maxLength="18"/>
+								</filterbar:control>
+							</filterbar:FilterGroupItem>
+						</filterbar:filterGroupItems>
+					</filterbar:FilterBar>
+				</f:content>
+			</f:DynamicPageHeader>
+		</f:header>
+		<f:content>
+			<Table sticky="ColumnHeaders" items="{SearchCustomerModel>/searchAllModelData/customerDTOs}">
+				<headerToolbar>
+					<Toolbar>
+						<Label id="idTableTitle" text="Business Partner Master List({SearchCustomerModel>/searchAllModelData/totalRecords})" design="Bold"></Label>
+						<ToolbarSpacer></ToolbarSpacer>
+						<Button text="Create ERP Customer" visible="{= ${userManagementModel>/role}.indexOf('req')!== -1 ? true : false }" type="Emphasized"
+							press="onNavToCreateERPCustomer"></Button>
+						<Label text="Page No."/>
+						<Select id="searchAllVendorPageSelectID" items="{SearchCustomerModel>/PageData}" selectedKey="{SearchCustomerModel>/selectedPageKey}"
+							change="onSelectSearchAllVendorPage">
+							<core:Item text="{SearchCustomerModel>text}" key="{SearchCustomerModel>key}"/>
+						</Select>
+						<Button icon="sap-icon://navigation-left-arrow" type="Transparent" enabled="{SearchCustomerModel>/leftEnabled}"
+							press="onSelectSearchAllVendorPageLeft"></Button>
+						<Button icon="sap-icon://navigation-right-arrow" type="Transparent" enabled="{SearchCustomerModel>/rightEnabled}"
+							press="onSelectSearchAllVendorPageRight"></Button>
+					</Toolbar>
+				</headerToolbar>
+				<columns>
+					<Column>
+						<header>
+							<Label text="Business Partner ID" design="Bold"></Label>
+						</header>
+					</Column>
+					<Column>
+						<header>
+							<Label text="Pending Request" design="Bold"></Label>
+						</header>
+					</Column>
+					<Column>
+						<header>
+							<Label text="Description" design="Bold"></Label>
+						</header>
+					</Column>
+					<Column>
+						<header>
+							<Label text="Customer Contact" design="Bold"></Label>
+						</header>
+					</Column>
+					<Column>
+						<header>
+							<Label text="Country" design="Bold"></Label>
+						</header>
+					</Column>
+					<Column>
+						<header>
+							<Label text="Created By" wrapping="true" design="Bold"></Label>
+						</header>
+					</Column>
+					<Column>
+						<header>
+							<Label text="Finalized By" wrapping="true" design="Bold"></Label>
+						</header>
+					</Column>
+					<Column width="5%" visible="{= ${userManagementModel>/role}.indexOf('req')!== -1 ? true : false }">
+						<header>
+							<Label text=" " design="Bold"></Label>
+						</header>
+					</Column>
+				</columns>
+				<items>
+					<ColumnListItem >
+						<cells>
+							<Link text="{SearchCustomerModel>customCustomerCustKna1DTO/kunnr}" press="onGetCustomerDetails"></Link>
+							<ObjectStatus state="{path :'SearchCustomerModel>pendingRequest', formatter : '.handlePendingRequest'}"
+								text="{SearchCustomerModel>pendingRequest}"/>
+							<Text
+								text="{SearchCustomerModel>customCustomerCustKna1DTO/name1} {SearchCustomerModel>customCustomerCustKna1DTO/name2} {SearchCustomerModel>customCustomerCustKna1DTO/name3} {SearchCustomerModel>customCustomerCustKna1DTO/name4}"/>
+							<Text text="{SearchCustomerModel>customCustomerCustKna1DTO/vbund}"></Text>
+							<ComboBox editable="false" items="{Dropdowns>/T005}" selectedKey="{SearchCustomerModel>customCustomerCustKna1DTO/land1}">
+								<core:Item key="{Dropdowns>land1}" text="{Dropdowns>landx}"/>
+							</ComboBox>
+							<Text text=""/>
+							<Text text=""/>
+							<core:Icon src="sap-icon://overflow" press="handleOverFlowButton"></core:Icon>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+		</f:content>
+	</f:DynamicPage>
 </mvc:View>

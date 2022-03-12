@@ -147,11 +147,9 @@
 			}
 		},
 		"resources": {
-			"css": [
-				{
-					"uri": "css/style.css"
-				}
-			]
+			"css": [{
+				"uri": "css/style.css"
+			}]
 		},
 		"routing": {
 			"config": {
@@ -160,33 +158,20 @@
 				"async": true,
 				"viewPath": "murphy.mdm.customer.murphymdmcustomer.view",
 				"controlAggregation": "pages",
-				"controlId": "app",
+				"controlId": "pageContainer",
 				"clearControlAggregation": false
 			},
-			"routes": [
-				{
-					"name": "SearchCustomer",
-					"pattern": "",
-					"target": [
-						"SearchCustomer"
-					]
-				},
-				{
-					"name": "createCustomer",
-					"pattern": "CreateCustomer",
-					"target": [
-						"createCustomer"
-					]
-				}
-			],
+			"routes": [{
+				"name": "SearchCustomer",
+				"pattern": "",
+				"target": [
+					"SearchCustomer"
+				]
+			}],
 			"targets": {
 				"SearchCustomer": {
 					"viewType": "XML",
 					"viewName": "SearchCustomer"
-				},
-				"createVendor": {
-					"viewType": "XML",
-					"viewName": "CreateCustomer"
 				},
 				"CreateERPCustomer": {
 					"viewType": "XML",
