@@ -45,7 +45,8 @@ sap.ui.define([
 				data: oObjectParam
 			};
 
-			this.serviceCall.handleServiceRequest(objParam).then(function (oData) {
+			this.getView().setBusy(true);
+			this.serviceCall.handleServiceRequest(objParam).then(oData => {
 				var aResultDataArr = oData.result.customerDTOs,
 					aPageJson = [];
 				oData.result.totalRecords = aResultDataArr[0].totalCount;
@@ -64,6 +65,10 @@ sap.ui.define([
 				oSearchModel.setProperty("/rightEnabled", aResultDataArr[0].totalPageCount > aResultDataArr[0].currentPage ? true : false);
 				oSearchModel.setProperty("/leftEnabled", aResultDataArr[0].currentPage > 1 ? true : false);
 				oSearchModel.setProperty("/searchAllModelData", oData.result);
+				this.getView().setBusy(false);
+			}, oError => {
+				MessageToast.show("Failed to fetch Customers, please try again");
+				this.getView().setBusy(false);
 			});
 		},
 
@@ -234,7 +239,7 @@ sap.ui.define([
 				hasPayload: true,
 				data: {
 					"entitySearchType": "GET_BY_CUSTOMER_ID",
-					"entityType": "CUSTOMER",
+					"entityType": "APPROVED_CUSTOMER",
 					"parentDTO": {
 						"customData": {
 							"cust_kna1": {
@@ -262,7 +267,7 @@ sap.ui.define([
 						oCustomerData.tableRows[sTable] = [];
 						if (oData.result.parentDTO.customData.hasOwnProperty(sTable)) {
 							Object.keys(oData.result.parentDTO.customData[sTable]).forEach(oItem => {
-								oCustomerData.tableRows[sTable].push(oItem);
+								oCustomerData.tableRows[sTable].push(oData.result.parentDTO.customData[sTable][oItem]);
 							});
 						}
 						oCustomerData[sTable] = Object.assign({}, oAppModel.getProperty("/" + sTable));
@@ -300,6 +305,7 @@ sap.ui.define([
 						oAppModel.setProperty("/editButton", true);
 						oAppModel.setProperty("/appTitle", "Create ERP Customer");
 						oAppModel.setProperty("/previousPage", "ALL_CUST");
+						oAppModel.setProperty("/erpPreview", true);
 					}
 					oCustomerModel.setData({
 						changeReq: oChangeRequest,

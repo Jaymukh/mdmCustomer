@@ -9,10 +9,17 @@
 			<l:DynamicSideContent id="DynamicSideContent" class="sapUiDSCExplored createPageHeight" containerQuery="true" sideContentFallDown="BelowM"
 				breakpointChanged="handleBreakpointChangeEvent">
 				<VBox>
-					<Panel expandable="true" expanded="true" headerText="Change Requests">
+					<Panel expandable="true" expanded="true" headerText="Change Requests" visible="{= !${App>/erpPreview}}">
 						<content>
 							<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.ChangeRequests" type="XML"/>
 						</content>
+					</Panel>
+					<Panel expandable="true" expanded="true" headerText="Deletion Flags"
+						visible="{= ${Customer>/changeReq/genData/change_request_id} === 50005}">
+						<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.Delete" type="XML"/>
+					</Panel>
+					<Panel expandable="true" expanded="true" headerText="Blocking Data" visible="{= ${Customer>/changeReq/genData/change_request_id} === 50004}">
+						<core:Fragment fragmentName="murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.Block" type="XML"/>
 					</Panel>
 					<Panel expandable="true" expanded="true" headerText="ERP Customer Details*">
 						<content>

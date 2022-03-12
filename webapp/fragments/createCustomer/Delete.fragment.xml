@@ -1,0 +1,23 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout">
+	<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+		adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
+		singleContainerFullSize="false">
+		<form:content>
+			<core:Title text="Deletion Flags"/>
+			<Label text="Csutomer"/>
+			<Text text="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kunnr}"/>
+			<CheckBox useEntireWidth="true" width="100%" wrapping="true" text="Central Deletion Flag" select="onSelectCheckBox"
+				selected="{= ${Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/loevm} === 'X'}">
+				<customData>
+					<core:CustomData key="Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/loevm"/>
+				</customData>
+			</CheckBox>
+			<CheckBox width="100%" useEntireWidth="true" wrapping="true" text="Central Deletion Block" select="onSelectCheckBox"
+				selected="{= ${Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/nodel} === 'X'}">
+				<customData>
+					<core:CustomData key="Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/nodel"/>
+				</customData>
+			</CheckBox>
+		</form:content>
+	</form:SimpleForm>
+</core:FragmentDefinition>

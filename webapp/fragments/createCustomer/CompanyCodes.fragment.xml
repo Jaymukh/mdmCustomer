@@ -10,14 +10,10 @@
 			<columns>
 				<Column>
 					<header>
-						<Label text="Company Code" design="Bold"></Label>
-					</header>
-				</Column>
-				<Column>
-					<header>
 						<Label text="Company" design="Bold"></Label>
 					</header>
 				</Column>
+				
 				<Column>
 					<header>
 						<Label text=""></Label>

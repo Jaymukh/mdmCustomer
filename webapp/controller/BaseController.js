@@ -73,8 +73,7 @@ sap.ui.define([
 					oAudLogModel.setProperty("/details/ChangeRequestID", "");
 
 					oCustomerData.entityId = sEntityId;
-					oCustomerData.formData.parentDTO.customData.cust_kna1 = Object.assign({}, oAppModel.getProperty(
-						"/createCRCustomerData/formData/parentDTO/customData/cust_kna1"));
+					oCustomerData.formData.parentDTO.customData.cust_kna1 = Object.assign({}, oAppModel.getProperty("/cust_kna1"));
 					oCustomerData.formData.parentDTO.customData.cust_kna1.entity_id = sEntityId;
 					oCustomerData.formData.parentDTO.customData.cust_kna1.spras = "E";
 					oCustomerData.tableRows = {};
@@ -645,6 +644,7 @@ sap.ui.define([
 			oAppModel.setProperty("/rejectButton", false);
 			oAppModel.setProperty("/submitButton", false);
 			oAppModel.setProperty("/previousPage", null);
+			oAppModel.setProperty("/erpPreview", false);
 		},
 
 		formatCR_Entiry_ID: function (sCRId, sEntityID) {
@@ -738,9 +738,7 @@ sap.ui.define([
 					"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "gen_adr2", "gen_adr3", "gen_adr6"
 				];
 
-			Object.keys(oCustomerData.formData.parentDTO.customData.cust_kna1).forEach(sKey => {
-				oCustomerData.formData.parentDTO.customData.cust_kna1[sKey] = null;
-			});
+			oCustomerData.formData.parentDTO.customData.cust_kna1 = {};
 			oCustomerData.tableRows = {};
 			aTables.forEach(sTable => {
 				oCustomerData.tableRows[sTable] = [];
