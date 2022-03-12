@@ -13,7 +13,6 @@
 						<Label text="Company" design="Bold"></Label>
 					</header>
 				</Column>
-				
 				<Column>
 					<header>
 						<Label text=""></Label>
@@ -23,8 +22,9 @@
 			<items>
 				<ColumnListItem>
 					<cells>
-						<Text text="{Customer>bukrs}"></Text>
-						<Text text="{Customer>butxt}"></Text>
+						<ComboBox selectedKey="{Customer>bukrs}" items="{Dropdowns>/T001}" editable="false" showSecondaryValues="true">
+							<core:ListItem key="{Dropdowns>bukrs}" text="{Dropdowns>butxt}" additionalText="{Dropdowns>bukrs}"/>
+						</ComboBox>
 						<HBox>
 							<core:Icon src="sap-icon://edit" hoverBackgroundColor="#346187" hoverColor="#ffffff" class="sapUiSmallMarginEnd" press="onEditCompCode"/>
 							<core:Icon src="sap-icon://delete" color="Negative" class="sapUiSmallMarginEnd" press="onDeleteCompCode"/>
@@ -45,8 +45,7 @@
 				</ComboBox>
 				<core:Title text="Accounting Information"/>
 				<Label text="Reconcillation Account"/>
-					<ComboBox  selectedKey="{Customer>/createCRCustomerData/cust_knb1/akont}"
-					editable="{App>/edit}">
+				<ComboBox selectedKey="{Customer>/createCRCustomerData/cust_knb1/akont}" editable="{App>/edit}">
 					<items>
 						<core:Item text="11300100-A/R other recon" key="0011300100"/>
 						<core:Item text="11000110-A/R OIL AND GAS" key="11000110"/>
@@ -54,7 +53,7 @@
 						<core:Item text="11100111-CASH CALLS DUE" key="11100111"/>
 						<core:Item text="11100112-CASH CALLS OFFSET" key="11100112"/>
 						<core:Item text="11100115-JIB SUSPENSE" key="11100115"/>
-						<core:Item text="11200100-A/R  MARKETING" key="11200100"/>
+						<core:Item text="11200100-A/R MARKETING" key="11200100"/>
 						<core:Item text="11300100-A/R OTHER RECON" key="11300100"/>
 						<core:Item text="11300115-MISCELLANEOUS A/R RECONCILIATION" key="11300115"/>
 						<core:Item text="11300155-S/T Deriv Receiv Recon" key="11300155"/>
@@ -63,7 +62,6 @@
 						<core:Item text="12200601-Empl Adv - Cash Advance" key="12200601"/>
 					</items>
 				</ComboBox>
-											
 				<!--<Input required="true" value="{Customer>/createCRCustomerData/cust_knb1/akont}" valueHelpRequest=".onValueHelpRequested"
 					valueHelpOnly="true" maxLength="10" editable="{App>/edit}">
 					<customData>
@@ -190,8 +188,8 @@
 				<Input value="{Customer>/createCRCustomerData/cust_knb1/pernr}" maxLength="8" editable="{App>/edit}"/>
 				<core:Title text="Payment Data"/>
 				<Label text="Terms of Payment"/>
-				<Input  required="true"  value="{Customer>/createCRCustomerData/cust_knb1/zterm}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
-					valueHelpOnly="true" maxLength="4" editable="{App>/edit}">
+				<Input required="true" value="{Customer>/createCRCustomerData/cust_knb1/zterm}" showValueHelp="true"
+					valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" maxLength="4" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Terms of Payment"></core:CustomData>
 						<core:CustomData key="table" value="local"></core:CustomData>
