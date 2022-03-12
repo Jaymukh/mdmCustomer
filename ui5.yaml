@@ -1,6 +1,6 @@
 specVersion: '1.0'
 metadata:
-  name: murphymdmvendor
+  name: murphymdmcustomer
 type: application
 resources:
   configuration:
@@ -17,14 +17,14 @@ builder:
       configuration:
         destDir: dist
         appFolder: webapp
-        nameSpace: murphy/mdm/vendor
+        nameSpace: murphy/mdm/customer
     - name: webide-extension-task-lint
       afterTask: webide-extension-task-updateNeoApp
       configuration:
         destDir: dist
         appFolder: webapp
-        nameSpace: murphy/mdm/vendor 
+        nameSpace: murphy/mdm/customer 
     - name: webide-extension-task-resources
       afterTask: webide-extension-task-lint
       configuration:
-        nameSpace: murphy/mdm/vendor
+        nameSpace: murphy/mdm/customer

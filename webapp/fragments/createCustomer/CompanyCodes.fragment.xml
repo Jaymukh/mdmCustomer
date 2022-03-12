@@ -52,20 +52,19 @@
 					<ComboBox  selectedKey="{Customer>/createCRCustomerData/cust_knb1/akont}"
 					editable="{App>/edit}">
 					<items>
-						
-						<core:Item text="11300100 - A/R other recon" key="0011300100"/>
-						<core:Item text="0011590120-AR IC JV VENDOR" key="0011590120"/>
-						<core:Item text="0030000100-AP-TRADE" key="0030000100"/>
-						<core:Item text="0030000110-AP-JOINT VENTURE" key="0030000110"/>
-						<core:Item text="0030000111-CASH CALL DUE(NP)" key="0030000111"/>
-						<core:Item text="0030000112-CASH CALL OFFSET(NP)" key="0030000112"/>
-						<core:Item text="0030000114-Vendor 1099 Reconciliation Account" key="0030000114"/>
-						<core:Item text="0030000120-AP - EMPLOYEES" key="0030000120"/>
-						<core:Item text="0030000130-AP- LAND" key="0030000130"/>
-						<core:Item text="0030400100-AP IC auto postings" key="0030400100"/>
-						<core:Item text="0031000105-N_INACTIVE-Production/royalty payable(recon)" key="0031000105"/>
-						<core:Item text="0031000170-NGL MKTG PURCH PAY" key="0031000170"/>
-						<core:Item text="0030300000-Other ACCOUNTS PAY" key="0030300000"/>
+						<core:Item text="11300100-A/R other recon" key="0011300100"/>
+						<core:Item text="11000110-A/R OIL AND GAS" key="11000110"/>
+						<core:Item text="11100100-AR JIB" key="11100100"/>
+						<core:Item text="11100111-CASH CALLS DUE" key="11100111"/>
+						<core:Item text="11100112-CASH CALLS OFFSET" key="11100112"/>
+						<core:Item text="11100115-JIB SUSPENSE" key="11100115"/>
+						<core:Item text="11200100-A/R  MARKETING" key="11200100"/>
+						<core:Item text="11300100-A/R OTHER RECON" key="11300100"/>
+						<core:Item text="11300115-MISCELLANEOUS A/R RECONCILIATION" key="11300115"/>
+						<core:Item text="11300155-S/T Deriv Receiv Recon" key="11300155"/>
+						<core:Item text="11590100-AR IC AUTO POSTINGS" key="11590100"/>
+						<core:Item text="11590130-AR IC JV CUSTOMER" key="11590130"/>
+						<core:Item text="12200601-Empl Adv - Cash Advance" key="12200601"/>
 					</items>
 				</ComboBox>
 											

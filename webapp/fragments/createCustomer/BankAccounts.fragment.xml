@@ -64,7 +64,7 @@
 				<core:Title text="Bank Details"/>
 				<Label text="Bank Details ID"/>
 				<Input value="{Customer>/createCRCustomerData/cust_knbk/bvtyp}" maxLength="4" editable="false"/>
-				<Label text="Bank Account"/>
+				<Label text="Bank Account(Account No.)"/>
 				<Input value="{Customer>/createCRCustomerData/cust_knbk/bkont}" maxLength="2" editable="{App>/edit}"/>
 				<Label text="Account Holder"/>
 				<Input value="{Customer>/createCRCustomerData/cust_knbk/koinh}" maxLength="60" editable="{App>/edit}"/>
@@ -72,8 +72,6 @@
 				<Input value="{Customer>/createCRCustomerData/cust_knbk/tiban}" editable="{App>/edit}"/>
 				<Label text="Account Name"/>
 				<Input value="{Customer>/createCRCustomerData/cust_knbk/bankn}" maxLength="18" editable="{App>/edit}"/>
-				<Label text="Control Key"/>
-				<Input value="{Customer>/createCRCustomerData/cust_knbk/bkont}" maxLength="2" editable="{App>/edit}"/>
 				<Label text="Reference Details"/>
 				<Input value="{Customer>/createCRCustomerData/cust_knbk/bkref}" maxLength="20" editable="{App>/edit}"/>
 				<Label text="Collection Authorization"/>
@@ -92,7 +90,7 @@
 					valueHelpOnly="true" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Bank Key"></core:CustomData>
-						<core:CustomData key="table" value="VW_BNKA"></core:CustomData>
+						<core:CustomData key="table" value="vw_bnka"></core:CustomData>
 						<core:CustomData key="inputKey" value="bankl"></core:CustomData>
 						<core:CustomData key="inputText" value="bankl"></core:CustomData>
 						<core:CustomData key="bankl" value="Bank Key"></core:CustomData>

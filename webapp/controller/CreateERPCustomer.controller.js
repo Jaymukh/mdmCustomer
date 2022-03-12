@@ -109,9 +109,9 @@ sap.ui.define([
 					oReturnObj.aMessage.push("Postal Code should be 5 or 10 digits for USA.");
 				}
 			} else if (oCustomer.createCRCustomerData.formData.parentDTO.customData.cust_kna1.land1 === "CA") {
-				if (iPostLength !== 6) {
+				if (iPostLength !== 7) {
 					oReturnObj.bValid = false;
-					oReturnObj.aMessage.push("Postal Code should be 6 digits for Canada.");
+					oReturnObj.aMessage.push("Postal Code should be 7 digits for Canada.");
 				}
 			}
 			return oReturnObj;
@@ -871,7 +871,7 @@ sap.ui.define([
 				this._oInput.setValue(oVal[this._sKey]);
 			}
 
-			oModel.setProperty('/createCRCustomerData/createCRCustomerData/gen_bnka/banka', oVal.bankl);
+			oModel.setProperty('/createCRCustomerData/gen_bnka/banka', oVal.banka);
 			// oModel.setProperty('/createCRVendorData/formData/parentDTO/customData/gen_bnka/gen_bnka_1/banka', oVal.banka);
 			oModel.setProperty('/createCRCustomerData/gen_bnka/stras', oVal.stras);
 			oModel.setProperty('/createCRCustomerData/gen_bnka/ort01', oVal.ort01);

@@ -121,7 +121,7 @@
 				</layoutData>
 			</Input>
 			<Label text="District"/>
-			<Input required="true" value="{Customer>/createCRCustomerData/gen_adrc/city2}" maxLength="40" editable="{App>/edit}"/>
+			<Input value="{Customer>/createCRCustomerData/gen_adrc/city2}" maxLength="40" editable="{App>/edit}"/>
 			<Label text="Street 2"/>
 			<Input value="{Customer>/createCRCustomerData/gen_adrc/str_suppl1}" maxLength="40" editable="{App>/edit}"/>
 			<Label text="Street 3"/>
