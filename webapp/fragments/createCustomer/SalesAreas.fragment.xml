@@ -411,8 +411,8 @@
 						<core:CustomData key="title" value="Terms of Payment"></core:CustomData>
 						<core:CustomData key="table" value="T052"></core:CustomData>
 						<core:CustomData key="inputKey" value="zterm"></core:CustomData>
-						<core:CustomData key="inputText" value="zterm"></core:CustomData>
-						<core:CustomData key="zterm" value="Terms of Payment"></core:CustomData>
+						<core:CustomData key="inputText" value="zterm1"></core:CustomData>
+						<core:CustomData key="zterm1" value="Terms of Payment"></core:CustomData>
 						<core:CustomData key="zterm" value="Description"></core:CustomData>
 					</customData>
 				</Input>
@@ -428,7 +428,7 @@
 						<core:CustomData key="inputKey" value="kkber"></core:CustomData>
 						<core:CustomData key="inputText" value="kkber"></core:CustomData>
 						<core:CustomData key="kkber" value="Credit Control Area"></core:CustomData>
-						<core:CustomData key="kkber" value="Description"></core:CustomData>
+						<core:CustomData key="waers" value="Description"></core:CustomData>
 					</customData>
 				</Input>
 				<core:Title text="Accounting"/>

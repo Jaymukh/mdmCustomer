@@ -44,13 +44,13 @@ sap.ui.define([
 							if (aRoles.indexOf(aResultArr[0].toLowerCase()) === -1) {
 								aRoles.push(aResultArr[0].toLowerCase());
 							}
-							/*if (aTempAccountGrps.indexOf(aResultArr[1]) === -1) {
+							if (aTempAccountGrps.indexOf(aResultArr[1]) === -1) {
 								aTempAccountGrps.push(aResultArr[1]);
 								var obj = aAccountGroup.find(function (objItem) {
 									return objItem.key === aResultArr[1];
 								});
 								aAccountGrps.push(obj);
-							}*/
+							}
 						}
 					});
 					oUserManagementModel.setProperty("/role", aRoles);

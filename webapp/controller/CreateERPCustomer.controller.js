@@ -803,7 +803,8 @@ sap.ui.define([
 					hasPayload: true,
 					data: {
 						"configType": oData.table,
-						"currentPage": 1
+						"currentPage": 1,
+						"maxResult" : '1000'
 					}
 				};
 			}
@@ -1321,7 +1322,7 @@ sap.ui.define([
 		},
 
 		onEditCompCode: function (oEvent) {
-			if (this.checkFormReqFields("idCompanyCodeForm").bValid) {
+		//	if (this.checkFormReqFields("idCompanyCodeForm").bValid) {
 				var sPath = oEvent.getSource().getBindingContext("Customer").getPath(),
 					oCompCode = oEvent.getSource().getBindingContext("Customer").getObject(),
 					oCustomerModel = this.getView().getModel("Customer"),
@@ -1335,9 +1336,9 @@ sap.ui.define([
 					this.dunningAreaFilter(oCustData.createCRCustomerData.cust_knb1.bukrs);
 					this.taxTypeFilter(oCustData.createCRCustomerData.cust_knb1.bukrs);
 				}
-			} else {
+		/*	} else {
 				MessageToast.show("Please Fill All Required Fields");
-			}
+			}*/
 		},
 
 		onDeleteCompCode: function (oEvent) {
