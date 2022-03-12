@@ -12,9 +12,6 @@ sap.ui.define([
 		onInit: function () {
 			this.serviceCall = new ServiceCall();
 			this.oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
-			var oToolPage = this.byId("toolPage");
-			this._setToggleButtonTooltip(true);
-			oToolPage.setSideExpanded(false);
 			var oParameters = {
 				sPageNo: 1
 			};
@@ -48,7 +45,8 @@ sap.ui.define([
 				data: oObjectParam
 			};
 
-			this.serviceCall.handleServiceRequest(objParam).then(function (oData) {
+			this.getView().setBusy(true);
+			this.serviceCall.handleServiceRequest(objParam).then(oData => {
 				var aResultDataArr = oData.result.customerDTOs,
 					aPageJson = [];
 				oData.result.totalRecords = aResultDataArr[0].totalCount;
@@ -67,6 +65,10 @@ sap.ui.define([
 				oSearchModel.setProperty("/rightEnabled", aResultDataArr[0].totalPageCount > aResultDataArr[0].currentPage ? true : false);
 				oSearchModel.setProperty("/leftEnabled", aResultDataArr[0].currentPage > 1 ? true : false);
 				oSearchModel.setProperty("/searchAllModelData", oData.result);
+				this.getView().setBusy(false);
+			}, oError => {
+				MessageToast.show("Failed to fetch Customers, please try again");
+				this.getView().setBusy(false);
 			});
 		},
 
@@ -75,66 +77,6 @@ sap.ui.define([
 				sPageNo: 1
 			};
 			this.handleGo(oFilterBarParam);
-		},
-
-		onSideNavButtonPress: function () {
-			var oToolPage = this.byId("toolPage"),
-				bSideExpanded = oToolPage.getSideExpanded();
-			this._setToggleButtonTooltip(bSideExpanded);
-			oToolPage.setSideExpanded(!oToolPage.getSideExpanded());
-		},
-
-		_setToggleButtonTooltip: function (bLarge) {
-			this.byId("sideNavigationToggleButton").setTooltip(bLarge ? "Large Size Navigation" : "Small Size Navigation");
-		},
-
-		onSideItemSelect: function (oEvent) {
-			var sKey = oEvent.getParameter("item").getKey();
-			switch (sKey) {
-			case "CreateERPCustomer":
-				this.onNavToCreateERPCustomer();
-				break;
-			case "changeRequestId":
-			case "changeRequestId-Mass":
-				this.onNavToChangeReqList();
-				break;
-			case "SearchCust":
-				this.onNavToErpCustList();
-				break;
-			}
-		},
-
-		onNavToCreateERPCustomer: function () {
-			var oAppModel = this.getModel("App");
-			this.clearAllButtons();
-			oAppModel.setProperty("/edit", true);
-			oAppModel.setProperty("/saveButton", true);
-			oAppModel.setProperty("/checkButton", true);
-			oAppModel.setProperty("/appTitle", "Create ERP Customer");
-			oAppModel.setProperty("/previousPage", "");
-			this._createCREntityCustomer();
-			this.byId("pageContainer").to(this.getView().createId("CreateERPCustomer"));
-		},
-
-		onNavToChangeReqList: function () {
-			var oAppModel = this.getModel("App");
-			this.clearAllButtons();
-			oAppModel.setProperty("/appTitle", "Change Request And Documents");
-			this.nPageNo = 1;
-			this.handleGetAllChangeRequests(this.nPageNo);
-			this.handleChangeRequestStatistics();
-			this.byId("pageContainer").to(this.getView().createId("changeRequestId"));
-		},
-
-		onNavToErpCustList: function () {
-			var oAppModel = this.getModel("App");
-			this.clearAllButtons();
-			var oParameters = {
-				sPageNo: 1
-			};
-			oAppModel.setProperty("/appTitle", "Search ERP Customer");
-			this.handleGo(oParameters);
-			this.byId("pageContainer").to(this.getView().createId("SearchCust"));
 		},
 
 		handlePendingRequest: function (sValue) {
@@ -178,7 +120,7 @@ sap.ui.define([
 		},
 
 		handleCreateERPCustomer: function (oEvent) {
-			this.getView().byId("pageContainer").to(this.createId("CreateERPCustomer"));
+			this.getRouter().getTargets().display("CreateERPCustomer");
 			this.byId("sideNavigation").setSelectedItem(this.byId("sideNavigation").getItem().getItems()[1]);
 			var titleID = this.getView().byId("idTitle");
 			titleID.setText(this.oBundle.getText("CreateERPCustomer-title"));
@@ -297,7 +239,7 @@ sap.ui.define([
 				hasPayload: true,
 				data: {
 					"entitySearchType": "GET_BY_CUSTOMER_ID",
-					"entityType": "CUSTOMER",
+					"entityType": "APPROVED_CUSTOMER",
 					"parentDTO": {
 						"customData": {
 							"cust_kna1": {
@@ -325,7 +267,7 @@ sap.ui.define([
 						oCustomerData.tableRows[sTable] = [];
 						if (oData.result.parentDTO.customData.hasOwnProperty(sTable)) {
 							Object.keys(oData.result.parentDTO.customData[sTable]).forEach(oItem => {
-								oCustomerData.tableRows[sTable].push(oItem);
+								oCustomerData.tableRows[sTable].push(oData.result.parentDTO.customData[sTable][oItem]);
 							});
 						}
 						oCustomerData[sTable] = Object.assign({}, oAppModel.getProperty("/" + sTable));
@@ -363,12 +305,13 @@ sap.ui.define([
 						oAppModel.setProperty("/editButton", true);
 						oAppModel.setProperty("/appTitle", "Create ERP Customer");
 						oAppModel.setProperty("/previousPage", "ALL_CUST");
+						oAppModel.setProperty("/erpPreview", true);
 					}
 					oCustomerModel.setData({
 						changeReq: oChangeRequest,
 						createCRCustomerData: oCustomerData
 					});
-					this.getView().byId("pageContainer").to(this.createId("CreateERPCustomer"));
+					this.getRouter().getTargets().display("CreateERPCustomer");
 					this.getView().setBusy(false);
 
 					//Create Entity ID for Customer
@@ -425,7 +368,7 @@ sap.ui.define([
 				oError => {
 					this.getView().setBusy(false);
 					MessageToast.show("Entity ID not created. Please try after some time");
-					this.getView().byId("pageContainer").to(this.createId("SearchCust"));
+					this.getRouter().getTargets().display("SearchCustomer");
 					oAppModel.setProperty("/appTitle", "Search ERP Customer");
 				});
 		}

@@ -21,6 +21,10 @@ sap.ui.define([
 			return this.getOwnerComponent().getModel("i18n").getResourceBundle().getText(sText, aArgs);
 		},
 
+		getRouter: function () {
+			return sap.ui.core.UIComponent.getRouterFor(this);
+		},
+
 		//Create Change Request for Customer
 		_createCREntityCustomer: function () {
 			this.clearCustModelData();
@@ -70,8 +74,7 @@ sap.ui.define([
 					oAudLogModel.setProperty("/details/ChangeRequestID", "");
 
 					oCustomerData.entityId = sEntityId;
-					oCustomerData.formData.parentDTO.customData.cust_kna1 = Object.assign({}, oAppModel.getProperty(
-						"/createCRCustomerData/formData/parentDTO/customData/cust_kna1"));
+					oCustomerData.formData.parentDTO.customData.cust_kna1 = Object.assign({}, oAppModel.getProperty("/cust_kna1"));
 					oCustomerData.formData.parentDTO.customData.cust_kna1.entity_id = sEntityId;
 					oCustomerData.formData.parentDTO.customData.cust_kna1.spras = "E";
 					oCustomerData.tableRows = {};
@@ -648,6 +651,7 @@ sap.ui.define([
 			oAppModel.setProperty("/rejectButton", false);
 			oAppModel.setProperty("/submitButton", false);
 			oAppModel.setProperty("/previousPage", null);
+			oAppModel.setProperty("/erpPreview", false);
 		},
 
 		formatCR_Entiry_ID: function (sCRId, sEntityID) {
@@ -741,9 +745,7 @@ sap.ui.define([
 					"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "gen_adr2", "gen_adr3", "gen_adr6"
 				];
 
-			Object.keys(oCustomerData.formData.parentDTO.customData.cust_kna1).forEach(sKey => {
-				oCustomerData.formData.parentDTO.customData.cust_kna1[sKey] = null;
-			});
+			oCustomerData.formData.parentDTO.customData.cust_kna1 = {};
 			oCustomerData.tableRows = {};
 			aTables.forEach(sTable => {
 				oCustomerData.tableRows[sTable] = [];
@@ -753,50 +755,6 @@ sap.ui.define([
 			oCustomerModel.setData({
 				changeReq: oChangeRequest,
 				createCRCustomerData: oCustomerData
-			});
-		},
-
-		getDropDownData: function () {
-			this.getModel("Dropdowns").setSizeLimit(100000);
-			var aDropDowns = ["TAXONOMY", //Multiple values 
-				"T077D", //Account Group
-				"TSAD3", //Title,
-				"T005K", //Tel Country Codes
-				"T005", //Country
-				"T005S", //Region
-				"T002", //Language
-				"vw_tvkgg", //Condition Group
-				"TVKD", //Customer Procedure
-				"vw_tvv1", //Customer Group
-				"vw_tvv2", //Customer Group
-				"vw_tvv3", //Customer Group
-				"vw_tvv4", //Customer Group
-				"vw_vbwf08", //Release group
-				"vw_t008", //Payment Block
-				"vw_tzgr", //Grouping Key
-				"vw_t053v",
-				"vw_t053a", //ReasonCode Revision
-				"TSAC", //Communication Method
-				"T001" //Company Codes
-			];
-			aDropDowns.forEach(function (sValue) {
-				this.getDropdownTableData(sValue);
-			}, this);
-		},
-
-		getDropdownTableData: function (sValue) {
-			$.ajax({
-				url: "/murphyCustom/config-service/configurations/configuration/filter",
-				type: "POST",
-				contentType: "application/json",
-				data: JSON.stringify({
-					"configType": sValue,
-					"currentPage": 1,
-					"maxResults": 10000
-				}),
-				success: function (oData) {
-					this.getModel("Dropdowns").setProperty("/" + sValue, oData.result.modelMap);
-				}.bind(this)
 			});
 		},
 

@@ -48,7 +48,7 @@ sap.ui.define([
 
 		onBackToAllCust: function () {
 			this.getModel("App").setProperty("/appTitle", "Search ERP Customer");
-			this.byId("pageContainer").to("SearchCust");
+			this.getRouter().getTargets().display("SearchCustomer");
 		},
 
 		onCheckCR: function () {
