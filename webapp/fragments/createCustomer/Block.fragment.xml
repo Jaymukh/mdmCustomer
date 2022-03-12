@@ -1,0 +1,29 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout">
+	<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+		adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
+		singleContainerFullSize="false">
+		<form:content>
+			<core:Title text="Blocking Data"/>
+			<Label text="Csutomer"/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kunnr}" editable="false"/>
+			<CheckBox useEntireWidth="true" width="100%" wrapping="true" text="Central Posting Block" select="onSelectERPCheckBox"
+				selected="{= ${Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/sperr} === 'X'}">
+				<customData>
+					<core:CustomData key="Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/sperr"/>
+				</customData>
+			</CheckBox>
+			<Label text="Central Order Block"/>
+			<ComboBox selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/aufsd}"/>
+			<Label text="Central Delivery Block"/>
+			<ComboBox selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/lifsd}"/>
+			<Label text="Central Billing Block"/>
+			<ComboBox selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/faksd}"/>
+			<CheckBox width="100%" useEntireWidth="true" wrapping="true" text="Central Sales Block" select="onSelectERPCheckBox"
+				selected="{= ${Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/cassd} === 'X'}">
+				<customData>
+					<core:CustomData key="Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/cassd"/>
+				</customData>
+			</CheckBox>
+		</form:content>
+	</form:SimpleForm>
+</core:FragmentDefinition>

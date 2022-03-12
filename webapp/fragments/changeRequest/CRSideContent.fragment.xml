@@ -16,9 +16,9 @@
 							<commons:Timeline enableDoubleSided="true" growingThreshold="0" filterTitle="Status" sortOldestFirst="true"
 								content="{WorkFlowModel>/workflowAuditItems}" groupByType="Month" enableScroll="false">
 								<commons:content>
-									<commons:TimelineItem dateTime="{path:'WorkFlowModel>statusChangedDate', formatter : '.changeWorkflowDate'}"
+									<commons:TimelineItem dateTime="{path:'WorkFlowModel>changeDate', formatter : '.changeWorkflowDate'}"
 										title="{path:'WorkFlowModel>status', formatter : '.changeWorkflowStatus'}" userNameClickable="false"
-										userName="{WorkFlowModel>assignmentUserName} {WorkFlowModel>assignmentStageName}" filterValue="{WorkFlowModel>status}"></commons:TimelineItem>
+										userName="{WorkFlowModel>changeBy/0/firstname} {WorkFlowModel>changeBy/0/lastname}" filterValue="{WorkFlowModel>status}"></commons:TimelineItem>
 								</commons:content>
 							</commons:Timeline>
 						</uxap:blocks>
@@ -31,7 +31,7 @@
 						<uxap:blocks>
 							<Toolbar>
 								<ToolbarSpacer/>
-								<Switch state="false" change="onChnageLogSwitchChangeReq"></Switch>
+								<Switch state="true" change="onChnageLogSwitchChangeReq"></Switch>
 								<Label text="Show Attribute" class="sapUiSmallMarginTop"></Label>
 							</Toolbar>
 							<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="6"
@@ -56,7 +56,7 @@
 									<Text text="{AuditLogModel>/details/newCount}"/>
 								</form:content>
 							</form:SimpleForm>
-							<List visible="false" id="idAuditLogListChangeRequest" items="{path: 'AuditLogModel>/items'}" noDataText="No Audit log available">
+							<List visible="true" id="idAuditLogListChangeRequest" items="{path: 'AuditLogModel>/items'}" noDataText="No Audit log available">
 								<CustomListItem>
 									<Panel width="auto">
 										<content>
@@ -66,6 +66,12 @@
 													<Text text="{AuditLogModel>logBy} added Changes"/>
 												</HBox>
 												<Table items="{path: 'AuditLogModel>logs'}">
+													<headerToolbar>
+														<Toolbar>
+															<ToolbarSpacer/>
+															<Button type="Transparent" icon="sap-icon://download" press="onExportAttributes"/>
+														</Toolbar>
+													</headerToolbar>
 													<columns>
 														<Column>
 															<Text text="Change Type"/>
@@ -110,7 +116,7 @@
 								<items>
 									<UploadCollectionItem documentId="{AttachmentsModel>attachmentEntity/dms_ref_id}"
 										fileName="{AttachmentsModel>attachmentEntity/attachment_name}" mimeType="{AttachmentsModel>attachmentEntity/mime_type}" enableEdit="false"
-										enableDelete="true" deletePress="onDeleteAttachment" visibleDelete="true" visibleEdit="false" url="abc" press="onDocumentDownload">
+										enableDelete="true" deletePress="onDeleteAttachment" visibleDelete="false" visibleEdit="false" url="abc" press="onDocumentDownload">
 										<attributes>
 											<ObjectAttribute title="Uploaded By" text="{AttachmentsModel>attachmentEntity/created_by}"/>
 											<ObjectAttribute title="Uploaded On" text="{path:'AttachmentsModel>attachmentEntity/created_on', formatter : '.dateFormater'}"/>
