@@ -278,7 +278,7 @@ sap.ui.define([
 					switch (sAction) {
 					case "EDIT":
 					case "COPY":
-						oChangeRequest.genData.change_request_id = 50002;
+						oChangeRequest.genData.change_request_id = sAction === "COPY" ? 50003 : 50002;
 						oAppModel.setProperty("/saveButton", true);
 						oAppModel.setProperty("/checkButton", true);
 						oAppModel.setProperty("/edit", true);
