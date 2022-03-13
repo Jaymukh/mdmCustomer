@@ -676,10 +676,11 @@ sap.ui.define([
 			return sID;
 		},
 
-		formatCR_Org_Name: function (sOrgNo) {
+		formatCR_Org_Name: function (sOrgNo, name, city, reg, postcode) {
 			var sText = "";
 			if (sOrgNo) {
-				sText = "Organization: " + sOrgNo + ", (no description available)";
+				// sText = "Organization: " + sOrgNo + ", (no description available)";
+				sText = "Organization: " + sOrgNo + " / " + name + " / " + city + " / " + reg + " / " + postcode;
 			} else {
 				sText = "Organization: (no description available)";
 			}

@@ -39,11 +39,21 @@
 									<Input/>
 								</filterbar:control>
 							</filterbar:FilterGroupItem>
-							<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="*standard*" name="country" label="Country">
+							<filterbar:FilterGroupItem visibleInFilterBar="false" groupName="*standard*" name="country" label="Country">
 								<filterbar:control>
 									<ComboBox items="{Dropdowns>/T005}">
 										<core:ListItem key="{Dropdowns>land1}" text="{Dropdowns>landx}" additionalText="{Dropdowns>land1}"/>
 									</ComboBox>
+								</filterbar:control>
+							</filterbar:FilterGroupItem>
+							<filterbar:FilterGroupItem visibleInFilterBar="true" groupName="*standard*" name="kunnr" label="Business Partner ID">
+								<filterbar:control>
+									<Input/>
+								</filterbar:control>
+							</filterbar:FilterGroupItem>
+								<filterbar:FilterGroupItem visibleInFilterBar="false" groupName="*standard*" name="taxNo" label="Tax Number">
+								<filterbar:control>
+									<Input maxLength="18"/>
 								</filterbar:control>
 							</filterbar:FilterGroupItem>
 						</filterbar:filterGroupItems>
@@ -68,11 +78,7 @@
 									<Input/>
 								</filterbar:control>
 							</filterbar:FilterGroupItem>
-							<filterbar:FilterGroupItem visibleInFilterBar="false" groupName="bankDetails" name="taxNo" label="Tax Number">
-								<filterbar:control>
-									<Input maxLength="18"/>
-								</filterbar:control>
-							</filterbar:FilterGroupItem>
+						
 						</filterbar:filterGroupItems>
 					</filterbar:FilterBar>
 				</f:content>

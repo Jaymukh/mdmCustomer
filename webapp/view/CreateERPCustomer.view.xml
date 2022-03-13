@@ -3,7 +3,7 @@
 	<Page id="sideContentContainer" showHeader="false" showNavButton="false" showFooter="true">
 		<content>
 			<Toolbar>
-				<Title text="{ parts: [ 'Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kunnr'], formatter: '.formatCR_Org_Name' }"
+<Title text="{ parts: [ 'Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kunnr','Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/name1','Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/ort01','Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/regio','Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/pstlz'], formatter: '.formatCR_Org_Name' }"
 					level="H2"></Title>
 			</Toolbar>
 			<l:DynamicSideContent id="DynamicSideContent" class="sapUiDSCExplored createPageHeight" containerQuery="true" sideContentFallDown="BelowM"
