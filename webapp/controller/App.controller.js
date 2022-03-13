@@ -81,6 +81,7 @@ sap.ui.define([
 			aDropDowns.forEach(function (sValue) {
 				this.getDropdownTableData(sValue);
 			}, this);
+			this.getModel("Dropdowns").setProperty("/crReasons", []);
 		},
 
 		getDropdownTableData: function (sValue) {

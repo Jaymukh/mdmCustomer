@@ -21,8 +21,7 @@
 			<DatePicker displayFormat="{App>/dateFormat}" valueFormat="{App>/dateValueFormat}" value="{Customer>/changeReq/genData/dueDate}"
 				editable="{App>/crEdit}"/>
 			<Label text="Reason"/>
-			<ComboBox required="true" selectedKey="{Customer>/changeReq/genData/reason}" showSecondaryValues="true"
-				items="{path:'Dropdowns>/TAXONOMY',filters : [{ path : 'taxonomyType', operator : 'EQ', value1 : 'CUSTOMER_CR_REASON' }]}"
+			<ComboBox required="true" selectedKey="{Customer>/changeReq/genData/reason}" showSecondaryValues="true" items="{Dropdowns>/crReasons}"
 				editable="{App>/crEdit}">
 				<items>
 					<core:ListItem key="{Dropdowns>taxonomyId}" additionalText="{Dropdowns>taxonomyId}" text="{Dropdowns>taxonomyName}"/>

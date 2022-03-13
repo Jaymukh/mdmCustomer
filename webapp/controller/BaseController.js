@@ -169,6 +169,7 @@ sap.ui.define([
 						changeReq: oChangeRequest,
 						createCRCustomerData: oCustomerData
 					});
+					this.filterCRReasons(oChangeRequest.genData.change_request_id);
 				},
 				oError => {
 					this.clearCustomerModel();
@@ -880,6 +881,43 @@ sap.ui.define([
 				.then(function () {
 					MessageToast.show("Spreadsheet export has finished");
 				});
+		},
+
+		filterCRReasons: function (sRequestType) {
+			var oDropDownModel = this.getModel("Dropdowns"),
+				aTaxonomyReasons = oDropDownModel.getProperty("/TAXONOMY") || [],
+				aCustCRReasons = aTaxonomyReasons.filter(oItem => {
+					return oItem.taxonomyType === "CUSTOMER_CR_REASON";
+				}),
+				aFinalReasons = [];
+			switch (sRequestType) {
+			case 50001: //Create Customer
+				aFinalReasons = aCustCRReasons.filter(oItem => {
+					return oItem.groupName === "CREATE";
+				});
+				break;
+			case 50002: //Edit Customer
+				aFinalReasons = aCustCRReasons.filter(oItem => {
+					return oItem.groupName === "EDIT";
+				});
+				break;
+			case 50003: //Copy Customer
+				aFinalReasons = aCustCRReasons.filter(oItem => {
+					return oItem.groupName === "COPY";
+				});
+				break;
+			case 50004: //Block Customer
+				aFinalReasons = aCustCRReasons.filter(oItem => {
+					return oItem.groupName === "BLOCK";
+				});
+				break;
+			case 50005: //Delete Customer
+				aFinalReasons = aCustCRReasons.filter(oItem => {
+					return oItem.groupName === "DELETE";
+				});
+				break;
+			}
+			oDropDownModel.setProperty("/crReasons", aFinalReasons);
 		}
 	});
 });

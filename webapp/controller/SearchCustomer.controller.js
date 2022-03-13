@@ -314,6 +314,7 @@ sap.ui.define([
 						changeReq: oChangeRequest,
 						createCRCustomerData: oCustomerData
 					});
+					this.filterCRReasons(oChangeRequest.genData.change_request_id);
 					this.getRouter().getTargets().display("CreateERPCustomer");
 					this.getView().setBusy(false);
 

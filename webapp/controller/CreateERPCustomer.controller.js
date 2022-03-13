@@ -15,9 +15,10 @@ sap.ui.define([
 	"sap/m/Button",
 	"sap/m/List",
 	"sap/m/TextArea",
-	"sap/ui/core/syncStyleClass"
+	"sap/ui/core/syncStyleClass",
+	"sap/ui/core/ListItem"
 ], function (BaseController, JSONModel, ColumnListItem, Label, SearchField, Token, Filter, FilterOperator, Fragment,
-	ServiceCall, StandardListItem, Dialog, MessageToast, Button, List, TextArea, syncStyleClass) {
+	ServiceCall, StandardListItem, Dialog, MessageToast, Button, List, TextArea, syncStyleClass, CoreListItem) {
 	"use strict";
 
 	return BaseController.extend("murphy.mdm.customer.murphymdmcustomer.controller.CreateERPCustomer", {
@@ -269,7 +270,7 @@ sap.ui.define([
 						changeReq: oChangeRequest,
 						createCRCustomerData: oCustomerData
 					});
-
+					this.filterCRReasons(oChangeRequest.genData.change_request_id);
 					this.clearAllButtons();
 					oAppModel.setProperty("/edit", true);
 					oAppModel.setProperty("/submitButton", false);
