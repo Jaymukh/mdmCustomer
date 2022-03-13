@@ -184,6 +184,11 @@ sap.ui.define([
 						if (oItem.hasOwnProperty("entity_id")) {
 							oItem.entity_id = oFormData.parentDTO.customData.cust_kna1.entity_id;
 						}
+						if (sKey === "gen_adr6") {
+							oItem.smtp_srch = oItem.smtp_srch ? oItem.smtp_srch.slice(0, 20) : oItem.smtp_srch;
+							oItem.home_flag = iIndex === 0 ? "X" : "";
+							oItem.flgdefault = iIndex === 0 ? "X" : "";
+						}
 						oFormData.parentDTO.customData[sKey][sKey + "_" + (iIndex + 1)] = oItem;
 					});
 				}
@@ -191,11 +196,14 @@ sap.ui.define([
 
 			//Capture ADRC Details.
 			var oDefAddress = Object.assign({}, oCustomerData.createCRCustomerData.gen_adrc);
+			oDefAddress.entity_id = oFormData.parentDTO.customData.cust_kna1.entity_id;
 			oDefAddress.addrnumber = oFormData.parentDTO.customData.cust_kna1.entity_id;
 			oDefAddress.country = oFormData.parentDTO.customData.cust_kna1.land1;
 			oDefAddress.name1 = oFormData.parentDTO.customData.cust_kna1.name1;
 			oDefAddress.region = oFormData.parentDTO.customData.cust_kna1.regio;
-			oDefAddress.langu = oFormData.parentDTO.customData.cust_kna1.spras;
+			var oLangu = this.getModel("Dropdowns").getProperty("/T002").find(oItem => oItem.laiso === oFormData.parentDTO.customData.cust_kna1
+				.spras);
+			oDefAddress.langu = oLangu ? oLangu.spras : "E";
 			oDefAddress.sort1 = oFormData.parentDTO.customData.cust_kna1.sortl;
 			oDefAddress.name2 = oFormData.parentDTO.customData.cust_kna1.name2;
 			oDefAddress.title = oFormData.parentDTO.customData.cust_kna1.anred;
@@ -281,6 +289,11 @@ sap.ui.define([
 					this.getView().setBusy(false);
 					MessageToast.show("Entity ID not created. Please try after some time");
 				});
+			} else {
+				oAppModel.setProperty("/edit", true);
+				oAppModel.setProperty("/submitButton", false);
+				oAppModel.setProperty("/editButton", false);
+				oAppModel.setProperty("/saveButton", true);
 			}
 		},
 
@@ -1194,7 +1207,7 @@ sap.ui.define([
 			oAdr6.flgdefault = "X";
 			oAdr6.home_flag = "X";
 			oAdr6.smtp_addr = sEmail;
-			oAdr6.smtp_srch = sEmail.toUpperCase();
+			oAdr6.smtp_srch = sEmail.toUpperCase().slice(0, 20);
 
 			var oDefault = aAdr6.find(oItem => oItem.flgdefault === "X");
 			if (oDefault) {

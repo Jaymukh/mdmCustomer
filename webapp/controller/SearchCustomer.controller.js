@@ -49,22 +49,25 @@ sap.ui.define([
 			this.serviceCall.handleServiceRequest(objParam).then(oData => {
 				var aResultDataArr = oData.result.customerDTOs,
 					aPageJson = [];
-				oData.result.totalRecords = aResultDataArr[0].totalCount;
+				if (aResultDataArr.length > 0) {
+					oData.result.totalRecords = aResultDataArr[0].totalCount;
 
-				if (aResultDataArr[0].currentPage === 1) {
-					//Calculate no of pages available 
-					for (var i = 0; i < aResultDataArr[0].totalPageCount; i++) {
-						aPageJson.push({
-							key: i + 1,
-							text: i + 1
-						});
+					if (aResultDataArr[0].currentPage === 1) {
+						//Calculate no of pages available 
+						for (var i = 0; i < aResultDataArr[0].totalPageCount; i++) {
+							aPageJson.push({
+								key: i + 1,
+								text: i + 1
+							});
+						}
+						oSearchModel.setProperty("/PageData", aPageJson);
 					}
-					oSearchModel.setProperty("/PageData", aPageJson);
+					oSearchModel.setProperty("/selectedPageKey", aResultDataArr[0].currentPage);
+					oSearchModel.setProperty("/rightEnabled", aResultDataArr[0].totalPageCount > aResultDataArr[0].currentPage ? true : false);
+					oSearchModel.setProperty("/leftEnabled", aResultDataArr[0].currentPage > 1 ? true : false);
+					oSearchModel.setProperty("/searchAllModelData", oData.result);
 				}
-				oSearchModel.setProperty("/selectedPageKey", aResultDataArr[0].currentPage);
-				oSearchModel.setProperty("/rightEnabled", aResultDataArr[0].totalPageCount > aResultDataArr[0].currentPage ? true : false);
-				oSearchModel.setProperty("/leftEnabled", aResultDataArr[0].currentPage > 1 ? true : false);
-				oSearchModel.setProperty("/searchAllModelData", oData.result);
+
 				this.getView().setBusy(false);
 			}, oError => {
 				MessageToast.show("Failed to fetch Customers, please try again");

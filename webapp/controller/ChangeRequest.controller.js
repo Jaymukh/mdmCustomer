@@ -112,16 +112,17 @@ sap.ui.define([
 			};
 			this.serviceCall.handleServiceRequest(objParamCreate).then(function (oDataResp) {
 				this.getView().setBusy(false);
-				if (oDataResp.result.parentDTO.customerDTOs) {
+				if (oDataResp.result.parentDTO.customData) {
 					var sEntityId = oDataResp.result.parentDTO.customData.cust_kna1.entity_id,
 						aTables = ["cust_knb1", "cust_knbk", "cust_knbw", "cust_knb5", "cust_knvp", "cust_knvv",
 							"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "pra_bp_ad", "pra_bp_cust_md"
 						];
-					oCustomerData.cust_kna1 = oDataResp.result.parentDTO.customData.cust_kna1;
+					oCustomerData.formData.parentDTO.customData.cust_kna1 = oDataResp.result.parentDTO.customData.cust_kna1;
+					//oCustomerData.cust_kna1 = oDataResp.result.parentDTO.customData.cust_kna1;
 					oCustomerData.tableRows = {};
 					aTables.forEach(function (sTable) {
 						oCustomerData.tableRows[sTable] = [];
-
+						
 						if (oDataResp.result.parentDTO.customData.hasOwnProperty(sTable)) {
 							Object.keys(oDataResp.result.parentDTO.customData[sTable]).forEach(function (sKey) {
 								oCustomerData.tableRows[sTable].push(oDataResp.result.parentDTO.customData[sTable][sKey]);
@@ -138,10 +139,11 @@ sap.ui.define([
 					oCustomerModel.setProperty("/createCRCustomerData", oCustomerData);
 
 					//Navigate to Change Request Page	
-					var sID = this.getView().getParent().getPages().find(function (e) {
+					/*var sID = this.getView().getParent().getPages().find(function (e) {
 						return e.getId().indexOf("CreateERPCustomer") !== -1;
-					}).getId();
-					this.getView().getParent().to(sID);
+					}).getId();*/
+					this.getRouter().getTargets().display("CreateERPCustomer");
+				/*	this.getView().getParent().to(sID);*/
 					oAppModel.setProperty("/sidePanelSelectedPage", "idWorkFlowSection");
 				}
 			}.bind(this), function (oError) {
