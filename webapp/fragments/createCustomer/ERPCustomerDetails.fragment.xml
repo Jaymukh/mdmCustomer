@@ -7,7 +7,7 @@
 			<Label text="Customer"/>
 			<Input editable="false" value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kunnr}" maxLength="10"/>
 			<core:Title/>
-			<Label text="Account Group"/>
+			<Label text="Account Group" required="true"/>
 			<ComboBox required="true" showSecondaryValues="true" items="{userManagementModel>/accountGroups}"
 				selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/ktokd}" editable="{App>/edit}">
 				<items>
@@ -98,8 +98,7 @@
 			<Label text="PO Box"/>
 			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/pfach}" maxLength="10" editable="{App>/edit}"/>
 			<Label text="Undeliverable"/>
-			<ComboBox showSecondaryValues="true" 
-				selectedKey="{Customer>/createCRCustomerData/gen_adrc/dont_use_p}">
+			<ComboBox showSecondaryValues="true" editable="{App>/edit}" selectedKey="{Customer>/createCRCustomerData/gen_adrc/dont_use_p}">
 				<items>
 					<core:ListItem text="Unknown" key="0001" additionalText="0001"/>
 					<core:ListItem text="Moved w/o Forwarding" key="0002" additionalText="0002"/>

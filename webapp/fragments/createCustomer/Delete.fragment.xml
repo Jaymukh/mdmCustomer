@@ -6,13 +6,15 @@
 			<core:Title text="Deletion Flags"/>
 			<Label text="Csutomer"/>
 			<Text text="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kunnr}"/>
-			<CheckBox useEntireWidth="true" width="100%" wrapping="true" text="Central Deletion Flag" select="onSelectCheckBox"
+			<Label text="Central Deletion Flag"/>
+			<CheckBox useEntireWidth="true" width="100%" wrapping="true"  select="onSelectCheckBox"
 				selected="{= ${Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/loevm} === 'X'}">
 				<customData>
 					<core:CustomData key="Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/loevm"/>
 				</customData>
 			</CheckBox>
-			<CheckBox width="100%" useEntireWidth="true" wrapping="true" text="Central Deletion Block" select="onSelectCheckBox"
+			<Label text="Central Deletion Block"/>
+			<CheckBox width="100%" useEntireWidth="true" wrapping="true"  select="onSelectCheckBox"
 				selected="{= ${Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/nodel} === 'X'}">
 				<customData>
 					<core:CustomData key="Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/nodel"/>

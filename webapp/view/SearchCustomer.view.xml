@@ -85,7 +85,7 @@
 						<Label id="idTableTitle" text="Business Partner Master List({SearchCustomerModel>/searchAllModelData/totalRecords})" design="Bold"></Label>
 						<ToolbarSpacer></ToolbarSpacer>
 						<Button text="Create ERP Customer" visible="{= ${userManagementModel>/role}.indexOf('req')!== -1 ? true : false }" type="Emphasized"
-							press="onNavToCreateERPCustomer"></Button>
+							press="onHandleCreateERpCust"></Button>
 						<Label text="Page No."/>
 						<Select id="searchAllVendorPageSelectID" items="{SearchCustomerModel>/PageData}" selectedKey="{SearchCustomerModel>/selectedPageKey}"
 							change="onSelectSearchAllVendorPage">

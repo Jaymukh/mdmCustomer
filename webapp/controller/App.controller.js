@@ -1,6 +1,7 @@
 sap.ui.define([
-	"murphy/mdm/customer/murphymdmcustomer/controller/BaseController"
-], function (BaseController) {
+	"murphy/mdm/customer/murphymdmcustomer/controller/BaseController",
+	"sap/m/MessageToast"
+], function (BaseController, MessageToast) {
 	"use strict";
 
 	return BaseController.extend("murphy.mdm.customer.murphymdmcustomer.controller.View1", {
@@ -28,17 +29,6 @@ sap.ui.define([
 			}
 		},
 
-		onNavToCreateERPCustomer: function () {
-			var oAppModel = this.getModel("App");
-			this.clearAllButtons();
-			oAppModel.setProperty("/edit", true);
-			oAppModel.setProperty("/saveButton", true);
-			oAppModel.setProperty("/checkButton", true);
-			oAppModel.setProperty("/appTitle", "Create ERP Customer");
-			oAppModel.setProperty("/previousPage", "");
-			this._createCREntityCustomer();
-		},
-
 		onNavToChangeReqList: function () {
 			var oAppModel = this.getModel("App");
 			this.clearAllButtons();
@@ -51,11 +41,7 @@ sap.ui.define([
 		onNavToErpCustList: function () {
 			var oAppModel = this.getModel("App");
 			this.clearAllButtons();
-			var oParameters = {
-				sPageNo: 1
-			};
 			oAppModel.setProperty("/appTitle", "Search ERP Customer");
-			this.handleGo(oParameters);
 		},
 
 		onSideNavButtonPress: function () {

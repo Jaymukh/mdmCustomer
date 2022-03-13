@@ -4,9 +4,10 @@
 		singleContainerFullSize="false">
 		<form:content>
 			<core:Title text="Blocking Data"/>
-			<Label text="Csutomer"/>
+			<Label text="Customer"/>
 			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/kunnr}" editable="false"/>
-			<CheckBox useEntireWidth="true" width="100%" wrapping="true" text="Central Posting Block" select="onSelectERPCheckBox"
+			<Label text="Central Posting Block"/>
+			<CheckBox useEntireWidth="true" width="100%" wrapping="true" select="onSelectERPCheckBox"
 				selected="{= ${Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/sperr} === 'X'}">
 				<customData>
 					<core:CustomData key="Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/sperr"/>
@@ -18,7 +19,8 @@
 			<ComboBox selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/lifsd}"/>
 			<Label text="Central Billing Block"/>
 			<ComboBox selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/faksd}"/>
-			<CheckBox width="100%" useEntireWidth="true" wrapping="true" text="Central Sales Block" select="onSelectERPCheckBox"
+			<Label text="Central Sales Block"/>
+			<CheckBox width="100%" useEntireWidth="true" wrapping="true" select="onSelectERPCheckBox"
 				selected="{= ${Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/cassd} === 'X'}">
 				<customData>
 					<core:CustomData key="Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/cassd"/>

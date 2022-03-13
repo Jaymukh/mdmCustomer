@@ -1,5 +1,6 @@
 {
 	"edit": false,
+	"crEdit": false,
 	"editButton": false,
 	"saveButton": false,
 	"approveButton": false,
@@ -878,11 +879,11 @@
 		"text": "HR Customers",
 		"additionalText": "HRAR",
 		"key": "HRAR"
-	},{
+	}, {
 		"text": "Inter company",
 		"additionalText": "INCO",
 		"key": "INCO"
-	},{
+	}, {
 		"text": "Joint Venture Domestic/PRA",
 		"additionalText": "JVPR",
 		"key": "JVPR"
@@ -890,7 +891,7 @@
 		"text": "JVA International",
 		"additionalText": "JVIN",
 		"key": "JVIN"
-	},{
+	}, {
 		"text": "O&G Purchasers/Remitters",
 		"additionalText": "OGPR",
 		"key": "OGPR"

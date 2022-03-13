@@ -12,17 +12,18 @@
 			<TextArea required="true" value="{Customer>/changeReq/genData/desc}"/>
 			<Label text="Priority"/>
 			<ComboBox selectedKey="{Customer>/changeReq/genData/priority}" showSecondaryValues="true"
-				items="{path:'Dropdowns>/TAXONOMY',filters : [{ path : 'taxonomyType', operator : 'EQ', value1 : 'CR_PRIORITY' }]}" editable="{App>/edit}">
+				items="{path:'Dropdowns>/TAXONOMY',filters : [{ path : 'taxonomyType', operator : 'EQ', value1 : 'CR_PRIORITY' }]}" editable="{App>/crEdit}">
 				<items>
 					<core:ListItem key="{Dropdowns>taxonomyId}" additionalText="{Dropdowns>taxonomyId}" text="{Dropdowns>taxonomyName}"/>
 				</items>
 			</ComboBox>
 			<Label text="Due Date"/>
-			<DatePicker displayFormat="{App>/dateFormat}" valueFormat="{App>/dateValueFormat}" value="{Customer>/changeReq/genData/dueDate}"/>
+			<DatePicker displayFormat="{App>/dateFormat}" valueFormat="{App>/dateValueFormat}" value="{Customer>/changeReq/genData/dueDate}"
+				editable="{App>/crEdit}"/>
 			<Label text="Reason"/>
 			<ComboBox required="true" selectedKey="{Customer>/changeReq/genData/reason}" showSecondaryValues="true"
 				items="{path:'Dropdowns>/TAXONOMY',filters : [{ path : 'taxonomyType', operator : 'EQ', value1 : 'CUSTOMER_CR_REASON' }]}"
-				editable="{App>/edit}">
+				editable="{App>/crEdit}">
 				<items>
 					<core:ListItem key="{Dropdowns>taxonomyId}" additionalText="{Dropdowns>taxonomyId}" text="{Dropdowns>taxonomyName}"/>
 				</items>

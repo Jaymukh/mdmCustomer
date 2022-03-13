@@ -119,12 +119,9 @@ sap.ui.define([
 			});
 		},
 
-		handleCreateERPCustomer: function (oEvent) {
+		onHandleCreateERpCust: function (oEvent) {
 			this.getRouter().getTargets().display("CreateERPCustomer");
-			this.byId("sideNavigation").setSelectedItem(this.byId("sideNavigation").getItem().getItems()[1]);
-			var titleID = this.getView().byId("idTitle");
-			titleID.setText(this.oBundle.getText("CreateERPCustomer-title"));
-			this._createCREntityCustomer();
+			this.onNavToCreateERPCustomer();
 		},
 
 		handleSelect: function (oEvent) {
@@ -210,7 +207,7 @@ sap.ui.define([
 					actions: [sap.m.MessageBox.Action.OK, sap.m.MessageBox.Action.CANCEL],
 					onClose: sAction => {
 						if (sAction === "OK") {
-							this.navToCustomerPage(oCustomer.customCustomerCustKna1DTO.kunnr, "DELETE");
+							this.navToCustomerPage(oCustomer.customCustomerCustKna1DTO.kunnr, "BLOCK");
 						}
 					}
 				});
@@ -232,6 +229,17 @@ sap.ui.define([
 		},
 
 		navToCustomerPage: function (sCustomer, sAction) {
+			var oCustomerModel = this.getModel("Customer"),
+				oAppModel = this.getModel("App"),
+				oChangeRequest = Object.assign({}, oAppModel.getProperty("/changeReq")),
+				oCustomerData = Object.assign({}, oAppModel.getProperty("/createCRCustomerData")),
+				aTables = ["cust_knb1", "cust_knbk", "cust_knbw", "cust_knb5", "cust_knvp", "cust_knvv",
+					"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "gen_adr2", "gen_adr3", "gen_adr6"
+				],
+				oDate = new Date(),
+				sMonth = oDate.getMonth() + 1,
+				sMinutes = oDate.getMinutes();
+
 			this.clearCustModelData();
 			var oParameters = {
 				url: "/murphyCustom/entity-service/entities/entity/get",
@@ -253,14 +261,6 @@ sap.ui.define([
 			this.serviceCall.handleServiceRequest(oParameters).then(
 				oData => {
 					//Success Handler
-					var oCustomerModel = this.getModel("Customer"),
-						oAppModel = this.getModel("App"),
-						oChangeRequest = Object.assign({}, oAppModel.getProperty("/changeReq")),
-						oCustomerData = Object.assign({}, oAppModel.getProperty("/createCRCustomerData")),
-						aTables = ["cust_knb1", "cust_knbk", "cust_knbw", "cust_knb5", "cust_knvp", "cust_knvv",
-							"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "gen_adr2", "gen_adr3", "gen_adr6"
-						];
-
 					oCustomerData.formData.parentDTO.customData.cust_kna1 = oData.result.parentDTO.customData.cust_kna1;
 					oCustomerData.tableRows = {};
 					aTables.forEach(function (sTable) {
@@ -282,6 +282,7 @@ sap.ui.define([
 						oAppModel.setProperty("/saveButton", true);
 						oAppModel.setProperty("/checkButton", true);
 						oAppModel.setProperty("/edit", true);
+						oAppModel.setProperty("/crEdit", true);
 						oAppModel.setProperty("/appTitle", "Create ERP Customer");
 						if (sAction === "COPY") {
 							oData.result.parentDTO.customData.cust_kna1.kunnr = "";
@@ -292,6 +293,7 @@ sap.ui.define([
 						oAppModel.setProperty("/saveButton", true);
 						oAppModel.setProperty("/checkButton", true);
 						oAppModel.setProperty("/edit", false);
+						oAppModel.setProperty("/crEdit", true);
 						oAppModel.setProperty("/appTitle", "Block ERP Customer");
 						break;
 					case "DELETE":
@@ -299,6 +301,7 @@ sap.ui.define([
 						oAppModel.setProperty("/saveButton", true);
 						oAppModel.setProperty("/checkButton", true);
 						oAppModel.setProperty("/edit", false);
+						oAppModel.setProperty("/crEdit", true);
 						oAppModel.setProperty("/appTitle", "Delete ERP Customer");
 						break;
 					case "PREVIEW":
@@ -316,63 +319,36 @@ sap.ui.define([
 
 					//Create Entity ID for Customer
 					if (sAction !== "PREVIEW") {
-						this.createEntityId();
+						this.getView().setBusy(true);
+						this._createCREntityCustomer().then(oData => {
+							var oBusinessEntity = oData.result.customerDTOs[0].businessEntityDTO,
+								sEntityId = oBusinessEntity.entity_id;
+							oChangeRequest.genData.reason = "";
+							oChangeRequest.genData.timeCreation = oDate.getHours() + ":" + (sMinutes < 10 ? "0" + sMinutes : sMinutes);
+							oChangeRequest.genData.dateCreation = oDate.getFullYear() + "-" + (sMonth < 10 ? "0" + sMonth : sMonth) + "-" +
+								oDate.getDate();
+							oChangeRequest.genData.change_request_by = oBusinessEntity.hasOwnProperty("created_by") ? oBusinessEntity.created_by : {};
+							oChangeRequest.genData.modified_by = oBusinessEntity.hasOwnProperty("modified_by") ? oBusinessEntity.modified_by : {};
+							oCustomerData.formData.parentDTO.customData.cust_kna1.entity_id = sEntityId;
+
+							oCustomerModel.setData({
+								changeReq: oChangeRequest,
+								createCRCustomerData: oCustomerData
+							});
+							this.getView().setBusy(false);
+						}, oError => {
+							this.getView().setBusy(false);
+							MessageToast.show("Entity ID not created. Please try after some time");
+							this.getRouter().getTargets().display("SearchCustomer");
+							oAppModel.setProperty("/appTitle", "Search ERP Customer");
+						});
 					}
 				},
 				oError => {
 					this.getView().setBusy(false);
 					MessageToast.show("Not able to fetch the Customer Details, Please try after some time");
 				});
-		},
-
-		createEntityId: function () {
-			var oCustomerModel = this.getModel("Customer"),
-				oCustomerData = oCustomerModel.getData(),
-				oAppModel = this.getModel("App"),
-				sUserId = this.getView().getModel("userManagementModel").getProperty("/data/user_id"),
-				oDate = new Date(),
-				sMonth = oDate.getMonth() + 1,
-				sMinutes = oDate.getMinutes();
-			var objParam = {
-				url: "/murphyCustom/entity-service/entities/entity/create",
-				hasPayload: true,
-				type: "POST",
-				data: {
-					"entityType": "CUSTOMER",
-					"parentDTO": {
-						"customData": {
-							"business_entity": {
-								"entity_type_id": "41001",
-								"created_by": sUserId,
-								"modified_by": sUserId,
-								"is_draft": true
-							}
-						}
-					}
-				}
-			};
-			this.getView().setBusy(true);
-			this.serviceCall.handleServiceRequest(objParam).then(
-				oData => {
-					this.getView().setBusy(false);
-					var oBusinessEntity = oData.result.customerDTOs[0].businessEntityDTO,
-						sEntityId = oBusinessEntity.entity_id;
-					oCustomerData.changeReq.genData.reason = "";
-					oCustomerData.changeReq.genData.timeCreation = oDate.getHours() + ":" + (sMinutes < 10 ? "0" + sMinutes : sMinutes);
-					oCustomerData.changeReq.genData.dateCreation = oDate.getFullYear() + "-" + (sMonth < 10 ? "0" + sMonth : sMonth) + "-" + oDate.getDate();
-					oCustomerData.changeReq.genData.change_request_by = oBusinessEntity.hasOwnProperty("created_by") ? oBusinessEntity.created_by : {};
-					oCustomerData.changeReq.genData.modified_by = oBusinessEntity.hasOwnProperty("modified_by") ? oBusinessEntity.modified_by : {};
-					oCustomerData.createCRCustomerData.formData.parentDTO.customData.cust_kna1.entity_id = sEntityId;
-					oCustomerModel.setData(oCustomerData);
-				},
-				oError => {
-					this.getView().setBusy(false);
-					MessageToast.show("Entity ID not created. Please try after some time");
-					this.getRouter().getTargets().display("SearchCustomer");
-					oAppModel.setProperty("/appTitle", "Search ERP Customer");
-				});
 		}
-
 	});
 
 });
