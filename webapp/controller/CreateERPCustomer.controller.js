@@ -861,7 +861,7 @@ sap.ui.define([
 					data: {
 						"configType": oData.table,
 						"currentPage": 1,
-						"maxResult": '1000'
+						"maxResults": 1000
 					}
 				};
 			}

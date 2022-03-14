@@ -10,12 +10,13 @@
 				<customData>
 					<core:CustomData key="title" value="Customer"></core:CustomData>
 					<core:CustomData key="table" value="vw_kna1"></core:CustomData>
-					<core:CustomData key="Key1" value="Company code"></core:CustomData>
-					<core:CustomData key="Key2" value="Company Name"></core:CustomData>
-					<core:CustomData key="Key3" value="Country"></core:CustomData>
-					<core:CustomData key="Key4" value="Currency"></core:CustomData>
-					<core:CustomData key="inputKey" value=""></core:CustomData>
-					<core:CustomData key="inputText" value=""></core:CustomData>
+					<core:CustomData key="kunnr" value="Customer"></core:CustomData>
+					<core:CustomData key="name1" value="Name"></core:CustomData>
+					<core:CustomData key="land1" value="Country"></core:CustomData>
+					<core:CustomData key="ort01" value="City"></core:CustomData>
+					<core:CustomData key="pstlz" value="Postal Code"></core:CustomData>
+					<core:CustomData key="inputKey" value="kunnr"></core:CustomData>
+					<core:CustomData key="inputText" value="kunnr"></core:CustomData>
 				</customData>
 			</Input>
 			<Label text="City code"/>

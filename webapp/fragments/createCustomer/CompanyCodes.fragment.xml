@@ -79,11 +79,13 @@
 					<customData>
 						<core:CustomData key="title" value="Head Office"></core:CustomData>
 						<core:CustomData key="table" value="vw_kna1"></core:CustomData>
-						<core:CustomData key="customVendorLFA1DTO/lifnr" value="Vendor"></core:CustomData>
-						<core:CustomData key="customVendorLFA1DTO/name1" value="Name"></core:CustomData>
-						<core:CustomData key="customVendorLFA1DTO/land1" value="Country"></core:CustomData>
-						<core:CustomData key="inputKey" value="customVendorLFA1DTO/lifnr"></core:CustomData>
-						<core:CustomData key="inputText" value="customVendorLFA1DTO/name1"></core:CustomData>
+						<core:CustomData key="kunnr" value="Customer"></core:CustomData>
+						<core:CustomData key="name1" value="Name"></core:CustomData>
+						<core:CustomData key="land1" value="Country"></core:CustomData>
+						<core:CustomData key="ort01" value="City"></core:CustomData>
+						<core:CustomData key="pstlz" value="Postal Code"></core:CustomData>
+						<core:CustomData key="inputKey" value="kunnr"></core:CustomData>
+						<core:CustomData key="inputText" value="kunnr"></core:CustomData>
 					</customData>
 				</Input>
 				<Label text="Authorization Group"/>
@@ -267,7 +269,7 @@
 						<core:CustomData key="title" value="Payment Methods"></core:CustomData>
 						<core:CustomData key="table" value="T042Z"></core:CustomData>
 						<core:CustomData key="zwels" value="Payment Method"></core:CustomData>
-					<!--	<core:CustomData key="zwels" value="Name"></core:CustomData>
+						<!--	<core:CustomData key="zwels" value="Name"></core:CustomData>
 						<core:CustomData key="zwels" value="Incoming Payments"></core:CustomData>-->
 						<core:CustomData key="inputKey" value="zwels"></core:CustomData>
 						<core:CustomData key="inputText" value="zwels"></core:CustomData>

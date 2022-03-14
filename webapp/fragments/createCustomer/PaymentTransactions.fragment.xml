@@ -38,11 +38,11 @@
 				<customData>
 					<core:CustomData key="title" value="Alternative payee"></core:CustomData>
 					<core:CustomData key="table" value="vw_kna1"></core:CustomData>
-					<core:CustomData key="customVendorLFA1DTO/lifnr" value="Vendor"></core:CustomData>
-					<core:CustomData key="customVendorLFA1DTO/name1" value="Name"></core:CustomData>
-					<core:CustomData key="customVendorLFA1DTO/land1" value="Country"></core:CustomData>
-					<core:CustomData key="inputKey" value="customVendorLFA1DTO/lifnr"></core:CustomData>
-					<core:CustomData key="inputText" value="customVendorLFA1DTO/name1"></core:CustomData>
+					<core:CustomData key="kunnr" value="Vendor"></core:CustomData>
+					<core:CustomData key="name1" value="Name"></core:CustomData>
+					<core:CustomData key="land1" value="Country"></core:CustomData>
+					<core:CustomData key="inputKey" value="kunnr"></core:CustomData>
+					<core:CustomData key="inputText" value="kunnr"></core:CustomData>
 				</customData>
 			</Input>
 		</form:content>
