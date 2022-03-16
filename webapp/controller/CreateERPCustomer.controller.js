@@ -254,7 +254,7 @@ sap.ui.define([
 			if (oAppModel.getProperty("/erpPreview")) {
 				this.getView().setBusy(true);
 				this._createCREntityCustomer().then(oData => {
-					var oBusinessEntity = oData.result.customerDTOs[0].businessEntityDTO,
+					var oBusinessEntity = oData.result.customerDTOs[0].commonEntityDTO.customBusinessDTO,
 						sEntityId = oBusinessEntity.entity_id,
 						oAudLogModel = this.getView().getModel("AuditLogModel");
 					if (!oAudLogModel.getProperty("/details")) {
@@ -286,6 +286,7 @@ sap.ui.define([
 					oAppModel.setProperty("/submitButton", false);
 					oAppModel.setProperty("/editButton", false);
 					oAppModel.setProperty("/saveButton", true);
+					oAppModel.setProperty("/crEdit", true);
 					this.getView().setBusy(false);
 				}, oError => {
 					this.getView().setBusy(false);

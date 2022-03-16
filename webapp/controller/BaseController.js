@@ -131,7 +131,7 @@ sap.ui.define([
 			this._createCREntityCustomer().then(
 				//Success handler
 				oData => {
-					var oBusinessEntity = oData.result.customerDTOs[0].businessEntityDTO,
+					var oBusinessEntity = oData.result.customerDTOs[0].commonEntityDTO.customBusinessDTO,
 						sEntityId = oBusinessEntity.entity_id,
 						aTables = ["cust_knb1", "cust_knbk", "cust_knbw", "cust_knb5", "cust_knvp", "cust_knvv",
 							"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "gen_adr2", "gen_adr3", "gen_adr6"

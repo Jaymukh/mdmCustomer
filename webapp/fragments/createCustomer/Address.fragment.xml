@@ -23,7 +23,10 @@
 					<cells>
 						<Text
 							text="{Customer>/createCRCustomerData/gen_adrc/street} {Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/ort01} {Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/regio} {Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/pstlz}"></Text>
-						<Text text="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/land1}"></Text>
+						<ComboBox items="{Dropdowns>/T005}" editable="false"
+							selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/land1}">
+							<core:Item key="{Dropdowns>land1}" text="{Dropdowns>landx}"/>
+						</ComboBox>
 						<CheckBox selected="true" editable="false"></CheckBox>
 					</cells>
 				</ColumnListItem>

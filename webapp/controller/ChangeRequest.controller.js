@@ -140,18 +140,13 @@ sap.ui.define([
 					}, this);
 
 					oCustomerData.workflowID = sWorkflowTaskID;
+					oCustomerData.crID = sChangeRequestId;
 					oCustomerModel.setProperty("/createCRCustomerData", oCustomerData);
-
-					//Navigate to Change Request Page	
-					/*var sID = this.getView().getParent().getPages().find(function (e) {
-						return e.getId().indexOf("CreateERPCustomer") !== -1;
-					}).getId();*/
 					this.getRouter().getTargets().display("CreateERPCustomer");
-				/*	this.getView().getParent().to(sID);*/
 					oAppModel.setProperty("/sidePanelSelectedPage", "idWorkFlowSection");
 				}
 			}.bind(this), function (oError) {
-			//	this.getView().setBusy(false);
+				this.getView().setBusy(false);
 				oCustomerModel.setData({
 					changeReq: {},
 					createCRCustomerData: {}

@@ -325,7 +325,7 @@ sap.ui.define([
 					if (sAction !== "PREVIEW") {
 						this.getView().setBusy(true);
 						this._createCREntityCustomer().then(oData => {
-							var oBusinessEntity = oData.result.customerDTOs[0].businessEntityDTO,
+							var oBusinessEntity = oData.result.customerDTOs[0].commonEntityDTO.customBusinessDTO,
 								sEntityId = oBusinessEntity.entity_id;
 							oChangeRequest.genData.reason = "";
 							oChangeRequest.genData.timeCreation = oDate.getHours() + ":" + (sMinutes < 10 ? "0" + sMinutes : sMinutes);
