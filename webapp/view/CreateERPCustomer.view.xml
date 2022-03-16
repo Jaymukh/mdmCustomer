@@ -107,6 +107,7 @@
 				<Button text="Check" type="Transparent" press="onCheckCR" visible="{App>/saveButton}"/>
 				<Button text="Approve" type="Accept" press="onApproveClick" visible="{App>/approveButton}"/>
 				<Button text="Reject" type="Reject" press="onRejectClick" visible="{App>/rejectButton}"/>
+				<!--<Button text="Withdraw" type="Transparent" press="onWithdrawClick" visible="{App>/withDrawButton}"/>-->
 				<Button text="All Change Request" icon="sap-icon://navigation-left-arrow" type="Transparent" press="onBackToAllChangeReq"
 					visible="{= ${App>/previousPage} === 'ALL_CHANGE_REQ'}"/>
 				<Button text="Business Partner Master List" icon="sap-icon://navigation-left-arrow" type="Transparent" press="onBackToAllCust"

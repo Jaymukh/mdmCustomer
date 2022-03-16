@@ -86,11 +86,15 @@ sap.ui.define([
 					oAppModel.setProperty("/editButton", true);
 				}
 				
-				//Enable Approve Button
+				//Enable Approve & Reject Button
 				if (oChangeReq.isClaimable &&
 					(oUserData.role.indexOf('approv') !== -1 || oUserData.role.indexOf('stew') !== -1 )) {
 					oAppModel.setProperty("/approveButton", true);
 					oAppModel.setProperty("/rejectButton", true);
+				}
+				// withdraw button
+				if (oChangeReq.isClaimable && (oUserData.role.indexOf('req') !== -1 )) {
+					oAppModel.setProperty("/withDrawButton", true);
 				}
 			});
 

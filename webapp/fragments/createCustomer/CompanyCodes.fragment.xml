@@ -379,6 +379,7 @@
 						<core:CustomData key="table" value="T001S"></core:CustomData>
 						<core:CustomData key="busab" value="Accounting Clerk"></core:CustomData>
 						<core:CustomData key="sname" value="Clerk Abbrivation"></core:CustomData>
+						<core:CustomData key="bukrs" value="Company Code"></core:CustomData>
 						<core:CustomData key="inputKey" value="busab"></core:CustomData>
 						<core:CustomData key="inputText" value="busab"></core:CustomData>
 					</customData>

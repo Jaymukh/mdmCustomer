@@ -549,7 +549,7 @@ sap.ui.define([
 			this.getView().setBusy(true);
 			var sValue = oParameter.hasOwnProperty("Control") ? oParameter.Control.getValue() : oParameter.Comment;
 			var objParamCreate = {
-				url: "/murphyCustom//change-request-service/changerequests/changerequest/comments/add",
+				url: "/murphyCustom/change-request-service/changerequests/changerequest/comments/add",
 				type: 'POST',
 				hasPayload: true,
 				data: {
@@ -557,7 +557,7 @@ sap.ui.define([
 						"crCommentDTOs": [{
 							"entity_id": oParameter.EntityID,
 							"note_desc": sValue,
-							"note_by": {
+							"note_by_user": {
 								"user_id": this.getView().getModel("userManagementModel").getProperty("/data/user_id")
 							}
 						}]

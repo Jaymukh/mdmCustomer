@@ -41,10 +41,12 @@ sap.ui.define([
 				.getItems()[2]);
 
 			this.getModel("App").setProperty("/appTitle", "Change Request And Documents");
-			var sID = this.getView().getParent().getPages().find(function (e) {
+			this.getRouter().getTargets().display("ChangeRequest");
+			
+		/*	var sID = this.getView().getParent().getPages().find(function (e) {
 				return e.getId().indexOf("changeRequestId") !== -1;
 			}).getId();
-			this.getView().getParent().to(sID);
+			this.getView().getParent().to(sID);*/
 		},
 
 		onBackToAllCust: function () {
@@ -300,7 +302,7 @@ sap.ui.define([
 		onSubmitCR: function () {
 			if (this.onCheckCR()) {
 				this.getView().setBusy(true);
-				var objParamSubmit = {
+			/*	var objParamSubmit = {
 					url: "/murphyCustom/workflow-service/workflows/tasks/task/action",
 					type: 'POST',
 					hasPayload: true,
@@ -346,8 +348,8 @@ sap.ui.define([
 						duration: 6000,
 						width: "100%"
 					});
-				}.bind(this));
-				//	this._createTask();
+				}.bind(this));*/
+				this._createTask();
 			}
 		},
 
@@ -488,36 +490,6 @@ sap.ui.define([
 								"attrDes": "CountryCodeAccountGroup",
 								"value": oCustomerData.createCRCustomerData.formData.parentDTO.customData.cust_kna1.land1 + "+" +
 									oCustomerData.createCRCustomerData.formData.parentDTO.customData.cust_kna1.ktokd,
-								"dataType": "INPUT",
-								"valueList": [],
-								"attachmentType": null,
-								"attachmentSize": null,
-								"attachmentName": null,
-								"attachmentId": null,
-								"dataTypeKey": 0,
-								"dropDownType": null,
-								"url": null,
-								"taskId": null,
-								"origin": "Process",
-								"attributePath": null,
-								"dependantOn": null,
-								"rowNumber": 0,
-								"tableAttributes": null,
-								"tableContents": null,
-								"isDeleted": false,
-								"isRunTime": false,
-								"isVisible": null
-							}, {
-								"processName": "MDGCustomerWorkflow",
-								"key": "hhcie3a1d1a7a",
-								"label": "CR Number",
-								"processType": null,
-								"isEditable": true,
-								"isActive": true,
-								"isMandatory": true,
-								"isEdited": 2,
-								"attrDes": "CR Number",
-								"value": "CR0033",
 								"dataType": "INPUT",
 								"valueList": [],
 								"attachmentType": null,
