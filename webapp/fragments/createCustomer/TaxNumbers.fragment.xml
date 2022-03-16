@@ -1,56 +1,76 @@
-<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout">
-	<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout">
-		<VBox>
-			<Table items="{path:'Customer>/createCRCustomerData/tableRows/TAX_NUMBERS'}">
-				<headerToolbar>
-					<Toolbar>
-						<ToolbarSpacer></ToolbarSpacer>
-						<Button text="Add" press="onAddTaxNumber" type="Emphasized" visible="{App>/edit}"></Button>
-					</Toolbar>
-				</headerToolbar>
-				<columns>
-					<Column>
-						<header>
-							<Label text="Tax Number Category" design="Bold"></Label>
-						</header>
-					</Column>
-					<Column>
-						<header>
-							<Label text="Description" design="Bold"></Label>
-						</header>
-					</Column>
-					<Column>
-						<header>
-							<Label text="Tax Number" design="Bold"></Label>
-						</header>
-					</Column>
-					<Column width="5%">
-						<header>
-							<Label text=""></Label>
-						</header>
-					</Column>
-				</columns>
-				<items>
-					<ColumnListItem>
-						<cells>
-							<Input value="{Customer>TAX_CATEGORY}" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="onValueHelpRequested" maxLength="3"
-								editable="{App>/edit}">
-								<customData>
-									<core:CustomData key="title" value="Tax Number Category"></core:CustomData>
-									<core:CustomData key="table" value="T685A"></core:CustomData>
-									<core:CustomData key="inputKey" value="tatyp"></core:CustomData>
-									<core:CustomData key="inputText" value="tatyp"></core:CustomData>
-									<core:CustomData key="tatyp" value="Tax Category"></core:CustomData>
-									<core:CustomData key="vtext" value="Description"></core:CustomData>
-								</customData>
-							</Input>
-							<Text text="{Customer>TAX_DESCRIPTION}"></Text>
-							<Input value="{Customer>TAX_NUMBER}" editable="{App>/edit}"/>
-							<core:Icon src="sap-icon://delete" tooltip="Delete" color="Negative" visible="{App>/edit}" press="onDelTaxNumber"/>
-						</cells>
-					</ColumnListItem>
-				</items>
-			</Table>
-		</VBox>
-	</core:FragmentDefinition>
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout">ut">
+	<VBox>
+		<Table items="{path:'Customer>/createCRCustomerData/tableRows/TAX_NUMBERS'}" visible="false">
+			<headerToolbar>
+				<Toolbar>
+					<ToolbarSpacer></ToolbarSpacer>
+					<Button text="Add" press="onAddTaxNumber" type="Emphasized" visible="{App>/edit}"></Button>
+				</Toolbar>
+			</headerToolbar>
+			<columns>
+				<Column>
+					<header>
+						<Label text="Tax Number Category" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Description" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column>
+					<header>
+						<Label text="Tax Number" design="Bold"></Label>
+					</header>
+				</Column>
+				<Column width="5%">
+					<header>
+						<Label text=""></Label>
+					</header>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<Input value="{Customer>TAX_CATEGORY}" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="onValueHelpRequested" maxLength="3"
+							editable="{App>/edit}">
+							<customData>
+								<core:CustomData key="title" value="Tax Number Category"></core:CustomData>
+								<core:CustomData key="table" value="T685A"></core:CustomData>
+								<core:CustomData key="inputKey" value="tatyp"></core:CustomData>
+								<core:CustomData key="inputText" value="tatyp"></core:CustomData>
+								<core:CustomData key="tatyp" value="Tax Category"></core:CustomData>
+								<core:CustomData key="vtext" value="Description"></core:CustomData>
+							</customData>
+						</Input>
+						<Text text="{Customer>TAX_DESCRIPTION}"></Text>
+						<Input value="{Customer>TAX_NUMBER}" editable="{App>/edit}"/>
+						<core:Icon src="sap-icon://delete" tooltip="Delete" color="Negative" visible="{App>/edit}" press="onDelTaxNumber"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<form:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+			adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
+			singleContainerFullSize="false">
+			<form:content>
+				<core:Title text="Tax Number"/>
+				<Label text="Tax Number Category"/>
+				<Input value="{Customer>TAX_CATEGORY}" showValueHelp="true" valueHelpOnly="true" valueHelpRequest="onValueHelpRequested" maxLength="3"
+					editable="{App>/edit}">
+					<customData>
+						<core:CustomData key="title" value="Tax Number Category"></core:CustomData>
+						<core:CustomData key="table" value="T685A"></core:CustomData>
+						<core:CustomData key="inputKey" value="kschl"></core:CustomData>
+						<core:CustomData key="inputText" value="kschl"></core:CustomData>
+						<core:CustomData key="kschl" value="Tax Category"></core:CustomData>
+					</customData>
+				</Input>
+				<!--<Label text="Description" visible="false"/>
+				<Input editable="false" visible="false"/>-->
+				<Label text="Tax Number"/>
+				<Input value="{Customer>TAX_NUMBER}" editable="{App>/edit}"/>
+			</form:content>
+		</form:SimpleForm>
+	</VBox>
 </core:FragmentDefinition>
