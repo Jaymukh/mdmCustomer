@@ -399,7 +399,7 @@ sap.ui.define([
 								"isMandatory": true,
 								"isEdited": 2,
 								"attrDes": "Country Code",
-								"value": oCustomerData.createCRCustomerData.formData.parentDTO.customData.cust_kna1.kunnr,
+								"value": oCustomerData.createCRCustomerData.formData.parentDTO.customData.cust_kna1.land1,
 								"dataType": "INPUT",
 								"valueList": [],
 								"attachmentType": null,

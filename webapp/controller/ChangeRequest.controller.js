@@ -80,20 +80,34 @@ sap.ui.define([
 				}
 				oCustomerModel.setProperty("/changeReq", oChangeRequest);
 				//Enable Edit Button
-				if (oChangeReq.isClaimable &&
+			/*	if (oChangeReq.isClaimable &&
 					(oChangeReq.change_request_type_id === 50002 || oChangeReq.change_request_type_id === 50001) &&
+					oUserData.role.indexOf('approv') === -1) {
+					oAppModel.setProperty("/editButton", true);
+				}*/
+				// RIgt
+				if ((oChangeReq.change_request_type_id === 50002 || oChangeReq.change_request_type_id === 50001) &&
 					oUserData.role.indexOf('approv') === -1) {
 					oAppModel.setProperty("/editButton", true);
 				}
 				
 				//Enable Approve & Reject Button
-				if (oChangeReq.isClaimable &&
+				/*if (oChangeReq.isClaimable &&
 					(oUserData.role.indexOf('approv') !== -1 || oUserData.role.indexOf('stew') !== -1 )) {
 					oAppModel.setProperty("/approveButton", true);
 					oAppModel.setProperty("/rejectButton", true);
+				}*/
+				
+				if ((oUserData.role.indexOf('approv') !== -1 || oUserData.role.indexOf('stew') !== -1 )) {
+					oAppModel.setProperty("/approveButton", true);
+					oAppModel.setProperty("/rejectButton", true);
 				}
+				
 				// withdraw button
-				if (oChangeReq.isClaimable && (oUserData.role.indexOf('req') !== -1 )) {
+				/*if (oChangeReq.isClaimable && (oUserData.role.indexOf('req') !== -1 )) {
+					oAppModel.setProperty("/withDrawButton", true);
+				}*/
+				if ((oUserData.role.indexOf('req') !== -1 )) {
 					oAppModel.setProperty("/withDrawButton", true);
 				}
 			});
