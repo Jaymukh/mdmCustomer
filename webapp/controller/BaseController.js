@@ -160,6 +160,9 @@ sap.ui.define([
 
 					oChangeRequest.genData.change_request_id = 50001;
 					oChangeRequest.genData.reason = "";
+					oChangeRequest.genData.desc= "";
+					oChangeRequest.genData.priority = ""; 
+					oChangeRequest.genData.dueDate = ""; 
 					oChangeRequest.genData.timeCreation = oDate.getHours() + ":" + (sMinutes < 10 ? "0" + sMinutes : sMinutes);
 					oChangeRequest.genData.dateCreation = oDate.getFullYear() + "-" + (sMonth < 10 ? "0" + sMonth : sMonth) + "-" + oDate.getDate();
 					oChangeRequest.genData.change_request_by = oBusinessEntity.hasOwnProperty("created_by") ? oBusinessEntity.created_by : {};
