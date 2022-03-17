@@ -723,7 +723,7 @@ sap.ui.define([
 						this.nPageNo = 1;
 						this.handleGetAllChangeRequests(this.nPageNo);
 						this.handleChangeRequestStatistics();
-						this.onAllChangeReqClick();
+						this.getRouter().getTargets().display("ChangeRequest");
 					}
 
 					//Adding rejection reason to comment section

@@ -147,9 +147,11 @@
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		},
 		"routing": {
 			"config": {
@@ -161,13 +163,15 @@
 				"controlId": "pageContainer",
 				"clearControlAggregation": false
 			},
-			"routes": [{
-				"name": "SearchCustomer",
-				"pattern": "",
-				"target": [
-					"SearchCustomer"
-				]
-			}],
+			"routes": [
+				{
+					"name": "SearchCustomer",
+					"pattern": "",
+					"target": [
+						"SearchCustomer"
+					]
+				}
+			],
 			"targets": {
 				"SearchCustomer": {
 					"viewType": "XML",
