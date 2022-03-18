@@ -265,10 +265,18 @@ sap.ui.define([
 			});
 		},
 
-		getAllCommentsForCR: function (sEntityID) {
+		getAllCommentsForCR: function (sEntityID, sCRID, sIsclaimable) {
 			this.getView().setBusy(true);
 			var oCommentsModel = this.getModel("CommentsModel"),
 				oAuditLogModel = this.getModel("AuditLogModel");
+			if (!sCRID) {
+				sCRID = null;
+			}
+			if (!sIsclaimable) {
+				sIsclaimable = false
+			}
+			// var	sCRID = this.getView().getModel("CreateVendorModel").getProperty("/createCRVendorData/crID");
+			// var sIsclaimable = this.getView().getModel("CreateVendorModel").getProperty("/changeReq/genData/isClaimable");
 			var objParamCreate = {
 				url: "/murphyCustom/change-request-service/changerequests/changerequest/comments/get",
 				type: 'POST',
@@ -291,6 +299,50 @@ sap.ui.define([
 						var nCommentCount = oDataResp.result.parentCrDTOs[0].crCommentDTOs ? oDataResp.result.parentCrDTOs[0].crCommentDTOs.length : 0;
 						oAuditLogModel.setProperty("/details/commentCount", nCommentCount);
 					}
+
+					if (oDataResp.result && oDataResp.result.parentCrDTOs && oDataResp.result.parentCrDTOs[0] && oDataResp.result.parentCrDTOs[0].crCommentDTOs) {
+						oDataResp.result.parentCrDTOs[0].crCommentDTOs.forEach(function (currentValue, index) {
+							if (currentValue.note_by_user.user_id === this.getView().getModel("userManagementModel").getProperty("/data/user_id")) {
+								var aRole = this.getView().getModel("userManagementModel").getProperty("/role");
+								if ((aRole.indexOf('stew') !== -1 || aRole.indexOf('approv') !== -1) && sIsclaimable) {
+									currentValue.actions = [{
+										"Text": "Edit",
+										"Icon": "sap-icon://edit",
+										"Key": "edit"
+									}, {
+										"Text": "Delete",
+										"Icon": "sap-icon://delete",
+										"Key": "delete"
+									}];
+								} else if (aRole.indexOf('req') !== -1 && !sCRID) {
+									currentValue.actions = [{
+										"Text": "Edit",
+										"Icon": "sap-icon://edit",
+										"Key": "edit"
+									}, {
+										"Text": "Delete",
+										"Icon": "sap-icon://delete",
+										"Key": "delete"
+									}];
+
+								}
+
+							}
+						}.bind(this));
+						oCommentsModel.setData(oDataResp.result);
+						oCommentsModel.refresh(true);
+						if (!oAuditLogModel.getProperty("/details")) {
+							oAuditLogModel.setProperty("/details", {});
+						}
+						var nCommentCount = oDataResp.result.parentCrDTOs[0].crCommentDTOs ? oDataResp.result.parentCrDTOs[0].crCommentDTOs.length :
+							0;
+						oAuditLogModel.setProperty("/details/commentCount", nCommentCount);
+
+					} else {
+						oCommentsModel.setData(null);
+						oAuditLogModel.setProperty("/details/commentCount", 0);
+					}
+
 				}.bind(this),
 				function () {
 					this.getView().setBusy(false);
@@ -647,7 +699,8 @@ sap.ui.define([
 			oAudLogModel.setProperty("/details/ChangeRequestID", oCRObject.crDTO.change_request_id);
 
 			//Get Comments, Documents, Logs, WorkFlow
-			this.getAllCommentsForCR(oCRObject.crDTO.entity_id);
+			this.getAllCommentsForCR(oCRObject.crDTO.entity_id, oCRObject.crDTO.change_request_id, oCRObject.crDTO.change_request_id, oCRObject
+				.crDTO.change_request_id, oCRObject.crDTO.isClaimable);
 			this.getAllDocumentsForCR(oCRObject.crDTO.entity_id);
 			this.getAuditLogsForCR(oCRObject.crDTO.entity_id);
 			this.getWorkFlowForCR(oCRObject.crDTO.change_request_id);

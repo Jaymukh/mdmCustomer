@@ -16,9 +16,9 @@
 							<commons:Timeline enableDoubleSided="true" growingThreshold="0" filterTitle="Status" sortOldestFirst="true"
 								content="{WorkFlowModel>/workflowAuditItems}" groupByType="Month" enableScroll="false">
 								<commons:content>
-									<commons:TimelineItem dateTime="{path:'WorkFlowModel>changeDate', formatter : '.changeWorkflowDate'}"
+									<commons:TimelineItem dateTime="{path:'WorkFlowModel>statusChangedDate', formatter : '.changeWorkflowDate'}"
 										title="{path:'WorkFlowModel>status', formatter : '.changeWorkflowStatus'}" userNameClickable="false"
-										userName="{WorkFlowModel>changeBy/0/firstname} {WorkFlowModel>changeBy/0/lastname}" filterValue="{WorkFlowModel>status}"></commons:TimelineItem>
+										userName="{WorkFlowModel>assignmentUserName} - {WorkFlowModel>assignmentStageName}" filterValue="{WorkFlowModel>status}"></commons:TimelineItem>
 								</commons:content>
 							</commons:Timeline>
 						</uxap:blocks>
@@ -111,15 +111,18 @@
 						<uxap:blocks>
 							<UploadCollection id="UploadCollectionChangeReq" multiple="false" change="onChangeFileUpload" selectionChange="onSelectionDocumentChange"
 								typeMissmatch="onTypeMissmatch" items="{ path: 'AttachmentsModel>/documentInteractionDtos', templateShareable: false }"
-								numberOfAttachmentsText="Uploaded Documents" uploadEnabled="true" uploadButtonInvisible="false" mode="Delete"
-								fileType="{App>/supportedFileTypes}">
+								numberOfAttachmentsText="Uploaded Documents" uploadEnabled="true"
+								uploadButtonInvisible="false" mode="Delete" fileType="{App>/supportedFileTypes}">
 								<items>
 									<UploadCollectionItem documentId="{AttachmentsModel>attachmentEntity/dms_ref_id}"
 										fileName="{AttachmentsModel>attachmentEntity/attachment_name}" mimeType="{AttachmentsModel>attachmentEntity/mime_type}" enableEdit="false"
-										enableDelete="true" deletePress="onDeleteAttachment" visibleDelete="false" visibleEdit="false" url="abc" press="onDocumentDownload">
+										enableDelete="true" deletePress="onDeleteAttachment"
+										visibleDelete="{= ((${userManagementModel>/role}.indexOf('stew') !== -1 || ${userManagementModel>/role}.indexOf('approv') !== -1) &amp;&amp; ${userManagementModel>/data/user_id} === ${AttachmentsModel>attachmentEntity/created_by/user_id}) ? true : false}"
+										visibleEdit="false" url="abc" press="onDocumentDownload">
 										<attributes>
-											<ObjectAttribute title="Uploaded By" text="{AttachmentsModel>attachmentEntity/created_by}"/>
-											<ObjectAttribute title="Uploaded On" text="{path:'AttachmentsModel>attachmentEntity/created_on', formatter : '.dateFormater'}"/>
+											<ObjectAttribute title="Uploaded By"
+												text="{AttachmentsModel>attachmentEntity/created_by/firstname} {AttachmentsModel>attachmentEntity/created_by/lastname}"/>
+											<ObjectAttribute title="Uploaded On" text="{path:'AttachmentsModel>attachmentEntity/created_on'}"/>
 										</attributes>
 									</UploadCollectionItem>
 								</items>
@@ -137,16 +140,23 @@
 								<TextArea id="changeReruestListCommentBoxId" width="100%" growing="true"/>
 								<Toolbar>
 									<ToolbarSpacer/>
-									<Button text="Add" press="onAddCommentCRList"/>
+									<Button text="Add" press="onAddCommentCRList" enabled="{= ${userManagementModel>/role}.indexOf('req') === -1}"/>
 								</Toolbar>
 							</VBox>
-							<commons:Timeline enableDoubleSided="true" filterTitle="note_by" sortOldestFirst="false"
-								content="{CommentsModel>/parentCrDTOs/0/crCommentDTOs}" enableScroll="false">
-								<commons:content>
-									<commons:TimelineItem dateTime="{CommentsModel>note_date}" title="{CommentsModel>note_by}" userNameClickable="false"
-										text="{CommentsModel>note_desc}" userName="{CommentsModel>note_by}" filterValue="{CommentsModel>note_by}"/>
-								</commons:content>
-							</commons:Timeline>
+							<!--<commons:Timeline enableDoubleSided="true" filterTitle="note_by" sortOldestFirst="false"-->
+							<!--	content="{CommentsModel>/parentCrDTOs/0/crCommentDTOs}" enableScroll="false">-->
+							<!--	<commons:content>-->
+							<!--		<commons:TimelineItem dateTime="{CommentsModel>note_date}" title="{CommentsModel>note_by_user/firstname} {CommentsModel>note_by_user/lastname}" userNameClickable="false"-->
+							<!--			text="{CommentsModel>note_desc}" userName="{CommentsModel>note_by}" filterValue="{CommentsModel>note_by}"/>-->
+							<!--	</commons:content>-->
+							<!--</commons:Timeline>-->
+							<List headerText="Added Comments" items="{CommentsModel>/parentCrDTOs/0/crCommentDTOs}">
+								<FeedListItem sender="{CommentsModel>note_by_user/firstname} {CommentsModel>note_by_user/lastname}" iconDensityAware="false" info="{Type}"
+									timestamp="{CommentsModel>note_date}" text="{CommentsModel>note_desc}" convertLinksToAnchorTags="All"
+									actions="{path: 'CommentsModel>actions', templateShareable: false}">
+									<FeedListItemAction text="{CommentsModel>Text}" icon="{CommentsModel>Icon}" key="{CommentsModel>Key}" press="onCommentActionPressed"/>
+								</FeedListItem>
+							</List>
 						</uxap:blocks>
 					</uxap:ObjectPageSubSection>
 				</uxap:subSections>
