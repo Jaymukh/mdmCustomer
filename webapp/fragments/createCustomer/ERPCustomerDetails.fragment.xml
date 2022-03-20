@@ -179,14 +179,20 @@
 				</customData>
 			</Input>
 			<Label text="PO Box Postal Code/ PO Box"/>
-			<Input liveChange="handleERPPOBOXPostalCode" value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/po_box}"
+			<Input liveChange="handleERPPOBOXPostalCode" value="{Customer>/createCRCustomerData/gen_adrc/po_box}"
 				maxLength="10" editable="{App>/edit}"/>
 			<Label text="PO Box Without No."/>
-			<CheckBox select="onSelectCheckBox" selected="{= ${Customer>/createCRCustomerData/gen_adrc/stkzn} === 'X'}" editable="{App>/edit}">
+			<CheckBox select="onSelectCheckBox" selected="{= ${Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/stkzn} === 'X'}"
+				editable="{App>/edit}">
+				<customData>
+					<core:CustomData key="Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/stkzn"></core:CustomData>
+				</customData>
+			</CheckBox>
+			<!--<CheckBox select="onSelectCheckBox" selected="{= ${Customer>/createCRCustomerData/gen_adrc/stkzn} === 'X'}" editable="{App>/edit}">
 				<customData>
 					<core:CustomData key="Customer>/createCRCustomerData/gen_adrc/stkzn"></core:CustomData>
 				</customData>
-			</CheckBox>
+			</CheckBox>-->
 			<Label text="Company Postal Code"/>
 			<Input value="{Customer>/createCRCustomerData/gen_adrc/post_code3}" maxLength="10" editable="{App>/edit}"/>
 			<Label text="Supplement"/>

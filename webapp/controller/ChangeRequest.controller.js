@@ -160,8 +160,6 @@ sap.ui.define([
 					oCustomerData.workflowID = sWorkflowTaskID;
 					oCustomerData.crID = sChangeRequestId;
 					oCustomerModel.setProperty("/createCRCustomerData", oCustomerData);
-					console.log(oCustomerModel.getData());
-					debugger;
 					this.getRouter().getTargets().display("CreateERPCustomer");
 					oAppModel.setProperty("/sidePanelSelectedPage", "idWorkFlowSection");
 					oBusyIndicator.close();
@@ -262,6 +260,24 @@ sap.ui.define([
 			var oDynamicSideContent = this.getView().byId("idCRDynamicSideContent");
 			oEvent.getSource().setIcon(bPressed ? "sap-icon://arrow-right" : "sap-icon://arrow-left");
 			oDynamicSideContent.setShowSideContent(bPressed);
+		},
+		
+		handleStatus: function (sValue1, sValue2) {
+			var sAssignment = sValue1 ? sValue1.toLowerCase() : sValue1,
+				sResult = sValue1;
+			sValue2 = Number(sValue2);
+			if ((sAssignment === 'claimed' || sAssignment === 'unclaimed') && sValue2 === 1) {
+				sResult = 'Pending Steward Approval';
+			} else if ((sAssignment === 'approved' && sValue2 === 1) || ((sAssignment === 'claimed' || sAssignment === 'unclaimed') && sValue2 ===
+					2)) {
+				sResult = 'Pending Final Approval';
+			} else if (sAssignment === 'approved' && sValue2 === 2) {
+				sResult = 'Approved and Submitted to SAP';
+			} else if (sAssignment === 'rejected') {
+				sResult = 'Rejected';
+			}
+			return sResult;
+
 		}
 
 	});

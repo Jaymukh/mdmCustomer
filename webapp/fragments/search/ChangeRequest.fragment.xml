@@ -3,7 +3,7 @@
 	<l:DynamicSideContent id="idCRDynamicSideContent" class="sapUiDSCExplored" containerQuery="true" sideContentFallDown="BelowM"
 		showSideContent="false" breakpointChanged="handleBreakpointChangeEvent">
 		<VBox>
-			<Table id="idCRList" mode="SingleSelectLeft" fixedLayout="false" 
+			<Table id="idCRList" mode="SingleSelectLeft" fixedLayout="false"
 				items="{path:'ChangeRequestsModel>/ChangeRequests', sorter: {path:'crDTO/change_request_id',descending: true}}"
 				selectionChange="onSelectCRinTable" noDataText="No Chnage Request available, Please adjust filter or Try Again.">
 				<headerToolbar>
@@ -46,12 +46,27 @@
 					</Column>
 					<Column >
 						<header>
+							<Label text="Workflow Status" design="Bold"/>
+						</header>
+					</Column>
+					<Column >
+						<header>
 							<Label text="Change Request Date" design="Bold"/>
 						</header>
 					</Column>
 					<Column >
 						<header>
 							<Label text="Changed By" design="Bold"/>
+						</header>
+					</Column>
+					<Column >
+						<header>
+							<Label text="Finalized By" design="Bold"/>
+						</header>
+					</Column>
+					<Column >
+						<header>
+							<Label text="Finalized On" design="Bold"/>
 						</header>
 					</Column>
 				</columns>
@@ -63,8 +78,12 @@
 								press="onChangeReqLinkPress"></Link>
 							<Text text="{ChangeRequestsModel>crDTO/change_request_desc}"></Text>
 							<ObjectStatus text="{path:'ChangeRequestsModel>crDTO/is_cr_closed',formatter:'.getStatusOfCr'}"/>
+							<ObjectStatus
+								text="{parts :[{path:'ChangeRequestsModel>crDTO/assigmentStatus'},{path:'ChangeRequestsModel>crDTO/assignmentStage'}],formatter:'.handleStatus'}"/>
 							<Text text="{path:'ChangeRequestsModel>crDTO/change_request_date',formatter:'.getDateofCr'}"></Text>
 							<Text text="{ChangeRequestsModel>crDTO/change_request_by/firstname} {ChangeRequestsModel>crDTO/change_request_by/lastname}"></Text>
+							<Text text="{ChangeRequestsModel>crDTO/statusChangeBy/firstname} {ChangeRequestsModel>crDTO/statusChangeBy/lastname}"></Text>
+							<Text text="{path:'ChangeRequestsModel>crDTO/statusChangeDate',formatter:'.getDateofCr'}"></Text>
 						</cells>
 					</ColumnListItem>
 				</items>
