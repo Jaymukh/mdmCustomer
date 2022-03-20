@@ -3,7 +3,8 @@
 	<l:DynamicSideContent id="idCRDynamicSideContent" class="sapUiDSCExplored" containerQuery="true" sideContentFallDown="BelowM"
 		showSideContent="false" breakpointChanged="handleBreakpointChangeEvent">
 		<VBox>
-			<Table id="idCRList" mode="SingleSelectLeft" fixedLayout="false" items="{ChangeRequestsModel>/ChangeRequests}"
+			<Table id="idCRList" mode="SingleSelectLeft" fixedLayout="false" 
+				items="{path:'ChangeRequestsModel>/ChangeRequests', sorter: {path:'crDTO/change_request_id',descending: true}}"
 				selectionChange="onSelectCRinTable" noDataText="No Chnage Request available, Please adjust filter or Try Again.">
 				<headerToolbar>
 					<Toolbar>
