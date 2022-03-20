@@ -140,6 +140,9 @@ sap.ui.define([
 					if (!oAudLogModel.getProperty("/details")) {
 						oAudLogModel.setProperty("/details", {});
 					}
+					this.getView().getModel("CommentsModel").setData(null);
+					this.getView().getModel("AttachmentsModel").setData(null);
+					this.getView().getModel("WorkFlowModel").setData(null);
 
 					oAudLogModel.setProperty("/details/desc", "");
 					oAudLogModel.setProperty("/details/businessID", sEntityId);
@@ -160,9 +163,9 @@ sap.ui.define([
 
 					oChangeRequest.genData.change_request_id = 50001;
 					oChangeRequest.genData.reason = "";
-					oChangeRequest.genData.desc= "";
-					oChangeRequest.genData.priority = ""; 
-					oChangeRequest.genData.dueDate = ""; 
+					oChangeRequest.genData.desc = "";
+					oChangeRequest.genData.priority = "";
+					oChangeRequest.genData.dueDate = "";
 					oChangeRequest.genData.timeCreation = oDate.getHours() + ":" + (sMinutes < 10 ? "0" + sMinutes : sMinutes);
 					oChangeRequest.genData.dateCreation = oDate.getFullYear() + "-" + (sMonth < 10 ? "0" + sMonth : sMonth) + "-" + oDate.getDate();
 					oChangeRequest.genData.change_request_by = oBusinessEntity.hasOwnProperty("created_by") ? oBusinessEntity.created_by : {};
@@ -975,6 +978,149 @@ sap.ui.define([
 				break;
 			}
 			oDropDownModel.setProperty("/crReasons", aFinalReasons);
-		}
+		},
+
+		uploadEnableFn: function (aRole, sCrID) {
+			if (aRole.indexOf('stew') !== -1 || aRole.indexOf('approv') !== -1) {
+				return true;
+			} else if (aRole.indexOf('req') !== -1 && this.getView().getViewName().indexOf("CreateERPCustomer") !== -1 && !sCrID) {
+				return true;
+			} else {
+				return false;
+			}
+		},
+
+		attachmentDeleteEnableFn: function (aRole, sLogInID, uploadedBy, sCrID) {
+			if ((aRole.indexOf('stew') !== -1 || aRole.indexOf('approv') !== -1) && sLogInID === uploadedBy) {
+				return true;
+			} else if (aRole.indexOf('req') !== -1 && this.getView().getViewName().indexOf("CreateERPCustomer") !== -1 && !sCrID) {
+				return true;
+			} else {
+				return false;
+			}
+		},
+
+		addCommentEnableFn: function (aRole, sLogInID, sCrID) {
+			if (aRole.indexOf('req') !== -1 && this.getView().getViewName().indexOf("CreateERPCustomer") !== -1 && !sCrID) {
+				return true;
+			} else if (aRole.indexOf('stew') !== -1 || aRole.indexOf('approv') !== -1) {
+				return true;
+			} else {
+				return false;
+			}
+		},
+
+		onCommentActionPressed: function (oEvent) {
+			var sAction = oEvent.getSource().getKey();
+			var OItem = oEvent.getParameter("item");
+			if (sAction === "delete") {
+				this._deleteComment(OItem.getBindingContext("CommentsModel").getObject());
+			} else {
+				this._updateComment(OItem.getBindingContext("CommentsModel").getObject());
+			}
+		},
+
+		_deleteComment: function (oParam) {
+			this.getView().setBusy(true);
+			var objParamCreate = {
+				url: "/murphyCustom/change-request-service/changerequests/changerequest/comments/delete",
+				type: 'POST',
+				hasPayload: true,
+				data: {
+					"parentCrDTOs": [{
+						"crCommentDTOs": [{
+							"note_id": oParam.note_id,
+							"note_by_user": {
+								"user_id": oParam.note_by_user.user_id
+							}
+						}]
+					}]
+				}
+			};
+			this.serviceCall.handleServiceRequest(objParamCreate).then(function (oDataResp) {
+					this.getView().setBusy(false);
+					if (oDataResp.result) {
+						this.getAllCommentsForCR(oParam.entity_id);
+						MessageToast.show("Comment Deleted Successfully.");
+					}
+				}.bind(this),
+				function (oError) {
+					this.getView().setBusy(false);
+					MessageToast.show("Failed to delete the Comment");
+				}.bind(this)
+			);
+		},
+
+		_updateComment: function (oParam) {
+			this.oUpdateCommentDailog = new sap.m.Dialog({
+				title: "Update Comment",
+				type: "Message",
+				state: "None",
+				content: [
+					new sap.m.VBox({
+						items: [
+							new sap.m.TextArea({
+								width: "100%",
+								value: oParam.note_desc
+							})
+						]
+					})
+				],
+				beginButton: new sap.m.Button({
+					text: "Ok",
+					press: function (oEvent) {
+						var sNewComment = oEvent.getSource().getParent().getContent()[0].getItems()[0].getValue();
+						if (sNewComment) {
+							this._UpdateCommentCall(oParam, sNewComment);
+						} else {
+							MessageToast.show("Please update the comment to continoue");
+						}
+					}.bind(this)
+				}),
+				endButton: new sap.m.Button({
+					text: "Cancel",
+					press: function () {
+						this.oUpdateCommentDailog.close();
+					}.bind(this)
+				})
+			});
+
+			this.getView().addDependent(this.oUpdateCommentDailog);
+			this.oUpdateCommentDailog.open();
+		},
+
+		_UpdateCommentCall: function (oParam, sNewComment) {
+			this.getView().setBusy(true);
+			var objParamCreate = {
+				url: "/murphyCustom/change-request-service/changerequests/changerequest/comments/update",
+				type: 'POST',
+				hasPayload: true,
+				data: {
+					"parentCrDTOs": [{
+						"crCommentDTOs": [{
+							"entity_id": oParam.entity_id,
+							"note_id": oParam.note_id,
+							"note_desc": sNewComment,
+							"note_by_user": {
+								"user_id": oParam.note_by_user.user_id
+							}
+						}]
+					}]
+				}
+			};
+			this.serviceCall.handleServiceRequest(objParamCreate).then(function (oDataResp) {
+					this.getView().setBusy(false);
+					if (oDataResp.result) {
+						this.oUpdateCommentDailog.close();
+						this.getAllCommentsForCR(oParam.entity_id);
+						MessageToast.show("Comment Updated Successfully.");
+					}
+				}.bind(this),
+				function (oError) {
+					this.getView().setBusy(false);
+					MessageToast.show("Failed to update the Comment");
+				}.bind(this)
+			);
+		},
 	});
 });

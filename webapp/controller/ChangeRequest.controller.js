@@ -27,6 +27,8 @@ sap.ui.define([
 
 		onChangeReqLinkPress: function (oEvent) {
 			this.getView().setBusy(true);
+			var oBusyIndicator = new sap.m.BusyDialog();
+			oBusyIndicator.open();
 			this.clearCustModelData();
 			this.clearAllButtons();
 
@@ -162,6 +164,7 @@ sap.ui.define([
 					debugger;
 					this.getRouter().getTargets().display("CreateERPCustomer");
 					oAppModel.setProperty("/sidePanelSelectedPage", "idWorkFlowSection");
+					oBusyIndicator.close();
 				}
 			}.bind(this), function (oError) {
 				this.getView().setBusy(false);
@@ -170,7 +173,7 @@ sap.ui.define([
 					createCRCustomerData: {}
 				});
 				MessageToast.show("Not able to fetch the data, Please try after some time");
-			});
+			}.bind(this));
 
 		},
 
