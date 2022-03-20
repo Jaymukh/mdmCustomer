@@ -111,14 +111,15 @@
 						<uxap:blocks>
 							<UploadCollection id="UploadCollectionChangeReq" multiple="false" change="onChangeFileUpload" selectionChange="onSelectionDocumentChange"
 								typeMissmatch="onTypeMissmatch" items="{ path: 'AttachmentsModel>/documentInteractionDtos', templateShareable: false }"
-								numberOfAttachmentsText="Uploaded Documents" uploadEnabled="true"
+								numberOfAttachmentsText="Uploaded Documents" uploadEnabled="{parts: [ 'userManagementModel>/role', 'Customer>/createCRCustomerData/crID'], formatter : '.uploadEnableFn'}"
 								uploadButtonInvisible="false" mode="Delete" fileType="{App>/supportedFileTypes}">
 								<items>
 									<UploadCollectionItem documentId="{AttachmentsModel>attachmentEntity/dms_ref_id}"
 										fileName="{AttachmentsModel>attachmentEntity/attachment_name}" mimeType="{AttachmentsModel>attachmentEntity/mime_type}" enableEdit="false"
 										enableDelete="true" deletePress="onDeleteAttachment"
-										visibleDelete="{= ((${userManagementModel>/role}.indexOf('stew') !== -1 || ${userManagementModel>/role}.indexOf('approv') !== -1) &amp;&amp; ${userManagementModel>/data/user_id} === ${AttachmentsModel>attachmentEntity/created_by/user_id}) ? true : false}"
+										visibleDelete="{parts: [ 'userManagementModel>/role', 'userManagementModel>/data/user_id', 'AttachmentsModel>attachmentEntity/created_by/user_id', 'Customer>/createCRCustomerData/crID'], formatter: '.attachmentDeleteEnableFn' }"
 										visibleEdit="false" url="abc" press="onDocumentDownload">
+										 <!--parts: [ 'userManagementModel>/role', 'userManagementModel>/data/user_id', 'AttachmentsModel>attachmentEntity/created_by/user_id'], formatter: '.attachmentDeleteEnableFn' -->
 										<attributes>
 											<ObjectAttribute title="Uploaded By"
 												text="{AttachmentsModel>attachmentEntity/created_by/firstname} {AttachmentsModel>attachmentEntity/created_by/lastname}"/>
@@ -140,7 +141,7 @@
 								<TextArea id="changeReruestListCommentBoxId" width="100%" growing="true"/>
 								<Toolbar>
 									<ToolbarSpacer/>
-									<Button text="Add" press="onAddCommentCRList" enabled="{= ${userManagementModel>/role}.indexOf('req') === -1}"/>
+									<Button text="Add" press="onAddCommentCRList" enabled="{parts: [ 'userManagementModel>/role', 'userManagementModel>/data/user_id', 'Customer>/createCRCustomerData/crID'], formatter: '.addCommentEnableFn' }"/>
 								</Toolbar>
 							</VBox>
 							<!--<commons:Timeline enableDoubleSided="true" filterTitle="note_by" sortOldestFirst="false"-->
