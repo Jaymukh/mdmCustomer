@@ -27,6 +27,8 @@ sap.ui.define([
 
 		onChangeReqLinkPress: function (oEvent) {
 			this.getView().setBusy(true);
+			var oBusyIndicator = new sap.m.BusyDialog();
+			oBusyIndicator.open();
 			this.clearCustModelData();
 			this.clearAllButtons();
 
@@ -158,6 +160,7 @@ sap.ui.define([
 					oCustomerModel.setProperty("/createCRCustomerData", oCustomerData);
 					this.getRouter().getTargets().display("CreateERPCustomer");
 					oAppModel.setProperty("/sidePanelSelectedPage", "idWorkFlowSection");
+					oBusyIndicator.close();
 				}
 			}.bind(this), function (oError) {
 				this.getView().setBusy(false);
