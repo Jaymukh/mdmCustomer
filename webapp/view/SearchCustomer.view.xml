@@ -51,7 +51,7 @@
 									<Input/>
 								</filterbar:control>
 							</filterbar:FilterGroupItem>
-								<filterbar:FilterGroupItem visibleInFilterBar="false" groupName="*standard*" name="taxNo" label="Tax Number">
+							<filterbar:FilterGroupItem visibleInFilterBar="false" groupName="*standard*" name="taxNo" label="Tax Number">
 								<filterbar:control>
 									<Input maxLength="18"/>
 								</filterbar:control>
@@ -78,14 +78,14 @@
 									<Input/>
 								</filterbar:control>
 							</filterbar:FilterGroupItem>
-						
 						</filterbar:filterGroupItems>
 					</filterbar:FilterBar>
 				</f:content>
 			</f:DynamicPageHeader>
 		</f:header>
 		<f:content>
-			<Table sticky="ColumnHeaders" items="{SearchCustomerModel>/searchAllModelData/customerDTOs}">
+			<Table sticky="ColumnHeaders" items="{SearchCustomerModel>/searchAllModelData/customerDTOs}"
+				noDataText="No Customer available, Please adjust filter or Try Again.">
 				<headerToolbar>
 					<Toolbar>
 						<Label id="idTableTitle" text="Business Partner Master List({SearchCustomerModel>/searchAllModelData/totalRecords})" design="Bold"></Label>
