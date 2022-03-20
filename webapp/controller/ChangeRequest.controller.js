@@ -67,7 +67,7 @@ sap.ui.define([
 				oChangeRequest.genData.change_request_by = oChangeReq.change_request_by;
 				oChangeRequest.genData.modified_by = oChangeReq.modified_by;
 				oChangeRequest.genData.isClaimable = oChangeReq.isClaimable;
-			//	oChangeRequest.genData.createdBy = oChangeReq.modified_by.created_by;
+				//	oChangeRequest.genData.createdBy = oChangeReq.modified_by.created_by;
 				oChangeRequest.genData.desc = oChangeReq.change_request_desc;
 				if (oChangeReq.change_request_due_date) {
 					var sDueDate = oChangeReq.change_request_due_date.substring(0, 10).replaceAll("-", "");
@@ -80,36 +80,36 @@ sap.ui.define([
 				}
 				oCustomerModel.setProperty("/changeReq", oChangeRequest);
 				//Enable Edit Button
-			/*	if (oChangeReq.isClaimable &&
+				if (oChangeReq.isClaimable &&
 					(oChangeReq.change_request_type_id === 50002 || oChangeReq.change_request_type_id === 50001) &&
 					oUserData.role.indexOf('approv') === -1) {
 					oAppModel.setProperty("/editButton", true);
-				}*/
+				}
 				// RIgt
-				if ((oChangeReq.change_request_type_id === 50002 || oChangeReq.change_request_type_id === 50001) &&
+				/*if ((oChangeReq.change_request_type_id === 50002 || oChangeReq.change_request_type_id === 50001) &&
 					oUserData.role.indexOf('approv') === -1) {
 					oAppModel.setProperty("/editButton", true);
-				}
-				
+				}*/
+
 				//Enable Approve & Reject Button
-				/*if (oChangeReq.isClaimable &&
-					(oUserData.role.indexOf('approv') !== -1 || oUserData.role.indexOf('stew') !== -1 )) {
-					oAppModel.setProperty("/approveButton", true);
-					oAppModel.setProperty("/rejectButton", true);
-				}*/
-				
-				if ((oUserData.role.indexOf('approv') !== -1 || oUserData.role.indexOf('stew') !== -1 )) {
+				if (oChangeReq.isClaimable &&
+					(oUserData.role.indexOf('approv') !== -1 || oUserData.role.indexOf('stew') !== -1)) {
 					oAppModel.setProperty("/approveButton", true);
 					oAppModel.setProperty("/rejectButton", true);
 				}
-				
+
+				/*if ((oUserData.role.indexOf('approv') !== -1 || oUserData.role.indexOf('stew') !== -1 )) {
+					oAppModel.setProperty("/approveButton", true);
+					oAppModel.setProperty("/rejectButton", true);
+				}*/
+
 				// withdraw button
-				/*if (oChangeReq.isClaimable && (oUserData.role.indexOf('req') !== -1 )) {
-					oAppModel.setProperty("/withDrawButton", true);
-				}*/
-				if ((oUserData.role.indexOf('req') !== -1 )) {
+				if (oChangeReq.isClaimable && (oUserData.role.indexOf('req') !== -1)) {
 					oAppModel.setProperty("/withDrawButton", true);
 				}
+				/*	if ((oUserData.role.indexOf('req') !== -1 )) {
+						oAppModel.setProperty("/withDrawButton", true);
+					}*/
 			});
 
 			var objParamCreate = {
@@ -140,22 +140,26 @@ sap.ui.define([
 					oCustomerData.tableRows = {};
 					aTables.forEach(function (sTable) {
 						oCustomerData.tableRows[sTable] = [];
-						
+
 						if (oDataResp.result.parentDTO.customData.hasOwnProperty(sTable)) {
 							Object.keys(oDataResp.result.parentDTO.customData[sTable]).forEach(function (sKey) {
 								oCustomerData.tableRows[sTable].push(oDataResp.result.parentDTO.customData[sTable][sKey]);
+								oCustomerData[sTable] = oDataResp.result.parentDTO.customData[sTable][sKey];
 							});
+						}else{
+							oCustomerData[sTable] = Object.assign(oAppModel.getProperty("/" + sTable), {});	
 						}
-
-						oCustomerData[sTable] = Object.assign(oAppModel.getProperty("/" + sTable), {});
 						if (oCustomerData[sTable].hasOwnProperty("entity_id")) {
-							oCustomerData[sTable].entity_id = sEntityId;
+								oCustomerData[sTable].entity_id = sEntityId;
 						}
+					
 					}, this);
 
 					oCustomerData.workflowID = sWorkflowTaskID;
 					oCustomerData.crID = sChangeRequestId;
 					oCustomerModel.setProperty("/createCRCustomerData", oCustomerData);
+					console.log(oCustomerModel.getData());
+					debugger;
 					this.getRouter().getTargets().display("CreateERPCustomer");
 					oAppModel.setProperty("/sidePanelSelectedPage", "idWorkFlowSection");
 				}
