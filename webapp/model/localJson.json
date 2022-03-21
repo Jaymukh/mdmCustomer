@@ -10,7 +10,7 @@
 	"previousPage": null,
 	"erpPreview": false,
 	"appTitle": "Search ERP Customer",
-	"dateFormat": "dd-MM-yyyy",
+	"dateFormat": "MM-dd-YYYY",
 	"dateValueFormat": "yyyyMMdd",
 	"sidePanelSelectedPage": "",
 	"supportedFileTypes": ["jpg", "jpeg","png", "PNG", "pdf", "msg", "eml", "xls", "doc", "xlsx", "docx", "mp3", "MP3", "MP4","mp4"],

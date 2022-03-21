@@ -42,11 +42,11 @@ sap.ui.define([
 
 			this.getModel("App").setProperty("/appTitle", "Change Request And Documents");
 			this.getRouter().getTargets().display("ChangeRequest");
-			
-		/*	var sID = this.getView().getParent().getPages().find(function (e) {
-				return e.getId().indexOf("changeRequestId") !== -1;
-			}).getId();
-			this.getView().getParent().to(sID);*/
+
+			/*	var sID = this.getView().getParent().getPages().find(function (e) {
+					return e.getId().indexOf("changeRequestId") !== -1;
+				}).getId();
+				this.getView().getParent().to(sID);*/
 		},
 
 		onBackToAllCust: function () {
@@ -54,7 +54,7 @@ sap.ui.define([
 			this.getRouter().getTargets().display("SearchCustomer");
 		},
 
-		onCheckCR: function () {
+		onCheckCR: function (oEvent) {
 			var oPostCheck = this._handlePostalCodeCheck(),
 				aMessages = oPostCheck.aMessage,
 				bValid = oPostCheck.bValid;
@@ -91,6 +91,9 @@ sap.ui.define([
 			} else {
 				MessageToast.show("Validation Successful");
 				bValid = true;
+				if (oEvent) {
+					this._checkAddress();
+				}
 			}
 			return bValid;
 
@@ -303,53 +306,53 @@ sap.ui.define([
 		onSubmitCR: function () {
 			if (this.onCheckCR()) {
 				this.getView().setBusy(true);
-			/*	var objParamSubmit = {
-					url: "/murphyCustom/workflow-service/workflows/tasks/task/action",
-					type: 'POST',
-					hasPayload: true,
-					data: {
-						"operationType": "CREATE",
-						"changeRequestDTO": {
-							"entity_type_id": "41002",
-							"entity_id": this.getView().getModel("Customer").getProperty("/createCRCustomerData/entityId")
+				/*	var objParamSubmit = {
+						url: "/murphyCustom/workflow-service/workflows/tasks/task/action",
+						type: 'POST',
+						hasPayload: true,
+						data: {
+							"operationType": "CREATE",
+							"changeRequestDTO": {
+								"entity_type_id": "41002",
+								"entity_id": this.getView().getModel("Customer").getProperty("/createCRCustomerData/entityId")
+							}
 						}
-					}
-				};
-				this.serviceCall.handleServiceRequest(objParamSubmit).then(function (oDataResp) {
-					this.getView().setBusy(false);
-					MessageToast.show("Submission Successful");
-					this._CreateCRID();
-					this.getView().getModel("Customer").refresh(true);
-					//	this.getView().byId("idCreateVendorSubmitErrors").setVisible(false);
-				}.bind(this), function (oError) {
-					this.getView().setBusy(false);
-					var sError = "";
-					var aError = [];
-					if (oError.responseJSON.result && oError.responseJSON.result.workboxCreateTaskResponseDTO && oError.responseJSON.result.workboxCreateTaskResponseDTO
-						.response.EXT_MESSAGES.MESSAGES.item &&
-						oError.responseJSON.result.workboxCreateTaskResponseDTO.response.EXT_MESSAGES.MESSAGES.item.length > 0) {
-						oError.responseJSON.result.workboxCreateTaskResponseDTO.response.EXT_MESSAGES.MESSAGES.item.forEach(function (oItem) {
-							sError = sError + oItem.MESSAGE + "\n";
-							aError.push({
-								ErrorMessage: oItem.MESSAGE
+					};
+					this.serviceCall.handleServiceRequest(objParamSubmit).then(function (oDataResp) {
+						this.getView().setBusy(false);
+						MessageToast.show("Submission Successful");
+						this._CreateCRID();
+						this.getView().getModel("Customer").refresh(true);
+						//	this.getView().byId("idCreateVendorSubmitErrors").setVisible(false);
+					}.bind(this), function (oError) {
+						this.getView().setBusy(false);
+						var sError = "";
+						var aError = [];
+						if (oError.responseJSON.result && oError.responseJSON.result.workboxCreateTaskResponseDTO && oError.responseJSON.result.workboxCreateTaskResponseDTO
+							.response.EXT_MESSAGES.MESSAGES.item &&
+							oError.responseJSON.result.workboxCreateTaskResponseDTO.response.EXT_MESSAGES.MESSAGES.item.length > 0) {
+							oError.responseJSON.result.workboxCreateTaskResponseDTO.response.EXT_MESSAGES.MESSAGES.item.forEach(function (oItem) {
+								sError = sError + oItem.MESSAGE + "\n";
+								aError.push({
+									ErrorMessage: oItem.MESSAGE
+								});
 							});
+						} else if (!oError.responseJSON.result) {
+							aError.push({
+								ErrorMessage: oError.responseJSON.error
+							});
+							sError = oError.responseJSON.error;
+						}
+						//	this.getView().getModel("Customer").setProperty("/missingFields", aError);
+						this.getView().getModel("Customer").refresh(true);
+						//this.getView().byId("idCreateVendorSubmitErrors").setVisible(true);
+						//	this.handleErrorLogs();
+						// 	//oError.responseJSON.result.workboxCreateTaskResponseDTO.response.EXT_MESSAGES.MESSAGES.item
+						MessageToast.show(sError, {
+							duration: 6000,
+							width: "100%"
 						});
-					} else if (!oError.responseJSON.result) {
-						aError.push({
-							ErrorMessage: oError.responseJSON.error
-						});
-						sError = oError.responseJSON.error;
-					}
-					//	this.getView().getModel("Customer").setProperty("/missingFields", aError);
-					this.getView().getModel("Customer").refresh(true);
-					//this.getView().byId("idCreateVendorSubmitErrors").setVisible(true);
-					//	this.handleErrorLogs();
-					// 	//oError.responseJSON.result.workboxCreateTaskResponseDTO.response.EXT_MESSAGES.MESSAGES.item
-					MessageToast.show(sError, {
-						duration: 6000,
-						width: "100%"
-					});
-				}.bind(this));*/
+					}.bind(this));*/
 				this._createTask();
 			}
 		},
@@ -903,10 +906,10 @@ sap.ui.define([
 			}
 
 			oModel.setProperty('/createCRCustomerData/gen_bnka/banka', oVal.banka);
-			// oModel.setProperty('/createCRVendorData/formData/parentDTO/customData/gen_bnka/gen_bnka_1/banka', oVal.banka);
+			// oModel.setProperty('/createCRCustomerData/formData/parentDTO/customData/gen_bnka/gen_bnka_1/banka', oVal.banka);
 			oModel.setProperty('/createCRCustomerData/gen_bnka/stras', oVal.stras);
 			oModel.setProperty('/createCRCustomerData/gen_bnka/ort01', oVal.ort01);
-			// oModel.setProperty('/createCRVendorData/formData/parentDTO/customData/vnd_lfbk/vnd_lfbk_1/BANKS', oVal.banks);
+			// oModel.setProperty('/createCRCustomerData/formData/parentDTO/customData/vnd_lfbk/vnd_lfbk_1/BANKS', oVal.banks);
 			oModel.refresh(true);
 
 			this._oValueHelpDialog.close();
@@ -1550,7 +1553,111 @@ sap.ui.define([
 				this.getView().setBusy(false);
 				MessageToast.show("Error in CR Create Call");
 			}.bind(this));
-		}
+		},
+
+		_checkAddress: function () {
+			this.getView().setBusy(true);
+			var oAddrDet = this.getView().getModel("Customer").getProperty(
+				"/createCRCustomerData/gen_adrc");
+			var objParamCreate = {
+				url: "/murphyCustom/proxy-service/dqm/address",
+				type: 'POST',
+				hasPayload: true,
+				data: {
+					"addressInput": {
+						"country": this.getView().getModel("Customer").getProperty(
+							"/createCRCustomerData/formData/parentDTO/customData/cust_kna1/land1"),
+						"mixed": oAddrDet.house_num1 + " " + oAddrDet.street,
+						"locality": oAddrDet.city2,
+						"locality2": oAddrDet.str_suppl1,
+						"locality3": oAddrDet.str_suppl2,
+						"region": this.getView().getModel("Customer").getProperty(
+							"/createCRCustomerData/formData/parentDTO/customData/cust_kna1/regio"),
+						"region2": "",
+						"postcode": this.getView().getModel("Customer").getProperty(
+							"/createCRCustomerData/formData/parentDTO/customData/cust_kna1/pstlz"),
+						"firm": this.getView().getModel("Customer").getProperty(
+							"/createCRCustomerData/formData/parentDTO/customData/cust_kna1/name1")
+					},
+					"outputFields": [
+						"std_addr_prim_address",
+						"std_addr_sec_address",
+						"std_addr_locality_full",
+						"std_addr_region_full",
+						"std_addr_postcode_full",
+						"std_addr_country_2char",
+						"addr_asmt_info",
+						"std_addr_address_delivery",
+						"std_addr_locality_full",
+						"std_addr_region_full",
+						"std_addr_postcode_full",
+						"std_addr_country_2char",
+						"addr_latitude",
+						"addr_longitude",
+						"addr_asmt_level",
+						"addr_info_code",
+						"addr_info_code_msg",
+						"geo_asmt_level",
+						"geo_info_code",
+						"geo_info_code_msg"
+					],
+					"addressSettings": {
+						"casing": "mixed",
+						"diacritics": "include",
+						"streetFormat": "countryCommonStyle",
+						"postalFormat": "countryCommonStyle",
+						"regionFormat": "countryCommonStyle",
+						"scriptConversion": "none"
+					}
+				}
+			};
+			this.serviceCall.handleServiceRequest(objParamCreate).then(function (oDataResp) {
+					this.getView().setBusy(false);
+					if (oDataResp.result) {
+						var oJsonModel = new sap.ui.model.json.JSONModel(oDataResp.result);
+						this._getAddressCompareDialog(oJsonModel);
+					}
+				}.bind(this),
+				function (oError) {
+					this.getView().setBusy(false);
+					MessageToast.show("Failed to get the Address");
+				}.bind(this)
+			);
+
+		},
+
+		_getAddressCompareDialog: function (oJsonModel) {
+			Fragment.load({
+				name: "murphy.mdm.customer.murphymdmcustomer.fragments.createCustomer.AddressCompare",
+				controller: this
+			}).then(function name(oFragment) {
+				this._oDialogAddress = oFragment;
+				this.getView().addDependent(this._oDialogAddress);
+				this._oDialogAddress.setModel(oJsonModel);
+				this._oDialogAddress.setModel(this.getView().getModel("Customer"), "Customer");
+				this._oDialogAddress.open();
+				this.getView().setBusy(false);
+			}.bind(this));
+		},
+
+		onAcceptAddressPress: function (oEvent) {
+			var oNewData = this._oDialogAddress.getModel().getData();
+			this.getView().getModel("Customer").setProperty(
+				"/createCRCustomerData/gen_adrc/city2", oNewData.std_addr_locality_full);
+			this.getView().getModel("Customer").setProperty(
+				"/createCRCustomerData/formData/parentDTO/customData/cust_kna1/pstlz", oNewData.std_addr_postcode_full);
+			this.getView().getModel("Customer").setProperty(
+				"/createCRCustomerData/gen_adrc/str_suppl1", oNewData.std_addr_sec_address);
+			this.getView().getModel("Customer").setProperty(
+				"/createCRCustomerData/formData/parentDTO/customData/cust_kna1/regio", oNewData.std_addr_region_full);
+			this.getView().getModel("Customer").setProperty(
+				"/createCRCustomerData/formData/parentDTO/customData/cust_kna1/land1", oNewData.std_addr_country_2char);
+			this._oDialogAddress.close();
+		},
+
+		onPressCancelAddress: function () {
+			this._oDialogAddress.close();
+		},
 
 	});
 

@@ -36,7 +36,9 @@
 			<Input value="{Customer>/changeReq/genData/change_request_by/firstname} {Customer>/changeReq/genData/change_request_by/lastname}"
 				editable="false"/>
 			<Label text="Date/Time of Creation"/>
-			<Input value="{Customer>/changeReq/genData/dateCreation}" editable="false"/>
+			<!--<Input value="{Customer>/changeReq/genData/dateCreation}" editable="false"/>-->
+			<DatePicker displayFormat="{App>/dateFormat}" valueFormat="{App>/dateValueFormat}" value="{Customer>/changeReq/genData/dateCreation}"
+				editable="false"/>
 			<Input value="{Customer>/changeReq/genData/timeCreation}" editable="false">
 				<layoutData>
 					<l:GridData span="XL4 L4 M4 S4"/>

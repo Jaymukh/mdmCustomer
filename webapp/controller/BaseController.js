@@ -147,6 +147,10 @@ sap.ui.define([
 					oAudLogModel.setProperty("/details/desc", "");
 					oAudLogModel.setProperty("/details/businessID", sEntityId);
 					oAudLogModel.setProperty("/details/ChangeRequestID", "");
+					oAudLogModel.setProperty("/details/changedCount", "0");
+					oAudLogModel.setProperty("/details/deleteCount", "0");
+					oAudLogModel.setProperty("/details/newCount", "0");
+					oAudLogModel.setProperty("/items", []);
 
 					oCustomerData.entityId = sEntityId;
 					oCustomerData.formData.parentDTO.customData.cust_kna1 = Object.assign({}, oAppModel.getProperty("/cust_kna1"));
@@ -647,6 +651,8 @@ sap.ui.define([
 		dateFormater: function (sDateTime) {
 			var sDate = sDateTime.split("T")[0] ? sDateTime.split("T")[0] : "";
 			var sTime = sDateTime.split("T")[1] ? sDateTime.split("T")[1].split(".")[0] : "";
+			var oDate = new Date(sDate);
+			sDate = `${("0" + (oDate.getMonth() + 1) ).slice(-2)}-${("0" + oDate.getDate()).slice(-2)}-${oDate.getFullYear()}`;
 			return sDate + " at " + sTime;
 		},
 

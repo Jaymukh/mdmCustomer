@@ -1,0 +1,51 @@
+<core:FragmentDefinition xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core"
+	xmlns="sap.m">
+	<Dialog title="Compare Address">
+		<MessageStrip text="{/addr_info_code_msg}" type="Information" showIcon="true" class="sapUiMediumMarginBottom"></MessageStrip>
+		<f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="4"
+			adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
+			singleContainerFullSize="false">
+			<f:content>
+				<core:Title text="User Entry"/>
+				<Label text="District"/>
+				<Text text="{Customer>/createCRCustomerData/gen_adrc/city2}"/>
+				<Label text="PostCode"/>
+				<Text text="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/pstlz}"/>
+				<Label text="House No / Street"/>
+				<Text
+					text="{Customer>/createCRCustomerData/gen_adrc/house_num1} {Customer>/createCRCustomerData/gen_adrc/street}"/>
+				<Label text="Street2"/>
+				<Text text="{Customer>/createCRCustomerData/gen_adrc/str_suppl1}"/>
+				<!--<Label text="Street3"/>-->
+				<!--<Text text="{Customer>/createCRCustomerData/gen_adrc/str_suppl2}"/>-->
+				<Label text="Region"/>
+				<Text text="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/regio}"/>
+				<Label text="Country"/>
+				<Text text="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/land1}"/>
+				<!--<Label text="Name1"/>-->
+				<!--<Text text="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/name1}"/>-->
+				<core:Title text="Address Found"/>
+				<Label text="District"/>
+				<Text text="{/std_addr_locality_full}"/>
+				<Label text="PostCode"/>
+				<Text text="{/std_addr_postcode_full}"/>
+				<Label text="House No / Street"/>
+				<Text text="{/std_addr_prim_address}"/>
+				<Label text="Street2"/>
+				<Text text="{/std_addr_sec_address}"/>
+				<!--<Label text="Street3"/>-->
+				<!--<Text text=""/>-->
+				<Label text="Region"/>
+				<Text text="{/std_addr_region_full}"/>
+				<Label text="Country"/>
+				<Text text="{/std_addr_country_2char}"/>
+				<!--<Label text="Name1"/>-->
+				<!--<Text text="{/std_addr_country_2char}"/>-->
+			</f:content>
+		</f:SimpleForm>
+		<buttons>
+			<Button text="Accept Address" type="Accept" press="onAcceptAddressPress"/>
+			<Button text="Cancel" press="onPressCancelAddress"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>
