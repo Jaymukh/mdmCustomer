@@ -2,16 +2,16 @@
 	<Popover placement="Auto" showHeader="false" title="Customer: {SearchCustomerModel>customCustomerCustKna1DTO/kunnr}">
 		<content>
 			<List id="list">
-				<StandardListItem title="Edit" type="{SearchCustomerModel>/status}"
+				<StandardListItem title="Edit" type="Active"
 					info="{SearchCustomerModel>/info}" icon="sap-icon://edit"
 					press="onEditCustomer"/>
-				<StandardListItem title="Copy" type="{SearchCustomerModel>/status}"
+				<StandardListItem title="Copy" type="Active"
 						info="{SearchCustomerModel>/info}" icon="sap-icon://copy"
 					press="onCopyCustomer"/>
-				<StandardListItem title="Block" type="{SearchCustomerModel>/status}"
+				<StandardListItem title="Block" type="Active"
 						info="{SearchCustomerModel>/info}" icon="sap-icon://cancel"
 					press="onBlockCustomer"/>
-				<StandardListItem title="Delete" type="{SearchCustomerModel>/status}" press="onDeleteCustomer"
+				<StandardListItem title="Delete" type="Active" press="onDeleteCustomer"
 						info="{SearchCustomerModel>/info}" icon="sap-icon://delete"/>
 			</List>
 		</content>

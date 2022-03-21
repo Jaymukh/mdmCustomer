@@ -126,7 +126,7 @@ sap.ui.define([
 					return oPopover;
 				});
 			}
-
+		this.getOwnerComponent().getModel("SearchCustomerModel").refresh(true);
 			this._pPopover.then(function (oPopover) {
 				oPopover.bindElement({
 					path: oContext.getPath(),
