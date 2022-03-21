@@ -138,12 +138,12 @@
 			</Input>
 			<Input required="true" value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/ort01}" maxLength="35"
 				editable="{App>/edit}"/>
+			<core:Title/>
 			<Label text="Country"/>
 			<ComboBox required="true" items="{Dropdowns>/T005}" selectionChange="onChangeCountry"
 				selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/land1}" editable="{App>/edit}">
 				<core:Item key="{Dropdowns>land1}" text="{Dropdowns>landx}"/>
 			</ComboBox>
-			<core:Title/>
 			<Label text="Region"/>
 			<ComboBox id="idCustRegion" required="true" items="{Dropdowns>/T005S}"
 				selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/regio}" editable="{App>/edit}">
@@ -179,8 +179,7 @@
 				</customData>
 			</Input>
 			<Label text="PO Box Postal Code/ PO Box"/>
-			<Input liveChange="handleERPPOBOXPostalCode" value="{Customer>/createCRCustomerData/gen_adrc/po_box}"
-				maxLength="10" editable="{App>/edit}"/>
+			<Input liveChange="handleERPPOBOXPostalCode" value="{Customer>/createCRCustomerData/gen_adrc/po_box}" maxLength="10" editable="{App>/edit}"/>
 			<Label text="PO Box Without No."/>
 			<CheckBox select="onSelectCheckBox" selected="{= ${Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/stkzn} === 'X'}"
 				editable="{App>/edit}">
