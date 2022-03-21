@@ -123,7 +123,7 @@
 										<attributes>
 											<ObjectAttribute title="Uploaded By"
 												text="{AttachmentsModel>attachmentEntity/created_by/firstname} {AttachmentsModel>attachmentEntity/created_by/lastname}"/>
-											<ObjectAttribute title="Uploaded On" text="{path:'AttachmentsModel>attachmentEntity/created_on'}"/>
+											<ObjectAttribute title="Uploaded On" text="{path:'AttachmentsModel>attachmentEntity/created_on', formatter : '.dateFormater'}"/>
 										</attributes>
 									</UploadCollectionItem>
 								</items>

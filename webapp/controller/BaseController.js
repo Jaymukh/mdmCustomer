@@ -1121,6 +1121,6 @@ sap.ui.define([
 					MessageToast.show("Failed to update the Comment");
 				}.bind(this)
 			);
-		},
+		}
 	});
 });

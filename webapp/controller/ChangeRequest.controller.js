@@ -181,7 +181,7 @@ sap.ui.define([
 			var sResultDate = "";
 			if (sDateText) {
 				var oDate = new Date(sDateText);
-				sResultDate = `${("0" + oDate.getUTCDate()).slice(-2)}-${("0" + (oDate.getUTCMonth() + 1) ).slice(-2)}-${oDate.getUTCFullYear()}`;
+				sResultDate = `${("0" + (oDate.getUTCMonth() + 1) ).slice(-2)}-${("0" + oDate.getUTCDate()).slice(-2)}-${oDate.getUTCFullYear()}`;
 			}
 			return sResultDate;
 		},
