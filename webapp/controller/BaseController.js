@@ -1127,6 +1127,14 @@ sap.ui.define([
 					MessageToast.show("Failed to update the Comment");
 				}.bind(this)
 			);
+		},
+
+		sidePanelvisibleSection: function (sCrID) {
+			if (this.getView().getViewName().indexOf("CreateERPCustomer") !== -1 && !sCrID) {
+				return false;
+			} else {
+				return true;
+			}
 		}
 	});
 });

@@ -2,14 +2,14 @@
 	xmlns:commons="sap.suite.ui.commons" xmlns:f="sap.f">
 	<uxap:ObjectPageLayout useIconTabBar="true" selectedSection="{App>/sidePanelSelectedPage}">
 		<uxap:headerTitle>
-			<uxap:ObjectPageDynamicHeaderTitle>
-				<uxap:expandedHeading>
+			<uxap:ObjectPageDynamicHeaderTitle >
+				<uxap:expandedHeading >
 					<Title text="{AuditLogModel>/details/ChangeRequestID} - {AuditLogModel>/details/desc}" wrapping="true" class="sapUiTinyMarginEnd"/>
 				</uxap:expandedHeading>
 			</uxap:ObjectPageDynamicHeaderTitle>
 		</uxap:headerTitle>
 		<uxap:sections>
-			<uxap:ObjectPageSection id="idWorkFlowSection" title="Workflow">
+			<uxap:ObjectPageSection id="idWorkFlowSection" title="Workflow" visible="{parts: ['Customer>/createCRCustomerData/crID'], formatter: '.sidePanelvisibleSection' }">
 				<uxap:subSections>
 					<uxap:ObjectPageSubSection>
 						<uxap:blocks>
@@ -25,7 +25,7 @@
 					</uxap:ObjectPageSubSection>
 				</uxap:subSections>
 			</uxap:ObjectPageSection>
-			<uxap:ObjectPageSection id="idDocumentsSection" title="Change Documents">
+			<uxap:ObjectPageSection id="idDocumentsSection" title="Change Documents" visible="{parts: ['Customer>/createCRCustomerData/crID'], formatter: '.sidePanelvisibleSection' }">
 				<uxap:subSections>
 					<uxap:ObjectPageSubSection>
 						<uxap:blocks>
