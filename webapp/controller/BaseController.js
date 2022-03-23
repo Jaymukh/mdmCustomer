@@ -950,6 +950,7 @@ sap.ui.define([
 		},
 
 		filterCRReasons: function (sRequestType) {
+			var oCustomerModel = this.getModel("Customer");
 			var oDropDownModel = this.getModel("Dropdowns"),
 				aTaxonomyReasons = oDropDownModel.getProperty("/TAXONOMY") || [],
 				aCustCRReasons = aTaxonomyReasons.filter(oItem => {
@@ -984,6 +985,7 @@ sap.ui.define([
 				break;
 			}
 			oDropDownModel.setProperty("/crReasons", aFinalReasons);
+			oCustomerModel.setProperty("/changeReq/genData/reason", aFinalReasons[0].taxonomyId);
 		},
 
 		uploadEnableFn: function (aRole, sCrID) {

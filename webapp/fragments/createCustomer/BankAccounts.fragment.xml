@@ -63,9 +63,9 @@
 			<form:content>
 				<core:Title text="Bank Details"/>
 				<Label text="Bank Details ID"/>
-				<Input value="{Customer>/createCRCustomerData/cust_knbk/bvtyp}" maxLength="4" editable="false"/>
+				<Input value="{Customer>/createCRCustomerData/cust_knbk/bvtyp}" maxLength="4" editable="true"/>
 				<Label text="Bank Account(Account No.)"/>
-				<Input value="{Customer>/createCRCustomerData/cust_knbk/bkont}" maxLength="2" editable="{App>/edit}"/>
+				<Input value="{Customer>/createCRCustomerData/cust_knbk/bkont}" maxLength="18" editable="{App>/edit}"/>
 				<Label text="Account Holder"/>
 				<Input value="{Customer>/createCRCustomerData/cust_knbk/koinh}" maxLength="60" editable="{App>/edit}"/>
 				<Label text="IBAN"/>
