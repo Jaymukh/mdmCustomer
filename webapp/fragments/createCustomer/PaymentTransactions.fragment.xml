@@ -5,7 +5,7 @@
 		<form:content>
 			<core:Title text="Payment Transactions"/>
 			<Label text="DME Indicator"/>
-			<ComboBox selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/dtams}" editable="false">
+			<ComboBox selectedKey="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/dtams}" editable="true">
 				<items>
 					<core:Item text="Use house bank default value" key=" "/>
 					<core:Item text="Single data record can be forwarded to the Bundesbank" key="0"/>
@@ -14,7 +14,7 @@
 			</ComboBox>
 			<Label text="Instruction Key"/>
 			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/dtaws}" showValueHelp="true"
-				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" editable="false">
+				valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true" editable="true">
 				<customData>
 					<core:CustomData key="title" value="Instruction Key"></core:CustomData>
 					<core:CustomData key="table" value="T015W"></core:CustomData>
