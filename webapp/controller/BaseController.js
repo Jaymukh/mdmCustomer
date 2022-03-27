@@ -58,6 +58,7 @@ sap.ui.define([
 					type: "POST",
 					data: {
 						"userId": oDataResources.data.user_id,
+						"entityTypeId": 41002,
 						"changeRequestSearchDTO": {
 							"entityType": "CUSTOMER"
 						}
@@ -118,8 +119,18 @@ sap.ui.define([
 				oCustomerData = Object.assign({}, oAppModel.getProperty("/createCRCustomerData")),
 				oDate = new Date(),
 				sMonth = oDate.getMonth() + 1,
-				sMinutes = oDate.getMinutes();
-
+				sMinutes = oDate.getMinutes(),
+				defaultCommunicationObj = {
+					"telCountry": "",
+					"telNumber": "",
+					"telExt": "",
+					"faxCountry": "",
+					"faxNumber": "",
+					"faxExt": "",
+					"mobCountry": "",
+					"mobNumber": "",
+					"email": ""
+				};
 			this.clearAllButtons();
 			this.clearCustModelData();
 			oAppModel.setProperty("/edit", true);
@@ -128,6 +139,7 @@ sap.ui.define([
 			oAppModel.setProperty("/checkButton", true);
 			oAppModel.setProperty("/appTitle", "Create ERP Customer");
 			oAppModel.setProperty("/previousPage", "");
+			oAppModel.setProperty("/communication", defaultCommunicationObj);
 			this._createCREntityCustomer().then(
 				//Success handler
 				oData => {

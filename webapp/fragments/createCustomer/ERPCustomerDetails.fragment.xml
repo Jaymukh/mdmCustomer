@@ -44,39 +44,39 @@
 				maxLength="10" editable="{App>/edit}"/>
 			<core:Title text="Communication Data"/>
 			<Label text="Telephone"/>
-			<ComboBox id="idPhoneCountry" items="{Dropdowns>/T005K}" editable="{App>/edit}" selectionChange="onDefChangePhone">
+			<ComboBox id="idPhoneCountry" items="{Dropdowns>/T005K}" editable="{App>/edit}" selectionChange="onDefChangePhone" selectedKey="{App>/communication/telCountry}">
 				<layoutData>
 					<l:GridData span="XL2 L2 M3 S4"/>
 				</layoutData>
 				<core:Item key="{Dropdowns>land1}" text="{Dropdowns>telefto} - {Dropdowns>land1}"/>
 			</ComboBox>
-			<Input id="idPhone" type="Number" value="" placeholder="Number" editable="{App>/edit}" liveChange="onDefChangePhone"></Input>
-			<Input id="idPhoneExt" type="Number" value="" placeholder="Ext" editable="{App>/edit}" liveChange="onDefChangePhone"/>
+			<Input id="idPhone"  value="{App>/communication/telNumber}" placeholder="Number" editable="{App>/edit}" liveChange="onDefChangePhone"></Input>
+			<Input id="idPhoneExt" value="{App>/communication/telExt}" placeholder="Ext" editable="{App>/edit}" liveChange="onDefChangePhone"/>
 			<Label text="Mobile"/>
-			<ComboBox id="idMobCountry" items="{Dropdowns>/T005K}" editable="{App>/edit}" selectionChange="onDefChangeMobile">
+			<ComboBox id="idMobCountry" items="{Dropdowns>/T005K}" editable="{App>/edit}" selectionChange="onDefChangeMobile" selectedKey="{App>/communication/mobCountry}">
 				<layoutData>
 					<l:GridData span="XL2 L2 M3 S4"/>
 				</layoutData>
 				<core:Item key="{Dropdowns>land1}" text="{Dropdowns>telefto} - {Dropdowns>land1}"/>
 			</ComboBox>
-			<Input id="idMobile" type="Number" value="" placeholder="Number" editable="{App>/edit}" liveChange="onDefChangeMobile"></Input>
+			<Input id="idMobile"  value="{App>/communication/mobNumber}" placeholder="Number" editable="{App>/edit}" liveChange="onDefChangeMobile"></Input>
 			<Label text="E-mail Address"/>
-			<Input id="idEmail" type="Email" value="" editable="{App>/edit}" liveChange="onDefChangeEmail"/>
+			<Input id="idEmail" type="Email" value="{App>/communication/email}" editable="{App>/edit}" liveChange="onDefChangeEmail"/>
 			<Label text="Fax"/>
-			<ComboBox id="idFaxCountry" items="{Dropdowns>/T005K}" editable="{App>/edit}" selectionChange="onDefFaxChange">
+			<ComboBox id="idFaxCountry" items="{Dropdowns>/T005K}" editable="{App>/edit}" selectionChange="onDefFaxChange" selectedKey="{App>/communication/faxCountry}">
 				<layoutData>
 					<l:GridData span="XL2 L2 M3 S4"/>
 				</layoutData>
 				<core:Item key="{Dropdowns>land1}" text="{Dropdowns>telefto} - {Dropdowns>land1}"/>
 			</ComboBox>
-			<Input id="idFax" value="" placeholder="Fax" editable="{App>/edit}" liveChange="onDefFaxChange"></Input>
-			<Input id="idFaxExt" value="" placeholder="Ext" editable="{App>/edit}" liveChange="onDefFaxChange">
+			<Input id="idFax" value="{App>/communication/faxNumber}" placeholder="Fax" editable="{App>/edit}" liveChange="onDefFaxChange"></Input>
+			<Input id="idFaxExt" value="{App>/communication/faxExt}" placeholder="Ext" editable="{App>/edit}" liveChange="onDefFaxChange">
 				<layoutData>
 					<l:GridData span="XL2 L2 M3 S4"/>
 				</layoutData>
 			</Input>
-			<Label text="Web site"/>
-			<Input editable="false" value=""/>
+			<!--<Label text="Web site"/>
+			<Input editable="false" value=""/>-->
 			<core:Title/>
 			<Label text="PO Box Lobby"/>
 			<Input value="{Customer>/createCRCustomerData/gen_adrc/po_box_lobby}" maxLength="40" editable="{App>/edit}"/>

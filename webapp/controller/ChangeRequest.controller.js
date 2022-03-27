@@ -134,9 +134,21 @@ sap.ui.define([
 				this.getView().setBusy(false);
 				if (oDataResp.result.parentDTO.customData) {
 					var sEntityId = oDataResp.result.parentDTO.customData.cust_kna1.entity_id,
-						aTables = ["cust_knb1", "cust_knbk", "cust_knbw", "cust_knb5", "cust_knvp", "cust_knvv",
+						aTables = ["cust_knb1", "cust_knbk", "cust_knbw", "cust_knb5", "cust_knvp", "cust_knvv", "gen_adr2", "gen_adr6", "gen_adr3",
 							"cust_knvi", "gen_adcp", "gen_knvk", "gen_adrc", "gen_bnka", "pra_bp_ad", "pra_bp_cust_md"
-						];
+						],
+						oTelObj, oFaxObj, oEmailObj, oMobileObj, oController = this,
+						oCommunication = {
+							"telCountry": "",
+							"telNumber": "",
+							"telExt": "",
+							"faxCountry": "",
+							"faxNumber": "",
+							"faxExt": "",
+							"mobCountry": "",
+							"mobNumber": "",
+							"email": ""
+						};
 					oCustomerData.formData.parentDTO.customData.cust_kna1 = oDataResp.result.parentDTO.customData.cust_kna1;
 					//oCustomerData.cust_kna1 = oDataResp.result.parentDTO.customData.cust_kna1;
 					oCustomerData.tableRows = {};
@@ -147,16 +159,42 @@ sap.ui.define([
 							Object.keys(oDataResp.result.parentDTO.customData[sTable]).forEach(function (sKey) {
 								oCustomerData.tableRows[sTable].push(oDataResp.result.parentDTO.customData[sTable][sKey]);
 								oCustomerData[sTable] = oDataResp.result.parentDTO.customData[sTable][sKey];
+								if (sTable === "gen_adr2") {
+									if (oDataResp.result.parentDTO.customData[sTable][sKey]["flgdefault"] === "X" && oDataResp.result.parentDTO.customData[
+											sTable][sKey]["tel_extens"] !== null) {
+										oTelObj = Object.assign(oDataResp.result.parentDTO.customData[sTable][sKey], {});
+										oCommunication.telCountry = oTelObj.country;
+										oCommunication.telNumber = oTelObj.tel_number;
+										oCommunication.telExt = oTelObj.tel_extens;
+									} else if (oDataResp.result.parentDTO.customData[sTable][sKey]["flgdefault"] === "X" && oDataResp.result.parentDTO.customData[
+											sTable][sKey]["tel_extens"] === null) {
+										oMobileObj = Object.assign(oDataResp.result.parentDTO.customData[sTable][sKey], {});
+										oCommunication.mobCountry = oMobileObj.country;
+										oCommunication.mobNumber = oMobileObj.tel_number;
+									}
+								}
+								if (sTable === "gen_adr3" && oDataResp.result.parentDTO.customData[sTable][sKey]["flgdefault"] === "X") {
+									oFaxObj = Object.assign(oDataResp.result.parentDTO.customData[sTable][sKey], {});
+									oCommunication.faxCountry = oFaxObj.country;
+									oCommunication.faxNumber = oFaxObj.fax_number;
+									oCommunication.faxExt = oFaxObj.fax_extens;
+									
+								}
+								if (sTable === "gen_adr6" && oDataResp.result.parentDTO.customData[sTable][sKey]["flgdefault"] === "X") {
+									oEmailObj = Object.assign(oDataResp.result.parentDTO.customData[sTable][sKey], {});
+									oCommunication.email = oEmailObj.smtp_addr;
+								}
 							});
-						}else{
-							oCustomerData[sTable] = Object.assign(oAppModel.getProperty("/" + sTable), {});	
+
+						} else {
+							oCustomerData[sTable] = Object.assign(oAppModel.getProperty("/" + sTable), {});
 						}
 						if (oCustomerData[sTable].hasOwnProperty("entity_id")) {
-								oCustomerData[sTable].entity_id = sEntityId;
+							oCustomerData[sTable].entity_id = sEntityId;
 						}
-					
-					}, this);
 
+					}, this);
+					oAppModel.setProperty("/communication",oCommunication);
 					oCustomerData.workflowID = sWorkflowTaskID;
 					oCustomerData.crID = sChangeRequestId;
 					oCustomerModel.setProperty("/createCRCustomerData", oCustomerData);
@@ -261,7 +299,7 @@ sap.ui.define([
 			oEvent.getSource().setIcon(bPressed ? "sap-icon://arrow-right" : "sap-icon://arrow-left");
 			oDynamicSideContent.setShowSideContent(bPressed);
 		},
-		
+
 		handleStatus: function (sValue1, sValue2) {
 			var sAssignment = sValue1 ? sValue1.toLowerCase() : sValue1,
 				sResult = sValue1;

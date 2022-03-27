@@ -79,7 +79,7 @@
 							<Text text="{ChangeRequestsModel>crDTO/change_request_desc}"></Text>
 							<ObjectStatus text="{path:'ChangeRequestsModel>crDTO/is_cr_closed',formatter:'.getStatusOfCr'}"/>
 							<ObjectStatus
-								text="{parts :[{path:'ChangeRequestsModel>crDTO/assigmentStatus'},{path:'ChangeRequestsModel>crDTO/assignmentStage'}],formatter:'.handleStatus'}"/>
+								text="{parts :[{path:'ChangeRequestsModel>crDTO/assignmentStatus'},{path:'ChangeRequestsModel>crDTO/assignmentStage'}],formatter:'.handleStatus'}"/>
 							<Text text="{path:'ChangeRequestsModel>crDTO/change_request_date',formatter:'.getDateofCr'}"></Text>
 							<Text text="{ChangeRequestsModel>crDTO/change_request_by/firstname} {ChangeRequestsModel>crDTO/change_request_by/lastname}"></Text>
 							<Text text="{ChangeRequestsModel>crDTO/statusChangeBy/firstname} {ChangeRequestsModel>crDTO/statusChangeBy/lastname}"></Text>

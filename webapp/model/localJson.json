@@ -1081,5 +1081,16 @@
 	}, {
 		"key": "N213",
 		"text": "within 45 days Due net"
-	}]
+	}],
+	"communication": {
+		"telCountry" :"",
+		"telNumber" :"",
+		"telExt": "",
+		"faxCountry" :"",
+		"faxNumber" :"",
+		"faxExt": "",
+		"mobCountry" :"",
+		"mobNumber" :"",
+		"email": ""
+	}
 }

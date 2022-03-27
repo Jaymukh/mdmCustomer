@@ -37,10 +37,13 @@ sap.ui.define([
 						aRoles = [],
 						aTempAccountGrps = [],
 						aAccountGrps = [];
-
+						var aTotalRoles = [];
 					oUserModelResources.groups.forEach(function (oItem) {
-						if (oItem.value.split("DA_MDM_VEND_")[1]) {
-							var aResultArr = oItem.value.split("DA_MDM_VEND_")[1].split("_");
+						if(oItem.display.indexOf("DA_MDM") !== -1){
+							aTotalRoles.push({"role_code_btp" : oItem.value});
+						}
+						if (oItem.value.split("DA_MDM_CUST_")[1]) {
+							var aResultArr = oItem.value.split("DA_MDM_CUST_")[1].split("_");
 							if (aRoles.indexOf(aResultArr[0].toLowerCase()) === -1) {
 								aRoles.push(aResultArr[0].toLowerCase());
 							}
@@ -72,7 +75,8 @@ sap.ui.define([
 								"roles": [{
 									"role_code_btp": "DA_MDM_ADMIN"
 								}],
-								"is_active": true
+								"is_active": true,
+								"additional_param1" : oUserModelResources.userName
 							}]
 						}
 					};

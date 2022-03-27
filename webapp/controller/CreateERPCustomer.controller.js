@@ -190,9 +190,13 @@ sap.ui.define([
 							oItem.entity_id = oFormData.parentDTO.customData.cust_kna1.entity_id;
 						}
 						if (sKey === "gen_adr6") {
-							oItem.smtp_srch = oItem.smtp_srch ? oItem.smtp_srch.slice(0, 20) : oItem.smtp_srch;
+							oItem.smtp_srch = oItem.smtp_addr ? oItem.smtp_addr.slice(0, 20) : oItem.smtp_addr;
 							oItem.home_flag = iIndex === 0 ? "X" : "";
 							oItem.flgdefault = iIndex === 0 ? "X" : "";
+							oItem.consnumber = iIndex+1; 
+						}
+						if(sKey === "gen_adr2" || sKey === "gen_adr3"){
+							oItem.consnumber = iIndex+1;                   
 						}
 						oFormData.parentDTO.customData[sKey][sKey + "_" + (iIndex + 1)] = oItem;
 					});
@@ -1037,7 +1041,10 @@ sap.ui.define([
 			oAdr2.addrnumber = oCustomerModel.getProperty("/createCRCustomerData/formData/parentDTO/customData/cust_kna1/entity_id");
 			oAdr2.date_from = sDate;
 			oAdr2.consnumber = "1";
-			oAdr2.r3_user = "1";
+			oAdr2.flgdefault = "";
+			oAdr2.home_flag = "";
+			oAdr2.tel_extens = "";
+			oAdr2.r3_user = "";
 
 			aAdr2.push(oAdr2);
 			oCustomerModel.setProperty("/createCRCustomerData/tableRows/gen_adr2", aAdr2);
@@ -1095,7 +1102,9 @@ sap.ui.define([
 			oAdr2.addrnumber = oCustomerModel.getProperty("/createCRCustomerData/formData/parentDTO/customData/cust_kna1/entity_id");
 			oAdr2.date_from = sDate;
 			oAdr2.consnumber = "2";
-			oAdr2.r3_user = "3";
+			oAdr2.flgdefault = "";
+			oAdr2.home_flag = "";
+			oAdr2.r3_user = "";
 			aAdr2.push(oAdr2);
 			oCustomerModel.setProperty("/createCRCustomerData/tableRows/gen_adr2", aAdr2);
 		},
@@ -1153,6 +1162,8 @@ sap.ui.define([
 			oAdr3.addrnumber = oCustomerModel.getProperty("/createCRCustomerData/formData/parentDTO/customData/cust_kna1/entity_id");
 			oAdr3.date_from = sDate;
 			oAdr3.consnumber = "1";
+			oAdr3.flgdefault = "";
+			oAdr3.home_flag = "";
 			aAdr3.push(oAdr3);
 			oCustomerModel.setProperty("/createCRCustomerData/tableRows/gen_adr3", aAdr3);
 		},
