@@ -13,6 +13,25 @@ sap.ui.define([
 		},
 
 		onInit: function () {},
+		onPressChngReqTile: function (oEvent) {
+		/*	this.oTileClickFlag = "X";
+			var oPage = undefined;
+			var sSearchType = undefined;
+			var oTaxonomy_id;
+			this.oTaxonomy_id = "";
+			var oData = this.getOwnerComponent().getModel("CreateVendorModel").getProperty("/createCRDD");
+			var oflag = oEvent.getSource().data("flag");*/
+/*			oData.CR_STATUS_TYPE.forEach(oItem => {
+				if (oItem.taxonomy_name === oflag) {
+					oTaxonomy_id = oItem.taxonomy_id;
+					this.oTaxonomy_id = oItem.taxonomy_id;
+					this.handleGetAllChangeRequests(oPage, sSearchType, oTaxonomy_id);
+				}
+			});
+			if (this.oTaxonomy_id === "") {
+				this.handleGetAllChangeRequests(oPage, sSearchType, this.oTaxonomy_id);
+			}*/
+		},
 
 		handlePendingRequest: function (sValue) {
 			return sValue.toLowerCase() === "changes to be executed" ? "Warning" : sValue.toLowerCase() === "overdue" ? "Error" : "None";

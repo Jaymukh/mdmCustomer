@@ -4,25 +4,41 @@
 			<TileContent footer="Total Request">
 				<content>
 					<NumericContent value="{ChangeRequestsModel>/Statistics/totalCount}" valueColor="Neutral" press="onPressChngReqTile"
-						icon="sap-icon://request"/>
+						icon="sap-icon://request">
+						<customData>
+							<core:CustomData key="flag" value="" writeToDom="true"></core:CustomData>
+						</customData>
+					</NumericContent>
 				</content>
 			</TileContent>
 			<TileContent footer="Pending">
 				<content>
 					<NumericContent value="{ChangeRequestsModel>/Statistics/pendingCount}" valueColor="Critical" press="onPressChngReqTile"
-						icon="sap-icon://pending"/>
+						icon="sap-icon://pending">
+						<customData>
+							<core:CustomData key="flag" value="Unclaimed" writeToDom="true"></core:CustomData>
+						</customData>
+					</NumericContent>
 				</content>
 			</TileContent>
 			<TileContent footer="Rejected">
 				<content>
 					<NumericContent value="{ChangeRequestsModel>/Statistics/rejectedCount}" valueColor="Error" press="onPressChngReqTile"
-						icon="sap-icon://decline"/>
+						icon="sap-icon://decline">
+						<customData>
+							<core:CustomData key="flag" value="Rejected" writeToDom="true"></core:CustomData>
+						</customData>
+					</NumericContent>
 				</content>
 			</TileContent>
 			<TileContent footer="Approved">
 				<content>
 					<NumericContent value="{ChangeRequestsModel>/Statistics/approvedCount}" valueColor="Good" press="onPressChngReqTile"
-						icon="sap-icon://accept"/>
+						icon="sap-icon://accept">
+						<customData>
+							<core:CustomData key="flag" value="Approved" writeToDom="true"></core:CustomData>
+						</customData>
+					</NumericContent>
 				</content>
 			</TileContent>
 		</FlexBox>
