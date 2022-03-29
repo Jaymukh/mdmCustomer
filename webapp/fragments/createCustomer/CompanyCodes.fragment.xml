@@ -118,7 +118,7 @@
 					</customData>
 				</Input>
 				<Label text="Planning Group"/>
-				<Input required="true" showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
+				<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
 					value="{Customer>/createCRCustomerData/cust_knb1/fdgrv}" maxLength="10" editable="{App>/edit}">
 					<customData>
 						<core:CustomData key="title" value="Planning Group"></core:CustomData>
@@ -557,26 +557,50 @@
 				</ColumnListItem>
 			</items>
 		</Table>
-		<form:SimpleForm visible="false" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
+		<form:SimpleForm visible="true" editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="4" labelSpanS="12"
 			adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="3" columnsL="2" columnsM="2"
 			singleContainerFullSize="false">
 			<form:content>
 				<core:Title text="Extended Withholding Tax Type"/>
 				<Label text="Withholding Tax Type"/>
-				<Input required="true" value="{Customer>/createCRCustomerData/cust_knbw/witht}" showValueHelp="true"/>
+				<Input value="{Customer>/createCRCustomerData/cust_knbw/witht}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" editable="{App>/edit}">
+					<customData>
+						<core:CustomData key="title" value="Withholding Tax Type"></core:CustomData>
+						<core:CustomData key="table" value="T059P"></core:CustomData>
+						<core:CustomData key="witht" value="Withholding Tax Type"></core:CustomData>
+						<core:CustomData key="text40" value="Description"></core:CustomData>
+						<core:CustomData key="land1" value="Country Code"></core:CustomData>
+						<core:CustomData key="inputKey" value="witht"></core:CustomData>
+						<core:CustomData key="inputText" value="witht"></core:CustomData>
+					</customData>
+				</Input>
 				<Label text="Withholding Tax Identification Number"/>
 				<Input value="{Customer>/createCRCustomerData/cust_knbw/wt_wtstcd}"/>
 				<Label text="Withholding Tax Obligated From"/>
-				<Input value="{Customer>/createCRCustomerData/cust_knbw/wt_agtdf}" showValueHelp="true"/>
+				<DatePicker displayFormat="{App>/dateFormat}" valueFormat="{App>/dateValueFormat}"
+					value="{Customer>/createCRCustomerData/cust_knbw/wt_agtdf}"/>
 				<core:Title/>
 				<Label text="Withholding Tax Code"/>
-				<Input value="{Customer>/createCRCustomerData/cust_knbw/wt_withcd}" showValueHelp="true"/>
-				<Label text="Indicator: Withholding Tax Agent"/>
-				<CheckBox selected="{Customer>/createCRCustomerData/cust_knbw/wt_agent}"/>
-				<Label text="Withholding Tax Obligated Until"/>
-				<DatePicker displayFormat="{App>/dateFormat}" valueFormat="{App>/dateValueFormat}"
-					value="{Customer>/createCRCustomerData/cust_knbw/wt_agtdt}"/>
-			</form:content>
-		</form:SimpleForm>
-	</VBox>
+				<Input value="{Customer>/createCRCustomerData/cust_knbw/wt_withcd}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" editable="{App>/edit}">
+				<customData>
+					<core:CustomData key="title" value="Withholding Tax Code"></core:CustomData>
+					<core:CustomData key="table" value="T059Z"></core:CustomData>
+					<core:CustomData key="wt_WITHCD" value="Withholding Tax Code"></core:CustomData>
+					<core:CustomData key="witht" value="Withholding Tax Type"></core:CustomData>
+					<core:CustomData key="land1" value="Country Code"></core:CustomData>
+					<core:CustomData key="text40" value="Description"></core:CustomData>
+					<core:CustomData key="inputKey" value="wt_WITHCD"></core:CustomData>
+					<core:CustomData key="inputText" value="wt_WITHCD"></core:CustomData>
+				</customData>
+			</Input>
+			<Label text="Indicator: Withholding Tax Agent"/>
+			<CheckBox selected="{Customer>/createCRCustomerData/cust_knbw/wt_agent}"/>
+			<Label text="Withholding Tax Obligated Until"/>
+			<DatePicker displayFormat="{App>/dateFormat}" valueFormat="{App>/dateValueFormat}"
+				value="{Customer>/createCRCustomerData/cust_knbw/wt_agtdt}"/>
+		</form:content>
+	</form:SimpleForm>
+</VBox>
 </core:FragmentDefinition>
