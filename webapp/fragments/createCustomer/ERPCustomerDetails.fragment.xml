@@ -41,7 +41,7 @@
 			</CheckBox>
 			<Label text="Search Terms"/>
 			<Input required="true" liveChange="handleSearchTerms" value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/sortl}"
-				maxLength="10" editable="{App>/edit}"/>
+				maxLength="20" editable="{App>/edit}"/>
 			<core:Title text="Communication Data"/>
 			<Label text="Telephone"/>
 			<ComboBox id="idPhoneCountry" items="{Dropdowns>/T005K}" editable="{App>/edit}" selectionChange="onDefChangePhone" selectedKey="{App>/communication/telCountry}">
