@@ -557,7 +557,7 @@ sap.ui.define([
 			};
 
 			this.serviceCall.handleServiceRequest(objParamCreate).then(function (oDataResp) {
-				this.getView().setBusy(false);
+				// this.getView().setBusy(false);
 				if (oDataResp.result && oDataResp.result.changeRequestDTO) {
 					MessageToast.show("Change Request ID - " + oDataResp.result.changeRequestDTO.change_request_id + " Generated.");
 					this._EntityIDDraftFalse();
@@ -1668,7 +1668,7 @@ sap.ui.define([
 
 		onPressCancelAddress: function () {
 			this._oDialogAddress.close();
-		},
+		}
 
 	});
 
