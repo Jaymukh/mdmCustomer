@@ -295,7 +295,7 @@ sap.ui.define([
 				sCRID = null;
 			}
 			if (!sIsclaimable) {
-				sIsclaimable = false
+				sIsclaimable = false;
 			}
 			// var	sCRID = this.getView().getModel("CreateVendorModel").getProperty("/createCRVendorData/crID");
 			// var sIsclaimable = this.getView().getModel("CreateVendorModel").getProperty("/changeReq/genData/isClaimable");

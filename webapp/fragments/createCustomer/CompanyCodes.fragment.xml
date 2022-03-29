@@ -499,11 +499,20 @@
 			<form:content>
 				<core:Title text="Dunning Area"/>
 				<Label text="Dunning Area"/>
-				<Input editable="false" value="{Customer>/createCRCustomerData/cust_knb5/maber}"/>
+				<Input editable="true" value="{Customer>/createCRCustomerData/cust_knb5/maber}"/>
 				<Label text="Dunning Recipient"/>
 				<Input value="{Customer>/createCRCustomerData/cust_knb5/knrma}"/>
 				<Label text="Dunning Block"/>
-				<Input value="{Customer>/createCRCustomerData/cust_knb5/mansp}" showValueHelp="true"/>
+				<Input value="{Customer>/createCRCustomerData/cust_knb5/mansp}" showValueHelp="true" valueHelpRequest=".onValueHelpRequested"
+					valueHelpOnly="true" editable="{App>/edit}">
+					<customData>
+						<core:CustomData key="title" value="Dunning Block"></core:CustomData>
+						<core:CustomData key="table" value="T040S"></core:CustomData>
+						<core:CustomData key="maber" value="maber"></core:CustomData>
+						<core:CustomData key="inputKey" value="maber"></core:CustomData>
+						<core:CustomData key="inputText" value="maber"></core:CustomData>
+					</customData>
+					</Input>
 				<Label text="Last Dunned"/>
 				<DatePicker displayFormat="{App>/dateFormat}" valueFormat="{App>/dateValueFormat}" value="{Customer>/createCRCustomerData/cust_knb5/madat}"/>
 				<core:Title/>

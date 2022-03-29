@@ -30,8 +30,8 @@ sap.ui.define([
 			this.oBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
 		},
 
-		onBackToAllChangeReq: function () {
-			if (!this.getOwnerComponent().getModel("ChangeRequestsModel").getProperty("/ChangeRequests").length) {
+		onBackToAllChangeReq: function (oParam) {
+			if (!this.getOwnerComponent().getModel("ChangeRequestsModel").getProperty("/ChangeRequests").length || (oParam && oParam.refresh)) {
 				this.nPageNo = 1;
 				this.handleGetAllChangeRequests(this.nPageNo);
 				this.handleChangeRequestStatistics();
@@ -557,7 +557,7 @@ sap.ui.define([
 			};
 
 			this.serviceCall.handleServiceRequest(objParamCreate).then(function (oDataResp) {
-				this.getView().setBusy(false);
+				// this.getView().setBusy(false);
 				if (oDataResp.result && oDataResp.result.changeRequestDTO) {
 					MessageToast.show("Change Request ID - " + oDataResp.result.changeRequestDTO.change_request_id + " Generated.");
 					this._EntityIDDraftFalse();
@@ -589,7 +589,7 @@ sap.ui.define([
 			this.serviceCall.handleServiceRequest(objParamSubmit).then(
 				oData => {
 					this.getView().setBusy(false);
-					this.onBackToAllChangeReq();
+					this.onBackToAllChangeReq({refresh : true});
 				},
 				oError => {
 					this.getView().setBusy(false);
@@ -1668,7 +1668,7 @@ sap.ui.define([
 
 		onPressCancelAddress: function () {
 			this._oDialogAddress.close();
-		},
+		}
 
 	});
 
