@@ -54,7 +54,7 @@
 			<Label text="Train Station"/>
 			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/bahns}" maxLength="4" editable="{App>/edit}"/>
 			<Label text="Location Code"/>
-			<Input value="" maxLength="4" editable="{App>/edit}"/>
+			<Input value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/lifsd}" maxLength="4" editable="{App>/edit}"/>
 			<Label text="Industry"/>
 			<Input showValueHelp="true" valueHelpRequest=".onValueHelpRequested" valueHelpOnly="true"
 				value="{Customer>/createCRCustomerData/formData/parentDTO/customData/cust_kna1/brsch}" maxLength="4" editable="{App>/edit}">
